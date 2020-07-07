@@ -2,16 +2,163 @@
     background-color:#100c1a;
     color:#d7d9d8;
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     justify-content: space-between;
     align-items: center;
+    padding-left: 25px;
+    position: fixed;
+    top:0;
+    z-index: 3;
+    width: 100%;
 }
 
 .navbar > div {
-    text-align: center;
+    text-align: left;
 }
 
+.navbar h1 {
+    border-bottom: 2px solid #09af00;
+}
 
 .navbar > div:nth-of-type(2) {
     color: #fefadf
+}
+
+.hamburger-menu {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hamburger-menu a > div {
+    height: 5px;
+    width: 30px;
+    background-color: white;
+    margin: 5px;
+}
+
+.navbar-hidden {
+    width: 60%;
+    height: 100%;
+    background-color: black;
+    position: fixed;
+    z-index: 5;
+    transform: translate(-267.8px);
+    bottom: 0px;
+}
+
+.hidden-hamburger-menu {
+    width: 50px;
+    height: 81.8px;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 25px;;
+
+}
+
+.hidden-hamburger-menu a > div {
+    height: 5px;
+    width: 30px;
+    background-color: white;
+    margin: 5px;
+}
+
+
+.nav-out {
+    animation-name: slideOut;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    transform: translate(0)
+}
+
+.nav-in {
+    animation-name: slideIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    transform: translate(-267.8px);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(0)
+    }
+    to {
+        transform: translate(-267.8px);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translate(-267.8px);
+    }
+    to {
+        transform: translate(0)
+    }
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 30px;;
+    padding: 5px;
+}
+
+.logo img {
+    box-shadow: 2px 2px 3px  white;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+}
+
+.sub-menu {
+    display: none;
+}
+
+.show {
+    animation-fill-mode: forwards;
+    animation-name: hideSub;
+    animation-duration: .2s;
+    display: block;
+}
+
+
+@keyframes showSub {
+    from {
+        height: 0px;
+        opacity: 0;
+    } to {
+        height: 50px;
+        opacity: 1;
+    }
+}
+
+.side-nav-btn {
+    font-size: 2em;
+    display: flex;
+    color: #f48b00;
+    justify-content: space-between;
+}
+
+.side-nav-btn a {
+    text-decoration: none;
+    color: #f48b00
+}
+
+.sub-menu {
+    font-size: 1.5em;
+    border-left: 2px solid #f48b00;
+    text-indent: 15px;;
+}
+
+.sub-menu a {
+    text-decoration: none;
+    color: #f48b00;
+}
+
+.side-nav {
+    padding: 20px;
 }

@@ -21,7 +21,6 @@
     width: 50px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-   
 }
 
 .product-nav button:hover {
@@ -48,7 +47,7 @@
 .list-item-header {
     position: absolute;
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #f48a006b;
     width: 100%;
     color: #fbf8cb;
     text-indent: 25px;;
