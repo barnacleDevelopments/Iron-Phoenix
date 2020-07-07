@@ -1,0 +1,33 @@
+{
+  "name": "bakery-project-prototype",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/node": "^7.10.4",
+    "@babel/preset-env": "^7.10.4"
+  },
+  "scripts": {
+    "start": "nodemon ./server/app.js",
+    "compile": "./node_modules/.bin/babel .public/server --out-dir lib",
+    "dev": "nodemon --exec babel-node ./server/app.js"
+  },
+  "author": "Devin Davis",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barnacleDevelopments/bakery-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/barnacleDevelopments/bakery-project/issues"
+  },
+  "homepage": "https://github.com/barnacleDevelopments/bakery-project#readme",
+  "description": ""
+}

@@ -1,0 +1,16 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    margin: 5px;
+    background-color: rgb(99, 99, 99);
+    font-family: 'Bebas Neue', cursive;
+}
+
+.page-enclosure {
+    margin: 0 auto;
+    background-color: black;
+    height: 100%;
+}

@@ -1,0 +1,17 @@
+.navbar {
+    background-color:#100c1a;
+    color:#d7d9d8;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar > div {
+    text-align: center;
+}
+
+
+.navbar > div:nth-of-type(2) {
+    color: #fefadf
+}
