@@ -7,12 +7,117 @@ body {
     margin: 5px;
     background-color: rgb(99, 99, 99);
     font-family: 'Bebas Neue', cursive;
-    margin: 85px 0px 0px 0px;
-  
+    margin: 70px 0px 0px 0px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .page-enclosure {
     margin: 0 auto;
     background-color: black;
     height: 100%;
+}
+
+.chat-bubble {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:  fixed;
+    width: 70px;
+    height: 70px;
+    z-index: 4;
+    background-color: #FFAD42;
+    bottom: 25px;
+    right: 25px;
+    border-radius: 50px;
+    animation-name: bobIn;
+    animation-duration: 1s;
+}
+
+.chat-bubble a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:  fixed;
+    text-decoration: none;
+}
+
+.chat-bubble i {
+    color: rgb(39, 39, 39);
+}
+
+.bob-in {
+
+}
+
+@keyframes bobIn {
+    from {
+        transform: translateY(50px);
+    }
+
+    to {
+        transform: translateY(0px);
+     
+    }
+}
+
+@keyframes bobDown {
+    from {
+        transform: translateY(10px);
+    }
+
+    to {
+        transform: translateY(0px);
+    }
+}
+
+.chat-container {
+    width: 200px;
+    position: fixed;
+    bottom: 50px;
+    right: 60px;
+    z-index: 4;
+    background-color: #FFAD42;
+    padding: 10px;
+    z-index: 4;
+    border-radius: 10px;
+    display: none;
+}
+
+.chat-container div {
+    background-color: white;
+    height: 300px;
+    margin-bottom: 2px;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.chat-container input {
+    width: 83%;
+    margin: 0px;
+    border: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 5px;
+
+}
+
+.openChat {
+    animation-name: openChat;
+    animation-duration: .5s;
+    display: block;
+}
+
+@keyframes openChat {
+    from {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 200px;
+        height: 350px;
+        opacity: 1;
+    }
 }

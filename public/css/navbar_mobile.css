@@ -1,8 +1,8 @@
 .navbar {
-    background-color:#100c1a;
-    color:#d7d9d8;
+    background-color:white;
+    color:white;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 2fr;
     justify-content: space-between;
     align-items: center;
     padding-left: 25px;
@@ -10,14 +10,11 @@
     top:0;
     z-index: 3;
     width: 100%;
+    height: 72px;
 }
 
 .navbar > div {
     text-align: left;
-}
-
-.navbar h1 {
-    border-bottom: 2px solid #09af00;
 }
 
 .navbar > div:nth-of-type(2) {
@@ -35,14 +32,14 @@
 .hamburger-menu a > div {
     height: 5px;
     width: 30px;
-    background-color: white;
+    background-color: rgb(39, 39, 39);
     margin: 5px;
 }
 
 .navbar-hidden {
-    width: 60%;
+    width: 262.8px;
     height: 100%;
-    background-color: black;
+    background-color: rgb(39, 39, 39);
     position: fixed;
     z-index: 5;
     transform: translate(-267.8px);
@@ -60,23 +57,24 @@
 }
 
 .hidden-hamburger-menu a > div {
-    height: 5px;
-    width: 30px;
+    height: 3px;
+    width: 35px;
     background-color: white;
-    margin: 5px;
+    margin: 7px;
+    border-radius: 5px;
 }
 
 
 .nav-out {
     animation-name: slideOut;
-    animation-duration: 1s;
+    animation-duration: .5s;
     animation-fill-mode: forwards;
     transform: translate(0)
 }
 
 .nav-in {
     animation-name: slideIn;
-    animation-duration: 1s;
+    animation-duration: .5s;
     animation-fill-mode: forwards;
     transform: translate(-267.8px);
 }
@@ -100,15 +98,11 @@
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    border-radius: 30px;;
-    padding: 5px;
+    width: 65px;
+    height: 65px;
 }
 
 .logo img {
-    box-shadow: 2px 2px 3px  white;
     width: 100%;
     height: 100%;
     border-radius: 30px;
@@ -137,10 +131,15 @@
 }
 
 .side-nav-btn {
-    font-size: 2em;
+    font-size: 1.6em;
     display: flex;
     color: #f48b00;
     justify-content: space-between;
+    margin: 20px 0px 10px 0px;
+}
+
+.side-nav-btn:nth-of-type(1) {
+    margin-top: 0px;
 }
 
 .side-nav-btn a {
@@ -151,7 +150,7 @@
 .sub-menu {
     font-size: 1.5em;
     border-left: 2px solid #f48b00;
-    text-indent: 15px;;
+    text-indent: 15px;
 }
 
 .sub-menu a {
@@ -160,5 +159,5 @@
 }
 
 .side-nav {
-    padding: 20px;
+    padding: 10px 10px 5px 30px;
 }

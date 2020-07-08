@@ -1,0 +1,19 @@
+<%- include ("partials/header.ejs") %>
+
+<div class="selected-product">
+    <div class="product-nav">
+        <input type="text">
+    </div>
+    
+</div>
+<div class="cookie-product-list">
+    <% cookies.forEach(item => { %>
+    <div class="cookie-item">
+        <h2><%- item.name %></h2>
+        <div>
+            <img src="<%-item.img%>">
+        </div>
+    </div>
+    <%}) %>
+</div>
+<%- include ("partials/footer.ejs") %>
