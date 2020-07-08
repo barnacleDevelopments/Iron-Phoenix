@@ -1,4 +1,4 @@
-@media only screen and (min-width: 400px) {
+
 
 /* INDEX CSS */
 .product-list {
@@ -67,33 +67,32 @@
     display: flex;
     background-color: rgba(39, 39, 39, 0.4);
     align-items: center;
-    justify-content: space-between;
-    padding: 0px 10px 0px 10px;
+    justify-content: center;
     width: 100%;
 }
 
 .product-nav i {
-    position: relative;;
-    right: 30px;
+    position: absolute;;
+    left: 20px;
+    color: rgba(39, 39, 39, 0.4);
 }
 
 .product-nav input {
-    height: 30px;
+    height: 45px;
     border: none;
     width: 100%;
     border-radius: 10px;
     padding: 0px 15px 0px 15px;
-    margin: 10px 0px 10px 0px
-}
-
-.category-product-list {
-    height: 100%;
+    margin: 10px 10px 10px 10px;
+    color: rgba(39, 39, 39, 0.4);
+    text-indent: 25px;
 }
 
 .category-item {
     background-color: #100c1a;
     color: #fefadf;
-    position: relative;;
+    position: relative;
+    height: 200px;
 }
 
 .category-item-name {
@@ -111,7 +110,6 @@
 }
 
 .category-item img {
-    width: 100%;
    
 }
 .category-img {
@@ -136,12 +134,12 @@
 
 .individual-item-img {
     width: 100%;
-    height: 500px;
     overflow: hidden;
 }
 
 .individual-item-img img {
     width: 100%;
+    height: 100%;
 }
 
 .item-description {
@@ -156,7 +154,7 @@
     margin-left: 20px;
 }
 
-}
+
 
 @media only screen and (min-width: 480px) {
 
