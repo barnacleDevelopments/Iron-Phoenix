@@ -9,13 +9,16 @@ body {
     font-family: 'Bebas Neue', cursive;
     margin: 70px 0px 0px 0px;
     font-family: 'Josefin Sans', sans-serif;
+    background-color: black;
 }
 
 .page-enclosure {
     margin: 0 auto;
     background-color: black;
     height: 100%;
+    width: 100%;
 }
+
 
 .chat-bubble {
     display: flex;
@@ -83,13 +86,18 @@ body {
     display: none;
 }
 
-.chat-container div {
+.bubble-field {
     background-color: white;
     height: 300px;
     margin-bottom: 2px;
     padding: 10px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: white;
+    overflow-y: scroll;
 }
 
 .chat-container input {
@@ -99,6 +107,7 @@ body {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding: 5px;
+  
 
 }
 
@@ -106,6 +115,11 @@ body {
     animation-name: openChat;
     animation-duration: .5s;
     display: block;
+    animation-fill-mode: forwards;
+}
+
+.closeChat {
+   display: none;
 }
 
 @keyframes openChat {
@@ -120,4 +134,64 @@ body {
         height: 350px;
         opacity: 1;
     }
+}
+
+.chat-bubble-client {
+    background-color: #FFAD42;
+    width: 70%;
+    z-index: 5;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 0px;
+    margin: 5px;
+    margin: 5px 30px 5px 5px;
+}
+
+.chat-bubble-client h4 {
+    margin: 0px;
+    font-size: small;
+   
+
+}
+
+.chat-bubble-client p {
+    margin: 0px;
+    font-size: smaller;
+}
+
+.chat-bubble-service {
+    background-color: #09af00;
+    width: 70%;
+    z-index: 5;
+    padding: 10px;
+    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 5px;
+ 
+}
+
+.chat-bubble-service h4 {
+    margin: 0px;
+    font-size: small;
+
+}
+
+.chat-bubble-service p {
+    margin: 0px;
+    font-size: smaller;
+}
+
+/* FOOTER */
+
+footer {
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 300px;
 }

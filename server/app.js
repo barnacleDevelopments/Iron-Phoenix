@@ -34,7 +34,7 @@ const bakeryItemCatagories = [
     }
 ]
 
-const product = [
+const products = [
     {
         id: "32423432423",
         name: "chocolate chip",
@@ -57,13 +57,25 @@ const product = [
 
 ]
 
+const singleProduct =    {
+    id: "32423432423",
+    name: "chocolate chip",
+    catagory: "cookies",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
+    img: "https://images.unsplash.com/photo-1557310717-d6bea9f36682?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+}
+
 app.get("/", (req, res, next) => {
-    res.render("index", {bakeryProducts: bakeryItemCatagories});
+    res.render("index", {products: bakeryItemCatagories});
 });
 
-app.get("/cookies", (req, res, next) => {
-    res.render("cookies_view", {cookies: product});
+app.get("/:category", (req, res, next) => {
+    res.render("category_view", {products: products});
 });
+
+app.get("/:catagory/:item", (req, res, next) => {
+    res.render("item_view", {item: singleProduct})
+})
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

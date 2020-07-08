@@ -44,10 +44,12 @@ window.addEventListener("onload", () => {
 
 chatBubble.addEventListener("click", (e) => {
     e.preventDefault()
-    if(chatContainer.classList) {
-        chatContainer.classList.add("openChat");
+    if(chatContainer.classList.contains("openChat")) {
+        chatContainer.classList.remove("openChat")
+        chatContainer.classList.add("closeChat");
     } else {
-        chatContainer.classList.remove("openChat");
+        chatContainer.classList.add("openChat")
+        chatContainer.classList.remove("closeChat");
     }
 
 });

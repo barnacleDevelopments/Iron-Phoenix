@@ -1,0 +1,17 @@
+<%- include ("partials/header.ejs") %>
+<div class="indidual-item-container">
+    <a href="/<%-item.id%>">
+        <div class="individual-item">
+            <div class="individual-item-img">
+                <img src="<%-item.img%>">
+            </div>
+            <div class="item-description">
+                <div>
+                    <h2><%- item.name %></h2>
+                    <p><%- item.description %></p>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+<%- include ("partials/footer.ejs") %>

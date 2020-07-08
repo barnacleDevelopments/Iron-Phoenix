@@ -1,0 +1,25 @@
+<%- include ("partials/header.ejs") %>
+
+<div class="selected-product">
+    <div class="product-nav">
+        <input type="text" placeholder="search for product... ">
+        <i class="material-icons">search</i>
+    </div>
+    
+</div>
+<div class="category-product-list">
+    <% products.forEach(item => { %>
+    <div class="category-item">
+        <div class="category-item-name">
+            <div>
+                <h2><%- item.name %></h2>
+            </div>
+        </div>
+        <div class="category-img">
+            <img src="<%-item.img%>">
+        </div>
+    </div>
+    <%}) %>
+</div>
+<%- include ("partials/footer.ejs") %>
+

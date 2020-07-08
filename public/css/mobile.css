@@ -1,27 +1,12 @@
+@media only screen and (min-width: 400px) {
+
 /* INDEX CSS */
-.product-nav {
-    display: flex;
-    background-color: rgba(39, 39, 39, 0.4);
-    align-items: center;
-    justify-content: space-between;
-    padding: 0px 10px 0px 10px;
-}
-
-.product-nav input {
-    height: 30px;
-    border: none;
-    width: 100%;
-    border-radius: 10px;
-    padding: 0px 15px 0px 15px;
-    margin: 10px 0px 10px 0px
-}
-
-
 .product-list {
     background-color: white;
     display: flex;
     flex-direction: column;
     width: 100%;
+    position: relative;
 }
 
 .list-item {
@@ -76,35 +61,117 @@
 }
 
 
-/* COOKIE CSS */
-.cookie-product-list {
+/* CATEGORY CSS */
+
+.product-nav {
+    display: flex;
+    background-color: rgba(39, 39, 39, 0.4);
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px 0px 10px;
+    width: 100%;
+}
+
+.product-nav i {
+    position: relative;;
+    right: 30px;
+}
+
+.product-nav input {
+    height: 30px;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    padding: 0px 15px 0px 15px;
+    margin: 10px 0px 10px 0px
+}
+
+.category-product-list {
     height: 100%;
 }
 
-.cookie-item {
+.category-item {
     background-color: #100c1a;
     color: #fefadf;
+    position: relative;;
 }
 
-.cookie-item h2 {
+.category-item-name {
     position: absolute;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.452);
     width: 100%;
     margin: 0px;
-    padding: 30px;
+    padding: 30px 0px 30px 0px;
+    top:0px;
 }
 
-.cookie-item img {
+.category-item-name div {
+    margin-left: 20px;
+}
+
+.category-item img {
+    width: 100%;
+    height: 100%;
+}
+.category-img {
+    height: 330px;
+}
+
+
+/* INDVIDUAL PRODUCT */
+.indidual-item-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.individual-item {
+    width: 100%;
+}
+
+.individual-item-img {
+    width: 100%;
+    height: 300%;
+    overflow: hidden;
+}
+
+.individual-item-img img {
     width: 100%;
     height: 100%;
 }
 
-.cookie-item div {
+.item-description {
+    position: absolute;
+    bottom: 0px;
     width: 100%;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(0, 0, 0, 0.452);
+    color: white;
+    padding: 10px 0px 10px 0px;
+}
+
+.item-description div {
+    margin-left: 20px;
+}
+
+}
+
+@media only screen and (min-width: 480px) {
+
+
+}
+
+@media only screen and (min-width: 768px) {
+
+
+}
+
+@media only screen and (min-width: 992px) {
+
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+
 }
