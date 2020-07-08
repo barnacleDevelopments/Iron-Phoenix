@@ -1,6 +1,9 @@
 import express from "express";
 import dotEnv from "dotenv";
 import path from "path";
+import { initializeFirebase } from "./push-notification"
+
+initializeFirebase();
 
 const app = express();
 
@@ -52,7 +55,7 @@ const products = [
         name: "apple crunch",
         catagory: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-        img: "https://images.unsplash.com/photo-1557089706-68d02dbda277?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
+        img: "/cake_1.jpg"
     }
 
 ]
@@ -62,7 +65,7 @@ const singleProduct =    {
     name: "chocolate chip",
     catagory: "cookies",
     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-    img: "https://images.unsplash.com/photo-1557310717-d6bea9f36682?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+    img: "/cake_1.jpg"
 }
 
 app.get("/", (req, res, next) => {
