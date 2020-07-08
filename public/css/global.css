@@ -85,9 +85,7 @@ body {
 
 .bubble-field {
     background-color: white;
-    height: 300px;
-    margin-bottom: 2px;
-    padding: 10px;
+    height: 350px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     display: flex;
@@ -99,13 +97,11 @@ body {
 
 .chat-container input {
     width: 83%;
-    margin: 0px;
+    margin-top: 10px;
     border: none;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding: 5px;
-  
-
 }
 
 .openChat {
@@ -128,7 +124,6 @@ body {
 
     to {
         width: 200px;
-        height: 350px;
         opacity: 1;
     }
 }
@@ -174,12 +169,9 @@ body {
 .chat-bubble-service h4 {
     margin: 0px;
     font-size: small;
-
 }
 
 .chat-bubble-service p {
     margin: 0px;
     font-size: smaller;
 }
-
-/* FOOTER */
