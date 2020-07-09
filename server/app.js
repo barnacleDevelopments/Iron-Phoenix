@@ -63,9 +63,10 @@ const products = [
 const singleProduct =    {
     id: "32423432423",
     name: "chocolate chip",
-    catagory: "cookies",
+    category: "cookies",
     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-    img: "/cake_1.jpg"
+    img: "/cake_1.jpg",
+    price: 2.22
 }
 
 app.get("/", (req, res, next) => {

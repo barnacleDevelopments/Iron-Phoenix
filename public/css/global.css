@@ -42,6 +42,7 @@ body {
 
 .chat-bubble i {
     color: rgb(39, 39, 39);
+    position: fixed;
 }
 
 .bob-in {
