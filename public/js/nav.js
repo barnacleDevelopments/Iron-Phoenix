@@ -9,7 +9,8 @@ const userIcon = document.querySelector(".user-icon");
 const userIconMenu = document.querySelector(".user-icon-menu");
 const shadow   = document.querySelector(".shadow");
 const userMenuShadow = document.querySelector(".user-menu-shadow")
-const chatMenuShadow = document.querySelector(".chat-menu-shadow")
+const chatMenuShadow = document.querySelector(".chat-menu-shadow");
+const itemDescription = document.querySelector(".item-description")
 
 console.log(chatBubble)
 
@@ -17,7 +18,7 @@ console.log(chatBubble)
 // Bottom Scroll Animations 
 $(window).scroll(function() {
     if($(window).scrollTop() + $(window).height() == $(document).height()) {
-        chatBubble.classList.add(".bob-down")
+        itemDescription.classList.add("customize-expansion")
     }
  });
 

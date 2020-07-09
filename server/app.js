@@ -41,23 +41,22 @@ const products = [
     {
         id: "32423432423",
         name: "chocolate chip",
-        catagory: "cookies",
+        category: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
         img: "/cake_1.jpg"
     },
     {
         name: "peanut butter",
-        catagory: "cookies",
+        category: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
         img: "/cake_1.jpg"
     },
     {
         name: "apple crunch",
-        catagory: "cookies",
+        category: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
         img: "/cake_1.jpg"
     }
-
 ]
 
 const singleProduct =    {
@@ -74,7 +73,7 @@ app.get("/", (req, res, next) => {
 });
 
 app.get("/:category", (req, res, next) => {
-    res.render("category_view", {products: products, backActive: true});
+    res.render("category_view", {products: products, category: "cookies", backActive: true});
 });
 
 app.get("/:catagory/:item", (req, res, next) => {

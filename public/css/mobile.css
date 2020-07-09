@@ -62,8 +62,27 @@
 
 
 /* CATEGORY CSS */
+.category-enclosure {
+    margin-top: 170px;
+}
+.category-bar {
+    background-color:#1c1c1c;
+    height: 101.6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    top:72px;
+}
 
-.product-nav {
+.category-bar h1 {
+    margin: 0px;
+}
+
+.searchbar {
     display: flex;
     background-color: rgba(0, 0, 0, 0.89);
     align-items: center;
@@ -72,13 +91,13 @@
 
 }
 
-.product-nav i {
+.searchbar i {
     position: absolute;;
     left: 20px;
     color: rgba(39, 39, 39, 0.4);
 }
 
-.product-nav input {
+.searchbar input {
     height: 45px;
     border: none;
     width: 100%;
@@ -146,6 +165,7 @@
 .individual-item-img img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .item-description {
@@ -153,8 +173,23 @@
     color: white;
     padding: 10px 0px 10px 0px;
     text-decoration: none;
-    height: 100%;
+    height: 25vh;
     padding: 20px;
+}
+
+.customize-expansion {
+    position: absolute;
+    top:0px;
+    height: 100vh;
+}
+
+@keyframes expand {
+    from {
+        height: 25vh
+    }
+    to {
+        height: 100vh
+    }
 }
 
 .item-description > p {
