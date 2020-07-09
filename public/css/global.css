@@ -45,10 +45,6 @@ body {
     position: relative;
 }
 
-.bob-in {
-
-}
-
 @keyframes bobIn {
     from {
         transform: translateY(50px);
