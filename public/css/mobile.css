@@ -109,12 +109,12 @@
 }
 
 .category-item img {
-   
+   width: 100%;
+   height: 100%;
 }
 .category-img {
    width: 100%;
    overflow: hidden;
-   height: 250px;
    display: flex;
    justify-content: center;
    flex-direction: column;
