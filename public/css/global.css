@@ -28,8 +28,7 @@ body {
     bottom: 25px;
     right: 25px;
     border-radius: 50px;
-    animation-name: bobIn;
-    animation-duration: 1s;
+  
 }
 
 .chat-bubble a {
@@ -45,6 +44,12 @@ body {
     position: relative;
 }
 
+.bob-down {
+    animation-name: bobDown;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;;
+}
+
 @keyframes bobIn {
     from {
         transform: translateY(50px);
@@ -58,13 +63,15 @@ body {
 
 @keyframes bobDown {
     from {
-        transform: translateY(10px);
+        transform: translateY(50px);
+        opacity: 0;
     }
 
     to {
+        opacity: 1;
         transform: translateY(0px);
     }
-}
+} 
 
 .chat-container {
     width: 200px;
@@ -123,6 +130,7 @@ body {
         opacity: 1;
     }
 }
+
 
 .chat-bubble-client {
     background-color: #FFAD42;

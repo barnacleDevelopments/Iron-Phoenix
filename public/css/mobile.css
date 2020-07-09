@@ -1,5 +1,3 @@
-
-
 /* INDEX CSS */
 .product-list {
     background-color: white;
@@ -44,7 +42,7 @@
 
 .list-item-img {
     width: 100%;
-    height: 100%;
+    height: 350px;;
     overflow: hidden;
     display: flex;
     position: relative;
@@ -55,6 +53,7 @@
 .list-item-img > img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .list-item-btns {
@@ -105,6 +104,7 @@
     top:0px;
     display: flex;
     align-items: center;
+    color: white;
 }
 
 .category-item-name h2 {
@@ -117,15 +117,13 @@
 .category-item img {
    width: 100%;
    height: 100%;
-}
-.category-img {
-   width: 100%;
-   overflow: hidden;
-   display: flex;
-   justify-content: center;
-   flex-direction: column;
+   object-fit: cover;
 }
 
+.category-img {
+    width: 100%;
+    height: 350px;
+}
 
 /* INDVIDUAL PRODUCT */
 .indidual-item-container {
@@ -140,6 +138,8 @@
 .individual-item-img {
     width: 100%;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 
 .individual-item-img img {
@@ -148,17 +148,30 @@
 }
 
 .item-description {
-    width: 100%;
     background-color: rgba(0, 0, 0, 0.466);
     color: white;
     padding: 10px 0px 10px 0px;
     text-decoration: none;
+    height: 100%;
+    padding: 20px;
 }
 
-.item-description div {
-    margin-left: 20px;
+.item-description > p {
+    text-decoration: none;
 }
 
+
+.item-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0px;
+
+}
+
+.item-header h3, h2 {
+    margin: 0px;
+}
 
 
 @media only screen and (min-width: 480px) {

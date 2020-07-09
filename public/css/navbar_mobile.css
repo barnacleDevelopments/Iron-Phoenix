@@ -1,9 +1,8 @@
 .navbar {
     background-color:white;
-    color:white;
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
     align-items: center;
     padding-left: 25px;
     position: fixed;
@@ -11,6 +10,10 @@
     z-index: 3;
     width: 100%;
     height: 72px;
+}
+
+.navbar i {
+    color:rgb(39, 39, 39);;
 }
 
 .navbar > div {
@@ -98,6 +101,65 @@
     }
 }
 
+.user-icon {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50px;
+}
+
+.user-icon i {
+    color: #09af00;
+}
+
+.user-icon-menu {
+    background-color: white;
+    position: fixed;
+    top: 79px;
+    width: 180px;
+    right: 7px;
+    z-index: 5;
+    box-shadow: 2px 2px 4px black;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-icon-menu > div {
+    border-bottom: 1px solid black;
+    text-indent: 15px;
+}
+.user-icon-menu-links {
+
+}
+
+.user-icon-menu-links h4{
+    color: rgb(39, 39, 39);
+    width: 100%;
+    margin: 0px;;
+    padding: 10px 0px 10px 0px;
+}
+
+.user-icon-menu-links div:hover {
+    background-color: rgb(39, 39, 39);
+    color: white;
+}
+
+.user-icon-menu-links div:hover a {
+    color: white;
+}
+
+.user-icon-menu-links h4 a {
+    text-decoration: none;
+    color: black;
+}
+
+.user-icon-menu-links button {
+    border: none;
+    background-color: #f48b00;
+    border-radius: 5px;
+    box-shadow: .5px .5px 1px black;
+    margin-top: 5px;
+}
+
 .logo {
     width: 65px;
     height: 65px;
@@ -106,7 +168,7 @@
 .logo img {
     width: 100%;
     height: 100%;
-    border-radius: 30px;
+
 }
 
 .sub-menu {
@@ -132,7 +194,7 @@
 }
 
 .side-nav-btn {
-    font-size: 1.6em;
+    font-size: 1.2em;
     display: flex;
     color: #f48b00;
     justify-content: space-between;
@@ -149,8 +211,8 @@
 }
 
 .sub-menu {
-    font-size: 1.5em;
-    border-left: 2px solid #f48b00;
+    font-size: 1.1em;
+
     text-indent: 15px;
 }
 

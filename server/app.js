@@ -65,7 +65,7 @@ const singleProduct =    {
     name: "chocolate chip",
     category: "cookies",
     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-    img: "/cake_1.jpg",
+    img: "/cake_2.jpg",
     price: 2.22
 }
 
