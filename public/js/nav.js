@@ -65,4 +65,8 @@ chatBubble.addEventListener("click", (e) => {
 });
 
 
+window.addEventListener("click", (e) => {
+    chatContainer.classList.remove("openChat");
+})
+
 
