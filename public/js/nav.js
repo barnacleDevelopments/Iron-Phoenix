@@ -8,6 +8,8 @@ const chatContainer = document.querySelector(".chat-container");
 const userIcon = document.querySelector(".user-icon");
 const userIconMenu = document.querySelector(".user-icon-menu");
 const shadow   = document.querySelector(".shadow");
+const userMenuShadow = document.querySelector(".user-menu-shadow")
+const chatMenuShadow = document.querySelector(".chat-menu-shadow")
 
 console.log(chatBubble)
 
@@ -59,8 +61,10 @@ userIcon.addEventListener("click", (e) => {
     if(chatContainer.classList) {
         userIconMenu.classList.remove("close-user-menu")
         userIconMenu.classList.add("open-user-menu");
+        // ADD shadow 
+        userMenuShadow.classList.add("shadow-active")
     } else {
-        userIconMenu.classList.add("open-user-menu")
+        userIconMenu.classList.add("open-user-menu");
         userIconMenu.classList.remove("close-user-menu");
     }
 })
@@ -71,9 +75,15 @@ chatBubble.addEventListener("click", (e) => {
     if(chatContainer.classList.contains("openChat")) {
         chatContainer.classList.remove("openChat")
         chatContainer.classList.add("closeChat");
+        // Remove shadow 
+        chatMenuShadow.classList.remove("shadow-active")
+     
     } else {
+   
         chatContainer.classList.add("openChat")
         chatContainer.classList.remove("closeChat");
+        // ADD shadow 
+        chatMenuShadow.classList.add("shadow-active")
     }
 });
 
@@ -83,7 +93,11 @@ window.addEventListener("click", (e) => {
     if(!target.classList.contains("chat-bubble") && !target.classList.contains("material-icons")) {
         chatContainer.classList.remove("openChat");
         chatContainer.classList.add("closeChat");
-        userIconMenu.classList.remove("open-user-menu")
+        // close menus
+        userIconMenu.classList.remove("open-user-menu");
+        //close shadows 
+        userMenuShadow.classList.remove("shadow-active");
+        chatMenuShadow.classList.remove("shadow-active")
 
     }
 });

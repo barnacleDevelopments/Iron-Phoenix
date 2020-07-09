@@ -52,6 +52,17 @@ body {
     position: relative;
 }
 
+.chat-menu-shadow {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.664);
+    height: 100vh;
+    z-index: 3;
+    top: 0px;
+    display: none;
+}
+
 .bob-down {
     animation-name: bobDown;
     animation-fill-mode: forwards;
