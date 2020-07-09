@@ -43,13 +43,13 @@ const products = [
         name: "chocolate chip",
         catagory: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-        img: "https://images.unsplash.com/photo-1560910615-9eaa2e704e63?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+        img: "/cake_1.jpg"
     },
     {
         name: "peanut butter",
         catagory: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-        img: "https://images.unsplash.com/photo-1584369372650-359b4003e743?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
+        img: "/cake_1.jpg"
     },
     {
         name: "apple crunch",

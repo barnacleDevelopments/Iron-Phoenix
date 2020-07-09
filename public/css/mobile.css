@@ -92,7 +92,6 @@
     background-color: #100c1a;
     color: #fefadf;
     position: relative;
-    height: 200px;
 }
 
 .category-item-name {
@@ -135,12 +134,11 @@
 .individual-item-img {
     width: 100%;
     overflow: hidden;
-    display:flex;
-    justify-content: center;
 }
 
 .individual-item-img img {
-    height: 100%
+    width: 100%;
+    height: 100%;
 }
 
 .item-description {
