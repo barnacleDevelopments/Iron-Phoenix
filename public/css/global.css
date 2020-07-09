@@ -20,7 +20,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    position:  fixed;
+    position: fixed;
     width: 70px;
     height: 70px;
     z-index: 4;
@@ -42,7 +42,7 @@ body {
 
 .chat-bubble i {
     color: rgb(39, 39, 39);
-    position: fixed;
+    position: absolute;
 }
 
 .bob-in {
