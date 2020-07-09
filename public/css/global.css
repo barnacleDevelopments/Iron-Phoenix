@@ -42,7 +42,7 @@ body {
 
 .chat-bubble i {
     color: rgb(39, 39, 39);
-    position: absolute;
+    position: relative;
 }
 
 .bob-in {
@@ -139,13 +139,12 @@ body {
     border-bottom-left-radius: 0px;
     margin: 5px;
     margin: 5px 30px 5px 5px;
+    color: rgb(39, 39, 39);
 }
 
 .chat-bubble-client h4 {
     margin: 0px;
     font-size: small;
-   
-
 }
 
 .chat-bubble-client p {
