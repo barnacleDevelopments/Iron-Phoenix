@@ -4,12 +4,12 @@
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
-    padding-left: 25px;
+    width: 100%;
     position: fixed;
     top:0;
     z-index: 3;
-    width: 100%;
     height: 72px;
+    padding: 0px 20px 0px 20px;
 }
 
 .navbar i {
@@ -108,35 +108,37 @@
 }
 
 .user-icon i {
+    font-size: 43px;;
     color: #09af00;
 }
 
 .user-icon-menu {
     background-color: white;
     position: fixed;
-    top: 79px;
+    top: 15px;
     width: 180px;
-    right: 7px;
+    right: 30px;
     z-index: 5;
     box-shadow: 2px 2px 4px black;
     display: flex;
     flex-direction: column;
+    display: none;
+    overflow: hidden;
+
 }
 
 .user-icon-menu > div {
     border-bottom: 1px solid black;
     text-indent: 15px;
 }
-.user-icon-menu-links {
 
-}
 
 .user-icon-menu-links h4{
     color: rgb(39, 39, 39);
     width: 100%;
     margin: 0px;;
     padding: 10px 0px 10px 0px;
-    font-weight: 100;
+    font-weight: 200;
 }
 
 .user-icon-menu-links div:hover {
@@ -161,9 +163,38 @@
     margin-top: 5px;
 }
 
+.open-user-menu {
+    animation-name: openUserMenu;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    display: block;
+}
+
+@keyframes openUserMenu {
+    from {
+        width: 0px;
+        opacity: 0;
+        height: 0%;
+    }
+    to {
+        width: 180px;
+        opacity: 1;
+        height: 197px;
+    }
+}
+
+
 .logo {
     width: 65px;
     height: 65px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.logo i {
+    font-size: 40px;
+    color: rgb(39, 39, 39)
 }
 
 .logo img {

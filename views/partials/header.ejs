@@ -67,7 +67,58 @@
        </div>
       
     </div> -->
-    <div class="shadow">
+    <div class="user-icon-menu">
+      <div class="user-icon-menu-links">
+        <div>
+          <h4><a href="">User Info</a></h4>
+        </div>
+        <div>
+          <h4><a href="">About</a></h4>   
+        </div>
+        <div>
+          <h4><a href="">Terms & Conditions</a></h4>
+        </div>
+        <div class="user-auth-buttons">
+          <h4><a href="">Sign In</a></h4>
+          <h4><a href="">Sign Out</a></h4>
+        </div>
+    </div>
+  </div>
+
+  <div class="chat-menu">
+    <div class="chat-container">
+      <div class="bubble-field">
+        <div class="chat-bubble-client">
+          <h4>user_123</h4>
+          <p>Hello</p>
+        </div>
+        <div class="chat-bubble-service">
+          <h4>Sussan</h4>
+          <p>Hey there, how can I help you?</p>
+        </div>
+        <div class="chat-bubble-client">
+          <h4>user_123</h4>
+          <p>I'd like to buy some muffins but I am having trouble...</p>
+        </div>
+        <div class="chat-bubble-service">
+          <h4>Sussan</h4>
+          <p>I can certainly help you with that.</p>
+        </div>
+        <div class="chat-bubble-client">
+          <h4>user_123</h4>
+          <p>Great, thank you!</p>
+        </div>
+        
+      </div>
+      <input type="text" placeholder="text here...">
+    </div>
+    <div class="chat-bubble">
+      <a href="">
+          <i class="material-icons">chat</i>
+      </a>
+    </div>
+  </div>
+ 
     <div class="navbar">
       <!-- <div class="hamburger-menu">
        <a href="">
@@ -79,64 +130,23 @@
       <!-- <div>
         <h1>IRAN PHOENIX</h1>
       </div> -->
+
       <div class="logo">
-        <img src="/ip7.png">
+        <% if(backActive) { %>
+            <a href="/"><i class="material-icons">arrow_back</i></a>
+        <% } else { %>
+          <img src="/ip7.png">
+         <% } %>
+        
       </div>
       <div class="user-icon">
-        <a >
-            <i class="fas fa-user-circle fa-2x"></i>
+        <a href="">
+            <i class="material-icons">account_circle</i>
         </a>
       </div>
     </div>  
-    <div class="user-icon-menu">
-        <div class="user-icon-menu-links">
-          <div>
-            <h4><a href="">User Info</a></h4>
-          </div>
-          <div>
-            <h4><a href="">Terms & Conditions</a></h4>
-          </div>
-          <div>
-            <h4><a href="">About</a></h4>   
-          </div>
-          <div>
-            <h4><a href="">Sign In</a></h4>
-          </div>
-    </div>
-  </div>
+ 
     <div class="page-enclosure">
-      <div class="chat-menu">
-        <div class="chat-container">
-          <div class="bubble-field">
-            <div class="chat-bubble-client">
-              <h4>user_123</h4>
-              <p>Hello</p>
-            </div>
-            <div class="chat-bubble-service">
-              <h4>Sussan</h4>
-              <p>Hey there, how can I help you?</p>
-            </div>
-            <div class="chat-bubble-client">
-              <h4>user_123</h4>
-              <p>I'd like to buy some muffins but I am having trouble...</p>
-            </div>
-            <div class="chat-bubble-service">
-              <h4>Sussan</h4>
-              <p>I can certainly help you with that.</p>
-            </div>
-            <div class="chat-bubble-client">
-              <h4>user_123</h4>
-              <p>Great, thank you!</p>
-            </div>
-            
-          </div>
-          <input type="text" placeholder="text here...">
-        </div>
-        <div class="chat-bubble">
-          <a href="">
-              <i class="material-icons">chat</i>
-          </a>
-        </div>
-      </div>
+
      
       

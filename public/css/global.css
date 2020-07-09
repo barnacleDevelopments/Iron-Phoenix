@@ -10,6 +10,14 @@ body {
     font-family: 'Josefin Sans', sans-serif;
 }
 
+.shadow {
+    background-color: black;
+    z-index: 5;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
 .page-enclosure {
     margin: 0 auto;
     width: 100%;
@@ -72,6 +80,7 @@ body {
         transform: translateY(0px);
     }
 } 
+
 
 .chat-container {
     width: 200px;

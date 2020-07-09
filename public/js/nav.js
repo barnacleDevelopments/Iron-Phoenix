@@ -5,7 +5,9 @@ const sideNavBtns = document.querySelectorAll(".side-nav-btn");
 const subMenu = document.querySelector(".sub-menu");
 const chatBubble = document.querySelector(".chat-bubble");
 const chatContainer = document.querySelector(".chat-container");
-const userIcon = document.querySelector(".user-icon")
+const userIcon = document.querySelector(".user-icon");
+const userIconMenu = document.querySelector(".user-icon-menu");
+const shadow   = document.querySelector(".shadow");
 
 console.log(chatBubble)
 
@@ -51,8 +53,19 @@ $(window).scroll(function() {
 
 // });
 
-//CHAT BUBBLE ANIMATIONS 
+//USER ICON ANIMATIONS
+userIcon.addEventListener("click", (e) => {
+    e.preventDefault();
+    if(chatContainer.classList) {
+        userIconMenu.classList.remove("close-user-menu")
+        userIconMenu.classList.add("open-user-menu");
+    } else {
+        userIconMenu.classList.add("open-user-menu")
+        userIconMenu.classList.remove("close-user-menu");
+    }
+})
 
+//CHAT BUBBLE ANIMATIONS 
 chatBubble.addEventListener("click", (e) => {
     e.preventDefault()
     if(chatContainer.classList.contains("openChat")) {
@@ -66,7 +79,15 @@ chatBubble.addEventListener("click", (e) => {
 
 
 window.addEventListener("click", (e) => {
-    chatContainer.classList.remove("openChat");
-})
+    const target = e.target
+    if(!target.classList.contains("chat-bubble") && !target.classList.contains("material-icons")) {
+        chatContainer.classList.remove("openChat");
+        chatContainer.classList.add("closeChat");
+        userIconMenu.classList.remove("open-user-menu")
+
+    }
+});
+
+
 
 

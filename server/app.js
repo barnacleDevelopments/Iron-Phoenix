@@ -70,15 +70,15 @@ const singleProduct =    {
 }
 
 app.get("/", (req, res, next) => {
-    res.render("index", {products: bakeryItemCatagories});
+    res.render("index", {products: bakeryItemCatagories, backActive: false});
 });
 
 app.get("/:category", (req, res, next) => {
-    res.render("category_view", {products: products});
+    res.render("category_view", {products: products, backActive: true});
 });
 
 app.get("/:catagory/:item", (req, res, next) => {
-    res.render("item_view", {item: singleProduct})
+    res.render("item_view", {item: singleProduct, backActive: true})
 })
 
 app.listen(port, () => {
