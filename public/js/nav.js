@@ -19,16 +19,18 @@ $(window).on("load", () => {
     categoryBar.classList.add("hidden");
 });
 
-$(window).scroll(() => {
-    if($(window).scrollTop() > 1) {
-        searchBar.classList.add("hidden");
-        categoryBar.classList.remove("hidden");
-     
+var lastScrollTop = 0;
+$(window).scroll((e) => {
+    let st = $(this).scrollTop();
+    if(st > lastScrollTop) {
+        $(searchBar).addClass("hidden")
+        $(categoryBar).removeClass("hidden")
     } else {
-        searchBar.classList.remove("hidden");
-        categoryBar.classList.add("hidden");
+        $(searchBar).removeClass("hidden")
+        $(categoryBar).addClass("hidden")
     }
-})
+    lastScrollTop = st
+});
 
 
 // Bottom Scroll Animations 
