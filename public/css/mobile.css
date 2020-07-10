@@ -30,7 +30,8 @@
     margin: 0px;
     padding: 20px 0px 10px 0px;
     width: 100%; 
-    color:white;   
+    color:white; 
+    text-transform: capitalize;
 }
 
 .list-item h3 {
@@ -125,10 +126,12 @@
     display: flex;
     align-items: center;
     color: white;
+    text-transform: capitalize;
 }
 
 .category-item-name h2 {
-    margin: 0px;;
+    margin: 0px;
+
 }
 .category-item-name div {
     margin-left: 20px;

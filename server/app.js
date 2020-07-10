@@ -26,58 +26,71 @@ const bakeryItemCatagories = [
         productImg: "/cake_1.jpg"
     },
     {
-        productCategory: "cuffins",
+        productCategory: "muffins",
         productCount: 10,
-        productImg: "/cake_1.jpg"
+        productImg: "/cake_4.jpg"
     },
     {
         productCategory: "pies",
         productCount: 90,
-        productImg: "/cake_1.jpg"
+        productImg: "/cake_7.jpg"
     }
 ]
 
 const products = [
     {
-        id: "32423432423",
+        id: "1",
         name: "chocolate chip",
         category: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-        img: "/cake_1.jpg"
+        img: "/cake_1.jpg",
+        price: 6.33
+
     },
     {
+        id: "2",
         name: "peanut butter",
         category: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-        img: "/cake_1.jpg"
+        img: "/cake_2.jpg",
+        price: 4.77
     },
+
     {
+        id: "3",
         name: "apple crunch",
-        category: "cookies",
+        category: "muffins",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-        img: "/cake_1.jpg"
+        img: "/cake_3.jpg",
+        price: 3.44
     }
 ]
 
-const singleProduct =    {
-    id: "32423432423",
-    name: "chocolate chip",
-    category: "cookies",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-    img: "/cake_2.jpg",
-    price: 2.22
-}
 
 app.get("/", (req, res, next) => {
-    res.render("index", {products: bakeryItemCatagories, backActive: false});
+    res.render("categories_view", {products: bakeryItemCatagories, backActive: false});
 });
 
 app.get("/:category", (req, res, next) => {
-    res.render("category_view", {products: products, category: "cookies", backActive: true});
+    const category = req.params.category
+    let selectedProducts = []
+    products.forEach(product => {
+        if(product.category === category)
+        selectedProducts.push(product)
+    })
+    res.render("category_view", {products: selectedProducts, category: category, backActive: true});
 });
 
-app.get("/:catagory/:item", (req, res, next) => {
-    res.render("item_view", {item: singleProduct, backActive: true})
+app.get("/:catagory/:id", (req, res, next) => {
+    const itemId   = req.params.id
+    let selectedItem
+    products.forEach(item => {
+        if(item.id === itemId) {
+            selectedItem = item
+        }
+    });
+
+    res.render("item_view", {item: selectedItem, backActive: true});
 })
 
 app.listen(port, () => {
