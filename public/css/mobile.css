@@ -63,12 +63,9 @@
 
 
 /* CATEGORY CSS */
-.category-enclosure {
-    margin-top: 170px;
-}
 .category-bar {
     background-color:#1c1c1c;
-    height: 101.6px;
+    height: 65px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,6 +75,7 @@
     width: 100%;
     top:72px;
     text-transform: capitalize;
+    font-size: .8em;
 }
 
 .category-bar h1 {
@@ -90,7 +88,6 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-
 }
 
 .searchbar i {
@@ -234,3 +231,8 @@
 
 
 }
+
+.hidden {
+    display: none;
+}
+

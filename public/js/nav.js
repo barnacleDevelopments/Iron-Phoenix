@@ -12,7 +12,23 @@ const userMenuShadow = document.querySelector(".user-menu-shadow")
 const chatMenuShadow = document.querySelector(".chat-menu-shadow");
 const itemDescription = document.querySelector(".item-description")
 
-console.log(chatBubble)
+const searchBar = document.querySelector(".searchbar");
+const categoryBar = document.querySelector(".category-bar");
+
+$(window).on("load", () => {
+    categoryBar.classList.add("hidden");
+});
+
+$(window).scroll(() => {
+    if($(window).scrollTop() > 1) {
+        searchBar.classList.add("hidden");
+        categoryBar.classList.remove("hidden");
+     
+    } else {
+        searchBar.classList.remove("hidden");
+        categoryBar.classList.add("hidden");
+    }
+})
 
 
 // Bottom Scroll Animations 

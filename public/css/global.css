@@ -5,7 +5,7 @@ html {
 body {
     min-height: 100%;
     font-family: 'Bebas Neue', cursive;
-    margin: 70px 0px 0px 0px;
+    margin: 72px 0px 0px 0px;
     font-family: 'Josefin Sans', sans-serif;
 }
 
@@ -31,7 +31,7 @@ body {
     position: fixed;
     width: 70px;
     height: 70px;
-    z-index: 4;
+    z-index: 3;
     background-color: #FFAD42;
     bottom: 25px;
     right: 25px;
@@ -95,14 +95,12 @@ body {
 
 .chat-container {
     position: fixed;
-    bottom: 50px;
-    right: 60px;
+    bottom: 0px;
     z-index: 4;
     background-color: #FFAD42;
-    padding: 10px;
     z-index: 4;
-    border-radius: 10px;
     display: none;
+    width: 100%;
 }
 
 .bubble-field {
@@ -114,7 +112,12 @@ body {
     align-items: flex-end;
     color: white;
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 40vh;
+    padding: 5px;
+    width: 100%;
+ 
+   
 }
 
 .chat-container input {
@@ -139,13 +142,13 @@ body {
 
 @keyframes openChat {
     from {
-        width: 0;
+        width: 0vh;
         height: 0;
         opacity: 0;
     }
 
     to {
-        width: 200px;
+        width: 100vh;
         opacity: 1;
     }
 }
@@ -153,16 +156,14 @@ body {
 
 .chat-bubble-client {
     background-color: #FFAD42;
-    width: 70%;
     z-index: 5;
     padding: 10px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 0px;
-    margin: 5px;
-    margin: 5px 30px 5px 5px;
     color: rgb(39, 39, 39);
+    margin: 5px;
 }
 
 .chat-bubble-client h4 {
@@ -197,3 +198,4 @@ body {
     margin: 0px;
     font-size: smaller;
 }
+

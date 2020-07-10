@@ -9,7 +9,6 @@
     top:0;
     height: 72px;
     z-index: 2;
-    padding: 0px 20px 0px 20px;
     box-shadow: 0px 0px 2px 1px rgba(204,204,204,1) ;
 }
 
@@ -105,20 +104,29 @@
 .user-interface {
     display: flex;
     justify-content: flex-end;
+    padding-right: 15px;;
+    
 }
 
 .user-interface div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 13
-    0px;
+    width: 120px;
+}
+
+.user-interface div > div {
+    display: flex;
+    justify-content: center;
+}
+
+.user-interface div > div:nth-of-type(1) i {
+    font-size: 30px;;
 }
 
 .user-icon {
     display: flex;
     justify-content: flex-end;
-    padding-right: 50px;
     z-index: 4;
 }
 
@@ -221,7 +229,7 @@
     width: 65px;
     height: 65px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 }
 
