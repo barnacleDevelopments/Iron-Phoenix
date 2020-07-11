@@ -68,7 +68,7 @@ const products = [
 
 
 app.get("/", (req, res, next) => {
-    res.render("categories_view", {products: bakeryItemCatagories, backActive: false});
+    res.render("categories_view", {products: bakeryItemCatagories, pageType: "categories_view"});
 });
 
 app.get("/:category", (req, res, next) => {
@@ -78,7 +78,7 @@ app.get("/:category", (req, res, next) => {
         if(product.category === category)
         selectedProducts.push(product)
     })
-    res.render("category_view", {products: selectedProducts, category: category, backActive: true});
+    res.render("category_view", {products: selectedProducts, category: category, pageType: "category_view"});
 });
 
 app.get("/:category/:id", (req, res, next) => {
@@ -91,7 +91,7 @@ app.get("/:category/:id", (req, res, next) => {
         }
     });
 
-    res.render("item_view", {item: selectedItem, category: category, backActive: true});
+    res.render("item_view", {item: selectedItem, category: category, pageType: "item_view"});
 })
 
 app.listen(port, () => {
