@@ -81,8 +81,9 @@ app.get("/:category", (req, res, next) => {
     res.render("category_view", {products: selectedProducts, category: category, backActive: true});
 });
 
-app.get("/:catagory/:id", (req, res, next) => {
+app.get("/:category/:id", (req, res, next) => {
     const itemId   = req.params.id
+    const category = req.params.category
     let selectedItem
     products.forEach(item => {
         if(item.id === itemId) {
@@ -90,7 +91,7 @@ app.get("/:catagory/:id", (req, res, next) => {
         }
     });
 
-    res.render("item_view", {item: selectedItem, backActive: true});
+    res.render("item_view", {item: selectedItem, category: category, backActive: true});
 })
 
 app.listen(port, () => {

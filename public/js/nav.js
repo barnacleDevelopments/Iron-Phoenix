@@ -15,22 +15,6 @@ const itemDescription = document.querySelector(".item-description")
 const searchBar = document.querySelector(".searchbar");
 const categoryBar = document.querySelector(".category-bar");
 
-$(window).on("load", () => {
-    categoryBar.classList.add("hidden");
-});
-
-var lastScrollTop = 0;
-$(window).scroll((e) => {
-    let st = $(this).scrollTop();
-    if(st > lastScrollTop) {
-        $(searchBar).addClass("hidden")
-        $(categoryBar).removeClass("hidden")
-    } else {
-        $(searchBar).removeClass("hidden")
-        $(categoryBar).addClass("hidden")
-    }
-    lastScrollTop = st
-});
 
 
 // Bottom Scroll Animations 
