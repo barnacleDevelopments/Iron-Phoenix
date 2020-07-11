@@ -6,9 +6,9 @@ const subMenu = document.querySelector(".sub-menu");
 const chatBubble = document.querySelector(".chat-bubble");
 const chatContainer = document.querySelector(".chat-container");
 const userIcon = document.querySelector(".user-icon");
-const userIconMenu = document.querySelector(".user-icon-menu");
+const optionMenu = document.querySelector(".option-menu");
 const shadow   = document.querySelector(".shadow");
-const userMenuShadow = document.querySelector(".user-menu-shadow")
+const optionMenuShadow = document.querySelector(".option-menu-shadow")
 const chatMenuShadow = document.querySelector(".chat-menu-shadow");
 const itemDescription = document.querySelector(".item-description")
 
@@ -62,13 +62,13 @@ $(window).scroll(function() {
 userIcon.addEventListener("click", (e) => {
     e.preventDefault();
     if(chatContainer.classList) {
-        userIconMenu.classList.remove("close-user-menu")
-        userIconMenu.classList.add("open-user-menu");
+        optionMenu.classList.remove("close-user-menu")
+        optionMenu.classList.add("open-user-menu");
         // ADD shadow 
-        userMenuShadow.classList.add("shadow-active")
+        optionMenuShadow.classList.add("shadow-active")
     } else {
-        userIconMenu.classList.add("open-user-menu");
-        userIconMenu.classList.remove("close-user-menu");
+        optionMenu.classList.add("open-user-menu");
+        optionMenu.classList.remove("close-user-menu");
     }
 })
 
@@ -97,9 +97,9 @@ window.addEventListener("click", (e) => {
         chatContainer.classList.remove("openChat");
         chatContainer.classList.add("closeChat");
         // close menus
-        userIconMenu.classList.remove("open-user-menu");
+        optionMenu.classList.remove("open-user-menu");
         //close shadows 
-        userMenuShadow.classList.remove("shadow-active");
+        optionMenuShadow.classList.remove("shadow-active");
         chatMenuShadow.classList.remove("shadow-active")
 
     }
