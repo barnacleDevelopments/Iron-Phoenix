@@ -79,11 +79,11 @@ app.get("/products", (req, res, next) => {
 });
 
 app.get("/about", (req, res, next) => {
-    res.render("about_view", {products: bakeryItemCatagories, pageType: ""});
+    res.render("about_view", {products: bakeryItemCatagories, pageType: "standard"});
 });
 
 app.get("/terms", (req, res, next) => {
-    res.render("terms_view", {products: bakeryItemCatagories, pageType: ""});
+    res.render("terms_view", {products: bakeryItemCatagories, pageType: "standard"});
 });
 
 app.get("/product/:category", (req, res, next) => {
@@ -93,7 +93,7 @@ app.get("/product/:category", (req, res, next) => {
         if(product.category === category)
         selectedProducts.push(product)
     })
-    res.render("category_view", {products: selectedProducts, category: category, pageType: "category_view"});
+    res.render("category_view", {products: selectedProducts, category: category, pageType: "standard"});
 });
 
 app.get("/product/:category/:id", (req, res, next) => {
@@ -110,7 +110,7 @@ app.get("/product/:category/:id", (req, res, next) => {
 
 
 app.get("/info/:user", (req, res, next) => {
-    res.render("user_view", { pageType: "" });
+    res.render("user_view", { pageType: "standard" });
 });
 
 app.get("/cart/:user", (req, res, next) => {
@@ -118,7 +118,7 @@ app.get("/cart/:user", (req, res, next) => {
 });
 
 app.get("/order/:user", (req, res, next) => {
-    res.render("order_view", { pageType: "" });
+    res.render("order_view", { pageType: "standard" });
 })
 
 app.listen(port, () => {

@@ -1,5 +1,66 @@
 <%- include ("partials/header.ejs") %>
 <div>
-    
+    <div class="user-nav-container">
+        <ul class="user-nav">
+            <li><a href="/info/user">Info</a></li>
+            <li><a href="/order/user">Orders</a></li>
+        </ul>
+    </div>
+    <div class="user-page-container">
+        <div class="order">
+            <div class="order-details">
+            <div>
+                <h2>Order Placed</h2>
+                <h3>April 11, 2020</h3>
+            </div>
+            <div>
+                <h2>Total</h2>
+                <h3>CDN$ 540.49</h3>
+            </div>
+            <div>
+                <h2>Ship To</h2>
+                <div>
+                    <h3>Sussan Smith</h3>
+                    <i class="fas fa-sort-down"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="devider"></div>
+
+        <div class="order-items-list">
+            <div class="order-items">
+               <div>
+                    <img src="/cake_1.jpg">
+                </div>
+                <div class="order-item-price">
+                    <h2>Cake</h2>
+                    <h4>Price: $70.00</h4>
+                </div>
+            </div>
+      
+       
+            <div class="order-items">
+                    <div>
+                        <img src="/cake_2.jpg">
+                    </div>
+                    <div class="order-item-price">
+                            <h2>Cake</h2>
+                            <h4>Price: $80.00</h4>
+                    </div>
+            </div>
+      
+            <div class="order-items">
+                <div>
+                    <img src="/cake_3.jpg">
+                </div>
+                <div class="order-item-price">
+                    <h2>Cake</h2>
+                    <h4>Price: $50.00</h4>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
 </div>
 <%- include ("partials/footer.ejs") %>
