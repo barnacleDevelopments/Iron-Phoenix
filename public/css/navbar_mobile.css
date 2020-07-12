@@ -195,7 +195,8 @@
 }
 
 .user-interface div > div:nth-of-type(1) i {
-    font-size: 30px;;
+    font-size: 25px;
+    color: #ffad42;
 }
 
 .user-icon {
@@ -208,8 +209,6 @@
     font-size: 47px;;
     color: #09af00;
 }
-
-
 
 .shadow-active {
     display: block;

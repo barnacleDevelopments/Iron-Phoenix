@@ -64,14 +64,29 @@ const products = [
         img: "/cake_3.jpg",
         price: 3.44
     }
-]
+];
 
 
-app.get("/", (req, res, next) => {
-    res.render("categories_view", {products: bakeryItemCatagories, pageType: "categories_view"});
+const user = {
+    email: "user@gmail.com",
+    name: "user123",
+    number: "902-221-7158",
+    password: "**********" 
+}
+
+app.get("/products", (req, res, next) => {
+    res.render("categories_view", {products: bakeryItemCatagories, pageType: ""});
 });
 
-app.get("/:category", (req, res, next) => {
+app.get("/about", (req, res, next) => {
+    res.render("about_view", {products: bakeryItemCatagories, pageType: ""});
+});
+
+app.get("/terms", (req, res, next) => {
+    res.render("terms_view", {products: bakeryItemCatagories, pageType: ""});
+});
+
+app.get("/product/:category", (req, res, next) => {
     const category = req.params.category
     let selectedProducts = []
     products.forEach(product => {
@@ -81,7 +96,7 @@ app.get("/:category", (req, res, next) => {
     res.render("category_view", {products: selectedProducts, category: category, pageType: "category_view"});
 });
 
-app.get("/:category/:id", (req, res, next) => {
+app.get("/product/:category/:id", (req, res, next) => {
     const itemId   = req.params.id
     const category = req.params.category
     let selectedItem
@@ -90,8 +105,20 @@ app.get("/:category/:id", (req, res, next) => {
             selectedItem = item
         }
     });
-
     res.render("item_view", {item: selectedItem, category: category, pageType: "item_view"});
+})
+
+
+app.get("/info/:user", (req, res, next) => {
+    res.render("user_view", { pageType: "" });
+});
+
+app.get("/cart/:user", (req, res, next) => {
+    res.render("cart_view", { pageType: "" });
+});
+
+app.get("/order/:user", (req, res, next) => {
+    res.render("order_view", { pageType: "" });
 })
 
 app.listen(port, () => {
