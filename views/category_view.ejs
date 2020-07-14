@@ -12,13 +12,14 @@
 </div>
 
     <% products.forEach(item => { %>
+      <div class="category-item-container">
             <ul class="collapsible">
                 <li>
                   <div class="collapsible-header category-item">
                       <div class="category-product-list-img">
                         <img src="<%-item.img%>">
                       </div>
-                    <div>
+                    <div class="category-title">
                         <h2><%- item.name %></h2>
                         <h3><%- item.price %></h3>
                     </div>
@@ -27,6 +28,7 @@
                 </li>
                 <li>
             </ul>
+          </div>
     <%}) %>
 
 </div>
