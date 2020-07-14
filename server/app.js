@@ -67,6 +67,23 @@ const products = [
         price: 4.77
     },
     {
+        id: "1",
+        name: "chocolate chip",
+        category: "cookies",
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
+        img: "/cake_1.jpg",
+        price: 6.33
+
+    },
+    {
+        id: "2",
+        name: "peanut butter",
+        category: "cookies",
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
+        img: "/cake_2.jpg",
+        price: 4.77
+    },
+    {
         id: "2",
         name: "peanut butter",
         category: "pies",
