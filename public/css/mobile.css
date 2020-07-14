@@ -83,10 +83,6 @@
     gap: 30px;
 }
 
-.category-product-list div:nth-of-type(2) {
-    height: 100%;
-}
-
 .category-content {
     position: relative !important;
     border-bottom-left-radius: 10px;
