@@ -4,18 +4,17 @@
 </div>
 <div class="product-list">
     <% products.forEach(item => { %>
-        <a href="/product/<%-item.productCategory%>">
-    <div class="list-item">
-        <div class="list-item-header">
-            <h2><%-item.productCategory%></h1>
-            <h3><%-item.productCount%> <i>Products</i></h3>
-         
-        </div>
-        <div class="list-item-img">
-            <img src="<%-item.productImg%>">
-        </div>
-    </div>
-</a>
+        <a href="/product/<%-item.productCategory %>">
+        <ul class="collapsible">
+            <li class="collapsible-header">
+                    <img src="/<%-item.img%>">
+                <div>
+                    <h2><%- item.productCategory %></h2>
+                    <h3><b><%- item.productCount %> Items</b></h3>
+                </div> 
+            </li>
+        </ul>
+    </a>
     <%}) %>
 </div>
 <%- include ("partials/footer.ejs") %>

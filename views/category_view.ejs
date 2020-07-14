@@ -5,24 +5,30 @@
     <i class="material-icons">search</i>  
 </div>
 
-<div class="category-bar hideme" >
+
+<div class="category-product-list">
+  <div class="category-bar hideme" >
     <h1><%-category%></h1>
 </div>
-<div class="category-product-list">
+<div>
     <% products.forEach(item => { %>
-        <a href="/product/<%- item.category %>/<%- item.id %>">
-    <div class="category-item">
-        <div class="category-item-name">
-            <div>
-                <h2><%- item.name %></h2>
-            </div>
-        </div>
-        <div class="category-img">
-            <img src="<%-item.img%>">
-        </div>
-    </div>
-</a>
+            <ul class="collapsible">
+                <li>
+                  <div class="collapsible-header category-item">
+                      <div class="category-product-list-img">
+                        <img src="<%-item.img%>">
+                      </div>
+                    <div>
+                        <h2><%- item.name %></h2>
+                        <h3><%- item.price %></h3>
+                    </div>
+                  </div>
+                  <div class="collapsible-body category-content"><span>Lorem ipsum dolor sit amet. This is some content that is describing the item.</span></div>
+                </li>
+                <li>
+            </ul>
     <%}) %>
+  </div>
 </div>
 </div>
 <%- include ("partials/footer.ejs") %>

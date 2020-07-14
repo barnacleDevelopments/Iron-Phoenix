@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>title</title>
+    <link type="text/css" rel="stylesheet" href="/materialize.css"  media="screen,projection"/>
     <link rel="stylesheet" type="text/css" href="/global.css">
     <link rel="stylesheet" type="text/css" href="/mobile.css">
     <link rel="stylesheet" type="text/css" href="/navbar_mobile.css">  
@@ -12,89 +13,11 @@
   <meta name="keywords" content="keywords,here">
   <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+  <link href="/Poppins-Regular.ttf">
   <script src="https://kit.fontawesome.com/2cea744347.js" crossorigin="anonymous"></script>
 </head>
   <body>
-    <!-- <div class="navbar-hidden">
-      <div class="hidden-hamburger-menu">
-        <a href="">
-          <div></div>
-          <div></div>
-          <div></div>
-        </a>
-       </div>
-       <div class="side-nav">
-        <div class="side-nav-btn">
-          <div>
-               <a href="/">Catagories</a>
-          </div>
-          <i class="fas fa-chevron-down  fa-sm"></i>
-        </div>        
-        <div class="sub-menu">
-          <a href="/cookies"><div>cookies</div></a>
-          <a href="/"><div>muffins</div></a>
-          <a href=""><div>cakes</div></a>
-          <a href=""><div>pies</div></a>
-          
-        </div>
-        <div class="side-nav-btn">
-          <div>
-               <a href="/">About</a>
-          </div>
-          <i class="fas fa-chevron-down  fa-sm"></i>
-        </div>        
-        <div class="sub-menu">
-          <a href="/"><div>option 1</div></a>
-          <a href="/"><div>option 2</div></a>
-          <a href=""><div>option 3</div></a>
-          <a href=""><div>option 4</div></a>
-          
-        </div>
-        <div class="side-nav-btn">
-          <div>
-               <a href="/">Other</a>
-          </div>
-          <i class="fas fa-chevron-down  fa-sm"></i>
-        </div>        
-        <div class="sub-menu">
-          <a href="/"><div>option 1</div></a>
-          <a href="/"><div>option 2</div></a>
-          <a href=""><div>option 3</div></a>
-          <a href=""><div>option 4</div></a>
-          
-        </div>
-       </div>
-      
-    </div> -->
-
-  <div class="option-menu">
-    <div class="option-menu-triangle">
-      <ul class="option-menu-links">
-        <li>
-          <a href="/info/user">User Info</a>
-        </li>
-        <li>
-          <a href="/about">About</a>
-        </li>
-        <li>
-          <a href="/order/user">Order</a>   
-        </li>
-        <li>
-          <a href="/terms">Terms & Conditions</a>
-        </li> 
-        <div class="dropdown-devider"></div>
-       <li>
-          <a href="">Sign In</a>
-       </li>
-       <li>
-          <a href="">Sign Out</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="option-menu-shadow"></div> 
-
+ 
   <div class="chat-menu">
     <div class="chat-container">
       <div class="bubble-field">
@@ -131,17 +54,6 @@
   </div>
   <div class="chat-menu-shadow"></div> 
     <div class="navbar">
-      <!-- <div class="hamburger-menu">
-       <a href="">
-         <div></div>
-         <div></div>
-         <div></div>
-       </a>
-      </div> -->
-      <!-- <div>
-        <h1>IRAN PHOENIX</h1>
-      </div> -->
-
       <div class="logo">
          <% if(pageType === "standard") { %>
           <a href="/products"><i class="material-icons">arrow_back</i></a>
@@ -154,20 +66,29 @@
       </div>
       <div class="user-interface">
         <div>
+       
             <div>
-              <i class="fas fa-shopping-cart"></i>
+              <a href="/cart/user">
+                <img src="/shopping-cart.png">
+              </a>
             </div>
             <div class="user-icon">
-              <a href="/cart/user">
-                <i class="material-icons">account_circle</i>
-              </a>
+              <a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons">account_circle</i></a>
+              <ul id='dropdown1' class='dropdown-content'>
+                <li><a href="/info/user">User Info</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/order/user">Order</a> </li>
+                <li><a href="/terms">Terms & Conditions</a></li>
+                <li class="divider" tabindex="-1"></li>
+                <li><a href="">Sign In</a></li>
+                <li> <a href="">Sign Out</a></li>
+              </ul>
           </div>
         </div>
     </div>
-     
+    <div class="option-menu-shadow"></div> 
     </div>  
  
-    <div class="page-enclosure">
-
+ 
      
       

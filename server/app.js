@@ -12,6 +12,7 @@ app.set("view engine", "ejs");
 app.use("/", express.static(path.join(__dirname, "../public/css")));
 app.use("/", express.static(path.join(__dirname, "../public/js")));
 app.use("/", express.static(path.join(__dirname, "../public/img")));
+app.use("/", express.static(path.join(__dirname, "../public/fonts")));
 
 console.log(path.join(__dirname, "../public"))
 
@@ -23,17 +24,27 @@ const bakeryItemCatagories = [
     {
         productCategory: "cookies",
         productCount: 30,
-        productImg: "/cake_1.jpg"
+        img: "cake_1.jpg"
     },
     {
         productCategory: "muffins",
         productCount: 10,
-        productImg: "/cake_4.jpg"
+        img: "cake_4.jpg"
     },
     {
         productCategory: "pies",
         productCount: 90,
-        productImg: "/cake_7.jpg"
+        img: "cake_7.jpg"
+    },
+    {
+        productCategory: "pies",
+        productCount: 90,
+        img: "cake_7.jpg"
+    }
+    , {
+        productCategory: "pies",
+        productCount: 90,
+        img: "cake_7.jpg"
     }
 ]
 
@@ -46,6 +57,30 @@ const products = [
         img: "/cake_1.jpg",
         price: 6.33
 
+    },
+    {
+        id: "2",
+        name: "peanut butter",
+        category: "cookies",
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
+        img: "/cake_2.jpg",
+        price: 4.77
+    },
+    {
+        id: "2",
+        name: "peanut butter",
+        category: "cookies",
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
+        img: "/cake_2.jpg",
+        price: 4.77
+    },
+    {
+        id: "2",
+        name: "peanut butter",
+        category: "cookies",
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
+        img: "/cake_2.jpg",
+        price: 4.77
     },
     {
         id: "2",
