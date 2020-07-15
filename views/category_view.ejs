@@ -1,17 +1,15 @@
 <%- include ("partials/header.ejs") %>
 <div class="category-header"><h1><%-category%></h1></div>
 <div class="category-enclosure">
-<div class="searchbar" >
-    <input type="text" placeholder="Search For Product... ">
-    <i class="material-icons">search</i>  
-</div>
-
-
 <div class="category-product-list">
   <!-- <div class="category-bar hideme" >
     <h1><%-category%></h1>
 </div> -->
-
+<div class="searchbar" >
+  <input type="text" placeholder="Search For Product... ">
+  <i class="material-icons">search</i>  
+</div>
+<div></div>
     <% products.forEach(item => { %>
       <div class="category-item-container">
             <ul class="collapsible">
@@ -31,7 +29,6 @@
             </ul>
           </div>
     <%}) %>
-
 </div>
 </div>
 <%- include ("partials/footer.ejs") %>
