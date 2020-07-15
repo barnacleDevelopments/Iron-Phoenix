@@ -1,5 +1,5 @@
 html {
-    height: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -9,9 +9,8 @@ body {
     height: 100%;;
     margin: 0 auto;
     width: 100%;
-    height: 100%;
+    height: 95vh;
     background-color: #252e38ef;
-    padding-bottom: 120px;;
 }
 
 .shadow {
@@ -39,7 +38,6 @@ body {
     bottom: 25px;
     right: 25px;
     border-radius: 50px;
-  
 }
 
 .chat-bubble a {
