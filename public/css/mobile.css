@@ -14,6 +14,15 @@
     margin: 10px 0px 30px 0px;
     scroll-snap-align: start;
 }
+ 
+.categories-card span {
+    text-transform: capitalize;
+}
+
+.categories-card img {
+    height: 200px;
+    object-fit: cover;
+}
 
 .product-list::-webkit-scrollbar {
     display: none;
@@ -42,9 +51,12 @@
   
 }
 
+.category-card span {
+    text-transform: capitalize;
+}
+
 .category-card img {
     object-fit: cover;
-    height: 100%;
     height: 200px;
 }
 
@@ -61,6 +73,7 @@
     top: 18px;
     left: 60px;
     z-index: 5;
+    
 }
 
 .category-header h1 {
