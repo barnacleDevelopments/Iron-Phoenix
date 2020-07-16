@@ -12,6 +12,27 @@
     box-shadow: 0px 0px 2px 1px rgba(204,204,204,1) ;
 }
 
+.header-nav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    margin-left: 30px;;
+}
+
+.header-nav a {
+    display: flex;
+    align-items: center;
+}
+
+.page-header h1 {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 0px;
+    text-transform: capitalize;
+    margin-left: 20px;
+}
+
 .navbar i {
     color:rgb(39, 39, 39);;
 }

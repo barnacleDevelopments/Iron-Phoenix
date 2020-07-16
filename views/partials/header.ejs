@@ -63,16 +63,17 @@
     <div class="navbar">
       <div class="logo">
          <% if(pageType === "standard") { %>
-          <a href="/products"><i class="material-icons">arrow_back</i></a>
-        <% } else if(pageType === "item_view") { %>
-          <a href="/product/<%-category%>"><i class="material-icons">arrow_back</i></a>
-        <% } else { %>
           <img src="/ip7.png">
+        <% } else { %>
+          <div class="header-nav">
+            <a href="/products"><i class="material-icons">arrow_back</i></a>
+            <div class="page-header"><h1><%-header%></h1></div>
+          </div>
          <% } %>
       </div>
+     
       <div class="user-interface">
         <div>
-       
             <div>
               <a href="/cart/user">
                 <img src="/shopping-cart.png">
