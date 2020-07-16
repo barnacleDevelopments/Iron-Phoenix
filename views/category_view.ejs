@@ -1,7 +1,7 @@
 <%- include ("partials/header.ejs") %>
 <div class="category-header"><h1><%-category%></h1></div>
 <div class="category-enclosure">
-<div class="category-product-list">
+<div class="category-list">
   <!-- <div class="category-bar hideme" >
     <h1><%-category%></h1>
 </div> -->
@@ -9,25 +9,29 @@
   <input type="text" placeholder="Search For Product... ">
   <i class="material-icons">search</i>  
 </div>
-<div></div>
+
     <% products.forEach(item => { %>
-      <div class="category-item-container">
-            <ul class="collapsible">
-                <li>
-                  <div class="collapsible-header category-item">
-                      <div class="category-product-list-img">
-                        <img src="<%-item.img%>">
-                      </div>
-                    <div class="category-title">
-                        <h2><%- item.name %></h2>
-                        <h3><%- item.price %></h3>
-                    </div>
-                  </div>
-                  <div class="collapsible-body category-content"><span>Lorem ipsum dolor sit amet. This is some content that is describing the item.</span></div>
-                </li>
-                <li>
-            </ul>
-          </div>
+      <div class="floating-product-img disabled" id="<%- item.id %>">
+        <img src="<%-item.img%>">
+      </div>
+      <div class="card category-card">
+        <div class="product-category-img">
+        
+        <div class="card-image waves-effect waves-block waves-light">
+          <img id="<%- item.id %>" src="<%-item.img%>">
+           
+         
+        </div>
+      </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4"><%- item.name %><i class="material-icons right">more_vert</i></span>
+          <p><%- item.price %></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+        </div>
+      </div>
     <%}) %>
 </div>
 </div>

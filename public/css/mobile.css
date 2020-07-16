@@ -1,247 +1,73 @@
 /* CATAGORIES CSS */
-.product-list {
+.categories-list {
     width: 80%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-rows: 1fr;
-    height: 100%;
-    overflow-y: scroll;
+    margin: auto;
+    overflow: auto;
     scrollbar-width: none;
-    padding-bottom: 100px;
-    -ms-overflow-style: none;
+    height: 100%;
+    padding-top: 20px;
+    scroll-snap-type: mandatory;
+}
+
+.categories-card {
+    flex: 1 !important;
+    margin: 10px 0px 30px 0px;
+    scroll-snap-align: start;
 }
 
 .product-list::-webkit-scrollbar {
     display: none;
   }
 
-.product-list div {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.product-list img {
-    height: 85px;
-    width: 85px;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-    overflow: hidden !important;
-}
-
-.product-list ul {
-    border-radius: 10px;
-    border: none;
-    margin: 30px 0px 30px 0px !important;
-}
-
-.product-list ul > li {
-    border-radius: 10px;
-    padding: 5px;
-    gap: 15px;
-    padding: 0px 5px 0px 0px !important;
-    align-items: center;
-    border: hidden;
-}
-
-.product-list h2 {
-    font-size: 1.8em;
-    text-transform: capitalize;
-    font-weight: 600;
-    margin-bottom: 7px;
-    color: black;
-}
-
-.product-list h3 {
-    font-size: 1em;
-    font-weight: 300;   
-    color: black;
-}
-
-.list-item-img {
-    width: 100%;
-    height: 350px;;
-    overflow: hidden;
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-content: center;
-}
-
-.list-item-btns {
-    background-color: black;
-}
 
 
 /* CATEGORY CSS */
-
-.category-header {
-    position: absolute;
-    top: 15px;
-    left: 80px;
-}
-
-.category-header h1 {
-    font-size: 2em !important;
-    margin: 0px;
-    text-transform: capitalize;
-    font-weight: bold;
-
-}
-
 .category-enclosure {
     margin-bottom: 30px;;
     overflow: auto;
 }
 
-.category-product-list {
+.category-list {
     width: 80%;
     margin: auto;
-    display: flex;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    flex-direction: column;
     overflow: auto;
     scrollbar-width: none;
     height: 100%;
-    padding-top: 50px;
+    padding-top: 65px;
+}
+
+.category-card {
+    flex: 1 !important;
+    margin: 10px 0px 30px 0px;
+  
+}
+
+.category-card img {
+    object-fit: cover;
+    height: 100%;
+    height: 200px;
 }
 
 .category-product-list::-webkit-scrollbar {
     display: none;
   }
 
-.category-item-container {
-    display: flex;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.category-item-container > ul {
-    flex: 1;
-    margin: 0 auto;
-    min-height: 0;
-    display: block;
-}
-
-.category-content {
-    position: relative !important;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding: 20px;
-    background-color: white;
-
-}
-
-.category-content::after {
-    content: "";
-    position: absolute;
-    top: -10px;
-    left:0;
-    height:40px;
-    width: 100%;
-    background:white;
-    z-index: -1;
-}
-
-.category-product-list div {
-    border: none;
-}
-
-.category-product-list ul {
-    border: none;
-    margin: 30px 0px 30px 0px;
-    height: 85px !important;
-}
-
-
-.category-product-list img {
-    height: 100%;
-    width: 100%;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-    overflow: hidden !important;
-    object-fit: cover;
-}
-
-.category-product-list h2 {
-    font-size: 1.8em;
-    text-transform: capitalize;
-    font-weight: 600;
-    margin-bottom: 7px;
-    color: black;
-}
-
-.category-product-list h3 {
-    font-size: 1em;
-    font-weight: 300;   
-    color: black;
-    
-}
-
-.category-item {
-    padding: 0px 5px 0px 0px !important;
-    border-radius: 10px;; 
-}
-
-.category-title {
-    padding-left: 10px;
-}
-
-.category-item-open {
-    border-bottom-right-radius: 0px !important;
-    border-bottom-left-radius: 0px !important;
-}
-
-.category-title {
-    display: flex;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: none;
-}
-
-.category-product-list-img {
-    height: 85px;
-    width: 85px;
-}
-
-
 .category-enclosure {
     height: 100%;
 }
 
-.category-bar {
-    width: 100%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-rows: 1fr;
-    height: 51px;
-    overflow-y: scroll;
-    scrollbar-width: none;
-    background-color: rgba(0, 0, 0, 0.507);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0px;
-    position: absolute;
-    top:65px;
-    left: 0px;
+.category-header {
+    position: fixed;
+    top: 18px;
+    left: 60px;
+    z-index: 5;
 }
 
-.category-bar h1 {
+.category-header h1 {
+    font-size: 1.5em;
+    font-weight: bold;
     margin: 0px;
-    font-size: 1.2em;
-    text-align: center;
+    text-transform: capitalize;
 }
 
 .searchbar {
@@ -273,12 +99,41 @@
     background-color:#ffffff!important;
     border-bottom: none !important;
     border-top: 2px solid #ccc !important;
+    padding: 20px;
+}
+
+
+.floating-product-img {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.473);
+    position: absolute;
+    z-index: 10;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.floating-product-img img {
+    width: 80%;
+
 }
 
 /* INDVIDUAL PRODUCT */
 .indidual-item-container {
     width: 100%;
     position: relative;
+}
+
+.indidual-item-container h2 {
+    font-size: 2em;;
+}
+
+.indidual-item-container h3 {
+    margin-top: 10px;
 }
 
 .individual-item {
@@ -354,7 +209,6 @@
     margin: 0px;
 }
 
-
 .user-page-container > div {
     margin-top: 20px;
     border-radius: 10px;
@@ -382,7 +236,6 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
-
 }
 
 .user-nav a {
@@ -476,6 +329,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+
 }
 
 .card-buttons button {
@@ -483,6 +337,7 @@
     background-color:#ffad42;
     border-radius: 5px;
     color: white;
+    border: 2px solid #ffffff;
     padding: 5px 15px 5px 15px
 }
 
@@ -606,4 +461,12 @@
 
 .hideme {
     opacity: 0;
+}
+
+.disabled {
+    display: none;
+}
+
+.active {
+    display: block;
 }

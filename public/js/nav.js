@@ -16,6 +16,22 @@ $(".option-menu-shadow").on("click", () => {
     $(".option-menu-shadow").removeClass("shadow-active")
 });
 
+// Find and display clicked list item image overlay
+$(".category-list").on("click", (e) => {
+    //check if product id matches
+    for(let i = 0; i < $(".floating-product-img").length; i++) {
+        if(e.target.id === $(".floating-product-img")[i].id) {
+            // if a match display floating overlay
+            $($(".floating-product-img")[i]).removeClass("disabled")
+        }
+    }
+});
+
+$(".floating-product-img").on("click", () => {
+    $(".floating-product-img").addClass("disabled")
+});
+
+
 $(document).ready(function(){
     $('.collapsible').collapsible();
     $(".category-item").addClass(".category-item-open")

@@ -2,19 +2,23 @@
 
 <div class="selected-product">
 </div>
-<div class="product-list">
+<div class="categories-list">
     <% products.forEach(item => { %>
-        <a href="/product/<%-item.productCategory %>">
-        <ul class="collapsible">
-            <li class="collapsible-header">
-                    <img src="/<%-item.img%>">
-                <div>
-                    <h2><%- item.productCategory %></h2>
-                    <h3><b><%- item.productCount %> Items</b></h3>
-                </div> 
-            </li>
-        </ul>
-    </a>
+        <div class="card categories-card">
+            <a href="/product/<%-item.productCategory %>">
+                <div class="card-image waves-effect waves-block waves-light product-img">
+                <img class="activator" src="/<%-item.img%>">
+                </div>
+            </a>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4"><%- item.productCategory %><i class="material-icons right">more_vert</i></span>
+          <p><%- item.productCount %> Items</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4"><%- item.productCategory %><i class="material-icons right">close</i></span>
+          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+        </div>
+      </div>
     <%}) %>
 </div>
 <%- include ("partials/footer.ejs") %>
