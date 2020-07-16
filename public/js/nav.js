@@ -17,9 +17,10 @@ $(".option-menu-shadow").on("click", () => {
 });
 
 // Find and display clicked list item image overlay
-$(".category-list").on("click", (e) => {
+$(".image-expand-button").on("click", (e) => {
     //check if product id matches
     for(let i = 0; i < $(".floating-product-img").length; i++) {
+        console.log(e.target.id)
         if(e.target.id === $(".floating-product-img")[i].id) {
             // if a match display floating overlay
             $($(".floating-product-img")[i]).removeClass("disabled")

@@ -1,39 +1,40 @@
 <%- include ("partials/header.ejs") %>
 <div class="category-header"><h1><%-category%></h1></div>
 <div class="category-enclosure">
-<div class="category-list">
-  <!-- <div class="category-bar hideme" >
-    <h1><%-category%></h1>
-</div> -->
-<div class="searchbar" >
-  <input type="text" placeholder="Search For Product... ">
-  <i class="material-icons">search</i>  
-</div>
-
-    <% products.forEach(item => { %>
-      <div class="floating-product-img disabled" id="<%- item.id %>">
-        <img src="<%-item.img%>">
-      </div>
-      <div class="card category-card">
-        <div class="product-category-img">
-        
-        <div class="card-image waves-effect waves-block waves-light">
-          <img id="<%- item.id %>" src="<%-item.img%>">
-           
-         
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+        <div class="category-list">
+          <!-- <div class="category-bar hideme" >
+            <h1><%-category%></h1>
+        </div> -->
+        <div class="searchbar" >
+          <input type="text" placeholder="Search For Product... ">
+          <i class="material-icons">search</i>  
         </div>
-      </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4"><%- item.name %><i class="material-icons right">more_vert</i></span>
-          <p><%- item.price %></p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-          <p>Here is some more information about this product that is only revealed once clicked on.</p>
-        </div>
-      </div>
-    <%}) %>
-</div>
+    
+            <% products.forEach(item => { %>
+              <div class="floating-product-img disabled" id="<%- item.id %>">
+                <img src="<%- item.img %>">
+              </div>
+              <div class="card category-card">
+                <div class="card-image waves-effect waves-block waves-light product-img">
+                  <img src="<%-item.img%>">
+                  <i class="image-expand-button fas fa-expand-alt" id="<%- item.id %>"></i>
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"><%- item.name %><i class="material-icons right">more_vert</i></span>
+                  <p><%- item.price %></p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><%- item.name %><i class="material-icons right">close</i></span>
+                  <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                </div>
+              </div>
+            <%}) %>
+          </div>
+    </div>
+  </div>
 </div>
 <%- include ("partials/footer.ejs") %>
 

@@ -21,11 +21,6 @@ body {
     position: absolute;
 }
 
-.page-enclosure {
- 
-
-}
-
 .chat-bubble {
     display: flex;
     justify-content: center;
