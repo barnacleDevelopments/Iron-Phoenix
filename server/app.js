@@ -24,27 +24,17 @@ const bakeryItemCatagories = [
     {
         productCategory: "cookies",
         productCount: 30,
-        img: "cake_1.jpg"
+        img: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
     },
     {
         productCategory: "muffins",
         productCount: 10,
-        img: "cake_4.jpg"
+        img: "https://images.unsplash.com/photo-1519869491916-8ca6f615d6bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
     },
     {
         productCategory: "pies",
         productCount: 90,
-        img: "cake_7.jpg"
-    },
-    {
-        productCategory: "pies",
-        productCount: 90,
-        img: "cake_7.jpg"
-    }
-    , {
-        productCategory: "pies",
-        productCount: 90,
-        img: "cake_7.jpg"
+        img: "https://images.unsplash.com/photo-1486428128344-5413e434ad35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
     }
 ]
 
@@ -54,7 +44,7 @@ const products = [
         name: "chocolate chip",
         category: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-        img: "/cake_1.jpg",
+        img: "https://images.unsplash.com/photo-1486428128344-5413e434ad35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
         price: 6.33
 
     },
@@ -63,7 +53,7 @@ const products = [
         name: "peanut butter",
         category: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-        img: "/cake_2.jpg",
+        img: "https://images.unsplash.com/photo-1519869491916-8ca6f615d6bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
         price: 4.77
     },
     {
@@ -71,7 +61,7 @@ const products = [
         name: "chocolate chip",
         category: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-        img: "/cake_1.jpg",
+        img: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
         price: 6.33
 
     },
@@ -80,7 +70,7 @@ const products = [
         name: "peanut butter",
         category: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-        img: "/cake_2.jpg",
+        img: "https://images.unsplash.com/photo-1486428128344-5413e434ad35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
         price: 4.77
     },
     {
@@ -88,7 +78,7 @@ const products = [
         name: "peanut butter",
         category: "pies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-        img: "/cake_2.jpg",
+        img: "https://images.unsplash.com/photo-1486428128344-5413e434ad35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
         price: 4.77
     },
     {
@@ -96,25 +86,8 @@ const products = [
         name: "peanut butter",
         category: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-        img: "/cake_2.jpg",
+        img: "https://images.unsplash.com/photo-1486428128344-5413e434ad35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
         price: 4.77
-    },
-    {
-        id: "2",
-        name: "peanut butter",
-        category: "muffins",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-        img: "/cake_2.jpg",
-        price: 4.77
-    },
-
-    {
-        id: "3",
-        name: "apple crunch",
-        category: "muffins",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
-        img: "/cake_3.jpg",
-        price: 3.44
     }
 ];
 
