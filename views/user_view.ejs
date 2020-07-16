@@ -1,67 +1,52 @@
 <%- include ("partials/header.ejs") %>
-
-    <div class="user-nav-container">
-        <ul class="user-nav">
-            <li><a href="/info/user">Info</a></li>
-            <li><a href="/order/user">Orders</a></li>
-        </ul>
-    </div>
-
-<div class="user-page-container">
-    <div class="user-info-container">
-
-        <div>
-            <i class="material-icons">contact_phone</i>
-        </div>
-        <div>
-            <h2>Number</h2>
-            <h3>902-221-7158</h3>
-        </div>
-        <div class="user-info-btn"></div>
-    </div>
-
-    <div class="card-list-view">
-        <ul>
-            <li></li>
-        </ul>
-    </div>
-
-    <div class="user-info-container">
-        <div>
-            <i class="material-icons">email</i>
-        </div>
-        <div>
-            <h2>Email: user123@gmail.com</h2>
-        </div>
-        <div class="user-info-btn"></div>
-    </div>
-
-    <div class="user-info-container">
-        <div>
-            <i class="material-icons">home</i>
-        </div>
-        <div>
-            <h2>Address: 1027 Lucknow St</h2>
-        </div>
-        <div class="user-info-btn"></div>
-    </div>
-
-    <div class="user-info-container">
-        <div>
-            <i class="material-icons">credit_card</i>
-        </div>
-        <div>
-            <div class="current-card">
-                <h2>Card Name:</h2>
-                <h3>Card Number: **** **** **** 3452</h3>
+<div class="user-info-container">
+    <ul class="collapsible">
+        <li>
+          <div class="collapsible-header user-info-header"><i class="material-icons">person_outline</i>First</div>
+          <div class="collapsible-body user-info-content">
+            <div class="input-field user-input-field">
+                <input placeholder="<%- userInfo.name %>" id="first_name" type="text" class="validate">
             </div>
-            <div class="card-buttons">
-                <a><button>ADD CARD</button></a>
-                <a><button>VIEW CARDS</button></a>
             </div>
-        </div>
-        <div class="user-info-btn"></div>
-    </div>
-
+        </li>
+        <li>
+          <div class="collapsible-header user-info-header"><i class="material-icons">email</i>Second</div>
+          <div class="collapsible-body user-info-content">
+            <div class="input-field user-input-field">
+                <input placeholder="<%- userInfo.email %>" id="first_name" type="text" class="validate">
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header user-info-header"><i class="material-icons">location_on</i>Third</div>
+          <div class="collapsible-body user-info-content">
+            <div class="input-field user-input-field">
+                <input placeholder="<%- userInfo.address %>" id="first_name" type="text" class="validate">
+            </div>
+               
+            </div>
+        </li>
+        <li>
+          <div class="collapsible-header user-info-header"><i class="material-icons">phone</i>Third</div>
+          <div class="collapsible-body user-info-content">
+            <div class="input-field user-input-field">
+                <input placeholder="<%- userInfo.number %>" id="first_name" type="text" class="validate">
+            </div>
+              
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header user-info-header"><i class="material-icons">local_hospital</i>Third <span class="badge"><%- userInfo.allergies.length %></span></div>
+          <div class="collapsible-body user-info-content">  
+         <%  for(let i = 0; i < allergies.length; i++) { %>
+             <% if(allergies[i] === userInfo.allergies[i]) { %>
+                    <div class="chip allergie-chip confirmed-allergie"><%-allergies[i]%></div>
+             <% } else { %>
+                    <div class="chip allergie-chip"><%-allergies[i]%></div>
+             <% } %>
+          <%  } %>
+          </div>
+        </li>
+      </ul>
 </div>
 <%- include ("partials/footer.ejs") %>

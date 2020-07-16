@@ -1,4 +1,9 @@
 /* CATAGORIES CSS */
+.categories-enclosure {
+    margin-bottom: 30px;;
+    overflow: auto;
+    height: 100%;
+}
 .categories-list {
     width: 70%;
     margin: auto;
@@ -10,9 +15,6 @@
     flex-direction: column;
 }
 
-.categories-list::-webkit-scrollbar {
-    display: none;
-}
 
 .categories-card {
     margin: 10px 0px 30px 0px;
@@ -45,6 +47,7 @@
 .category-enclosure {
     margin-bottom: 30px;;
     overflow: auto;
+    height: 100%;
 }
 
 .category-list {
@@ -170,7 +173,8 @@
 .category-card-title p {
     margin-top: 15px !important;
     color: black;
-    font-size: 1.3em !important;
+    font-size: 1.4em !important;
+    margin-bottom: 5px !important;
 }
 
 .card-btns {
@@ -210,10 +214,6 @@
  
 }
 
-.card-btns i:hover {
-    color: #2c363f4f;
-}
-
 .card-btns button {
     background-color: #5cb85c;
     color: white;
@@ -221,11 +221,8 @@
     border-radius: 5px;
     padding: 9px;
     margin-top: 10px;
-    font-size: 19px;;
-}
-
-.card-btns button:hover {
-    background-color: #2c363f8e;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 .product-img img {
@@ -239,161 +236,47 @@
 }
 
 /* USER INFO CSS*/
-
-.user-info-btn {
-    border-radius: 50px;
-    background-color: #09af00;
-    width: 50px;
-    height: 50px !important;
-    right: 20px;
-    top: 20px;
-    z-index: 10;
-    position: relative;
+.user-info-container ul {
+    margin-top: 0px;
+    height: 95vh !important;
+    border: none !important;
 }
 
-.user-page-container {
-    padding-top:40px;
-    width: 90%;
-    margin: 0 auto;
+.user-info-container ul > li {
+    margin: 20px 20px 20px 20px !important;
+    z-index: 3 !important;
+  
 }
 
-.user-page-container h2, h3 {
-    font-size: 1em;
-    margin: 0px;
+.user-input-field {
+    margin: 0 !important;
+    position: inline-block;
 }
 
-.user-page-container > div {
-    margin-top: 20px;
-    border-radius: 10px;
-    padding: 20px;
+.user-info-content {
+    position: relative !important;
+    top: -8px !important;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
-.user-nav-container {
+.user-info-header {
+    border-radius: 10px !important;
+}
+
+
+.user-info-content {
     background-color: #ffffff;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    font-size: 1.2em;
-    top:65px;
-    z-index: 3;
-    box-shadow: 0px 0px 2px 1px#ffffff;
-    color: black; 
+   
 }
 
-.user-nav-container .user-nav {
-    list-style-type: none;
-    padding: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
+.confirmed-allergie {
+    background-color: #5cb85c;
+    color: white;
 }
 
-.user-nav a {
-    text-decoration: none;
-    color: black;
-}
-
-.user-info-container {
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.349);
-    background-color: #FFFFFF;
-    align-items: center;
-    color: black;
-}
-
-.user-info-container i {
-    font-size: 40px;
-}
-
-.user-info-container > div:nth-of-type(1) {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: 0px 20px 0px 5px;
-    width: 50px;;
-}
-
-.user-email-contact {
-    display: flex;
-    align-items: center;
-    background-color: #09af00;
-}
-
-.user-email-contact i {
-    font-size: 40px;
-}
-
-.user-address {
-    display: flex;
-    align-items: center;
-    background-color: #09af00;
-}
-
-.user-address div:nth-of-type(1) {
-    margin: 0px 20px 0px 5px;
-}
-
-.user-address div:nth-of-type(2) {
-    display: flex;
-}
-
-.user-address i {
-    font-size: 40px;
-}
-
-.user-email-contact div:nth-of-type(1) {
-    margin: 0px 20px 0px 5px;
-}
-
-.user-payment-info-container {
-    background-color: #09af00;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0px 4px 20px 1px rgba(0, 0, 0, 0.349);
-}
-
-.user-payment-info-container > div:nth-of-type(1) {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: 0px 20px 0px 5px;
-}
-
-.user-payment-info-container div:nth-of-type(2) {
-    text-align: left;
-}
-
-.user-payment-info-container i {
-    font-size: 40px;
-}
-
-.current-card {
-    padding: 0px;
-}
-
-.card-buttons {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.card-buttons button {
-    border: none;
-    background-color:#ffad42;
-    border-radius: 5px;
-    border: 2px solid #ffffff;
-    padding: 7px 12px !important;
-}
-
-.card-list-view {
-    display: none;
+.allergie-chip {
+    margin: 0px 10px 10px 0px !important;
 }
 
 /* ORDER CSS */

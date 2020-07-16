@@ -93,10 +93,12 @@ const products = [
 
 
 const user = {
-    email: "user@gmail.com",
     name: "user123",
+    email: "user@gmail.com",
+    address: "1027 lucknow st",
     number: "902-221-7158",
-    password: "**********" 
+    allergies: ["peanuts", "milk", "eggs"],
+    password: "**********"
 }
 
 app.get("/products", (req, res, next) => {
@@ -130,12 +132,15 @@ app.get("/product/:category/:id", (req, res, next) => {
             selectedItem = item
         }
     });
-    res.render("item_view", {item: selectedItem, category: category, pageType: "item_view"});
+    res.render("item_view", {item: selectedItem,
+         category: category, 
+          pageType: "item_view"});
 })
 
 
+
 app.get("/info/:user", (req, res, next) => {
-    res.render("user_view", { pageType: "", header: "info" });
+    res.render("user_view", { userInfo: user, pageType: "",  allergies: ["peanuts", "milk", "eggs", "tree nuts", "soy", "gluten", "fish", "shellfish" ], header: "info" });
 });
 
 app.get("/cart/:user", (req, res, next) => {
