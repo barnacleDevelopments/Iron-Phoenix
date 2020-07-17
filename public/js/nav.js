@@ -5,6 +5,9 @@ const itemDescription = document.querySelector(".item-description")
 const searchBar = document.querySelector(".searchbar");
 const categoryBar = document.querySelector(".category-bar");
 
+$(document).ready(function(){
+    $('.carousel').carousel();
+  });
 
 $('.dropdown-trigger').dropdown();
 
@@ -15,6 +18,9 @@ $('.dropdown-trigger').on("click", () => {
 $(".option-menu-shadow").on("click", () => {
     $(".option-menu-shadow").removeClass("shadow-active")
 });
+
+
+
 
 // Find and display clicked list item image overlay
 $(".image-expand-button").on("click", (e) => {
