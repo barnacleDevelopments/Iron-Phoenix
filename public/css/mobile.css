@@ -5,7 +5,7 @@
     height: 100%;
 }
 .categories-list {
-    width: 70%;
+    width: 90%;
     margin: auto;
     overflow: auto;
     scrollbar-width: none;
@@ -262,8 +262,18 @@
 
 .user-info-header {
     border-radius: 10px !important;
+    height: 73px !important;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    justify-content: space-between;
 }
 
+.user-info-header div:nth-of-type(1) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 
 .user-info-content {
     background-color: #ffffff;
@@ -280,92 +290,91 @@
 }
 
 /* ORDER CSS */
-.order {
-    padding: 0px;
+.order-nav-container {
+    position: absolute;
     background-color: #ffffff;
-    z-index: -1;
-}
-
-.order-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     width: 100%;
-    align-items: center;
-    justify-content: center;
+    left: 0px;
+    top: 65px; 
+
 }
 
-.order-details > div {
-    background-color: #ffad42;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 5px;;
+.order-list-container {
+    overflow: auto;
 }
 
-.order-details > div:nth-of-type(3) > div {
+.orders-container {
+    margin-top: 60px;
+    height: 95vh;
+}
+
+.order-nav-container ul {
     display: flex;
-    justify-content: space-between;
-    width: 150px;
+    justify-content: space-around;
 }
 
-.order-details > div:nth-of-type(3) > div i {
-    margin-right: 20px;;
+.order-nav-container a {
+    color: black;
 }
 
-.order-items {
-    display: flex;
-    flex-direction: row;
-    height: 85px;
-    align-items: center;
-    margin-top: 10px;
+.order {
+    font-size: 1em !important;
+    background-color: #ffffff;
+    border-radius: 10px;
 }
 
 .order-divider {
-    margin: 20px 0px 20px 0px;
+    margin: 20px 0px 0px 0px;
 }
 
-.order-items:nth-of-type(1) {
-    margin-top: 0px;
-}
-
-.order-items > div:nth-of-type(1) {
-    overflow: hidden;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;;
-    width: 30%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.order h2, h3 {
+    font-size: 1em !important;
+    margin: 0px;
 }
 
 
-.order-items > div:nth-of-type(1) img  {
-    object-fit: contain;
-    width: 100%;
+.order-details {
+    padding: 10px;
+    margin: 10px;
 }
 
-.order-item-price {
+
+
+.order-details > div {
+    background-color: #2C363F;
+    padding: 10px;
+    border-radius: 10px;
+    color: #ffffff;
     display: flex;
     justify-content: space-around;
-    flex-direction: row;
+    align-items: center;
+    margin: 10px 0px 10px 0px;
+    height: 40px;
+    text-align: left;
+}
+
+
+.order-item-list {
+    overflow-y: auto;
+    height: 100%;
+    padding: 20px;
+
+}
+
+.order-items-list th {
+    text-align: center !important;
+}
+
+.order-items-list td {
+    text-align: center !important;
+}
+
+.order-item img {
     width: 100%;
     height: 100%;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.452);
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    object-fit: cover;
 }
 
-.order-item-price h2 {
-    font-size: 1.5em;
-    margin: 0;
-}
-
-
-.order-item-price h4 {
-    font-size: 1.3em;
-    margin: 0;
-}
 
 .disabled {
     display: none;
