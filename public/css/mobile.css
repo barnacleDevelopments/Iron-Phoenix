@@ -299,12 +299,10 @@
 }
 
 .orders-container {
-    margin-top: 70px !important;
+    margin-top: 49px !important;
     overflow-y: scroll !important;
-    height: 75vh;
-    margin: 0 auto;;
+    height: 80vh !important;
 }
-
 
 .order-nav-container ul {
     display: flex;
@@ -317,22 +315,20 @@
 
 .orders-carousel {
     height: 100%;;
-    width: 100%;
 }
 
 .orders {
     font-size: 1em !important;
-    background-color: #ffffff;
-    border-radius: 10px;
+    margin: 0;
     width: 80% !important;
     height: 100% !important;
     padding: 20px !important;
     overflow-y: scroll;
-   
 }
 
 .orders > div {
-    margin-bottom: 20px;;
+    margin-bottom: 20px;
+    background-color: #ffffff;
 }
 
 .order-divider {

@@ -5,8 +5,9 @@ const itemDescription = document.querySelector(".item-description")
 const searchBar = document.querySelector(".searchbar");
 const categoryBar = document.querySelector(".category-bar");
 
-$(document).ready(function(){
-    $('.carousel').carousel();
+$('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    indicators: true
   });
 
 $('.dropdown-trigger').dropdown();
