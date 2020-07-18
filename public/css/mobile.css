@@ -324,10 +324,10 @@
     font-size: 1em !important;
     height: 100% !important;
     overflow-y: auto;
+    scrollbar-width: none;
 }
 
 .orders > div {
-    margin-bottom: 20px;
     background-color: #ffffff;
 }
 
@@ -343,7 +343,6 @@
 
 .order-details {
     padding: 10px;
-    margin: 10px;
 }
 
 .order-details > div {
