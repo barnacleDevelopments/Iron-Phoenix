@@ -105,6 +105,7 @@ const pendOrders = [
     {
     date: "April 11, 2020",
     total: 301.80,
+    location: "1027 Lucknow St.",
     products: [
         {
             name: "cake",
@@ -124,6 +125,7 @@ const pendOrders = [
       {
     date: "April 11, 2020",
     total: 301.80,
+    location: "1027 Lucknow St.",
     products: [
         {
             name: "crandberries",
@@ -143,6 +145,7 @@ const pendOrders = [
     {
         date: "April 11, 2020",
         total: 301.80,
+        location: "1027 Lucknow St.",
         products: [
             {
                 name: "cake choc",
@@ -209,7 +212,7 @@ app.get("/cart/:user", (req, res, next) => {
 });
 
 app.get("/order/:user", (req, res, next) => {
-    res.render("order_view", { pageType: "", orders: {pendOrders: pendOrders, histOrders: pendOrders, comOrders: pendOrders }, header: "orders" });
+    res.render("order_view", { pageType: "", orders: {currentOrders: pendOrders, cancelledOrders: pendOrders, completedOrders: pendOrders }, header: "orders" });
 })
 
 app.listen(port, () => {

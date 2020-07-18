@@ -240,6 +240,7 @@
     margin-top: 0px;
     height: 95vh !important;
     border: none !important;
+    overflow-y: scroll;
 }
 
 .user-info-container ul > li {
@@ -309,16 +310,18 @@
 
 .orders-container {
     height: 83vh;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
 }
 
 .orders-carousel {
     height: 100%;
-    margin-top: 75px;
+    margin-top: 68px;
 }
 
 .orders {
     font-size: 1em !important;
-    margin: 0;
     height: 100% !important;
     overflow-y: auto;
 }
@@ -326,14 +329,13 @@
 .orders > div {
     margin-bottom: 20px;
     background-color: #ffffff;
-    border-radius: 10px;;
 }
 
 .order-divider {
     margin: 20px 0px 0px 0px;
 }
 
-.order h2, h3 {
+.orders h2, h3 {
     font-size: 1em !important;
     margin: 0px;
 }
@@ -386,6 +388,18 @@
 .order-chart-total td:nth-of-type(1) {
     text-align: right !important;
 }
+
+/* Large View Orders */
+.large-view-orders {
+    display: none;
+}
+
+.large-view-orders > div {
+   background-color: white;
+   margin: 0px 20px 20px 20px;
+} 
+
+
 
 
 .disabled {
