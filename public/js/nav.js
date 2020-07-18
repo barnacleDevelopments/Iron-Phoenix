@@ -7,7 +7,8 @@ const categoryBar = document.querySelector(".category-bar");
 
 $('.carousel.carousel-slider').carousel({
     fullWidth: true,
-    indicators: true
+    indicators: true,
+    padding: 50
   });
 
 $('.dropdown-trigger').dropdown();

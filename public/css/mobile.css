@@ -327,6 +327,29 @@
     scrollbar-width: none;
 }
 
+.orders .collapsible {
+    box-shadow: none;
+    color: black !important;
+}
+
+.orders .collapsible-header {
+    display: flex;
+    align-items: center;
+}
+
+.orders .collapsible i {
+    font-size: 30px;;
+}
+
+.orders .collapsible-body {
+    background-color:  #2C363F;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    color: #ffffff !important;
+  
+}
+
 .orders > div {
     background-color: #ffffff;
 }
@@ -368,13 +391,18 @@
     text-align: left;
 }
 
+.order-table {
+    background-color: #2C363F;
+    border-radius: 10px;;
+    margin: 10px;
+}
+
 .order-table th {
     text-align: center !important;
-    color: black !important;
+ 
 }
 
 .order-table td {
-    color: black !important;
     text-align: center !important;
 }
 
