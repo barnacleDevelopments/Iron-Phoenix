@@ -1,31 +1,149 @@
 <%- include ("partials/header.ejs") %>
 <div class="order-nav-container">
-  <ul class="user-nav">
-      <li><a href="/orders/pending/user">Pending</a></li>
-      <li><a href="/orders/history/user">History</a></li>
-      <li><a href="/orders/history/user">Comleted</a></li>
-  </ul>
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs user-nav">
+        <li class="tab col s3"><a>pending</a></li>
+        <li class="tab col s3"><a class="active" >history</a></li>
+        <li class="tab col s3 disabled"><a>delivered</a></li>
+      </ul>
+    </div>
+  </div>
+        
 </div>
   <div class="orders-container">
     <div class="carousel carousel-slider center orders-carousel">
-      <div class="carousel-fixed-item center">
-        <a class="btn waves-effect white grey-text darken-text-2">button</a>
-      </div>
       <div class="carousel-item white-text" href="#one!">
-        <h2>First Panel</h2>
-        <p class="white-text">This is your first panel</p>
+        <div class="orders">
+        <% orders.pendOrders.forEach(order => { %>
+      <div>
+          <div class="order-details">
+          <div>
+              <h2>Order Placed</h2>
+              <h3><%- order.date %></h3>
+          </div>
+          <div>
+              <h2>Total</h2>
+              <h3><%- order.total %></h3>
+          </div>
+      </div>
+     
+      <div class="divider order-divider"></div>
+
+      <div class="order-table">
+          <table>
+              <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Item Price</th>
+                </tr>
+              </thead>
+      
+              <tbody>
+              <%  order.products.forEach(p => { %>
+                <tr>
+                  <td><%- p.name %></td>
+                  <td>$<%- p.price %></td>
+                </tr>
+             <% }) %>
+                <tr class="order-chart-total"> 
+                  <td><b>Total:</b></td>
+                  <td>$<%- order.total %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+         </div>
+         <% }) %>
+        </div>
       </div>
       <div class="carousel-item white-text" href="#two!">
-        <h2>Second Panel</h2>
-        <p class="white-text">This is your second panel</p>
+            <div class="orders">
+        <% orders.pendOrders.forEach(order => { %>
+      <div>
+          <div class="order-details">
+          <div>
+              <h2>Order Placed</h2>
+              <h3><%- order.date %></h3>
+          </div>
+          <div>
+              <h2>Total</h2>
+              <h3><%- order.total %></h3>
+          </div>
+      </div>
+     
+      <div class="divider order-divider"></div>
+
+      <div class="order-table">
+          <table>
+              <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Item Price</th>
+                </tr>
+              </thead>
+      
+              <tbody>
+              <%  order.products.forEach(p => { %>
+                <tr>
+                  <td><%- p.name %></td>
+                  <td>$<%- p.price %></td>
+                </tr>
+             <% }) %>
+                <tr class="order-chart-total"> 
+                  <td><b>Total:</b></td>
+                  <td>$<%- order.total %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+         </div>
+         <% }) %>
+        </div>
       </div>
       <div class="carousel-item white-text" href="#three!">
-        <h2>Third Panel</h2>
-        <p class="white-text">This is your third panel</p>
+            <div class="orders">
+        <% orders.pendOrders.forEach(order => { %>
+      <div>
+          <div class="order-details">
+          <div>
+              <h2>Order Placed</h2>
+              <h3><%- order.date %></h3>
+          </div>
+          <div>
+              <h2>Total</h2>
+              <h3><%- order.total %></h3>
+          </div>
       </div>
-      <div class="carousel-item white-text" href="#four!">
-        <h2>Fourth Panel</h2>
-        <p class="white-text">This is your fourth panel</p>
+     
+      <div class="divider order-divider"></div>
+
+      <div class="order-table">
+          <table>
+              <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Item Price</th>
+                </tr>
+              </thead>
+      
+              <tbody>
+              <%  order.products.forEach(p => { %>
+                <tr>
+                  <td><%- p.name %></td>
+                  <td>$<%- p.price %></td>
+                </tr>
+             <% }) %>
+                <tr class="order-chart-total"> 
+                  <td><b>Total:</b></td>
+                  <td>$<%- order.total %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+         </div>
+         <% }) %>
+        </div>
       </div>
     </div>
   </div>

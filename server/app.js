@@ -101,6 +101,67 @@ const user = {
     password: "**********"
 }
 
+const pendOrders = [
+    {
+    date: "April 11, 2020",
+    total: 301.80,
+    products: [
+        {
+            name: "cake",
+            price: 50.00
+         
+        }, 
+        {
+            name: "cookie",
+            price: 80.60
+        }, 
+        {
+            name: "muffin",
+            price: 90.40
+        }
+    ]
+    },
+      {
+    date: "April 11, 2020",
+    total: 301.80,
+    products: [
+        {
+            name: "crandberries",
+            price: 50.00
+         
+        }, 
+        {
+            name: "apple sauce",
+            price: 80.60
+        }, 
+        {
+            name: "deasel",
+            price: 90.40
+        }
+    ]
+    },  
+    {
+        date: "April 11, 2020",
+        total: 301.80,
+        products: [
+            {
+                name: "cake choc",
+                price: 50.00
+             
+            }, 
+            {
+                name: "chips",
+                price: 80.60
+            }, 
+            {
+                name: "yummy",
+                price: 90.40
+            }
+        ]
+        }
+
+]
+
 app.get("/products", (req, res, next) => {
     res.render("categories_view", {products: bakeryItemCatagories, pageType: "standard"});
 });
@@ -148,7 +209,7 @@ app.get("/cart/:user", (req, res, next) => {
 });
 
 app.get("/order/:user", (req, res, next) => {
-    res.render("order_view", { pageType: "", header: "orders" });
+    res.render("order_view", { pageType: "", orders: {pendOrders: pendOrders, histOrders: pendOrders, comOrders: pendOrders }, header: "orders" });
 })
 
 app.listen(port, () => {

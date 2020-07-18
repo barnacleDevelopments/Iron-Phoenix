@@ -298,12 +298,6 @@
     top: 65px; 
 }
 
-.orders-container {
-    margin-top: 49px !important;
-    overflow-y: scroll !important;
-    height: 80vh !important;
-}
-
 .order-nav-container ul {
     display: flex;
     justify-content: space-around;
@@ -313,22 +307,26 @@
     color: black;
 }
 
+.orders-container {
+    height: 83vh;
+}
+
 .orders-carousel {
-    height: 100%;;
+    height: 100%;
+    margin-top: 75px;
 }
 
 .orders {
     font-size: 1em !important;
     margin: 0;
-    width: 80% !important;
     height: 100% !important;
-    padding: 20px !important;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .orders > div {
     margin-bottom: 20px;
     background-color: #ffffff;
+    border-radius: 10px;;
 }
 
 .order-divider {
@@ -369,19 +367,13 @@
     text-align: left;
 }
 
-
-.order-tablet {
-    overflow-y: auto;
-    height: 100%;
-    padding: 20px;
-
-}
-
 .order-table th {
     text-align: center !important;
+    color: black !important;
 }
 
 .order-table td {
+    color: black !important;
     text-align: center !important;
 }
 
