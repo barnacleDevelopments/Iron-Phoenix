@@ -311,23 +311,32 @@
 .orders-container {
     height: 83vh;
     width: 100%;
-    margin: 0 auto;
-    display: block;
 }
 
 .orders-carousel {
+    overflow-x: auto;
+    overflow-y: hidden ;
     height: 100%;
-    margin-top: 68px;
+    width: 100%;
+    scroll-snap-type: x mandatory;
+    scroll-snap-points-x: repeat(100%);
+    white-space: nowrap;
 }
 
+/* .orders-carousel img {
+    width: 100%;
+    scroll-snap-align: start;
+} */
 .orders {
     font-size: 1em !important;
     height: 100% !important;
     overflow-y: auto;
+    width: 100%;
+    scroll-snap-align: start;
 }
 
 .orders > div {
-    margin-bottom: 20px;
+    margin: 20px;
     background-color: #ffffff;
 }
 

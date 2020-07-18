@@ -12,8 +12,7 @@
         
 </div>
   <div class="orders-container">
-    <div class="carousel carousel-slider center orders-carousel">
-      <div class="carousel-item white-text" href="#one!">
+    <div class="orders-carousel">
         <div class="orders">
         <% orders.currentOrders.forEach(order => { %>
       <div>
@@ -56,9 +55,7 @@
          </div>
          <% }) %>
         </div>
-      </div>
-      <div class="carousel-item white-text" href="#two!">
-            <div class="orders">
+        <div class="orders">
         <% orders.cancelledOrders.forEach(order => { %>
       <div>
           <div class="order-details">
@@ -100,9 +97,7 @@
          </div>
          <% }) %>
         </div>
-      </div>
-      <div class="carousel-item white-text" href="#three!">
-            <div class="orders">
+        <div class="orders">
         <% orders.completedOrders.forEach(order => { %>
       <div>
           <div class="order-details">
@@ -144,7 +139,6 @@
          </div>
          <% }) %>
         </div>
-      </div>
     </div>
   </div>
 
