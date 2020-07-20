@@ -246,7 +246,6 @@
 .user-info-container ul > li {
     margin: 20px 20px 20px 20px !important;
     z-index: 3 !important;
-  
 }
 
 .user-input-field {
@@ -291,22 +290,6 @@
 }
 
 /* ORDER CSS */
-.order-nav-container {
-    position: absolute;
-    background-color: #ffffff;
-    width: 100%;
-    left: 0px;
-    top: 65px; 
-}
-
-.order-nav-container ul {
-    display: flex;
-    justify-content: space-around;
-}
-
-.order-nav-container a {
-    color: black;
-}
 
 .orders-container {
     height: 83vh;
@@ -317,7 +300,6 @@
 
 .orders-carousel {
     height: 100%;
-    margin-top: 68px;
 }
 
 .orders {
@@ -327,14 +309,10 @@
     scrollbar-width: none;
 }
 
-.orders .collapsible {
-    box-shadow: none;
-    color: black !important;
-}
-
 .orders .collapsible-header {
     display: flex;
     align-items: center;
+    flex-direction: row-reverse;
 }
 
 .orders .collapsible i {
@@ -342,16 +320,20 @@
 }
 
 .orders .collapsible-body {
-    background-color:  #2C363F;
+    background-color:  #ffffff;
     border-bottom: none !important;
     border-left: none !important;
     border-right: none !important;
     color: #ffffff !important;
-  
+    position: relative !important;
+    top: -8px !important;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
-.orders > div {
-    background-color: #ffffff;
+.orders ul {
+    box-shadow: none;
+    color: black !important;
 }
 
 .order-divider {
@@ -361,6 +343,35 @@
 .orders h2, h3 {
     font-size: 1em !important;
     margin: 0px;
+}
+
+.orders ul {
+    margin-top: 68px;
+    height: 95vh !important;
+    border: none !important;
+    overflow-y: scroll;
+}
+
+.orders ul > li {
+    margin: 20px 20px 20px 20px !important;
+    z-index: 3 !important;
+}
+
+.order-info-header {
+    border-radius: 10px !important;
+    height: 73px !important;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    justify-content: space-between;
+    padding: 20px;
+    border: none !important;
+}
+
+.order-info-header div:nth-of-type(1) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 
@@ -412,8 +423,44 @@
     object-fit: cover;
 }
 
-.order-chart-total td:nth-of-type(1) {
-    text-align: right !important;
+.indicators {
+    position: absolute !important;
+    background-color: #ffffff;
+    width: 100%;
+    left: 0px !important;
+    top: 0px !important; 
+    height: 68px !important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center !important;
+}
+
+.indicators .indicator-item {
+    height: 100% !important;
+    flex: 1;
+    border-radius: 0px !important;
+    color: black !important;
+    margin: 0px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.indicators .indicator-item:nth-of-type(1)::before {
+    content: "current" !important; 
+
+}
+
+.indicators .indicator-item:nth-of-type(2)::before {
+    content: "cancelled" !important; 
+ 
+}
+
+.indicators .indicator-item:nth-of-type(3)::before {
+    content: "completed" !important; 
+    
 }
 
 /* Large View Orders */
