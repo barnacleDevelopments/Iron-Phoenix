@@ -211,7 +211,6 @@
     font-size: 30px;
     font-weight: 600 !important;
     margin-bottom: 16px;
- 
 }
 
 .card-btns button {
@@ -234,6 +233,100 @@
 .card-content p {
     font-size: 1.1em;
 }
+
+.floating-customization-menu {
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff;
+    position: absolute;
+    z-index: 11;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.customize-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #4A5759;
+    color: white;
+    width: 100%;
+    padding: 20px;
+    height: 20%
+}
+
+.customize-header h1 {
+   margin: 0;;
+}
+
+.customize-header h2 {
+    margin: 0px;
+}
+
+.customize-body {
+    width: 100%;
+    height: 100%;
+}
+
+.customize-body .collection {
+    width: 100%;
+    margin: 0;
+}
+
+.customize-body .collection-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.customize-body .collection-item > div:nth-of-type(1) {
+    flex: 1.5
+}
+
+.customize-body .collection-item > div:nth-of-type(2) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    overflow-y: scroll;
+}
+
+.customize-body .collection-item > div:nth-of-type(2) i {
+
+}
+
+.customize-body .collection-item > div:nth-of-type(3) {
+    flex: 1;
+    text-align: end;
+}
+
+.customize-body .collection-item > div:nth-of-type(3) h2 {
+    margin: 0px;
+}
+
+.customize-footer {
+    background-color: #4A5759;
+    color: white;
+    width: 100%;
+    padding: 0px 20px 20px 20px;
+}
+
+.customize-footer > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.customize-footer-btns {
+    margin: 0px;
+}
+
+
 
 /* USER INFO CSS*/
 .user-info-container ul {
@@ -319,7 +412,7 @@
     font-size: 30px;;
 }
 
-.orders .collapsible-body {
+.order-info-content {
     background-color:  #ffffff;
     border-bottom: none !important;
     border-left: none !important;
@@ -329,6 +422,7 @@
     top: -8px !important;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+    padding: 10px 20px 20px 20px;;
 }
 
 .orders ul {
@@ -374,14 +468,10 @@
     align-items: center;
 }
 
-
-.order-details {
-    padding: 10px;
-}
-
 .order-details > div {
     display: flex;
     align-items: center;
+    padding: 20px;;
 }
 
 .order-details h2 {
@@ -390,7 +480,7 @@
 }
 
 .order-details > div {
-    background-color: #2C363F;
+    background-color: #4A5759;
     padding: 10px;
     border-radius: 10px;
     color: #ffffff;
@@ -403,9 +493,8 @@
 }
 
 .order-table {
-    background-color: #2C363F;
+    background-color: #4A5759;
     border-radius: 10px;;
-    margin: 10px;
 }
 
 .order-table th {
@@ -421,6 +510,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.order-info-content {
+
 }
 
 .indicators {
@@ -462,6 +555,100 @@
     content: "completed" !important; 
     
 }
+
+
+/* Cart View */
+.cart-container {
+    background-color: #ffffff;
+    margin-top: 30px;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+.cart-info{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 20px;;
+
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 10px;
+    padding: 10px 0px 10px 0px !important;
+}
+
+.cart-list {
+    margin-top: 30px;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.cart-item > div:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cart-item > div:nth-of-type(3) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: end;
+}
+
+.cart-item h2, h3, h4 {
+    font-size: 1.4em;
+    margin: 0px;
+}
+
+.cart-btns {
+    display: flex;
+    width: 70%;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.cart-btns i {
+    font-size: 20px;
+}
+
+.cart-btns i:nth-of-type(2) {
+    font-size: 17px;
+}
+
+.cart-info > div:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.cart-btn {
+    text-align: center;
+}
+
+.cart-list img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+}
+
+.cart-btn button {
+    padding: 9px;
+    border: none;
+    border-radius: 10px;
+    background-color: #5cb85c;
+    color: white;
+    width: 100%;;
+}
+
+.cart-info h2, h3 {
+    font-size: 30px;
+    margin: 0px;;
+}
+
 
 /* Large View Orders */
 .large-view-orders {

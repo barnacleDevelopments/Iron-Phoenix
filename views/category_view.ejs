@@ -16,6 +16,46 @@
               <div class="floating-product-img disabled" id="<%- item.id %>">
                 <img src="<%- item.img %>">
               </div>
+              <div class="floating-customization-menu disabled" id="<%- item.id %>">
+                <div class="customize-header">
+                  <h1>Chocolate Chip</h1>
+                  <h2>$8.33</h2>
+                </div>
+                <div class="customize-body">
+                  <form action="#">
+                      <ul class="collection">
+                        <li class="collection-item"> 
+                          <div>
+                            <p>
+                            <label>
+                              <input type="checkbox" class="filled-in" checked="checked" />
+                              <span> Choc Syrup</span>
+                            </label>
+                          </p>
+                        </div>  
+                        <div>
+                          <a href=""><i class="material-icons">remove_circle_outline</i></a>
+                          <p>4</p>
+                          <a href=""><i class="material-icons">add_circle_outline</i></a>
+                        </div>
+                        <div>
+                          <h2>$10.00</h2>
+                        </div>
+                      </li>
+                      </ul>
+                  </form>
+                </div>
+                <div class="customize-footer">
+                  <div>
+                    <h2>Total</h2>
+                    <h2>$21.00</h2>
+                  </div>
+                  <div class="customize-footer-btns">
+                      <a class="waves-effect waves-light btn">Cancle</a>
+                      <a class="waves-effect waves-light btn">Add to Cart</a>
+                  </div>
+                </div>
+              </div>
               <div class="card category-card">
                 <div class="card-image waves-effect waves-block waves-light product-img">
                   <img src="<%-item.img%>">
