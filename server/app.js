@@ -45,7 +45,8 @@ const products = [
         category: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
         img: "https://images.unsplash.com/photo-1486428128344-5413e434ad35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        price: 6.33
+        price: 6.33,
+        toppings: [{title: "cherries", amount: 2} , {title: "nuts", amount: 1}, {title: "chocolate flakes", amount: 1}]
 
     },
     {
@@ -54,7 +55,8 @@ const products = [
         category: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
         img: "https://images.unsplash.com/photo-1519869491916-8ca6f615d6bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        price: 4.77
+        price: 4.77,
+        toppings: [{title: "cherries", amount: 1} , {title: "nuts", amount: 1}, {title: "chocolate flakes", amount: 1}]
     },
     {
         id: "3",
@@ -62,7 +64,8 @@ const products = [
         category: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
         img: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-        price: 6.33
+        price: 6.33,
+        toppings: [{title: "cherries", amount: 1} , {title: "nuts", amount: 1}, {title: "chocolate flakes", amount: 1}]
 
     },
     {
@@ -71,7 +74,8 @@ const products = [
         category: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
         img: "https://images.unsplash.com/photo-1486428128344-5413e434ad35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        price: 4.77
+        price: 4.77,
+        toppings: [{title: "cherries", amount: 1} , {title: "nuts", amount: 1}, {title: "chocolate flakes", amount: 1}]
     },
     {
         id: "5",
@@ -79,7 +83,8 @@ const products = [
         category: "pies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
         img: "https://images.unsplash.com/photo-1486428128344-5413e434ad35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        price: 4.77
+        price: 4.77,
+        toppings: [{title: "cherries", amount: 1} , {title: "nuts", amount: 1}, {title: "chocolate flakes", amount: 1}]
     },
     {
         id: "6",
@@ -87,7 +92,8 @@ const products = [
         category: "cookies",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever",
         img: "https://images.unsplash.com/photo-1486428128344-5413e434ad35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        price: 4.77
+        price: 4.77,
+        toppings: [{title: "cherries", amount: 1} , {title: "nuts", amount: 1}, {title: "chocolate flakes", amount: 1}]
     }
 ];
 
@@ -165,6 +171,8 @@ const pendOrders = [
 
 ]
 
+const customizationItems =  [{title: "cherries", amount: 0} , {title: "nuts", amount: 0}, {title: "chocolate flakes", amount: 0}]
+
 app.get("/products", (req, res, next) => {
     res.render("categories_view", {products: bakeryItemCatagories, pageType: "standard"});
 });
@@ -184,24 +192,8 @@ app.get("/product/:category", (req, res, next) => {
         if(product.category === category)
         selectedProducts.push(product)
     })
-    res.render("category_view", {products: selectedProducts, category: category, header: category, pageType: ""});
+    res.render("category_view", {products: selectedProducts, customizationItems: customizationItems, category: category, header: category, pageType: ""});
 });
-
-app.get("/product/:category/:id", (req, res, next) => {
-    const itemId   = req.params.id
-    const category = req.params.category
-    let selectedItem
-    products.forEach(item => {
-        if(item.id === itemId) {
-            selectedItem = item
-        }
-    });
-    res.render("item_view", {item: selectedItem,
-         category: category, 
-          pageType: "item_view"});
-})
-
-
 
 app.get("/info/:user", (req, res, next) => {
     res.render("user_view", { userInfo: user, pageType: "",  allergies: ["peanuts", "milk", "eggs", "tree nuts", "soy", "gluten", "fish", "shellfish" ], header: "info" });

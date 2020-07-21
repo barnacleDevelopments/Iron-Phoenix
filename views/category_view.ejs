@@ -24,24 +24,50 @@
                 <div class="customize-body">
                   <form action="#">
                       <ul class="collection">
-                        <li class="collection-item"> 
+                        <% for(let i = 0; i < customizationItems.length; i++) { %>
+                          <% if (item.toppings[i].title === customizationItems[i].title) { %>
+                            <li class="collection-item"> 
+                              <div>
+                                <p>
+                                <label>
+                                  <input type="checkbox" class="filled-in" checked="checked" />
+                                  <span><%-item.toppings[i].title %></span>
+                                </label>
+                              </p>
+                            </div>  
+                            <div>
+                              <a href=""><i class="material-icons">remove_circle_outline</i></a>
+                              <p><%-item.toppings[i].amount %></p>
+                              <a href=""><i class="material-icons">add_circle_outline</i></a>
+                            </div>
+                            <div>
+                              <h2></h2>
+                            </div>
+                          </li>
+                            
+                         <% } else { %>
+                          <li class="collection-item"> 
+                            <div>
+                              <p>
+                              <label>
+                                <input type="checkbox" />
+                                <span><%-customizationItems[i] %></span>
+                              </label>
+                            </p>
+                          </div>  
                           <div>
-                            <p>
-                            <label>
-                              <input type="checkbox" class="filled-in" checked="checked" />
-                              <span> Choc Syrup</span>
-                            </label>
-                          </p>
-                        </div>  
-                        <div>
-                          <a href=""><i class="material-icons">remove_circle_outline</i></a>
-                          <p>4</p>
-                          <a href=""><i class="material-icons">add_circle_outline</i></a>
-                        </div>
-                        <div>
-                          <h2>$10.00</h2>
-                        </div>
-                      </li>
+                            <a href=""><i class="material-icons">remove_circle_outline</i></a>
+                            <p></p>
+                            <a href=""><i class="material-icons">add_circle_outline</i></a>
+                          </div>
+                          <div>
+                            <h2></h2>
+                          </div>
+                        </li>
+                        
+                         
+                         <% }%>
+                      <% } %>
                       </ul>
                   </form>
                 </div>
@@ -51,7 +77,7 @@
                     <h2>$21.00</h2>
                   </div>
                   <div class="customize-footer-btns">
-                      <a class="waves-effect waves-light btn">Cancle</a>
+                      <a class="waves-effect waves-light btn cancle-btn">Cancle</a>
                       <a class="waves-effect waves-light btn">Add to Cart</a>
                   </div>
                 </div>
@@ -79,6 +105,9 @@
                 <div class="card-reveal">
                   <span class="card-title grey-text text-darken-4"><%- item.name %><i class="material-icons right">close</i></span>
                   <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                  <a class="waves-effect waves-light btn-small">Add to Cart</a>
+                  <a class="waves-effect waves-light btn-small customize-btn" id="<%- item.id %>">Customize</a>
+
                 </div>
               </div>
             <%}) %>

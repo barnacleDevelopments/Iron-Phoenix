@@ -22,13 +22,25 @@ $(".option-menu-shadow").on("click", () => {
 });
 
 
+//Floating cusotmization menu enable/disable
+$(".customize-btn").on("click", (e) => {
+    //check if product id matches
+    for(let i = 0; i < $(".floating-customization-menu").length; i++) {
+        if(e.target.id === $(".floating-customization-menu")[i].id) {
+            // if a match display floating overlay
+            $($(".floating-customization-menu")[i]).removeClass("disabled")
+        }
+    }
+});
 
+$(".cancle-btn").on("click", () => {
+    $(".floating-customization-menu").addClass("disabled")
+});
 
-// Find and display clicked list item image overlay
+// Floating product image disable/enable
 $(".image-expand-button").on("click", (e) => {
     //check if product id matches
     for(let i = 0; i < $(".floating-product-img").length; i++) {
-        console.log(e.target.id)
         if(e.target.id === $(".floating-product-img")[i].id) {
             // if a match display floating overlay
             $($(".floating-product-img")[i]).removeClass("disabled")
