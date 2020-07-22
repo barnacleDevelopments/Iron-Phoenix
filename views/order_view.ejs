@@ -19,19 +19,19 @@
           <ul class="collapsible">
         <% orders.currentOrders.forEach(order => { %>
               <li>
-                <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><%- order.date %></div>
+                <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><h2><%- order.date %></h2></div>
                 <div class="collapsible-body order-info-content">
           <div class="order-details">
           <div>
-              <h2>Order Placed</h2>
+              <h3>Order Placed</h3>
               <h3><%- order.date %></h3>
           </div>
           <div>
-              <h2>Total</h2>
+              <h3>Total</h3>
               <h3><%- order.total %></h3>
           </div>
           <div>
-            <h2>Location</h2>
+            <h3>Location</h3>
               <h3><%- order.location %></h3>
           </div>
       </div>
@@ -39,8 +39,8 @@
               <table>
                   <thead>
                     <tr>
-                        <th>Item Name</th>
-                        <th>Item Price</th>
+                        <th><h4>Item Name</h4></th>
+                        <th><h4>Item Price</h4></th>
                     </tr>
                   </thead>
           
@@ -65,7 +65,7 @@
               <ul class="collapsible">
         <% orders.cancelledOrders.forEach(order => { %>
           <li>
-            <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><%- order.date %></div>
+            <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><h2><%- order.date %></h2></div>
             <div class="collapsible-body order-info-content">
           <div class="order-details">
           <div>
@@ -87,8 +87,8 @@
               <table>
                   <thead>
                     <tr>
-                        <th>Item Name</th>
-                        <th>Item Price</th>
+                        <th><h4>Item Name</h4></th>
+                        <th><h4>Item Price</h4></th>
                     </tr>
                   </thead>
           
@@ -113,7 +113,7 @@
           <ul class="collapsible">
         <% orders.completedOrders.forEach(order => { %>
           <li>
-            <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><%- order.date %></div>
+            <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><h2><%- order.date %></h2></div>
             <div class="collapsible-body order-info-content">
           <div class="order-details">
           <div>
@@ -133,8 +133,8 @@
               <table>
                   <thead>
                     <tr>
-                        <th>Item Name</th>
-                        <th>Item Price</th>
+                        <th><h4>Item Name</h4></th>
+                        <th><h4>Item Price</h4></th>
                     </tr>
                   </thead>
           

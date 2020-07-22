@@ -3,8 +3,8 @@
     <ul class="collapsible">
         <li>
           <div class="collapsible-header user-info-header">
-            <div><i class="material-icons">person_outline</i>Name</div>
-            <div><%- userInfo.name %></div>
+            <div><i class="material-icons">person_outline</i><h2>Name</h2></div>
+            <div><h3><%- userInfo.name %></h3></div>
           </div>
           <div class="collapsible-body user-info-content">
             <div class="input-field user-input-field">
@@ -14,8 +14,8 @@
         </li>
         <li>
           <div class="collapsible-header user-info-header">
-            <div><i class="material-icons">email</i>Email</div>
-            <div><%- userInfo.email %></div>
+            <div><i class="material-icons">email</i><h2>Email</h2></div>
+            <div><h3><%- userInfo.email %></h3></div>
           </div>
           <div class="collapsible-body user-info-content">
             <div class="input-field user-input-field">
@@ -25,8 +25,8 @@
         </li>
         <li>
           <div class="collapsible-header user-info-header">
-            <div><i class="material-icons">location_on</i>Location</div>
-            <div><%- userInfo.address %></div>
+            <div><i class="material-icons">location_on</i><h2>Location</h2></div>
+            <div><h3><%- userInfo.address %></h3></div>
           </div>
           <div class="collapsible-body user-info-content">
             <div class="input-field user-input-field">
@@ -37,8 +37,8 @@
         </li>
         <li>
           <div class="collapsible-header user-info-header">
-            <div><i class="material-icons">phone</i>Phone Number</div>
-            <div><%- userInfo.number %></div>
+            <div><i class="material-icons">phone</i><h2>Phone Number</h2></div>
+            <div><h3><%- userInfo.number %></h3></div>
           </div>
           <div class="collapsible-body user-info-content">
             <div class="input-field user-input-field">
@@ -49,15 +49,15 @@
         </li>
         <li>
           <div class="collapsible-header user-info-header">
-              <div><i class="material-icons">local_hospital</i>Allergies<span class="badge"></span></div>
-              <div><%- userInfo.allergies.length %></div>
+              <div><i class="material-icons">local_hospital</i><h2>Allergies</h2><span class="badge"></span></div>
+              <div><h3><%- userInfo.allergies.length %></h3></div>
           </div>
           <div class="collapsible-body user-info-content">  
          <%  for(let i = 0; i < allergies.length; i++) { %>
              <% if(allergies[i] === userInfo.allergies[i]) { %>
-                    <div class="chip allergie-chip confirmed-allergie"><%-allergies[i]%></div>
+                    <div class="chip allergie-chip confirmed-allergie"><span><%-allergies[i]%></span></div>
              <% } else { %>
-                    <div class="chip allergie-chip"><%-allergies[i]%></div>
+                    <div class="chip allergie-chip"><span><%-allergies[i]%></span></div>
              <% } %>
           <%  } %>
           </div>

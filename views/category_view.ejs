@@ -97,17 +97,29 @@
                       <i class="fas fa-angle-up activator"></i>
                     </div>
                     <div>
-                      <a href=""><button>Add to Cart</button></a>
+                      <a class="waves-effect waves-light btn-small">Add to Cart</a>
                     </div>
                    
                   </div>
                 </div>
                 <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4"><%- item.name %><i class="material-icons right">close</i></span>
-                  <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                  <a class="waves-effect waves-light btn-small">Add to Cart</a>
-                  <a class="waves-effect waves-light btn-small customize-btn" id="<%- item.id %>">Customize</a>
-
+                  <div class="product-reveal">
+                  <div>
+                    <div>
+                      <span class="card-title grey-text 
+                      text-darken-4">
+                      <div>
+                        <i class="material-icons right">close</i>
+                      </div>
+                      <h2><%- item.name %></h2></span>
+                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+                  </div>
+                  <div>
+                    <a class="waves-effect waves-light btn-small">Add to Cart</a>
+                    <a class="waves-effect waves-light btn-small customize-btn" id="<%- item.id %>">Customize</a>
+                  </div>
+                </div>
                 </div>
               </div>
             <%}) %>

@@ -5,10 +5,14 @@ const itemDescription = document.querySelector(".item-description")
 const searchBar = document.querySelector(".searchbar");
 const categoryBar = document.querySelector(".category-bar");
 
+
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+
 $('.carousel.carousel-slider').carousel({
     fullWidth: true,
-    indicators: true,
-    padding: 50
+    indicators: true
   });
 
 $('.dropdown-trigger').dropdown();

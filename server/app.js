@@ -205,7 +205,13 @@ app.get("/cart/:user", (req, res, next) => {
 
 app.get("/order/:user", (req, res, next) => {
     res.render("order_view", { pageType: "", orders: {currentOrders: pendOrders, cancelledOrders: pendOrders, completedOrders: pendOrders }, header: "orders" });
-})
+});
+
+
+app.get("/admin", (req, res, next) => {
+    res.render("admin_products-management")
+});
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

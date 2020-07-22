@@ -2,10 +2,6 @@
     display: block;
 }
 
-.orders-container {
-    display: none;
-}
-
 .large-view-orders {
     width: 100%;
     display: grid;
