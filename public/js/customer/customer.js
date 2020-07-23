@@ -1,9 +1,19 @@
-const chatBubble = document.querySelector(".chat-bubble");
-const chatContainer = document.querySelector(".chat-container");
-const chatMenuShadow = document.querySelector(".chat-menu-shadow");
-const itemDescription = document.querySelector(".item-description")
-const searchBar = document.querySelector(".searchbar");
-const categoryBar = document.querySelector(".category-bar");
+const displayShadowOverlay = () => {
+    $(".option-menu-shadow").css({display: "block"})
+}
+
+const removeShadowOverlay = () => {
+    $(".option-menu-shadow").css({display: "none"})
+}
+
+$('.dropdown-trigger').dropdown({
+    onOpenStart: displayShadowOverlay,
+    onCloseStart: removeShadowOverlay
+});
+
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
 
 
 $(document).ready(function(){
@@ -14,17 +24,6 @@ $('.carousel.carousel-slider').carousel({
     fullWidth: true,
     indicators: true
   });
-
-$('.dropdown-trigger').dropdown();
-
-$('.dropdown-trigger').on("click", () => {
-    $(".option-menu-shadow").addClass("shadow-active")
-});
-
-$(".option-menu-shadow").on("click", () => {
-    $(".option-menu-shadow").removeClass("shadow-active")
-});
-
 
 //Floating cusotmization menu enable/disable
 $(".customize-btn").on("click", (e) => {
@@ -63,9 +62,6 @@ $(document).ready(function(){
     console.log($(".category-item"))
   });
 
-
-
-       
 
 $(window).scroll( function(){
     $('.hideme').each( function(i){
