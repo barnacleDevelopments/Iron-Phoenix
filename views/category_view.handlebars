@@ -1,4 +1,4 @@
-<%- include ("partials/header.ejs") %>
+{{> navbar_customer }}
 <div class="category-enclosure">
 <div class="container">
   <div class="row">
@@ -12,16 +12,16 @@
           <i class="material-icons">search</i>  
         </div>
     
-            <% products.forEach(item => { %>
-              <div class="floating-product-img disabled" id="<%- item.id %>">
-                <img src="<%- item.img %>">
+            {{#each products}}
+              <div class="floating-product-img disabled" id="{{id}}">
+                <img src="{{img}}">
               </div>
-              <div class="floating-customization-menu disabled" id="<%- item.id %>">
+              {{!-- <div class="floating-customization-menu disabled" id="{{id}}">
                 <div class="customize-header">
                   <h1>Chocolate Chip</h1>
                   <h2>$8.33</h2>
                 </div>
-                <div class="customize-body">
+               <div class="customize-body">
                   <form action="#">
                       <ul class="collection">
                         <% for(let i = 0; i < customizationItems.length; i++) { %>
@@ -70,7 +70,7 @@
                       <% } %>
                       </ul>
                   </form>
-                </div>
+                </div> 
                 <div class="customize-footer">
                   <div>
                     <h2>Total</h2>
@@ -81,16 +81,16 @@
                       <a class="waves-effect waves-light btn">Add to Cart</a>
                   </div>
                 </div>
-              </div>
+              </div> --}}
               <div class="card category-card">
                 <div class="card-image waves-effect waves-block waves-light product-img">
-                  <img src="<%-item.img%>">
-                  <i class="image-expand-button fas fa-expand-alt" id="<%- item.id %>"></i>
+                  <img src="{{img}}">
+                  <i class="image-expand-button fas fa-expand-alt" id="{{id}}"></i>
                 </div>
                 <div class="card-content category-card-content">
                     <div class="category-card-title">
-                      <span class="card-title activator grey-text text-darken-4"><%- item.name %></span>
-                      <h2>$<%- item.price %></h2>
+                      <span class="card-title activator grey-text text-darken-4">{{name}}</span>
+                      <h2>${{price}}</h2>
                   </div>
                   <div class="card-btns">
                     <div>
@@ -111,21 +111,21 @@
                       <div>
                         <i class="material-icons right">close</i>
                       </div>
-                      <h2><%- item.name %></h2></span>
+                      <h2>{{name}}</h2></span>
                       <p>Here is some more information about this product that is only revealed once clicked on.</p>
                     </div>
                   </div>
                   <div>
                     <a class="waves-effect waves-light btn-small">Add to Cart</a>
-                    <a class="waves-effect waves-light btn-small customize-btn" id="<%- item.id %>">Customize</a>
+                    <a class="waves-effect waves-light btn-small customize-btn" id="{{id}}">Customize</a>
                   </div>
                 </div>
                 </div>
               </div>
-            <%}) %>
+            {{/each}}
           </div>
     </div>
   </div>
 </div>
-<%- include ("partials/footer.ejs") %>
+
 

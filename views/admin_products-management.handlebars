@@ -1,4 +1,4 @@
-<%- include ("partials/admin_header.ejs") %>
+{{> navbar_admin }}
 <div class="option-menu-shadow"></div>
 
 <div class="container admin-products-container">
@@ -10,13 +10,15 @@
     <div class="row">
         <div class="category-add-btn">
             <a class="waves-effect waves-light btn add-category-btn">Add Category</a>
-            <a class="waves-effect waves-light btn cancle-category-btn" style="display: none">Cancel</a>
         </div>
         <div>
             <ul class="collapsible admin-category-list">
                 <li class="category-input" style="display: none">
                     <input type="text" placeholder="add category here...." >
-                    <a ><button class="add-btn">ADD</button></a>
+                    <div class="category-input-btns">
+                        <a class="waves-effect waves-light btn category-save-btn">save</a>
+                        <a class="waves-effect waves-light btn category-cancle-btn">cancle</a>
+                    </div>
                 </li>
                 <li>
                     <div class="collapsible-header-container">   
@@ -30,16 +32,21 @@
                               </div>
                             </div>
                         </div>
-                        <div>
-                            <a class='dropdown-trigger edit-drop-trigger' href='#' data-target='dropdown1'><i class="material-icons">more_vert</i></a>
-                            <ul id='dropdown1' class='dropdown-content'>
-                            <li><a href="#!">Edit</a></li>
-                            <li><a href="#!">Delete</a></li>
-                            </ul>
+                        <div class="category-dropdown">
+                            <div>
+                                <a class='dropdown-trigger edit-drop-trigger' href='#' data-target='dropdown1'><i class="material-icons">more_vert</i></a>
+                                <ul id='dropdown1' class='dropdown-content'>
+                                <li><a href="#!">Edit</a></li>
+                                <li><a href="#!">Delete</a></li>
+                                </ul>
+                            </div>
+                           
                         </div>
                     </div> 
                     <div class="collapsible-body">
+                     
                         <ul class="admin-product-list">
+                                
                             <li>
                                 <div>
                                     <div class="admin-product-img">
@@ -49,7 +56,7 @@
                                         <h2>Title</h2>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="product-dropdown">
                                     <a class='dropdown-trigger edit-drop-trigger' href='#' data-target='dropdown2'><i class="material-icons">more_vert</i></a>
                                 <ul id='dropdown2' class='dropdown-content'>
                                     <li><a href="#!">Addons</a></li>
@@ -59,11 +66,24 @@
                                 </ul>
                             </div>
                         </li>
-                    </ul>
-                    </div>
-                </li>
+                         <li class="product-input" style="display: none;">
+                                <div class="title_price-inputs">
+                                    <input type="text" placeholder="add product title here..." >
+                                    <input type="text" placeholder="add price..." >
+                                </div>
+
+                                <input type="text" placeholder="add description...">
+                               
+                                <div class="product-input-btns">
+                                    <a class="waves-effect waves-light btn product-save-btn">save</a>
+                                    <a class="waves-effect waves-light btn product-cancle-btn">cancle</a>
+                                </div>
+                            </li>
+                      
+                    </li>
+                   
+                    <a class="waves-effect waves-light btn add-product-btn">Add Product</a>
             </ul>
         </div>
     </div>
 </div>
-<%- include ("partials/admin_footer.ejs") %>

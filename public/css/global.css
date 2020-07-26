@@ -1,5 +1,10 @@
+*, *::before, *::after {box-sizing: inherit;} 
+
 html {
     overflow: hidden;
+    -moz-box-sizing: border-box !important; 
+    -webkit-box-sizing: border-box !important; 
+    box-sizing: border-box !important; 
 }
 
 body {

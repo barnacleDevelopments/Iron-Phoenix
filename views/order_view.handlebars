@@ -1,38 +1,25 @@
-<%- include ("partials/header.ejs") %>
-<!-- order nav container -->
-<!-- <div class="order-nav-container">
-  <div class="row">
-    <div class="col s12">
-      <ul class="tabs user-nav">
-        <li class="tab col s3"><a>current</a></li>
-        <li class="tab col s3"><a class="active" >cancelled</a></li>
-        <li class="tab col s3 disabled"><a>completed</a></li>
-      </ul>
-    </div>
-  </div>   
-</div> -->
-<!-- order carousel  -->
+{{> navbar_customer }}
   <div class="orders-container">
     <div class="carousel carousel-slider center orders-carousel">
       <div class="carousel-item white-text" href="#one!">
         <div class="orders">
           <ul class="collapsible">
-        <% orders.currentOrders.forEach(order => { %>
+        {{#each orders.currentOrders}}
               <li>
-                <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><h2><%- order.date %></h2></div>
+                <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><h2>{{date}}</h2></div>
                 <div class="collapsible-body order-info-content">
           <div class="order-details">
           <div>
               <h3>Order Placed</h3>
-              <h3><%- order.date %></h3>
+              <h3>{{date}}></h3>
           </div>
           <div>
               <h3>Total</h3>
-              <h3><%- order.total %></h3>
+              <h3>{{total}}</h3>
           </div>
           <div>
             <h3>Location</h3>
-              <h3><%- order.location %></h3>
+              <h3>{{location}}</h3>
           </div>
       </div>
             <div class="order-table">
@@ -45,40 +32,40 @@
                   </thead>
           
                   <tbody>
-                  <%  order.products.forEach(p => { %>
+                  {{#each products}}
                     <tr>
-                      <td><%- p.name %></td>
-                      <td>$<%- p.price %></td>
+                      <td>{{name}}</td>
+                      <td>${{price}}</td>
                     </tr>
-                 <% }) %>
+                {{/each}}
                   </tbody>
                 </table>
               </div>
           </div>
         </li>
-         <% }) %>
+         {{/each}}
         </ul>
         </div>
       </div>
       <div class="carousel-item white-text" href="#two!">
             <div class="orders">
               <ul class="collapsible">
-        <% orders.cancelledOrders.forEach(order => { %>
+        {{#each orders.cancelledOrders}}
           <li>
-            <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><h2><%- order.date %></h2></div>
+            <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><h2>{{date}}</h2></div>
             <div class="collapsible-body order-info-content">
           <div class="order-details">
           <div>
               <h2>Order Placed</h2>
-              <h3><%- order.date %></h3>
+              <h3>{{date}}</h3>
           </div>
           <div>
               <h2>Total</h2>
-              <h3><%- order.total %></h3>
+              <h3>{{total}}</h3>
           </div>
           <div>
               <h2>Delivery Location</h2>
-              <h3><%- order.location %></h3>
+              <h3>{{location}}</h3>
           </div>
       </div>
      
@@ -93,40 +80,40 @@
                   </thead>
           
                   <tbody>
-                  <%  order.products.forEach(p => { %>
+               {{#each products}}
                     <tr>
-                      <td><%- p.name %></td>
-                      <td>$<%- p.price %></td>
+                      <td>{{name}}</td>
+                      <td>${{price}}</td>
                     </tr>
-                 <% }) %>
+                {{/each}}
                   </tbody>
                 </table>
               </div>
           </div>
         </li>
-         <% }) %>
+         {{/each}}
         </ul>
         </div>
       </div>
       <div class="carousel-item white-text" href="#three!">
         <div class="orders">
           <ul class="collapsible">
-        <% orders.completedOrders.forEach(order => { %>
+        {{#each orders.completedOrders}}
           <li>
-            <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><h2><%- order.date %></h2></div>
+            <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><h2>{{date}}</h2></div>
             <div class="collapsible-body order-info-content">
           <div class="order-details">
           <div>
               <h2>Order Placed</h2>
-              <h3><%- order.date %></h3>
+              <h3>{{date}}</h3>
           </div>
           <div>
               <h2>Total</h2>
-              <h3><%- order.total %></h3>
+              <h3>{{total}}</h3>
           </div>
           <div>
             <h2>Delivery Location</h2>
-            <h3><%- order.location %></h3>
+            <h3>{{location}}</h3>
           </div>
       </div>
             <div class="order-table">
@@ -139,22 +126,21 @@
                   </thead>
           
                   <tbody>
-                  <%  order.products.forEach(p => { %>
+                {{#each products}}
                     <tr>
-                      <td><%- p.name %></td>
-                      <td>$<%- p.price %></td>
+                      <td>{{name}}</td>
+                      <td>${{price}}</td>
                     </tr>
-                 <% }) %>
+                {{/each}}
                   </tbody>
                 </table>
               </div>
           </div>
         </li>
-         <% }) %>
+         {{/each}}
         </ul>
       </div>
     </div>
   </div>
   </div>
   
-<%- include ("partials/footer.ejs") %>

@@ -2,40 +2,40 @@ import express from "express";
 import dotEnv from "dotenv";
 import path from "path";
 import { initializeFirebase } from "./push-notification"
+import engines from "consolidate"
+import expbs from "express-handlebars";
+import fs from "fs"
+
 
 initializeFirebase();
 
 const app = express();
 
-app.set("view engine", "ejs");
+//handlebars config 
+const hbs = expbs.create({
+    defaultLayout: "main",
+    layoutsDir:  path.join(__dirname, "../views/layouts"),
+    partialsDir: path.join(__dirname, "../views/partials")
+});
+
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars")
 
 app.use("/", express.static(path.join(__dirname, "../public/css")));
 app.use("/", express.static(path.join(__dirname, "../public/js")));
 app.use("/", express.static(path.join(__dirname, "../public/img")));
 app.use("/", express.static(path.join(__dirname, "../public/fonts")));
 
-console.log(path.join(__dirname, "../public"))
-
 dotEnv.config();
 
 const port = process.env.PORT;
 
-const bakeryItemCatagories = [
+const categories = [
     {
-        productCategory: "cookies",
-        productCount: 30,
-        img: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-    },
-    {
-        productCategory: "muffins",
-        productCount: 10,
-        img: "https://images.unsplash.com/photo-1519869491916-8ca6f615d6bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-    },
-    {
-        productCategory: "pies",
-        productCount: 90,
-        img: "https://images.unsplash.com/photo-1486428128344-5413e434ad35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-    }
+    productCategory: "cookies",
+    productCount: 3,
+    img: "https://images.unsplash.com/photo-1486428128344-5413e434ad35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    }   
 ]
 
 const products = [
@@ -96,7 +96,6 @@ const products = [
         toppings: [{title: "cherries", amount: 1} , {title: "nuts", amount: 1}, {title: "chocolate flakes", amount: 1}]
     }
 ];
-
 
 const user = {
     name: "user123",
@@ -174,15 +173,15 @@ const pendOrders = [
 const customizationItems =  [{title: "cherries", amount: 0} , {title: "nuts", amount: 0}, {title: "chocolate flakes", amount: 0}]
 
 app.get("/products", (req, res, next) => {
-    res.render("categories_view", {products: bakeryItemCatagories, pageType: "standard"});
+    res.render("categories_view", { categories, pageType: true, header: "categories"});
 });
 
 app.get("/about", (req, res, next) => {
-    res.render("about_view", {products: bakeryItemCatagories, pageType: "", header: "about"});
+    res.render("about_view", {products: bakeryItemCatagories, pageType: false, header: "about"});
 });
 
 app.get("/terms", (req, res, next) => {
-    res.render("terms_view", {products: bakeryItemCatagories, pageType: "", header: "terms"});
+    res.render("terms_view", {products: bakeryItemCatagories, pageType: false, header: "terms"});
 });
 
 app.get("/product/:category", (req, res, next) => {
@@ -192,19 +191,19 @@ app.get("/product/:category", (req, res, next) => {
         if(product.category === category)
         selectedProducts.push(product)
     })
-    res.render("category_view", {products: selectedProducts, customizationItems: customizationItems, category: category, header: category, pageType: ""});
+    res.render("category_view", {products: selectedProducts, customizationItems: customizationItems, category: category, header: category, pageType: false});
 });
 
 app.get("/info/:user", (req, res, next) => {
-    res.render("user_view", { userInfo: user, pageType: "",  allergies: ["peanuts", "milk", "eggs", "tree nuts", "soy", "gluten", "fish", "shellfish" ], header: "info" });
+    res.render("user_view", { userInfo: user, pageType: false,  allergies: ["peanuts", "milk", "eggs", "tree nuts", "soy", "gluten", "fish", "shellfish" ], header: "info" });
 });
 
 app.get("/cart/:user", (req, res, next) => {
-    res.render("cart_view", { pageType: "", header: "cart" });
+    res.render("cart_view", { pageType: false, header: "cart" });
 });
 
 app.get("/order/:user", (req, res, next) => {
-    res.render("order_view", { pageType: "", orders: {currentOrders: pendOrders, cancelledOrders: pendOrders, completedOrders: pendOrders }, header: "orders" });
+    res.render("order_view", { pageType: false, orders: {currentOrders: pendOrders, cancelledOrders: pendOrders, completedOrders: pendOrders }, header: "orders" });
 });
 
 app.get("/admin", (req, res, next) => {
