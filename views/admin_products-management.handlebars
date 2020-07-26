@@ -1,6 +1,20 @@
 {{> navbar_admin }}
 <div class="option-menu-shadow"></div>
 
+<div class="admin-product-edit-floater" style="">
+    <div class="title_price-inputs">
+        <input type="text" placeholder="add product title here..." >
+        <input type="text" placeholder="add price..." >
+    </div>
+
+    <input type="text" placeholder="add description...">
+                                
+        <div class="product-edit-input-btns">
+            <a class="waves-effect waves-light btn product-save-btn">save</a>
+            <a class="waves-effect waves-light btn product-cancle-btn">cancle</a>
+        </div>
+</div>
+
 <div class="container admin-products-container">
     <div class="searchbar" >
         <input type="text" placeholder="Search For Product... ">
@@ -28,7 +42,8 @@
                                   <img src="/cake_1.jpg">
                               </div>
                               <div>
-                                  <h2>Title</h2>
+                                  <h1>Category</h1>
+                                  
                               </div>
                             </div>
                         </div>
@@ -44,29 +59,32 @@
                         </div>
                     </div> 
                     <div class="collapsible-body">
-                     
-                        <ul class="admin-product-list">
-                                
-                            <li>
-                                <div>
-                                    <div class="admin-product-img">
+                           
+                        <ul class=" admin-product-list"> 
+                            <li class="collapsible-header admin-product">
+                        
+                       
+                                 
+                         
+                                <div class="admin-product-img">
                                         <img src="/cake_1.jpg">
-                                    </div>
-                                    <div>
-                                        <h2>Title</h2>
-                                    </div>
+                                </div>
+                                <div class="admin-product-description">
+                                    <h1>Product</h1>
+                                    <p>Lorem ipsum dolor sit amet,fffffffffffffffff </p>
                                 </div>
                                 <div class="product-dropdown">
                                     <a class='dropdown-trigger edit-drop-trigger' href='#' data-target='dropdown2'><i class="material-icons">more_vert</i></a>
-                                <ul id='dropdown2' class='dropdown-content'>
+                                    <ul id='dropdown2' class='dropdown-content'>
                                     <li><a href="#!">Addons</a></li>
                                     <li><a href="#!">Alergies</a></li>
                                     <li><a href="#!">Edit</a></li>
                                     <li><a href="#!">Delete</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                         <li class="product-input" style="display: none;">
+                                    </ul>
+                                </div> 
+                            </li>
+
+                            <li class="product-input" style="display: none;">
                                 <div class="title_price-inputs">
                                     <input type="text" placeholder="add product title here..." >
                                     <input type="text" placeholder="add price..." >
@@ -79,7 +97,6 @@
                                     <a class="waves-effect waves-light btn product-cancle-btn">cancle</a>
                                 </div>
                             </li>
-                      
                     </li>
                    
                     <a class="waves-effect waves-light btn add-product-btn">Add Product</a>

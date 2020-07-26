@@ -1,3 +1,4 @@
+//Category ADD input
 $(".add-btn").on("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -20,6 +21,7 @@ $(".cancle-category-btn").on("click", (e) => {
 });
 
 
+//Product ADD input 
 $(".add-product-btn").on("click", (e) => {
     $(".product-btn").css({display: "none"});
     $(".product-input").css({display: "flex"});

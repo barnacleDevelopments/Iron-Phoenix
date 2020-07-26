@@ -1,13 +1,7 @@
 import express from "express";
 import dotEnv from "dotenv";
 import path from "path";
-import { initializeFirebase } from "./push-notification"
-import engines from "consolidate"
 import expbs from "express-handlebars";
-import fs from "fs"
-
-
-initializeFirebase();
 
 const app = express();
 
@@ -21,15 +15,17 @@ const hbs = expbs.create({
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars")
 
+//STATIC ASSETS
 app.use("/", express.static(path.join(__dirname, "../public/css")));
 app.use("/", express.static(path.join(__dirname, "../public/js")));
 app.use("/", express.static(path.join(__dirname, "../public/img")));
 app.use("/", express.static(path.join(__dirname, "../public/fonts")));
 
+//CONFIGURE ENVIROMENTAL VARIABLES
 dotEnv.config();
-
 const port = process.env.PORT;
 
+//OBJECT TEMPLATES
 const categories = [
     {
     productCategory: "cookies",
@@ -172,6 +168,7 @@ const pendOrders = [
 
 const customizationItems =  [{title: "cherries", amount: 0} , {title: "nuts", amount: 0}, {title: "chocolate flakes", amount: 0}]
 
+// CLIENT SIDE ROUTES
 app.get("/products", (req, res, next) => {
     res.render("categories_view", { categories, pageType: true, header: "categories"});
 });
@@ -206,8 +203,17 @@ app.get("/order/:user", (req, res, next) => {
     res.render("order_view", { pageType: false, orders: {currentOrders: pendOrders, cancelledOrders: pendOrders, completedOrders: pendOrders }, header: "orders" });
 });
 
-app.get("/admin", (req, res, next) => {
+//ADMIN SIDE ROUTES
+app.get("/admin/products", (req, res, next) => {
     res.render("admin_products-management")
+});
+
+app.get("/admin/allergies", (req, res, next) => {
+    res.render("admin_allergies-management")
+});
+
+app.get("/admin/addons", (req, res, next) => {
+    res.render("admin_addons-management")
 });
 
 app.listen(port, () => {
