@@ -116,7 +116,7 @@
 .searchbar {
     box-shadow: 0px 0px 2px 1px#ffffff ;
     height: 50px;
-    position: fixed;
+    position: absolute;
     width: 100%;
     left: 0px;
     top: 65px;
@@ -725,11 +725,13 @@
 /* Admin category / input */
 .admin-products-container {
     margin-top: 103px;
+    overflow-y: scroll !important;
 }
 
 .admin-category-list {
     border: none !important;
     box-shadow: none;
+    height: 100%;
 }
 
 
@@ -829,7 +831,6 @@
     -webkit-box-sizing: border-box !important;
     box-sizing: border-box !important;
     border: 1px solid #cccccc !important;
-
 }
 
 .category-input-btns {
@@ -953,7 +954,7 @@
 }
 
 .add-product-btn {
-    margin-top: 14px;
+    margin: 14px 0px 14px 0px;
     background-color: #5cb85c !important;
 }
 
@@ -1062,6 +1063,16 @@
 .allergy-chips {
     padding: 20px;
     margin-top: 14px;
+}
+
+.allergy-chips div {
+    height: 40px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    font-size: 17px;  
+    border-radius: 20px;
 }
 
 
