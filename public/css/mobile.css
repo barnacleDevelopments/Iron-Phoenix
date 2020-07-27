@@ -705,6 +705,23 @@
 
 /* ADMIN STYLES */
 
+.delete-prompt {
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.delete-prompt > h3 {
+    margin-bottom: 14px;;
+}
+
+.delete-prompt > a:nth-of-type(1) {
+    background-color: #5cb85c !important;
+}
+
+.delete-prompt > a:nth-of-type(2) {
+    background-color: gray !important;
+}
+
 /* Admin category / input */
 .admin-products-container {
     margin-top: 103px;
@@ -720,7 +737,6 @@
     width: 100%;
 }
 
-
 .admin-category-list .collapsible-header {
     display: flex;
     justify-content: space-between;
@@ -735,7 +751,7 @@
 .admin-category-list .collapsible-body {
     background-color: #ffffff00;
     position: relative;
-    top: -7px !important;
+    top: 0px !important;
     border: none !important;
     padding: 0px;
     
@@ -771,7 +787,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 5px;
 }
 
 .collapsible-header {
@@ -781,6 +796,8 @@
 .collapsible-header-container {
     display: flex;
     background-color: #f5f5f5;
+    margin-bottom: 14px ;
+  
 }
 
 .collapsible-header-container {
@@ -846,17 +863,32 @@
 
 
 /* products display / input */
+.admin-product-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 100%;
+}
+
+
 .admin-product {
-    width: 100%;
+    width: 95%;
     display: flex;
     background-color: #f5f5f5;
-    padding: 20px;
-    margin-top: 14px;;
+    padding: 10px;
+    justify-content: space-between;
+
+}
+
+.admin-product > div:nth-of-type(1) {
+    display: flex;
 }
 
 .admin-product-img {
-    width: 90px;
-    height: 90px
+    width: 100px;
+    height: 100px;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 .admin-product-img img {
@@ -871,7 +903,22 @@
     flex-direction: column;
 }
 
+.admin-product-description p {
+    width: 100%;
+    word-break: break-all;
+    word-wrap: break-word;
+}
 
+.product-input {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: #f5f5f5;
+    margin-bottom: 14px;
+    padding: 14px;
+    margin-top: 14px;
+}
 
 .product-input input {
     background-color: #FFFFFF !important;
@@ -910,30 +957,46 @@
     background-color: #5cb85c !important;
 }
 
+.save-btn {
+    background-color: #5cb85c!important;
+}
+
+.cancel-btn {
+    background-color: #808080!important;
+}
+
 .product-save-btn {
     background-color: #5cb85c!important;
 }
 
-.product-cancle-btn {
+.product-cancel-btn {
     background-color: #808080!important;
 }
 
-.admin-product-edit-floater {
+.admin-product-floater-container {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    justify-content: center;
     position: absolute;
-    background-color: #f5f5f5;
-    top: 65px;
+    top: 0px;
     left: 0px;
     margin: 0 auto;
     z-index: 10;
     padding: 20px;
     width: 100% !important;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.397);
 }
 
-.admin-product-edit-floater input {
+.admin-product-floater-container > div {
+    width: 90%;
+    padding: 20px;
+    background-color: #f5f5f5;
+    margin: 0 auto;
+    position: relative;
+    top: 200px;
+}
+
+.admin-product-floater-container > div input {
     background-color: #FFFFFF !important;
     padding-left: 10px !important;
     -moz-box-sizing: border-box !important; 
@@ -943,6 +1006,26 @@
     border: none !important;
     border: 1px solid #cccccc !important;
 }
+
+.edit-product-menu {
+    background-color: #f5f5f5;
+    padding: 20px;
+    height: 180px;
+}
+
+.edit-category-menu {
+    background-color: #f5f5f5;
+    padding: 20px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.edit-category-menu > div:nth-of-type(2) {
+    display: flex;
+}
+
 
 /* ADMIN ALLERGIES VIEW */
 
@@ -1034,10 +1117,16 @@
 
 .product-dropdown {
     display: flex !important;
-    align-items: flex-start !important;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
     color: black !important;
     padding-top: 10px;
     
+}
+
+.product-dropdown h3 {
+    margin-right: 8px;;
 }
 
 .product-dropdown ul {

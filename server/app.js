@@ -104,6 +104,7 @@ const user = {
 
 const pendOrders = [
     {
+    id: 1,
     date: "April 11, 2020",
     total: 301.80,
     location: "1027 Lucknow St.",
@@ -124,6 +125,7 @@ const pendOrders = [
     ]
     },
       {
+    id: 2,
     date: "April 11, 2020",
     total: 301.80,
     location: "1027 Lucknow St.",
@@ -144,6 +146,7 @@ const pendOrders = [
     ]
     },  
     {
+        id: 3,
         date: "April 11, 2020",
         total: 301.80,
         location: "1027 Lucknow St.",

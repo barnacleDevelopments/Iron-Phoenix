@@ -6,12 +6,12 @@
           <ul class="collapsible">
         {{#each orders.currentOrders}}
               <li>
-                <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><h2>{{date}}</h2></div>
+                <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><h2>{{id}}</h2></div>
                 <div class="collapsible-body order-info-content">
           <div class="order-details">
           <div>
               <h3>Order Placed</h3>
-              <h3>{{date}}></h3>
+              <h3>{{date}}</h3>
           </div>
           <div>
               <h3>Total</h3>
@@ -52,7 +52,7 @@
               <ul class="collapsible">
         {{#each orders.cancelledOrders}}
           <li>
-            <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><h2>{{date}}</h2></div>
+            <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><h2>{{id}}</h2></div>
             <div class="collapsible-body order-info-content">
           <div class="order-details">
           <div>
@@ -100,7 +100,7 @@
           <ul class="collapsible">
         {{#each orders.completedOrders}}
           <li>
-            <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><h2>{{date}}</h2></div>
+            <div class="collapsible-header order-info-header"><i class="material-icons">arrow_drop_down</i><h2>{{id}}</h2></div>
             <div class="collapsible-body order-info-content">
           <div class="order-details">
           <div>
