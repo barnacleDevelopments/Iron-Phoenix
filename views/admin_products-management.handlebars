@@ -1,0 +1,130 @@
+{{> navbar_admin }}
+<div class="option-menu-shadow" style="display: none;"></div>
+
+<div class="admin-product-floater-container" style="display:none">
+    <div class="edit-category-menu" style="display:none">
+        <input type="text" placeholder="add category title here..." >
+        <div>
+            <a class="waves-effect waves-light btn save-btn">save</a>
+            <a class="waves-effect waves-light btn cancel-btn">cancle</a>
+        </div>
+    </div>
+
+   <div class="edit-product-menu" style="display:none" >
+        <div class="title_price-inputs">
+            <input type="text" placeholder="add product title here..." >
+            <input type="text" placeholder="add price..." >
+        </div>
+          <input type="text" placeholder="add description...">                        
+        <div class="product-edit-input-btns">
+            <a class="waves-effect waves-light btn save-btn">save</a>
+            <a class="waves-effect waves-light btn cancel-btn">cancle</a>
+        </div>
+    </div>
+
+
+    <div class="delete-prompt category-prompt" style="display:none">
+        <h3>Are you sure want to delete this category? You have x items in this list.</h3>
+        <a class="waves-effect waves-light btn delete-confirm-btn">Confirm</a>
+        <a class="waves-effect waves-light btn cancel-btn">Cancel</a>
+
+    </div>
+
+    <div class="delete-prompt product-prompt" style="display:none">
+        <h3>Are you sure want to delete this item?</h3>
+        <a class="waves-effect waves-light btn delete-confirm-btn">Confirm</a>
+        <a class="waves-effect waves-light btn cancel-btn">Cancel</a>
+    </div>
+</div>
+
+
+<div class="container admin-products-container">
+    <div class="searchbar" >
+        <input type="text" placeholder="Search For Product... ">
+        <i class="material-icons">search</i>  
+      </div>
+     
+    <div class="row">
+        <div class="category-add-btn">
+            <a class="waves-effect waves-light btn add-category-btn">Add Category</a>
+        </div>
+        <div>
+            <ul class="collapsible admin-category-list">
+                <li class="category-input" style="display: none">
+                    <input type="text" placeholder="add category here...." >
+                    <div class="category-input-btns">
+                        <a class="waves-effect waves-light btn category-save-btn">save</a>
+                        <a class="waves-effect waves-light btn category-cancel-btn">cancle</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header-container">   
+                        <div class="collapsible-header">
+                            <div>
+                              <div class="admin-category-img">
+                                  <img src="/cake_1.jpg">
+                              </div>
+                              <div>
+                                  <h1>Category</h1>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="category-dropdown">
+                            <div>
+                                <a class='dropdown-trigger edit-drop-trigger' href='#' data-target='dropdown1'><i class="material-icons">more_vert</i></a>
+                                <ul id='dropdown1' class='dropdown-content'>
+                                <li><a href="" class="edit-category-btn">Edit</a></li>
+                                <li><a href="" class="delete-category-btn">Delete</a></li>
+                                </ul>
+                            </div>
+                           
+                        </div>
+                    </div> 
+                    <div class="collapsible-body">   
+                        <ul class=" admin-product-list">
+                            <li class="admin-product">  
+                                <div>
+                                    <div class="admin-product-img">
+                                        <img src="/cake_1.jpg">
+                                    </div>
+                                    <div class="admin-product-description">
+                                        <h1>Product</h1>
+                                        <p>Lorem ipsum dolor sit amet.</p>
+                                    </div>
+                                </div>                      
+                                <div class="product-dropdown">
+                                    <div>
+                                        <a class='dropdown-trigger edit-drop-trigger' href='#' data-target='dropdown2'><i class="material-icons">more_vert</i></a>
+                                        <ul id='dropdown2' class='dropdown-content'>
+                                        <li><a href="#!">Addons</a></li>
+                                        <li><a href="#!">Alergies</a></li>
+                                        <li><a href="#!" class="edit-product-btn">Edit</a></li>
+                                        <li><a href="#!" class="delete-product-btn">Delete</a></li>
+                                        </ul>
+                                    </div>
+                                   <div class="product-price">
+                                       <h3>$50.00</h3>
+                                   </div>
+                                </div> 
+                            </li>
+
+                            <li class="product-input" style="display: none;">
+                                <div class="title_price-inputs">
+                                    <input type="text" placeholder="add product title here..." >
+                                    <input type="text" placeholder="add price..." >
+                                </div>
+
+                                <input type="text" placeholder="add description...">
+                               
+                                <div class="product-input-btns">
+                                    <a class="waves-effect waves-light btn product-save-btn">save</a>
+                                    <a class="waves-effect waves-light btn product-cancel-btn">cancle</a>
+                                </div>
+                            </li>
+                    </li>
+                   
+                    <a class="waves-effect waves-light btn add-product-btn">Add Product</a>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+{{> navbar_customer }}
+
+<div class="user-info-container">
+    <ul class="collapsible">
+        <li>
+          <div class="collapsible-header user-info-header">
+            <div><i class="material-icons">person_outline</i><h2>Name</h2></div>
+            <div><h3>{{userInfo.name}}</h3></div>
+          </div>
+          <div class="collapsible-body user-info-content">
+            <div class="input-field user-input-field">
+                <input placeholder="{{userInfo.name}}" id="first_name" type="text" class="validate">
+            </div>
+            </div>
+        </li>
+        <li>
+          <div class="collapsible-header user-info-header">
+            <div><i class="material-icons">email</i><h2>Email</h2></div>
+            <div><h3>{{userInfo.email}} </h3></div>
+          </div>
+          <div class="collapsible-body user-info-content">
+            <div class="input-field user-input-field">
+                <input placeholder="{{userInfo.email}}" id="first_name" type="text" class="validate">
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header user-info-header">
+            <div><i class="material-icons">location_on</i><h2>Location</h2></div>
+            <div><h3>{{userInfo.address}}</h3></div>
+          </div>
+          <div class="collapsible-body user-info-content">
+            <div class="input-field user-input-field">
+                <input placeholder="{{userInfo.address}}" id="first_name" type="text" class="validate">
+            </div>
+               
+            </div>
+        </li>
+        <li>
+          <div class="collapsible-header user-info-header">
+            <div><i class="material-icons">phone</i><h2>Phone Number</h2></div>
+            <div><h3>{{userInfo.number}}</h3></div>
+          </div>
+          <div class="collapsible-body user-info-content">
+            <div class="input-field user-input-field">
+                <input placeholder="{{userInfo.number}}" id="first_name" type="text" class="validate">
+            </div>
+              
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header user-info-header">
+              <div><i class="material-icons">local_hospital</i><h2>Allergies</h2><span class="badge"></span></div>
+              <div><h3>{{userInfo.allergies.length}}</h3></div>
+          </div>
+          <div class="collapsible-body user-info-content">  
+
+            <div class="chip allergie-chip confirmed-allergie"><span></span></div>
+
+            <div class="chip allergie-chip"><span></span></div>
+
+          </div>
+        </li>
+      </ul>
+      
+</div>

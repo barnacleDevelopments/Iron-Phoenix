@@ -1,34 +1,49 @@
-const chatBubble = document.querySelector(".chat-bubble");
-const chatContainer = document.querySelector(".chat-container");
-const chatMenuShadow = document.querySelector(".chat-menu-shadow");
-const itemDescription = document.querySelector(".item-description")
-const searchBar = document.querySelector(".searchbar");
-const categoryBar = document.querySelector(".category-bar");
+const displayShadowOverlay = () => {
+    $(".option-menu-shadow").css({display: "block"})
+}
+
+const removeShadowOverlay = () => {
+    $(".option-menu-shadow").css({display: "none"})
+}
+
+$('.dropdown-trigger').dropdown({
+    onOpenStart: displayShadowOverlay,
+    onCloseStart: removeShadowOverlay
+});
+
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+
+
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
 
 $('.carousel.carousel-slider').carousel({
     fullWidth: true,
-    indicators: true,
-    padding: 50
+    indicators: true
   });
 
-$('.dropdown-trigger').dropdown();
-
-$('.dropdown-trigger').on("click", () => {
-    $(".option-menu-shadow").addClass("shadow-active")
+//Floating cusotmization menu enable/disable
+$(".customize-btn").on("click", (e) => {
+    //check if product id matches
+    for(let i = 0; i < $(".floating-customization-menu").length; i++) {
+        if(e.target.id === $(".floating-customization-menu")[i].id) {
+            // if a match display floating overlay
+            $($(".floating-customization-menu")[i]).removeClass("disabled")
+        }
+    }
 });
 
-$(".option-menu-shadow").on("click", () => {
-    $(".option-menu-shadow").removeClass("shadow-active")
+$(".cancle-btn").on("click", () => {
+    $(".floating-customization-menu").addClass("disabled")
 });
 
-
-
-
-// Find and display clicked list item image overlay
+// Floating product image disable/enable
 $(".image-expand-button").on("click", (e) => {
     //check if product id matches
     for(let i = 0; i < $(".floating-product-img").length; i++) {
-        console.log(e.target.id)
         if(e.target.id === $(".floating-product-img")[i].id) {
             // if a match display floating overlay
             $($(".floating-product-img")[i]).removeClass("disabled")
@@ -47,9 +62,6 @@ $(document).ready(function(){
     console.log($(".category-item"))
   });
 
-
-
-       
 
 $(window).scroll( function(){
     $('.hideme').each( function(i){

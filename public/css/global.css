@@ -1,5 +1,10 @@
+*, *::before, *::after {box-sizing: inherit;} 
+
 html {
     overflow: hidden;
+    -moz-box-sizing: border-box !important; 
+    -webkit-box-sizing: border-box !important; 
+    box-sizing: border-box !important; 
 }
 
 body {
@@ -9,8 +14,51 @@ body {
     height: 100%;;
     margin: 0 auto;
     width: 100%;
-    height: 95vh;
-    background-color: #2C363F;
+    height: 100vh;
+    background-color: #4A5759;
+    font-size: 16px !important;
+}
+
+body h1 {
+    font-size: 28px !important;
+    margin: 0px;
+    padding: 0px;
+}
+
+body h2 {
+    font-size: 22px !important;
+    margin: 0px;
+    padding: 0px;
+}
+
+body h3 {
+    font-size: 20px !important;
+    margin: 0px;
+    padding: 0px;
+}
+
+body h4 {
+    font-size: 19px !important;
+    margin: 0px;
+    padding: 0px;
+}
+
+body p {
+    font-size: 17px !important;    
+    margin: 0px;
+    padding: 0px;
+}
+
+body span {
+    font-size: 17px !important;
+    margin: 0px;
+    padding: 0px;
+}
+
+body button {
+    font-size: 20px;;
+    margin: 0px;
+    padding: 0px;
 }
 
 .shadow {
