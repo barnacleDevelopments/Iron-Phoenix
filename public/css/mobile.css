@@ -25,10 +25,10 @@
 
 .categories-card h2 {
     color: rgba(0, 0, 0, 0.473);;
-    font-size: 1.3em !important; 
-    margin: 0px; 
+    font-size: 1.3em !important;
+    margin: 0px;
 }
- 
+
 .categories-card span {
     text-transform: capitalize;
     font-size: 1.8em !important;
@@ -114,7 +114,7 @@
 }
 
 .searchbar {
-    box-shadow: 0px 0px 2px 1px#ffffff ; 
+    box-shadow: 0px 0px 2px 1px#ffffff ;
     height: 50px;
     position: fixed;
     width: 100%;
@@ -154,7 +154,7 @@
     top: 0px;
     display: flex;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
 }
 
 .floating-product-img img {
@@ -392,7 +392,7 @@
 
 .user-info-content {
     background-color: #ffffff;
-   
+
 }
 
 .confirmed-allergie {
@@ -514,7 +514,7 @@
 
 .order-table th {
     text-align: center !important;
- 
+
 }
 
 .order-table td {
@@ -532,7 +532,7 @@
     background-color: #ffffff;
     width: 100%;
     left: 0px !important;
-    top: 0px !important; 
+    top: 0px !important;
     height: 68px !important;
     display: flex;
     justify-content: space-around;
@@ -553,18 +553,18 @@
 }
 
 .indicators .indicator-item:nth-of-type(1)::before {
-    content: "current" !important; 
+    content: "current" !important;
 
 }
 
 .indicators .indicator-item:nth-of-type(2)::before {
-    content: "cancelled" !important; 
- 
+    content: "cancelled" !important;
+
 }
 
 .indicators .indicator-item:nth-of-type(3)::before {
-    content: "completed" !important; 
-    
+    content: "completed" !important;
+
 }
 
 /* Cart View */
@@ -692,7 +692,7 @@
 .large-view-orders > div {
    background-color: white;
    margin: 0px 20px 20px 20px;
-} 
+}
 
 .disabled {
     display: none;
@@ -729,7 +729,7 @@
 
 .admin-category-list {
     border: none !important;
-    box-shadow: none;  
+    box-shadow: none;
 }
 
 
@@ -754,7 +754,7 @@
     top: 0px !important;
     border: none !important;
     padding: 0px;
-    
+
 }
 
 .admin-category-list .collapsible-header div:nth-of-type(1) {
@@ -770,7 +770,7 @@
 }
 
 .admin-category-list .collapsible-header div:nth-of-type(2) {
-    display: flex; 
+    display: flex;
     justify-content: flex-end;
     width: 100%;
     flex: 1;
@@ -797,7 +797,7 @@
     display: flex;
     background-color: #f5f5f5;
     margin-bottom: 14px ;
-  
+
 }
 
 .collapsible-header-container {
@@ -825,11 +825,11 @@
     background-color: #ffffff !important;
     padding-left: 10px !important;
     border: 1px solid #cccccc !important;
-    -moz-box-sizing: border-box !important; 
-    -webkit-box-sizing: border-box !important; 
-    box-sizing: border-box !important; 
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
     border: 1px solid #cccccc !important;
-    
+
 }
 
 .category-input-btns {
@@ -843,7 +843,7 @@
 
 .category-input-btns a:nth-of-type(2) {
     background-color: #5cb85c;
-  
+
 }
 
 .add-category-btn {
@@ -923,9 +923,9 @@
 .product-input input {
     background-color: #FFFFFF !important;
     padding-left: 10px !important;
-    -moz-box-sizing: border-box !important; 
-    -webkit-box-sizing: border-box !important; 
-    box-sizing: border-box !important; 
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
     gap: 10px !important;
     border: none !important;
     border: 1px solid #cccccc !important;
@@ -939,17 +939,17 @@
 
 .title_price-inputs input:nth-of-type(1) {
     width: 59% !important;
-    -moz-box-sizing: border-box !important; 
-    -webkit-box-sizing: border-box !important; 
-    box-sizing: border-box !important; 
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
     gap: 10px !important;
 }
 
 .title_price-inputs input:nth-of-type(2) {
     width: 40% !important;
-    -moz-box-sizing: border-box !important; 
-    -webkit-box-sizing: border-box !important; 
-    box-sizing: border-box !important; 
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
 }
 
 .add-product-btn {
@@ -999,9 +999,9 @@
 .admin-product-floater-container > div input {
     background-color: #FFFFFF !important;
     padding-left: 10px !important;
-    -moz-box-sizing: border-box !important; 
-    -webkit-box-sizing: border-box !important; 
-    box-sizing: border-box !important; 
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
     gap: 10px !important;
     border: none !important;
     border: 1px solid #cccccc !important;
@@ -1045,21 +1045,26 @@
 .allergy-input input {
     background-color: #FFFFFF !important;
     padding-left: 10px !important;
-    -moz-box-sizing: border-box !important; 
-    -webkit-box-sizing: border-box !important; 
-    box-sizing: border-box !important; 
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
     gap: 10px !important;
     border: none !important;
     border: 1px solid #cccccc !important;
 }
-
-
 
 .allergy-add-btn a {
     width: 100%;
     background-color: #5cb85c !important;
     margin-bottom: 24px;
 }
+
+.allergy-chips {
+    padding: 20px;
+    margin-top: 14px;
+}
+
+
 
 /* ADMIN ADDONS VIEW */
 .addons-list-container {
@@ -1079,9 +1084,9 @@
 .addons-input input {
     background-color: #FFFFFF !important;
     padding-left: 10px !important;
-    -moz-box-sizing: border-box !important; 
-    -webkit-box-sizing: border-box !important; 
-    box-sizing: border-box !important; 
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
     gap: 10px !important;
     border: none !important;
     border: 1px solid #cccccc !important;
@@ -1122,7 +1127,7 @@
     justify-content: space-between;
     color: black !important;
     padding-top: 10px;
-    
+
 }
 
 .product-dropdown h3 {

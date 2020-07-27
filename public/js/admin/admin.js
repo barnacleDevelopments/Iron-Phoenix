@@ -118,4 +118,16 @@ $(".save-btn").on("click", (e) => {
 });
 
 
+// ALLERGY VIEW
+$(".add-allergy-btn").on("click", (e) => {
+    $(".allergy-input").css({display: "block"});
+  
+});
 
+$(".allergy-save-btn").on("click", () => {
+    $(".allergy-input").css({display: "none"});
+});
+
+$(".allergy-cancel-btn").on("click", () => {
+    $(".allergy-input").css({display: "none"});
+});
