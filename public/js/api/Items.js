@@ -1,3 +1,5 @@
 class Item {
-    
+    constructor(){
+        
+    }
 }
