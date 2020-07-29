@@ -780,8 +780,8 @@
 }
 
 .admin-category-img {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     margin-right: 10px;
 
 }
@@ -789,10 +789,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.collapsible-header {
-    background-color: #f5f5f5;
 }
 
 .collapsible-header-container {
@@ -878,7 +874,14 @@
     background-color: #f5f5f5;
     padding: 10px;
     justify-content: space-between;
+}
 
+.admin-product p {
+    font-size: 14px !important;
+}
+
+.admin-product h3 {
+    font-size: 15px !important;
 }
 
 .admin-product > div:nth-of-type(1) {
