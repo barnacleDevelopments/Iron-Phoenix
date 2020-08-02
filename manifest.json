@@ -1,0 +1,33 @@
+{
+    "name": "Iron Phoenix",
+    "short_name": "IronPhoenix",
+    "start_url": "/products",
+    "display": "standalone",
+    "background_color": "#f5f5f5",
+    "theme_color": "#5cb85c",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/public/img/icons/ip.png",
+            "type": "image/png",
+            "size": "72x72"
+        },
+        {
+            "src": "/public/img/icons/ip1.png",
+            "type": "image/png",
+            "size": "96x96"
+        },
+        {
+            "src": "/public/img/icons/ip4.png",
+            "type": "image/png",
+            "size": "192x192"
+        },
+        {
+            "src": "public/img/icons/ip7.png",
+            "type": "image/png",
+            "sizes": "512x512"
+          }
+
+    ]
+
+}

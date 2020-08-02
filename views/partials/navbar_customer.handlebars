@@ -1,75 +1,73 @@
-  <div class="chat-menu">
-    <div class="chat-container">
-      <div class="bubble-field">
-        <div class="chat-bubble-client">
-          <h4>user_123</h4>
-          <p>Hello</p>
-        </div>
-        <div class="chat-bubble-service">
-          <h4>Sussan</h4>
-          <p>Hey there, how can I help you?</p>
-        </div>
-        <div class="chat-bubble-client">
-          <h4>user_123</h4>
-          <p>I'd like to buy some muffins but I am having trouble...</p>
-        </div>
-        <div class="chat-bubble-service">
-          <h4>Sussan</h4>
-          <p>I can certainly help you with that.</p>
-        </div>
-        <div class="chat-bubble-client">
-          <h4>user_123</h4>
-          <p>Great, thank you!</p>
-        </div>
+<div class="chat-menu">
+  <div class="chat-container">
+    <div class="bubble-field">
+      <div class="chat-bubble-client">
+        <h4>user_123</h4>
+        <p>Hello</p>
       </div>
-      <div>
-        <input type="text" placeholder="text here...">
+      <div class="chat-bubble-service">
+        <h4>Sussan</h4>
+        <p>Hey there, how can I help you?</p>
+      </div>
+      <div class="chat-bubble-client">
+        <h4>user_123</h4>
+        <p>I'd like to buy some muffins but I am having trouble...</p>
+      </div>
+      <div class="chat-bubble-service">
+        <h4>Sussan</h4>
+        <p>I can certainly help you with that.</p>
+      </div>
+      <div class="chat-bubble-client">
+        <h4>user_123</h4>
+        <p>Great, thank you!</p>
       </div>
     </div>
-    <div class="chat-bubble">
-      <a href="">
-          <i class="material-icons">chat</i>
-      </a>
+    <div>
+      <input type="text" placeholder="text here...">
     </div>
   </div>
-  <div class="chat-menu-shadow"></div> 
-    <div class="navbar">
-      <div class="logo">
+  <div class="chat-bubble">
+    <a href="">
+      <i class="material-icons">chat</i>
+    </a>
+  </div>
+</div>
+<div class="chat-menu-shadow"></div>
+<div class="navbar">
+  <div class="logo">
 
-          {{#if pageType }}
-          <img src="/ip7.png">
-          {{else}}
-          <div class="header-nav">
-            <a href="/products"><i class="material-icons">arrow_back</i></a>
-            <div class="page-header"><h1>{{header}}</h1></div>
-          </div>
-          {{/if}}
+    {{#if pageType }}
+    <img src="/ip7.png">
+    {{else}}
+    <div class="header-nav">
+      <a href="/products"><i class="material-icons">arrow_back</i></a>
+      <div class="page-header">
+        <h1>{{header}}</h1>
       </div>
-     
-      <div class="user-interface">
-        <div>
-            <div>
-              <a href="/cart/user">
-                <img src="/shopping-cart.png">
-              </a>
-            </div>
-            <div class="user-icon">
-              <a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons">account_circle</i></a>
-              <ul id='dropdown1' class='dropdown-content'>
-                <li><a href="/info/user">User Info</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/order/user">Order</a> </li>
-                <li><a href="/terms">Terms & Conditions</a></li>
-                <li class="divider" tabindex="-1"></li>
-                <li><a href="">Sign In</a></li>
-                <li> <a href="">Sign Out</a></li>
-              </ul>
-          </div>
-        </div>
     </div>
-    <div class="option-menu-shadow"></div> 
-    </div>  
- 
- 
-     
-      
+    {{/if}}
+  </div>
+
+  <div class="user-interface">
+    <div>
+      <div>
+        <a href="/user/cart/id">
+          <img src="/shopping-cart.png">
+        </a>
+      </div>
+      <div class="user-icon">
+        <a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons">account_circle</i></a>
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="/user/info/id">User Info</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/user/order/id">Order</a> </li>
+          <li><a href="/terms">Terms & Conditions</a></li>
+          <li class="divider" tabindex="-1"></li>
+          <li><a href="">Sign In</a></li>
+          <li> <a href="">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="option-menu-shadow"></div>
+</div>
