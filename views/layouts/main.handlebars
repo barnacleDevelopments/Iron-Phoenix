@@ -1,67 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="description here">
-    <meta name="keywords" content="keywords,here">
-    
-    <title>Iron Phoenix</title>
- 
- {{!-- STYLES --}}
-    {{!-- material css styles --}}
-    <link type="text/css" rel="stylesheet" href="/materialize.css"  media="screen,projection"/>
 
-    {{!-- Global Styles --}}
-    <link rel="stylesheet" type="text/css" href="/global.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="description here">
+  <meta name="keywords" content="keywords,here">
 
-    {{!-- Navbar Styles --}}
+  <title>Iron Phoenix</title>
 
-    <link rel="stylesheet" type="text/css" href="/navbar_mobile.css"> 
-
-    {{!-- mobile styles --}}
-    <link rel="stylesheet" type="text/css" href="/mobile.css">
-    <link rel="stylesheet" type="text/css" media="screen and (min-width:600px)" href="/tablet_portrait.css">
+  {{!-- STYLES --}}
 
 
-{{!-- FONTS & ICONS =--}}
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="/Poppins-Regular.ttf">
-    <script src="https://kit.fontawesome.com/2cea744347.js" crossorigin="anonymous"></script>
+  {{!-- material css styles --}}
+  <link type="text/css" rel="stylesheet" href="/materialize.css" media="screen,projection" />
 
-{{!-- PWA CONFIG --}}
+  {{!-- Global Styles --}}
+  <link rel="stylesheet" type="text/css" href="/global.css">
+
+
+  {{!-- Navbar Styles --}}
+
+  <link rel="stylesheet" type="text/css" href="/navbar_mobile.css">
+
+  {{!-- mobile styles --}}
+  <link rel="stylesheet" type="text/css" href="/mobile.css">
+  <link rel="stylesheet" type="text/css" media="screen and (min-width:600px)" href="/tablet_portrait.css">
+
+
+
+
+
+  {{!-- FONTS & ICONS =--}}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/Poppins-Regular.ttf">
+  <script src="https://kit.fontawesome.com/2cea744347.js" crossorigin="anonymous"></script>
+
+  {{!-- PWA CONFIG --}}
   {{!-- Manifest --}}
   <link rel="manifest" href="/manifest.json">
   {{!-- IOS Support --}}
   <meta name="apple-mobile-web-app-status-bar" content="#5cb85c">
   <link rel="apple-touch-icon" href="/icons/ip1.png">
   {{!-- Theme Color --}}
-   <meta name="theme-color" content="#5cb85c"/>
+  <meta name="theme-color" content="#5cb85c" />
 
-{{!-- j-Query --}}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  <meta name="author" content="name">
+  {{!-- j-Query --}}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta name="author" content="name">
 
-<link rel="icon" 
-      type="image/png" 
-      href="/ip.png">
+  <link rel="icon" type="image/png" href="/ip.png">
 </head>
-  <body>
- 
+
+<body>
+
   {{{ body }}}
-     
-    </div>
-</div>
-{{!-- MATERIALIZE JS --}}
+
+  </div>
+  </div>
+  {{!-- MATERIALIZE JS --}}
   <script type="text/javascript" src="/materialize.js"></script>
 
-{{!-- UI FILES --}}
+  {{!-- UI FILES --}}
   {{!-- customer ui --}}
   <script src="/customer_ui/customer.js"></script>
   {{!-- admin ui --}}
   <script src="/admin_ui/admin.js"></script>
 
-{{!-- SERVICE WORKER CONFIG --}}
-<script src="/sw_register.js"></script>
+  {{!-- SERVICE WORKER CONFIG --}}
+  <script src="/sw_register.js"></script>
 
 </body>
+
 </html>

@@ -34,15 +34,19 @@
 </div>
 <div class="chat-menu-shadow"></div>
 <div class="navbar">
-  <div class="logo">
-
+  <div class="arrow-nav">
     {{#if pageType }}
-    <img src="/ip7.png">
+    <div class="logo">
+      <img src="/ip7.png">
+    </div>
+
     {{else}}
     <div class="header-nav">
       <a href="/products"><i class="material-icons">arrow_back</i></a>
       <div class="page-header">
-        <h1>{{header}}</h1>
+        {{#biggerThen header header.length 8}}
+        {{value}}
+        {{/biggerThen}}
       </div>
     </div>
     {{/if}}

@@ -26,13 +26,11 @@
 
 .categories-card h2 {
   color: rgba(0, 0, 0, 0.473);
-  font-size: 1.3em !important;
   margin: 0px;
 }
 
 .categories-card span {
   text-transform: capitalize;
-  font-size: 1.8em !important;
 }
 
 .product-img {
@@ -58,6 +56,7 @@
 }
 
 .product-reveal h2 {
+  text-transform: capitalize;
   margin-bottom: 15px;
 }
 
@@ -138,7 +137,6 @@
   width: 100%;
   border-radius: 10px;
   text-indent: 50px;
-  font-size: 1.3em !important;
   background-color: #ffffff !important;
   border-bottom: none !important;
   border-top: 2px solid #ccc !important;
@@ -186,23 +184,29 @@
 .category-card-content {
   display: flex;
   justify-content: space-between;
+  flex: 1;
+}
+
+.category-subtitle {
+  color: rgba(128, 128, 128, 0.548) !important;
+  margin-top: 10px;
 }
 
 .category-card-title {
   display: flex;
+  text-transform: capitalize;
   flex-direction: column;
   justify-content: space-between;
-  flex: 1.8;
+  flex: 1;
 }
 
-.category-card-title h2 {
-  margin-top: 10px;
+.product-card-title {
+  margin-bottom: 10px !important;
 }
 
-.category-card-title span {
-  font-size: 1.8em !important;
+.product-price {
+  margin-top: 10px !important;
 }
-
 .card-btns {
   display: flex;
   flex-direction: column;
@@ -347,6 +351,7 @@
 }
 
 /* USER INFO CSS*/
+
 .user-info-container ul {
   margin-top: 0px;
   height: 95vh !important;
@@ -376,14 +381,31 @@
   height: 73px !important;
   display: flex;
   align-items: center;
-  font-weight: bold;
   justify-content: space-between;
+}
+
+.user-info-header h3 {
+  font-weight: bold;
 }
 
 .user-info-header div:nth-of-type(1) {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.user-info-header h3 {
+  padding-right: 20px;
+}
+
+.user-info-current-tags {
+  min-width: 0px;
+}
+
+.user-info-current-tags p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .user-info-content {
@@ -467,7 +489,6 @@
   height: 73px !important;
   display: flex;
   align-items: center;
-  font-weight: bold;
   justify-content: space-between;
   padding: 20px;
   border: none !important;
@@ -899,10 +920,6 @@ h3 {
   justify-content: space-between;
 }
 
-.admin-product p {
-  font-size: 14px !important;
-}
-
 .admin-product > div:nth-of-type(1) {
   display: flex;
 }
@@ -1007,7 +1024,6 @@ h3 {
 
 .product-dropdown h3 {
   margin-right: 8px;
-  font-size: 14px;
 }
 
 .product-dropdown ul {

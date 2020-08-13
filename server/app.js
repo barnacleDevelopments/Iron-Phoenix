@@ -11,6 +11,23 @@ const hbs = expbs.create({
   layoutsDir: path.join(__dirname, "../views/layouts"),
   partialsDir: path.join(__dirname, "../views/partials"),
   extName: ".handlebars",
+  helpers: {
+    biggerThen: (element, value1, value2, options) => {
+      if (value1 > value2) {
+        return `<h3 style="font-weight: 600 !important;
+        text-transform: capitalize;
+        padding-left: 20px;
+        width: 100% !important;
+        overflow-wrap: normal;">${options.fn({ value: element })}</h3>`;
+      } else {
+        return `<h2 style="  font-weight: 600 !important;
+        text-transform: capitalize;
+        padding-left: 20px;
+        width: 100% !important;
+        overflow-wrap: normal;">${options.fn({ value: element })}</h2>`;
+      }
+    },
+  },
 });
 
 app.set("view engine", "handlebars");

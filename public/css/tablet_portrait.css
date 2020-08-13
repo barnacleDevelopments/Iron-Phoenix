@@ -1,16 +1,11 @@
 .product-img i {
-    display: block;
+  display: block;
 }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> c867d35b3c63f4a5367c5f33e1ac10fb4d8864e2
 .large-view-orders {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 80px 10px 0px 10px;
-    margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 80px 10px 0px 10px;
+  margin: 0 auto;
 }

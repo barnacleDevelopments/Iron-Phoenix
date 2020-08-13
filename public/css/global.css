@@ -1,241 +1,246 @@
-*, *::before, *::after {box-sizing: inherit;} 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 
 html {
-    -moz-box-sizing: border-box !important; 
-    -webkit-box-sizing: border-box !important; 
-    box-sizing: border-box !important; 
+  -moz-box-sizing: border-box !important;
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
 }
 
 body {
-    font-family: 'Bebas Neue', cursive;
-    font-family: 'Poppins', sans-serif;
-    margin: 0 auto;
-    width: 100%;
-    height: 100vh;
-    background-color: #4A5759;
-    font-size: 16px !important;
+  font-size: 16px;
 }
 
-body h1 {
-    font-size: 28px !important;
-    margin: 0px;
-    padding: 0px;
+body h1,
+h2,
+h3,
+h4 {
+  text-transform: capitalize;
+  margin: 0px;
 }
 
-body h2 {
-    font-size: 22px !important;
-    margin: 0px;
-    padding: 0px;
+html body h1 {
+  font-size: 200% !important;
+  margin: 0px;
+  padding: 0px;
+}
+
+html body h2 {
+  font-size: 180% !important;
+  margin: 0px;
+  padding: 0px;
 }
 
 body h3 {
-    font-size: 20px !important;
-    margin: 0px;
-    padding: 0px;
+  font-size: 130% !important;
+  margin: 0px;
+  padding: 0px;
 }
 
 body h4 {
-    font-size: 19px !important;
-    margin: 0px;
-    padding: 0px;
+  font-size: 120% !important;
+  margin: 0px;
+  padding: 0px;
 }
 
-body p {
-    font-size: 17px !important;    
-    margin: 0px;
-    padding: 0px;
+body p,
+span {
+  font-size: 120% !important;
+  margin: 0px;
+  padding: 0px;
 }
 
-body span {
-    font-size: 17px !important;
-    margin: 0px;
-    padding: 0px;
+body a {
+  font-size: 100% !important;
+  margin: 0px;
 }
 
-body button {
-    font-size: 20px;;
-    margin: 0px;
-    padding: 0px;
+body {
+  font-family: "Bebas Neue", cursive;
+  font-family: "Poppins", sans-serif;
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  background-color: #4a5759;
+  font-size: 16px !important;
 }
 
 .shadow {
-    background-color: black;
-    z-index: 5;
-    height: 100%;
-    width: 100%;
-    position: absolute;
+  background-color: black;
+  z-index: 5;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 .chat-bubble {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    width: 70px;
-    height: 70px;
-    z-index: 4;
-    background-color: #FFAD42;
-    bottom: 25px;
-    right: 25px;
-    border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  z-index: 4;
+  background-color: #ffad42;
+  bottom: 25px;
+  right: 25px;
+  border-radius: 50px;
 }
 
 .chat-bubble a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position:  fixed;
-    text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  text-decoration: none;
 }
 
 .chat-bubble i {
-    color: rgb(39, 39, 39);
-    position: relative;
+  color: rgb(39, 39, 39);
+  position: relative;
 }
 
 .chat-menu-shadow {
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.664);
-    height: 100vh;
-    z-index: 3;
-    top: 0px;
-    display: none;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.664);
+  height: 100vh;
+  z-index: 3;
+  top: 0px;
+  display: none;
 }
 
 .bob-down {
-    animation-name: bobDown;
-    animation-fill-mode: forwards;
-    animation-duration: 1s;;
+  animation-name: bobDown;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
 }
 
 @keyframes bobIn {
-    from {
-        transform: translateY(50px);
-    }
+  from {
+    transform: translateY(50px);
+  }
 
-    to {
-        transform: translateY(0px);
-     
-    }
+  to {
+    transform: translateY(0px);
+  }
 }
 
 @keyframes bobDown {
-    from {
-        transform: translateY(50px);
-        opacity: 1;
-    }
+  from {
+    transform: translateY(50px);
+    opacity: 1;
+  }
 
-    to {
-        opacity: 0;
-        transform: translateY(0px);
-    }
-} 
-
+  to {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+}
 
 .chat-container {
-    position: fixed;
-    bottom: 0px;
-    z-index: 4;
-    background-color: #FFAD42;
-    display: none;
-    width: 100%;
+  position: fixed;
+  bottom: 0px;
+  z-index: 4;
+  background-color: #ffad42;
+  display: none;
+  width: 100%;
 }
 
 .bubble-field {
-    background-color: white;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    color: white;
-    overflow-y: scroll;
-    overflow: auto;
-    height: 40vh;
-    padding: 5px;
-    margin:10px
+  background-color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: white;
+  overflow-y: scroll;
+  overflow: auto;
+  height: 40vh;
+  padding: 5px;
+  margin: 10px;
 }
 
 .chat-container input {
-    width: 100%;
-    margin-top: 10px;
-    border: none;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    padding: 5px;
-    margin: 10px;
+  width: 100%;
+  margin-top: 10px;
+  border: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 5px;
+  margin: 10px;
 }
 
 .openChat {
-    animation-name: openChat;
-    animation-duration: .5s;
-    display: block;
-    animation-fill-mode: forwards;
-
+  animation-name: openChat;
+  animation-duration: 0.5s;
+  display: block;
+  animation-fill-mode: forwards;
 }
 
 .closeChat {
-   display: none;
+  display: none;
 }
 
 @keyframes openChat {
-    from {
-        width: 0vh;
-        height: 0;
-        opacity: 0;
-    }
+  from {
+    width: 0vh;
+    height: 0;
+    opacity: 0;
+  }
 
-    to {
-        width: 100%;
-        opacity: 1;
-    }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
 }
 
-
 .chat-bubble-client {
-    background-color: #FFAD42;
-    z-index: 5;
-    padding: 10px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 0px;
-    color: rgb(39, 39, 39);
-    margin: 5px;
+  background-color: #ffad42;
+  z-index: 5;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 0px;
+  color: rgb(39, 39, 39);
+  margin: 5px;
 }
 
 .chat-bubble-client h4 {
-    margin: 0px;
-    font-size: small;
+  margin: 0px;
+  font-size: small;
 }
 
 .chat-bubble-client p {
-    margin: 0px;
-    font-size: smaller;
+  margin: 0px;
+  font-size: smaller;
 }
 
 .chat-bubble-service {
-    background-color: #09af00;
-    width: 70%;
-    z-index: 5;
-    padding: 10px;
-    margin-right: 10px;
-    border-radius: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 5px;
+  background-color: #09af00;
+  width: 70%;
+  z-index: 5;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 5px;
 }
 
 .chat-bubble-service h4 {
-    margin: 0px;
-    font-size: small;
+  margin: 0px;
+  font-size: small;
 }
 
 .chat-bubble-service p {
-    margin: 0px;
-    font-size: smaller;
+  margin: 0px;
+  font-size: smaller;
 }
-
