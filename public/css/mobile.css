@@ -631,6 +631,10 @@ CART STYLES
   flex-direction: column;
 }
 
+.cart-total h2 {
+  margin-bottom: 10px !important;
+}
+
 .cart-list {
   margin-top: 30px;
   border-left: none !important;
@@ -672,8 +676,8 @@ CART STYLES
 }
 
 .cart-list img {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50px;
 }
 
