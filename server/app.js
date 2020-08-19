@@ -2,6 +2,7 @@ import express from "express";
 import dotEnv from "dotenv";
 import path from "path";
 import expbs from "express-handlebars";
+import helpers from "handlebars-helpers"
 
 const app = express();
 
@@ -27,6 +28,11 @@ const hbs = expbs.create({
         overflow-wrap: normal;">${options.fn({ value: element })}</h2>`;
       }
     },
+    elipsis: (string, length) => {
+      if(string.length >= length) {
+        return `${string.slice(0, length)}...`
+      }
+    }
   },
 });
 

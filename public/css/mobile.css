@@ -1,5 +1,5 @@
 /* +++++++++++++++++++++++++++++++ */
-/* CATAGORIES STYLES */
+/* PRODUCTS STYLES */
 /* +++++++++++++++++++++++++++++++ */
 
 .categories-enclosure {
@@ -65,7 +65,12 @@
   margin-left: 10px;
 }
 
-/* CATEGORY CSS */
+/*
+=========================
+CATEGORY STYLES
+========================= 
+*/
+
 .category-enclosure {
   margin-bottom: 30px;
   overflow: auto;
@@ -207,6 +212,7 @@
 .product-price {
   margin-top: 10px !important;
 }
+
 .card-btns {
   display: flex;
   flex-direction: column;
@@ -227,6 +233,7 @@
   align-items: flex-end;
   flex: 1;
   color: #2c363f;
+  font-size: 10px !important;;
 }
 
 .card-btns p {
@@ -350,7 +357,19 @@
   background-color: #5cb85c !important;
 }
 
-/* USER INFO CSS*/
+.card-reveal-btns > a {
+  font-size: 10px !important;
+}
+
+.card-reveal-btns > a:hover {
+  background-color: #5cb85c;
+}
+
+/* 
+=========================================
+USER INFO STYLES
+========================================= 
+*/
 
 .user-info-container ul {
   margin-top: 0px;
@@ -421,7 +440,11 @@
   margin: 0px 10px 10px 0px !important;
 }
 
-/* ORDER CSS */
+/* 
+===========================
+ORDER STYLES
+===========================
+*/
 
 .orders-container {
   height: 95vh;
@@ -579,7 +602,12 @@
   content: "completed" !important;
 }
 
-/* Cart View */
+/* 
+======================================
+CART STYLES
+====================================== 
+*/
+
 .cart-container {
   background-color: #ffffff;
   margin-top: 30px;
@@ -695,9 +723,33 @@ h3 {
   margin: 0px;
 }
 
-/* +++++++++++++++++++++++++++++++++ */
-/* ADMIN STYLES */
-/* +++++++++++++++++++++++++++++++++ */
+/* 
+==============================
+ABOUT STYLES
+==============================
+*/
+
+.about-container {
+  color: #f5f5f5;
+  margin-top: 20px;
+  margin-bottom: 20px;;
+}
+
+.about-container h1 {
+  margin-bottom: 14px;
+  word-wrap: normal;
+  font-weight: bold;
+}
+
+
+
+
+/* 
+=============================
+ADMIN PRODUCT MANEGEMENT STYLES
+=============================
+*/
+
 
 /* PRODUCT MANEGEMENT PAGE */
 
@@ -918,6 +970,7 @@ h3 {
   background-color: #f5f5f5;
   padding: 10px;
   justify-content: space-between;
+  height: 122px;
 }
 
 .admin-product > div:nth-of-type(1) {
@@ -941,12 +994,15 @@ h3 {
   margin-left: 10px;
   display: flex;
   flex-direction: column;
+  height: 100% !important;
 }
 
 .admin-product-description p {
   width: 100%;
-  word-break: break-all;
-  word-wrap: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 14px !important;
+
 }
 
 .product-input {
@@ -1164,3 +1220,5 @@ h3 {
 .fallback-message > div:nth-of-type(2) a {
   margin-top: 10px;
 }
+
+
