@@ -2,7 +2,7 @@ import express from "express";
 import dotEnv from "dotenv";
 import path from "path";
 import expbs from "express-handlebars";
-import helpers from "handlebars-helpers"
+import helpers from "handlebars-helpers";
 
 const app = express();
 
@@ -29,10 +29,10 @@ const hbs = expbs.create({
       }
     },
     elipsis: (string, length) => {
-      if(string.length >= length) {
-        return `${string.slice(0, length)}...`
+      if (string.length >= length) {
+        return `${string.slice(0, length)}...`;
       }
-    }
+    },
   },
 });
 

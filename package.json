@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "nodemon ./server/app.js",
-    "compile": "./node_modules/.bin/babel .public/server --out-dir lib",
+    "compile": "./node_modules/.bin/babel ./server/app.js --out-dir lib",
     "dev": "nodemon --exec babel-node ./server/app.js"
   },
   "author": "Devin Davis",

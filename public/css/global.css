@@ -76,7 +76,7 @@ body {
   position: absolute;
 }
 
-.chat-bubble {
+#chat-bubble {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,7 +90,7 @@ body {
   border-radius: 50px;
 }
 
-.chat-bubble a {
+#chat-bubble a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,7 +98,7 @@ body {
   text-decoration: none;
 }
 
-.chat-bubble i {
+#chat-bubble i {
   color: rgb(39, 39, 39);
   position: relative;
 }
