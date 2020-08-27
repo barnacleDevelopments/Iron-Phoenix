@@ -1,10 +1,29 @@
+// Declare variables
 import express from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
 import dotEnv from "dotenv";
 import path from "path";
 import expbs from "express-handlebars";
-import helpers from "handlebars-helpers"
-
+import helpers from "handlebars-helpers";
 const app = express();
+const db = 'mongodb://localhost:27017/iron_phoenix';
+
+// Connect to mongodb
+mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.Promise = global.Promise;
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Initialize routes
+app.use('/api', require('./api/category'));
+
+// Error Handle                
+app.use(function(err, req, res, next){
+    res.status(422).send({error: err.name+": "+err.message});
+});
 
 //handlebars config
 const hbs = expbs.create({
@@ -263,6 +282,7 @@ app.get("/terms", (req, res, next) => {
 app.get("/product/:category", (req, res, next) => {
   const category = req.params.category;
   let selectedProducts = [];
+
   products.forEach((product) => {
     if (product.category === category) selectedProducts.push(product);
   });

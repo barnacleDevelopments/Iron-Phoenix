@@ -35,6 +35,13 @@
     });
 
 
+/*  Reference 
+    $("#category-save-btn").on("click", () => {
+        var name = $("#cat-name").val();
+        let cat = new Category();
+        //console.log(cat.create("Brownies"));
+    });*/
+
 // CATEGORY PROMPTS
     // delete category btn
     $(".delete-category-btn").on("click", (e) => {
