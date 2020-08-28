@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import dotEnv from "dotenv";
 import path from "path";
 import expbs from "express-handlebars";
-import helpers from "handlebars-helpers";
+
 const app = express();
 const db = "mongodb://localhost:27017/iron_phoenix";
 
