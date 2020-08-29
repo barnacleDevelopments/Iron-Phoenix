@@ -3,51 +3,6 @@
 // =================================
 
 // CATEGORY INPUTS
-<<<<<<< HEAD
-    $(".add-btn").on("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        $(".category-input").css({display: "none"});
-        $(".cancle-category-btn").css({display: "none"});
-        $(".add-category-btn").css({display: "block"});
-    });
-
-    $(".add-category-btn").on("click", (e) => {
-        $(".category-input").css({display: "flex"});
-        $(".add-category-btn").css({display: "none"});
-        $(".cancle-category-btn").css({display: "block"});
-    });
-
-    $(".cancle-category-btn").on("click", (e) => {
-        $(".add-category-btn").css({display: "block"});
-        $(".cancle-category-btn").css({display: "none"});
-        $(".category-input").css({display: "none"});
-    });
-
-    $(".category-save-btn").on("click", () => {
-        $(".category-input").css({display: "none"})
-        $(".add-category-btn").css({display: "block"});
-
-    });
-
-    $(".category-cancel-btn").on("click", () => {
-        $(".category-input").css({display: "none"})
-        $(".add-category-btn").css({display: "block"});
-    });
-
-
-    $("#category-save-btn").on("click", () => {
-        var name = $("#cat-name").val();
-        let p = new Product();
-        
-        //console.log(p.getAll("5f4416c835174c3eb0ba07a3"));
-
-
-        //cat.create("Brownies");
-        
-        //console.log(cat.get("5f4416c835174c3eb0ba07a3"));
-    });
-=======
 $(".add-btn").on("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
@@ -92,7 +47,7 @@ adminCategoryList.addEventListener("click", (e) => {
   });
 
   // open selected dropdown
-  if (dropdownMenu) {
+  if(dropdownMenu) {
     dropdownMenu.setAttribute("style", "display: block;");
 
     // get dropdown btns
@@ -131,7 +86,6 @@ adminCategoryList.addEventListener("click", (e) => {
     });
   }
 });
->>>>>>> b72c068256442a1d91616dcb9f04e8f354e622d6
 
 // CATEGORY PROMPTS
 
