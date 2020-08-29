@@ -263,7 +263,11 @@ app.get("/oops", (req, res, next) => {
 });
 
 app.get("/products", (req, res, next) => {
-  res.render("products", { categories, pageType: true, header: "categories" });
+  res.render("products", {
+    categories,
+    pageType: true,
+    header: "categories",
+  });
 });
 
 app.get("/about", (req, res, next) => {
