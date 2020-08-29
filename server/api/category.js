@@ -17,21 +17,29 @@ const express = require('express');
 const router = express.Router();
 const Category = require('../../public/js/models/category');
 
-// Creating Category
+// Create Category
 router.post('/category', function(req, res, next){
     Category.create(req.body).then(function(data){
         res.send(data);
     }).catch(next);
 });
 
-// Reading Category
+// Read Category
 router.get('/category', function(req, res, next){
     Category.find().then(function(data){
         res.send(data);
-    });
+    }).catch(next);
 });
 
-// Updating Category
+router.get('/category/:id', function(req, res, next){
+    Category.findById({_id: req.params.id}).then(function(){
+        Category.findOne({_id: req.params.id}).then(function(data){
+            res.send(data);
+        }).catch(next);
+    }).catch(next);
+});
+
+// Update Category
 router.put('/category/:id', function(req, res, next){
     Category.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(){
         Category.findOne({_id: req.params.id}).then(function(data){
@@ -40,7 +48,7 @@ router.put('/category/:id', function(req, res, next){
     }).catch(next);
 });
 
-// Deleting Category
+// Delete Category
 router.delete('/category/:id', function(req, res, next){
     Category.findByIdAndRemove({_id: req.params.id}).then(function(data){
         res.send(data);

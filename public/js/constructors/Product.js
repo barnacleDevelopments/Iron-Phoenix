@@ -7,18 +7,18 @@
  */
 
 /**
- * A Category Class 
+ * A Product Class 
  * 
  * @author Shaquille Lynch
  */
-class Category {
+class Product {
 
     /** Constructor **/
 
     /**
-     * A constructor for Category class
+     * A constructor for Product class
      * 
-     * @param {String} name Category name
+     * @param {String} name Product name
      */
     constructor(name){
         this.name = name;
@@ -26,17 +26,23 @@ class Category {
 
     /** Methods **/
     /**
-     * Creating the Category
+     * Creating the Product
      * 
-     * @param {String} name Category Name
-     * @return {Object} Created Category
+     * @param {String} catId Category Id
+     * @param {String} name Product Name
+     * @param {String} description Product Description
+     * @param {Number} price Product Price
+     * @return {Object} Created Product
      */
-    async create(name) {
+    async create(catId, name, description, price) {
         let sendingData = {
-            name : name
+            catId: catId,
+            name : name,
+            description: description, 
+            price: price
         }, receivingData = {};
 
-        await fetch(`http://localhost:${port}/api/category/`, {
+        await fetch(`http://localhost:${port}/api/product/`, {
             method : 'post',
             mode:    'cors',
             headers: {
@@ -61,15 +67,16 @@ class Category {
     }
 
     /**
-     * Getting the Category
+     * Getting the Product
      * 
-     * @param {String} id Category Id
-     * @return {Object} Category
+     * @param {String} catId Category Id
+     * @param {String} id Product Id
+     * @return {Object} Product
      */
-    async get(id) {
+    async get(catId,id) {
         let receivingData = {};
 
-        await fetch(`http://localhost:${port}/api/category/${id}`, {
+        await fetch(`http://localhost:${port}/api/${catId}/product/${id}`, {
             method : 'get',
             mode:    'cors',
             headers: {
@@ -93,14 +100,15 @@ class Category {
     }
 
     /**
-     * Getting all the Categories
+     * Getting all the Products
      * 
-     * @return {Object} Categories
+     * @param {String} catId Category Id
+     * @return {Object} Products
      */
-    async getAll() {
+    async getAll(catId) {
         let receivingData = {};
 
-        await fetch(`http://localhost:${port}/api/category/`, {
+        await fetch(`http://localhost:${port}/api/${catId}/product/`, {
             method : 'get',
             mode:    'cors',
             headers: {
@@ -119,24 +127,29 @@ class Category {
             receivingData.errMessage = error;   
             console.log(error);
         }); 
-
+        
         return receivingData;
     }
 
 
     /**
-     * Updating the Category
+     * Updating the Product
      * 
-     * @param {String} id Category Id
-     * @param {String} name Category Name
-     * @return {Object} Updated Category
+     * @param {String} id Product Id
+     * @param {String} name Product Name
+     * @param {String} description Product Description
+     * @param {Number} price Product Price
+     * @return {Object} Updated Product
      */
-    async update(id, name) {
+    async update(id, name, description, price) {
         let sendingData = {
-            name : name
+            id: id,
+            name : name,
+            description: description,
+            price: price
         }, receivingData = {};
 
-        await fetch(`http://localhost:${port}/api/category/${id}`, {
+        await fetch(`http://localhost:${port}/api/product/${id}`, {
             method : 'put',
             mode:    'cors',
             headers: {
@@ -161,15 +174,15 @@ class Category {
     }
 
     /**
-     * Removing the Category
+     * Removing the Product
      * 
-     * @param {String} id Category Id
-     * @return {Object} Removed Category
+     * @param {String} id Product Id
+     * @return {Object} Removed Product
      */
     async remove(id) {
         let receivingData = {};
 
-        await fetch(`http://localhost:${port}/api/category/${id}`, {
+        await fetch(`http://localhost:${port}/api/product/${id}`, {
             method : 'delete',
             mode:    'cors',
             headers: {

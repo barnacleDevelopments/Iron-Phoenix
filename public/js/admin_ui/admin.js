@@ -35,12 +35,17 @@
     });
 
 
-/*  Reference 
     $("#category-save-btn").on("click", () => {
         var name = $("#cat-name").val();
-        let cat = new Category();
-        //console.log(cat.create("Brownies"));
-    });*/
+        let p = new Product();
+        
+        //console.log(p.getAll("5f4416c835174c3eb0ba07a3"));
+
+
+        //cat.create("Brownies");
+        
+        //console.log(cat.get("5f4416c835174c3eb0ba07a3"));
+    });
 
 // CATEGORY PROMPTS
     // delete category btn
