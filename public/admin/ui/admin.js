@@ -47,7 +47,7 @@ adminCategoryList.addEventListener("click", (e) => {
   });
 
   // open selected dropdown
-  if (dropdownMenu) {
+  if(dropdownMenu) {
     dropdownMenu.setAttribute("style", "display: block;");
 
     // get dropdown btns
