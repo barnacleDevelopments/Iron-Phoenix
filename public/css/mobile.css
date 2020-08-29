@@ -233,7 +233,7 @@ CATEGORY STYLES
   align-items: flex-end;
   flex: 1;
   color: #2c363f;
-  font-size: 10px !important;;
+  font-size: 10px !important;
 }
 
 .card-btns p {
@@ -736,7 +736,7 @@ ABOUT STYLES
 .about-container {
   color: #f5f5f5;
   margin-top: 20px;
-  margin-bottom: 20px;;
+  margin-bottom: 20px;
 }
 
 .about-container h1 {
@@ -745,15 +745,11 @@ ABOUT STYLES
   font-weight: bold;
 }
 
-
-
-
 /* 
 =============================
 ADMIN PRODUCT MANEGEMENT STYLES
 =============================
 */
-
 
 /* PRODUCT MANEGEMENT PAGE */
 
@@ -832,6 +828,7 @@ ADMIN PRODUCT MANEGEMENT STYLES
 .admin-products-container {
   margin-top: 103px;
   overflow-y: scroll !important;
+  scrollbar-width: none;
 }
 
 .admin-category-list {
@@ -904,13 +901,6 @@ ADMIN PRODUCT MANEGEMENT STYLES
 
 .category-header-container {
   padding: 5px !important;
-}
-
-.category-header-container > div:nth-of-type(2) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
 }
 
 .category-input {
@@ -1006,7 +996,6 @@ ADMIN PRODUCT MANEGEMENT STYLES
   text-overflow: ellipsis;
   overflow: hidden;
   font-size: 14px !important;
-
 }
 
 .product-input {
@@ -1187,19 +1176,43 @@ ADMIN PRODUCT MANEGEMENT STYLES
 }
 
 /* drop down menus */
-
 .edit-drop-trigger {
   display: flex;
 }
-.category-dropdown {
-  display: flex !important;
-  align-items: flex-start !important;
-  padding-top: 10px;
-  background-color: none !important;
+
+.category-dropdown-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: flex-start;
+  margin-top: 10px;
+  margin-right: 10px;
+  color: black;
 }
 
-.category-dropdown ul {
+.category-dropdown-container i {
+  color: black;
+}
+
+.category-dropdown {
+  display: flex;
+  width: 120px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 2px 0 #00000024, 0 3px 1px -2px #0000001f, 0 1px 5px 0 #0003;
   border-radius: 5px;
+  position: absolute;
+  right: 8px;
+  top: 0px;
+  z-index: 6;
+}
+
+.category-dropdown > li {
+  padding: 14px 16px !important;
+}
+
+.category-dropdown > li:hover {
+  background-color: rgba(0, 0, 0, 0.11);
 }
 
 .category-dropdown i,
@@ -1224,5 +1237,3 @@ ADMIN PRODUCT MANEGEMENT STYLES
 .fallback-message > div:nth-of-type(2) a {
   margin-top: 10px;
 }
-
-

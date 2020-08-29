@@ -5,12 +5,12 @@ import bodyParser from "body-parser";
 import dotEnv from "dotenv";
 import path from "path";
 import expbs from "express-handlebars";
-import helpers from "handlebars-helpers";
+
 const app = express();
-const db = 'mongodb://localhost:27017/iron_phoenix';
+const db = "mongodb://localhost:27017/iron_phoenix";
 
 // Connect to mongodb
-mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 
 // parse application/x-www-form-urlencoded
@@ -21,9 +21,9 @@ app.use(bodyParser.json());
 app.use('/api', require('./api/category'));
 app.use('/api', require('./api/product'));
 
-// Error Handle                
-app.use(function(err, req, res, next){
-    res.status(422).send({error: err.name+": "+err.message});
+// Error Handle
+app.use(function (err, req, res, next) {
+  res.status(422).send({ error: err.name + ": " + err.message });
 });
 
 //handlebars config
@@ -49,10 +49,10 @@ const hbs = expbs.create({
       }
     },
     elipsis: (string, length) => {
-      if(string.length >= length) {
-        return `${string.slice(0, length)}...`
+      if (string.length >= length) {
+        return `${string.slice(0, length)}...`;
       }
-    }
+    },
   },
 });
 

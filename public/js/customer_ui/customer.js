@@ -7,17 +7,13 @@ const removeShadowOverlay = () => {
   $(".option-menu-shadow").css({ display: "none" });
 };
 
-$(".dropdown-trigger").dropdown({
-  onOpenStart: displayShadowOverlay,
-  onCloseStart: removeShadowOverlay,
-});
-
 // Materialize Drop Down menu triggers
 $(document).ready(function () {
   $(".collapsible").collapsible();
-});
-
-$(document).ready(function () {
+  $(".dropdown-trigger").dropdown({
+    onOpenStart: displayShadowOverlay,
+    onCloseStart: removeShadowOverlay,
+  });
   $(".sidenav").sidenav();
 });
 

@@ -2,13 +2,13 @@
  * Version 1
  *
  * 2020-07-01
- * 
+ *
  * Copyright 2020, Iron Phoenix, All rights reserved.
  */
 
 /**
- * Category API Routes 
- * 
+ * Category API Routes
+ *
  * @author Shaquille Lynch
  */
 
