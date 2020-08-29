@@ -12,7 +12,7 @@
  * @author Shaquille Lynch
  */
 class Category {
-  /** Constructors **/
+  /** Constructor **/
 
   /**
    * A constructor for Category class
@@ -44,6 +44,38 @@ class Category {
         Accept: "application/json", // expected data sent back
       },
       body: JSON.stringify(sendingData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        receivingData.data = data;
+        receivingData.err = false;
+        receivingData.errMessage = "";
+      })
+      .catch((error) => {
+        receivingData.err = true;
+        receivingData.errMessage = error;
+        console.log(error);
+      });
+
+    return receivingData;
+  }
+
+  /**
+   * Getting the Category
+   *
+   * @param {String} id Category Id
+   * @return {Object} Category
+   */
+  async get(id) {
+    let receivingData = {};
+
+    await fetch(`http://localhost:${port}/api/category/${id}`, {
+      method: "get",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json", // sent request
+        Accept: "application/json", // expected data sent back
+      },
     })
       .then((res) => res.json())
       .then((data) => {
