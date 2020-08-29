@@ -15,7 +15,7 @@
 // Declare Variables
 const express = require("express");
 const router = express.Router();
-const Product = require("../../public/admin/models/product");
+const Product = require("../models/product");
 
 // Create Product
 router.post("/product", function (req, res, next) {

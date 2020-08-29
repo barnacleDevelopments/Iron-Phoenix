@@ -11,7 +11,8 @@
 
   categories.then((cats) => {
     cats.data.forEach((cat) => {
-      $(".admin-category-list").append(`            
+      if (!cat.err) {
+        $(".admin-category-list").append(`            
     <li id="${cat._id}">
     <div class="category-header-container">
         <div class="collapsible-header">
@@ -82,6 +83,9 @@
     </div>
 </li>
 `);
+      } else {
+        console.log(cat.errMessage);
+      }
     });
   });
 })();
