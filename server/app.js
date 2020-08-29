@@ -18,8 +18,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Initialize routes
-app.use('/api', require('./api/category'));
-app.use('/api', require('./api/product'));
+app.use("/api", require("./api/category"));
+app.use("/api", require("./api/product"));
 
 // Error Handle
 app.use(function (err, req, res, next) {
