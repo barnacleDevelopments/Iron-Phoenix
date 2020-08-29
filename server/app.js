@@ -61,7 +61,10 @@ app.engine("handlebars", hbs.engine);
 app.set("views", path.join(__dirname, "../views"));
 
 //STATIC ASSETS
-app.use("/", express.static(path.join(__dirname, "../public/css")));
+app.use("/", express.static(path.join(__dirname, "../public/admin/css")));
+app.use("/", express.static(path.join(__dirname, "../public/customer/css")));
+app.use("/", express.static(path.join(__dirname, "../public/customer")));
+app.use("/", express.static(path.join(__dirname, "../public/admin")));
 app.use("/", express.static(path.join(__dirname, "../public/js")));
 app.use("/", express.static(path.join(__dirname, "../public/img")));
 app.use("/", express.static(path.join(__dirname, "../public/img/icons")));
