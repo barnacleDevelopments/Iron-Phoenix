@@ -15,7 +15,7 @@
 // Declare Variables
 const express = require("express");
 const router = express.Router();
-const Category = require("../../public/js/admin/models/category");
+const Category = require("../../public/admin/models/category");
 
 // Create Category
 router.post("/category", function (req, res, next) {
