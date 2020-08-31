@@ -173,6 +173,9 @@ $("#category-create-btn").on("click", () => {
   });
 });
 
+let a = new Allergy();
+console.log(a.getAll());
+
 //edit category
 $("#save-edit-category-btn").on("click", (e) => {
   let editMenu = document.querySelector(".edit-category-menu");

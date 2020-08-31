@@ -13,25 +13,23 @@
  */
 
 // Declare Variables
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const Product = require("../models/product");
+const Product = require('../models/product');
 
 // Create Product
-router.post("/product", function (req, res, next) {
-  Product.create(req.body)
-    .then(function (data) {
+router.post('/product', function (req, res, next) {
+  Product.create(req.body).then(function (data) {
       res.send(data);
     })
     .catch(next);
 });
 
 // Read Product
-router.get("/:catId/product/:id", function (req, res, next) {
-  Product.findById({ catId: req.params.catId })
+router.get('/:catId/product/:id', function (req, res, next) {
+  Product.find({ catId: req.params.catId })
     .then(function () {
-      Product.findOne({ _id: req.params.id })
-        .then(function (data) {
+      Product.findOne({ _id: req.params.id }).then(function (data) {
           res.send(data);
         })
         .catch(next);
@@ -39,20 +37,14 @@ router.get("/:catId/product/:id", function (req, res, next) {
     .catch(next);
 });
 
-router.get("/:catId/product", function (req, res, next) {
-  Product.find({ catId: req.params.catId })
-    .then(function () {
-      Product.find()
-        .then(function (data) {
-          res.send(data);
-        })
-        .catch(next);
-    })
-    .catch(next);
+router.get('/:catId/product', function (req, res, next) {
+  Product.find({ catId: req.params.catId }).then(function (data) {
+        res.send(data);
+    }).catch(next);
 });
 
 // Update Product
-router.put("/product/:id", function (req, res, next) {
+router.put('/product/:id', function (req, res, next) {
   Product.findByIdAndUpdate({ _id: req.params.id }, req.body)
     .then(function () {
       Product.findOne({ _id: req.params.id })
@@ -65,7 +57,7 @@ router.put("/product/:id", function (req, res, next) {
 });
 
 // Delete Product
-router.delete("/product/:id", function (req, res, next) {
+router.delete('/product/:id', function (req, res, next) {
   Product.findByIdAndRemove({ _id: req.params.id })
     .then(function (data) {
       res.send(data);
