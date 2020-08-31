@@ -33,145 +33,128 @@ $(".category-cancel-btn").on("click", () => {
   $(".add-category-btn").css({ display: "block" });
 });
 
-// OPEN CATEGORY DROPDOWN MENUS
+function closeOpenDropdowns(arr) {
+  arr.forEach((el) => {
+    el.setAttribute("style", "display: none;");
+  });
+}
+
+// =========================================
+// PRODUCT MANAGEMENT LIST EVENT LISTENERS
+// =========================================
 const adminCategoryList = document.querySelector(".admin-category-list");
 
 adminCategoryList.addEventListener("click", (e) => {
-  // get dropdown menu
-  let dropdownMenu = e.target.parentElement.nextElementSibling;
+  //get target element
+  let targetElement = e.target;
+
+  // get floating menu container
+  let menuContainer = document.querySelector(
+    ".admin-product-floater-container"
+  );
 
   // hide all currently open dropdowns
   const allDropdowns = document.querySelectorAll(".category-dropdown");
-  allDropdowns.forEach((dropdown) => {
-    dropdown.setAttribute("style", "display: none;");
-  });
+  closeOpenDropdowns(allDropdowns);
 
-  // open selected dropdown
-  if(dropdownMenu) {
-    dropdownMenu.setAttribute("style", "display: block;");
+  // ++++++++++++++++++++++++++++++++++
+  // Category Event Managers
+  // ++++++++++++++++++++++++++++++++++
 
-    // get dropdown btns
-    let editBtn = dropdownMenu.children[0],
-      deleteBtn = dropdownMenu.children[1];
+  // open collapsible category
+  if (targetElement.closest(".category-dropdown-trigger")) {
+    targetElement
+      .closest(".category-dropdown-trigger")
+      .nextElementSibling.setAttribute("style", "display: block");
+  }
 
-    // get prompt container
-    let promptContainer = document.querySelector(
-      ".admin-product-floater-container"
-    );
+  // open category edit menu, add data-attribute to editor menu & input current title in input value
+  if (targetElement.closest(".edit-category-btn")) {
+    menuContainer.setAttribute("style", "display: block");
+    let editMenu = document.querySelector(".edit-category-menu");
+    editMenu.setAttribute("style", "display: block");
+    let catId = targetElement
+      .closest(".edit-category-btn")
+      .getAttribute("data-catid");
+    editMenu.setAttribute("data-catid", catId);
+  }
 
-    //get prompts
-    let editPrompt = document.querySelector(".edit-category-menu");
+  // open category delete menu and add data-attribute to editor menu
+  if (targetElement.closest(".delete-category-btn")) {
+    menuContainer.setAttribute("style", "display: block");
+    let deleteMenu = document.querySelector(".delete-category-menu");
+    deleteMenu.setAttribute("style", "display: block");
+    let catId = targetElement
+      .closest(".delete-category-btn")
+      .getAttribute("data-catid");
+    deleteMenu.setAttribute("data-catid", catId);
+  }
 
-    let deletePrompt = document.querySelector(".category-prompt");
+  // ++++++++++++++++++++++++++++++++++
+  // Product Event Managers
+  // ++++++++++++++++++++++++++++++++++
 
-    // add event listeners to each button
-    editBtn.addEventListener("click", () => {
-      promptContainer.setAttribute("style", "display: block");
-      editPrompt.setAttribute("style", "display: block");
-      console.log(editPrompt.firstElementChild);
-
-      editPrompt.setAttribute(
-        "data-catid",
-        `${editBtn.getAttribute("data-catid")}`
+  // open product input
+  if (targetElement.closest(".add-product-btn")) {
+    let productInput = targetElement.previousElementSibling;
+    if (productInput.style.display === "none") {
+      targetElement.previousElementSibling.setAttribute(
+        "style",
+        "display: block"
       );
-    });
+      targetElement
+        .closest(".add-product-btn")
+        .setAttribute("style", "display:none");
+    }
+  }
 
-    deleteBtn.addEventListener("click", () => {
-      promptContainer.setAttribute("style", "display: block");
-      deletePrompt.setAttribute("style", "display: block");
-      deletePrompt.setAttribute(
-        "data-catid",
-        `${deleteBtn.getAttribute("data-catid")}`
-      );
-    });
+  // close product input
+  if (
+    targetElement.classList.contains("product-save-btn") ||
+    targetElement.classList.contains("product-cancel-btn")
+  ) {
+    targetElement
+      .closest(".product-input")
+      .setAttribute("style", "display: none");
+    targetElement
+      .closest(".product-input")
+      .nextElementSibling.setAttribute("style", "display: block");
   }
 });
 
-// CATEGORY PROMPTS
-
-// // delete category btn
-// $(".delete-category-btn").on("click", (e) => {
-//   e.preventDefault();
-//   e.stopPropagation();
-//   $(".admin-product-floater-container").css({ display: "block" });
-//   $(".category-prompt").css({ display: "block" });
-// });
-
-// // delete product btn
-// $(".delete-product-btn").on("click", (e) => {
-//   e.preventDefault();
-//   e.stopPropagation();
-//   $(".admin-product-floater-container").css({ display: "block" });
-//   $(".product-prompt").css({ display: "block" });
-// });
-
-// //edit category btn
-// $(".edit-category-btn").on("click", (e) => {
-//   e.preventDefault();
-//   e.stopPropagation();
-//   $(".admin-product-floater-container").css({ display: "block" });
-//   $(".edit-category-menu").css({ display: "block" });
-// });
-
-// PRODUCT INPUTS
-$(".add-product-btn").on("click", (e) => {
-  console.log("hello");
-  $(".product-btn").css({ display: "none" });
-  $(".product-input").css({ display: "flex" });
-  $(".add-product-btn").css({ display: "none" });
-});
-
-$(".product-cancel-btn").on("click", (e) => {
-  $(".product-input").css({ display: "none" });
-  $(".add-product-btn").css({ display: "inline-block" });
-});
-
-$(".product-save-btn").on("click", (e) => {
-  $(".product-input").css({ display: "none" });
-  $(".add-product-btn").css({ display: "inline-block" });
-});
-
-$(".collapsible-header-container").on("click", () => {
-  $(".product-input").css({ display: "none" });
-  $(".add-product-btn").css({ display: "inline-block" });
-});
-
 // PRODUCT PROMPTS
-//edit product btn
-$(".edit-product-btn").on("click", (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  $(".admin-product-floater-container").css({ display: "block" });
-  $(".edit-product-menu").css({ display: "block" });
-});
 
-// cancle button
-$(".cancel-btn").on("click", (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  $(".admin-product-floater-container").css({ display: "none" });
-  $(".category-prompt").css({ display: "none" });
-  $(".product-prompt").css({ display: "none" });
-  $(".edit-category-menu").css({ display: "none" });
-  $(".admin-product-floater-container").css({ display: "none" });
-  $(".edit-product-menu").css({ display: "none" });
+function closeMenu(e, btns, parent) {
+  let targetElement = e.target;
+  let validBtns = [...btns];
+  validBtns.forEach((btn) => {
+    if (targetElement.classList.contains(btn)) {
+      document
+        .querySelector(".admin-product-floater-container")
+        .setAttribute("style", "display: none");
+      parent.setAttribute("style", "display: none");
+    }
+  });
+}
+// close delete and save menues
+const editMenu = document.querySelector(".edit-category-menu");
+const deleteMenu = document.querySelector(".delete-category-menu");
+editMenu.addEventListener("click", (e) => {
+  let editInput = document.querySelector("#edit-category-input");
+  closeMenu(
+    e,
+    ["save-btn", "cancel-btn"],
+    e.target.closest(".edit-category-menu")
+  );
+  editInput.value = "";
 });
-//delete button
-$(".delete-confirm-btn").on("click", (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  $(".admin-product-floater-container").css({ display: "none" });
-  $(".category-prompt").css({ display: "none" });
-  $(".product-prompt").css({ display: "none" });
-  $(".edit-category-menu").css({ display: "none" });
-});
-
-//save button
-$(".save-btn").on("click", (e) => {
-  $(".admin-product-floater-container").css({ display: "none" });
-  $(".edit-product-menu").css({ display: "none" });
-  $(".edit-category-menu").css({ display: "none" });
-});
+deleteMenu.addEventListener("click", (e) =>
+  closeMenu(
+    e,
+    ["delete-confirm-btn", "cancel-btn"],
+    e.target.closest(".delete-category-menu")
+  )
+);
 
 // =================================
 // ALLERGY MANAGEMENT

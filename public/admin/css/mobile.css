@@ -774,7 +774,7 @@ ADMIN PRODUCT MANEGEMENT STYLES
 .admin-product-floater-container {
   display: flex;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
   margin: 0 auto;
