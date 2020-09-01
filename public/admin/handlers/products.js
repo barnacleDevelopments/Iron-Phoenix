@@ -13,7 +13,6 @@ document
     // Fetch all products for sellected category
     if (targetElement.closest(".collapsible-header")) {
       let catId = targetElement.closest("li").id;
-      console.log(catId);
       // product.create(catId, "Coco", "A delicious cookie.", 10);
       // check if elelements exist inside list if so prevent fetch
       if (
@@ -25,7 +24,6 @@ document
           // check if fetch request failed
           if (!data.err) {
             // loop through all products and append them to specfied product list
-            console.log(data);
             data.data.forEach((product) => {
               targetElement
                 .closest(".collapsible-header")
@@ -102,7 +100,6 @@ document
         .create(catId, productTitle, productDescription, productPrice)
         .then((data) => {
           // check if fetch request failed
-          console.log(data);
           if (!data.data.err) {
             // append new element to the product list of specified category
             productList.insertAdjacentHTML(
@@ -138,4 +135,7 @@ document
     }
 
     // Update product inside selected category
+    if (targetElement.closest(".delete-product-menu")) {
+      console.log("ff");
+    }
   });

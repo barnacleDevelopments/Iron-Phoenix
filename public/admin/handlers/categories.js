@@ -40,7 +40,7 @@
           <ul data-catid="${cat._id}" class=" admin-product-list">
           
   
-              <li data-catid="${cat.catId}" class="product-input" style="display: none;">
+              <li data-catid="${cat._id}" class="product-input" style="display: none;">
                  
                 <input class="category-title-input" type="text" placeholder="add product title here...">
                 <input class="category-price-input" type="text" placeholder="add price...">
@@ -69,7 +69,6 @@ $("#category-create-btn").on("click", () => {
   let category = new Category();
   let newCategory = category.create(name);
   newCategory.then((cat) => {
-    console.log(cat.data._id);
     if (!cat.data.err) {
       $(".admin-category-list").append(`            
         <li id="${cat.data._id}">
@@ -98,7 +97,7 @@ $("#category-create-btn").on("click", () => {
             <ul data-catid="${cat.data._id}" class=" admin-product-list">
             
     
-                <li data-catid="${cat.data.catId}" class="product-input" style="display: none;">
+                <li data-catid="${cat.data._id}" class="product-input" style="display: none;">
                    
                   <input class="category-title-input" type="text" placeholder="add product title here...">
                   <input class="category-price-input" type="text" placeholder="add price...">
@@ -123,7 +122,6 @@ $("#category-create-btn").on("click", () => {
 
 //edit category
 $("#save-edit-category-btn").on("click", (e) => {
-  console.log("ggg");
   let editMenu = document.querySelector(".edit-category-menu");
 
   let catName = editMenu.children[0].value;

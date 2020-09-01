@@ -191,4 +191,35 @@ class Category {
 
     return receivingData;
   }
+
+  /**
+   * Return the amount of Categories
+   *
+   * @return {Object} Amount of Categories
+   */
+  async count() {
+    let receivingData = {};
+
+    await fetch(`http://localhost:${port}/api/category/`, {
+      method: "get",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json", // sent request
+        Accept: "application/json", // expected data sent back
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        receivingData.count = data.length;
+        receivingData.err = false;
+        receivingData.errMessage = "";
+      })
+      .catch((error) => {
+        receivingData.err = true;
+        receivingData.errMessage = error;
+        console.log(error);
+      });
+
+    return receivingData;
+  }
 }
