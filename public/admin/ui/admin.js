@@ -1,6 +1,32 @@
 // =================================
-// PRODUCT MANAGEMENT
+// PRODUCT MANAGEMENT UI HANDLING
 // =================================
+
+// Functions
+function closeOpenDropdowns(arr) {
+  arr.forEach((el) => {
+    el.setAttribute("style", "display: none;");
+  });
+}
+
+function closeMenu(e, btns, parent) {
+  let targetElement = e.target;
+  let validBtns = [...btns];
+  validBtns.forEach((btn) => {
+    if (targetElement.classList.contains(btn)) {
+      document
+        .querySelector(".admin-product-floater-container")
+        .setAttribute("style", "display: none");
+      parent.setAttribute("style", "display: none");
+    }
+  });
+}
+
+function displayMenuFloaterContainer() {
+  document
+    .querySelector(".admin-product-floater-container")
+    .setAttribute("style", "display: block");
+}
 
 // CATEGORY INPUTS
 $(".add-btn").on("click", (e) => {
@@ -33,12 +59,6 @@ $(".category-cancel-btn").on("click", () => {
   $(".add-category-btn").css({ display: "block" });
 });
 
-function closeOpenDropdowns(arr) {
-  arr.forEach((el) => {
-    el.setAttribute("style", "display: none;");
-  });
-}
-
 // =========================================
 // PRODUCT MANAGEMENT LIST EVENT LISTENERS
 // =========================================
@@ -48,20 +68,17 @@ adminCategoryList.addEventListener("click", (e) => {
   //get target element
   let targetElement = e.target;
 
-  // get floating menu container
-  let menuContainer = document.querySelector(
-    ".admin-product-floater-container"
-  );
-
   // hide all currently open dropdowns
-  const allDropdowns = document.querySelectorAll(".category-dropdown");
-  closeOpenDropdowns(allDropdowns);
+  const allCatDropdowns = document.querySelectorAll(".category-dropdown");
+  const allProductDropdowns = document.querySelectorAll(".product-dropdown");
+  closeOpenDropdowns(allCatDropdowns);
+  closeOpenDropdowns(allProductDropdowns);
 
   // ++++++++++++++++++++++++++++++++++
   // Category Event Managers
   // ++++++++++++++++++++++++++++++++++
 
-  // open collapsible category
+  // open category dropdown
   if (targetElement.closest(".category-dropdown-trigger")) {
     targetElement
       .closest(".category-dropdown-trigger")
@@ -70,7 +87,7 @@ adminCategoryList.addEventListener("click", (e) => {
 
   // open category edit menu, add data-attribute to editor menu & input current title in input value
   if (targetElement.closest(".edit-category-btn")) {
-    menuContainer.setAttribute("style", "display: block");
+    displayMenuFloaterContainer();
     let editMenu = document.querySelector(".edit-category-menu");
     editMenu.setAttribute("style", "display: block");
     let catId = targetElement
@@ -81,7 +98,7 @@ adminCategoryList.addEventListener("click", (e) => {
 
   // open category delete menu and add data-attribute to editor menu
   if (targetElement.closest(".delete-category-btn")) {
-    menuContainer.setAttribute("style", "display: block");
+    displayMenuFloaterContainer();
     let deleteMenu = document.querySelector(".delete-category-menu");
     deleteMenu.setAttribute("style", "display: block");
     let catId = targetElement
@@ -94,8 +111,15 @@ adminCategoryList.addEventListener("click", (e) => {
   // Product Event Managers
   // ++++++++++++++++++++++++++++++++++
 
-  // open product input
+  // open product dropdown
+  if (targetElement.closest(".product-dropdown-trigger")) {
+    console.log(targetElement.closest(".product-dropdown-trigger"));
+    targetElement
+      .closest(".product-dropdown-trigger")
+      .nextElementSibling.setAttribute("style", "display: block");
+  }
   if (targetElement.closest(".add-product-btn")) {
+    // open product input
     let productInput = targetElement.previousElementSibling;
     if (productInput.style.display === "none") {
       targetElement.previousElementSibling.setAttribute(
@@ -120,41 +144,55 @@ adminCategoryList.addEventListener("click", (e) => {
       .closest(".product-input")
       .nextElementSibling.setAttribute("style", "display: block");
   }
+
+  if (targetElement.closest(".product-dropdown")) {
+    let menuSelection = targetElement.textContent;
+    switch (menuSelection) {
+      case "Addons":
+        break;
+      case "Edit":
+        displayMenuFloaterContainer();
+        document
+          .querySelector(".edit-product-menu")
+          .setAttribute("style", "display: block");
+        break;
+      case "Alergies":
+        break;
+      case "Delete":
+        displayMenuFloaterContainer();
+        document
+          .querySelector(".delete-product-menu")
+          .setAttribute("style", "display: block");
+        break;
+    }
+  }
 });
 
-// PRODUCT PROMPTS
+// =============================
+// CLOSE OPEN MOD MENUES
+// =============================
 
-function closeMenu(e, btns, parent) {
-  let targetElement = e.target;
-  let validBtns = [...btns];
-  validBtns.forEach((btn) => {
-    if (targetElement.classList.contains(btn)) {
-      document
-        .querySelector(".admin-product-floater-container")
-        .setAttribute("style", "display: none");
-      parent.setAttribute("style", "display: none");
-    }
-  });
-}
 // close delete and save menues
-const editMenu = document.querySelector(".edit-category-menu");
-const deleteMenu = document.querySelector(".delete-category-menu");
-editMenu.addEventListener("click", (e) => {
+const catEditMenu = document.querySelector(".edit-category-menu");
+const catDeleteMenu = document.querySelector(".delete-category-menu");
+const procEditMenu = document.querySelector(".edit-product-menu");
+const procDeleteMenu = document.querySelector(".delete-product-menu");
+catEditMenu.addEventListener("click", (e) => {
   let editInput = document.querySelector("#edit-category-input");
-  closeMenu(
-    e,
-    ["save-btn", "cancel-btn"],
-    e.target.closest(".edit-category-menu")
-  );
+  closeMenu(e, ["save-btn", "cancel-btn"], catEditMenu);
   editInput.value = "";
 });
-deleteMenu.addEventListener("click", (e) =>
-  closeMenu(
-    e,
-    ["delete-confirm-btn", "cancel-btn"],
-    e.target.closest(".delete-category-menu")
-  )
+catDeleteMenu.addEventListener("click", (e) =>
+  closeMenu(e, ["delete-confirm-btn", "cancel-btn"], catDeleteMenu)
 );
+
+procEditMenu.addEventListener("click", (e) => {
+  closeMenu(e, ["save-btn", "cancel-btn"], procEditMenu);
+});
+
+procDeleteMenu.addEventListener("click", (e) => {
+  closeMenu(e, ["delete-confirm-btn", "cancel-btn"], procDeleteMenu);
+});
 
 // =================================
 // ALLERGY MANAGEMENT

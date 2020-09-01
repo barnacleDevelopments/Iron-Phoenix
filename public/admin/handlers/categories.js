@@ -11,6 +11,7 @@
 
   categories.then((cats) => {
     cats.data.forEach((cat) => {
+      console.log(cat._id);
       if (!cat.err) {
         $(".admin-category-list").append(`            
       <li id="${cat._id}">
@@ -36,16 +37,14 @@
       </div>
       </div>
       <div class="collapsible-body">
-          <ul class=" admin-product-list">
+          <ul data-catid="${cat._id}" class=" admin-product-list">
           
   
-              <li class="product-input" style="display: none;">
-                  <div class="title_price-inputs">
-                      <input type="text" placeholder="add product title here...">
-                      <input type="text" placeholder="add price...">
-                  </div>
-  
-                  <input type="text" placeholder="add description...">
+              <li data-catid="${cat.catId}" class="product-input" style="display: none;">
+                 
+                <input class="category-title-input" type="text" placeholder="add product title here...">
+                <input class="category-price-input" type="text" placeholder="add price...">
+                <input class="category-description-input" type="text" placeholder="add description...">
   
                   <div class="product-input-btns">
                       <a class="waves-effect waves-light btn product-save-btn">save</a>
@@ -70,10 +69,10 @@ $("#category-create-btn").on("click", () => {
   let category = new Category();
   let newCategory = category.create(name);
   newCategory.then((cat) => {
-    if (!cat.err) {
-      $(".admin-category-list").append(
-        $(".admin-category-list").append(`            
-        <li>
+    console.log(cat.data._id);
+    if (!cat.data.err) {
+      $(".admin-category-list").append(`            
+        <li id="${cat.data._id}">
         <div class="category-header-container">
             <div class="collapsible-header">
                 <div>
@@ -81,30 +80,29 @@ $("#category-create-btn").on("click", () => {
                         <img src="/cake_1.jpg">
                     </div>
                     <div>
-                        <h1>${name}</h1>
+                        <h1>${cat.data.name}</h1>
                     </div>
                 </div>
             </div>
             <div class="category-dropdown-container">
             <a class="category-dropdown-trigger">
-                <i class="material-icons">more_vert</i>
+                <i class="material-icons ">more_vert</i>
             </a>
             <ul class="category-dropdown" style="display: none;">
-                <li data-catid="${cat._id}" class="edit-category-btn">edit</li>
-                <li data-catid="${cat._id}" class="delete-category-btn">delete</li>
+                <li data-catid="${cat.data._id}" class="edit-category-btn">edit</li>
+                <li data-catid="${cat.data._id}" class="delete-category-btn">delete</li>
             </ul>
         </div>
         </div>
         <div class="collapsible-body">
-            <ul class=" admin-product-list">
+            <ul data-catid="${cat.data._id}" class=" admin-product-list">
+            
     
-                <li class="product-input" style="display: none;">
-                    <div class="title_price-inputs">
-                        <input type="text" placeholder="add product title here...">
-                        <input type="text" placeholder="add price...">
-                    </div>
-    
-                    <input type="text" placeholder="add description...">
+                <li data-catid="${cat.data.catId}" class="product-input" style="display: none;">
+                   
+                  <input class="category-title-input" type="text" placeholder="add product title here...">
+                  <input class="category-price-input" type="text" placeholder="add price...">
+                  <input class="category-description-input" type="text" placeholder="add description...">
     
                     <div class="product-input-btns">
                         <a class="waves-effect waves-light btn product-save-btn">save</a>
@@ -115,8 +113,7 @@ $("#category-create-btn").on("click", () => {
                 <a class="waves-effect waves-light btn add-product-btn">Add Product</a>
         </div>
     </li>
-    `)
-      );
+    `);
       console.log("New category created!");
     } else {
       console.log(cat.errMessage);
