@@ -965,6 +965,12 @@ ADMIN PRODUCT MANEGEMENT STYLES
   padding: 10px;
   justify-content: space-between;
   height: 122px;
+  margin-bottom: 14px;
+}
+
+.admin-product:nth-last-of-type() {
+  margin-bottom: 0px;
+  background-color: green;
 }
 
 .admin-product > div:nth-of-type(1) {
@@ -1062,21 +1068,35 @@ ADMIN PRODUCT MANEGEMENT STYLES
   background-color: #808080 !important;
 }
 
-.product-dropdown {
-  display: flex !important;
+.product-dropdown-container {
+  position: relative;
+  display: flex;
   flex-direction: column;
-  align-items: flex-end;
   justify-content: space-between;
-  color: black !important;
-  padding-top: 10px;
+}
+
+.product-dropdown-trigger i {
+  color: black;
+}
+
+.product-dropdown {
+  display: flex;
+  width: 120px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 2px 0 #00000024, 0 3px 1px -2px #0000001f, 0 1px 5px 0 #0003;
+  border-radius: 5px;
+  position: absolute;
+  right: 8px;
+  top: 0px;
+  z-index: 6;
+}
+
+.product-dropdown > li {
+  padding: 14px 16px;
 }
 
 .product-dropdown h3 {
   margin-right: 8px;
-}
-
-.product-dropdown ul {
-  border-radius: 5px;
 }
 
 .product-dropdown a {
@@ -1178,6 +1198,8 @@ ADMIN PRODUCT MANEGEMENT STYLES
 /* drop down menus */
 .edit-drop-trigger {
   display: flex;
+  justify-content: flex-end;
+  margin-right: 6px;
 }
 
 .category-dropdown-container {
