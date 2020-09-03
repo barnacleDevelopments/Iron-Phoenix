@@ -5,7 +5,6 @@ import bodyParser from "body-parser";
 import dotEnv from "dotenv";
 import path from "path";
 import expbs from "express-handlebars";
-import createAuth0Client from "@auth0/auth0-spa-js";
 
 const app = express();
 const db = "mongodb://localhost:27017/iron_phoenix";
@@ -23,14 +22,11 @@ app.use("/api", require("./api/allergy"));
 app.use("/api", require("./api/category"));
 app.use("/api", require("./api/product"));
 
-/*
 // {{ Endpoint to serve the configuration file }}
 
 app.get("/auth_config.json", (req, res) => {
   res.sendFile(join(__dirname, "auth_config.json"));
 });
-
-*/
 
 // Error Handle
 app.use(function (err, req, res, next) {

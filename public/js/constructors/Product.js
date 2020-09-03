@@ -174,6 +174,43 @@ class Product {
   }
 
   /**
+   * Updating the Product Allergy 
+   *
+   * @param {String} id Product Id
+   * @param {Array} col Collection of Allergy Id's
+   * @return {Object} Updated Product
+   */
+  async updateAllergy(id, col) {
+    let sendingData = {
+      Allergy: col
+    },
+    receivingData = {};
+
+    await fetch(`http://localhost:${port}/api/product/${id}/allergy`, {
+      method: "put",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json", // sent request
+        Accept: "application/json", // expected data sent back
+    },
+    body: JSON.stringify(sendingData),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      receivingData.data = data;
+      receivingData.err = false;
+      receivingData.errMessage = "";
+    })
+    .catch((error) => {
+      receivingData.err = true;
+      receivingData.errMessage = error;
+      console.log(error);
+    });
+
+  return receivingData;
+  }
+
+  /**
    * Removing the Product
    *
    * @param {String} id Product Id

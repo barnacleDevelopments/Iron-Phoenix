@@ -56,6 +56,18 @@ router.put('/product/:id', function (req, res, next) {
     .catch(next);
 });
 
+router.put('/product/:id/allergy', function (req, res, next) {
+  Product.findByIdAndUpdate({ _id: req.params.id }, req.body)
+    .then(function () {
+      Product.findOne({ _id: req.params.id })
+        .then(function (data) {
+          res.send(data);
+        })
+        .catch(next);
+    })
+    .catch(next);
+});
+
 // Delete Product
 router.delete('/product/:id', function (req, res, next) {
   Product.findByIdAndRemove({ _id: req.params.id })
