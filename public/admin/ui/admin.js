@@ -96,6 +96,7 @@ adminCategoryList.addEventListener("click", (e) => {
     let catId = targetElement
       .closest(".edit-category-btn")
       .getAttribute("data-catid");
+
     // add category id as data attribute to menu
     editMenu.setAttribute("data-catid", catId);
   }

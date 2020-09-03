@@ -23,9 +23,14 @@ app.use("/api", require("./api/allergy"));
 app.use("/api", require("./api/category"));
 app.use("/api", require("./api/product"));
 
-// app.get("/auth_config.json", (req, res) => {
-//   res.sendFile(join(__dirname, "auth_config.json"));
-// });
+/*
+// {{ Endpoint to serve the configuration file }}
+
+app.get("/auth_config.json", (req, res) => {
+  res.sendFile(join(__dirname, "auth_config.json"));
+});
+
+*/
 
 // Error Handle
 app.use(function (err, req, res, next) {
