@@ -37,6 +37,14 @@ router.get('/:catId/product/:id', function (req, res, next) {
     .catch(next);
 });
 
+router.get('/product/:id/allergy', function (req, res, next) {
+  Product.findById({ _id: req.params.id })
+    .then(function (data) {
+          res.send(data.Allergy);
+    })
+    .catch(next);
+});
+
 router.get('/:catId/product', function (req, res, next) {
   Product.find({ catId: req.params.catId }).then(function (data) {
         res.send(data);
@@ -61,7 +69,7 @@ router.put('/product/:id/allergy', function (req, res, next) {
     .then(function () {
       Product.findOne({ _id: req.params.id })
         .then(function (data) {
-          res.send(data);
+          res.send(data.Allergy);
         })
         .catch(next);
     })
