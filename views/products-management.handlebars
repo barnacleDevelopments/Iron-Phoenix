@@ -1,28 +1,35 @@
 {{> navbar_admin }}
 <div class="option-menu-shadow" style="display: none;"></div>
 
+{{!-- MENU CONTAINER --}}
 <div class="admin-product-floater-container" style="display:none">
+    {{!-- Edit Category Menu --}}
     <div class="edit-category-menu" style="display:none">
+        {{!-- category title input --}}
         <input id="edit-category-input" type="text" placeholder="add category title here...">
+        {{!-- category save / cancel buttons --}}
         <div>
-            <a id="save-edit-category-btn" class="waves-effect waves-light btn save-btn">save</a>
-            <a class="waves-effect waves-light btn cancel-btn">cancle</a>
+            <a id="save-edit-category-btn" class="waves-effect waves-light btn category-save-btn">save</a>
+            <a class="waves-effect waves-light btn category-cancel-btn">cancle</a>
         </div>
     </div>
 
+    {{!-- Edit Product Menu --}}
     <div class="edit-product-menu" style="display:none">
-        <div class="title_price-inputs">
-            <input type="text" placeholder="add product title here...">
-            <input type="text" placeholder="add price...">
-        </div>
-        <input type="text" placeholder="add description...">
+        {{!-- product title input --}}
+        <input id="product-title-input" type="text" placeholder="add product title here...">
+        {{!-- product price input --}}
+        <input id="product-price-input" type="text" placeholder="add price...">
+        {{!-- product description input --}}
+        <input type="text" id="product-description-input" placeholder="add description...">
+        {{!-- save / cancle buttons --}}
         <div class="product-edit-input-btns">
-            <a class="waves-effect waves-light btn save-btn">save</a>
-            <a class="waves-effect waves-light btn cancel-btn">cancle</a>
+            <a class="waves-effect waves-light btn product-save-btn">save</a>
+            <a class="waves-effect waves-light btn product-cancel-btn">cancle</a>
         </div>
     </div>
 
-
+    {{!-- Delete Category Menu --}}
     <div class="delete-category-menu" style="display:none">
         <h3>Are you sure want to delete this category? You have x items in this list.</h3>
         <a class="waves-effect waves-light btn delete-confirm-btn">Confirm</a>
@@ -30,11 +37,13 @@
 
     </div>
 
+    {{!-- Delete Product Menu --}}
     <div class="delete-product-menu product-prompt" style="display:none">
         <h3>Are you sure want to delete this item?</h3>
         <a class="waves-effect waves-light btn delete-confirm-btn">Confirm</a>
         <a class="waves-effect waves-light btn cancel-btn">Cancel</a>
     </div>
+
 </div>
 
 
@@ -49,16 +58,14 @@
             <a class="waves-effect waves-light btn add-category-btn">Add Category</a>
         </div>
         <div>
-            <ul class="collapsible admin-category-list">
-                <li class="category-input" style="display: none">
-                    <input id="add-category-input" type="text" placeholder="add category here....">
-                    <div class="category-input-btns">
-                        <a id="category-create-btn" class="waves-effect waves-light btn category-save-btn">save</a>
-                        <a id="category-cancel-btn" class="waves-effect waves-light btn category-cancel-btn">cancle</a>
-                    </div>
-                </li>
-
-            </ul>
+            <div class="category-input" style="display: none">
+                <input id="add-category-input" type="text" placeholder="add category here....">
+                <div class="category-input-btns">
+                    <a id="category-create-btn" class="waves-effect waves-light btn category-save-btn">save</a>
+                    <a id="category-cancel-btn" class="waves-effect waves-light btn category-cancel-btn">cancle</a>
+                </div>
+            </div>
+            <ul class="collapsible admin-category-list"></ul>
         </div>
     </div>
 </div>

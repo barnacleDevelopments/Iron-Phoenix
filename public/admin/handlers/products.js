@@ -10,10 +10,12 @@ document
     // get target element
     let targetElement = e.target;
 
+    // ++++++++++++++++++++++++++++++++++++++++++++++++
     // Fetch all products for sellected category
+    // ++++++++++++++++++++++++++++++++++++++++++++++++
+
     if (targetElement.closest(".collapsible-header")) {
       let catId = targetElement.closest("li").id;
-      // product.create(catId, "Coco", "A delicious cookie.", 10);
       // check if elelements exist inside list if so prevent fetch
       if (
         targetElement.closest(".collapsible-header").parentElement
@@ -30,7 +32,7 @@ document
                 .parentElement.nextElementSibling.lastChild.insertAdjacentHTML(
                   "afterbegin",
                   `
-              <li ${product._id} class="admin-product">
+              <li id="${product._id}" class="admin-product">
               <div>
                   <div class="admin-product-img">
                       <img src="/cake_1.jpg">
@@ -43,7 +45,7 @@ document
               
           <div class="product-dropdown-container">
               <a class="product-dropdown-trigger edit-drop-trigger" href="#" data-target="dropdown2"><i class="material-icons">more_vert</i></a>
-              <ul class="product-dropdown" style="display: none">
+              <ul data-procid="${product._id}" class="product-dropdown" style="display: none">
                 <li><a href="#">Addons</a></li>
                 <li><a href="#">Alergies</a></li>
                 <li><a href="#" class="edit-product-btn">Edit</a></li>
@@ -63,8 +65,9 @@ document
         });
       }
     }
-
+    // +++++++++++++++++++++++++++++++++++++++++
     // Create product inside selected category
+    // ++++++++++++++++++++++++++++++++++++++++
     if (targetElement.classList.contains("product-save-btn")) {
       // get target elements
       let productInput = targetElement.closest(".product-input"),
@@ -94,8 +97,8 @@ document
             return;
         }
       });
+
       // send a create request to the routes
-      console.log(catId);
       product
         .create(catId, productTitle, productDescription, productPrice)
         .then((data) => {
@@ -105,7 +108,7 @@ document
             productList.insertAdjacentHTML(
               "afterbegin",
               `
-          <li class="admin-product">
+          <li id="${data.data._id}" class="admin-product">
           <div>
               <div class="admin-product-img">
                   <img src="/cake_1.jpg">
@@ -117,7 +120,7 @@ document
           </div>
           <div class="product-dropdown-container">
           <a class="product-dropdown-trigger edit-drop-trigger" href="#" data-target="dropdown2"><i class="material-icons">more_vert</i></a>
-          <ul class="product-dropdown" style="display: none">
+          <ul id="${data.data._id}" class="product-dropdown" style="display: none">
             <li><a href="#">Addons</a></li>
             <li><a href="#">Alergies</a></li>
             <li><a href="#" class="edit-product-btn">Edit</a></li>
@@ -133,9 +136,87 @@ document
           }
         });
     }
+  });
 
-    // Update product inside selected category
-    if (targetElement.closest(".delete-product-menu")) {
-      console.log("ff");
+// ++++++++++++++++++++++++++++++++++++++++
+// Update product inside selected category
+// ++++++++++++++++++++++++++++++++++++++++
+document
+  .querySelector(".admin-product-floater-container")
+  .addEventListener("click", (e) => {
+    // get target element
+    let targetElement = e.target;
+    // get edit menu input values
+    let title, price, description;
+
+    let product = new Product();
+
+    // if edit menu save button is pressed
+    if (targetElement.classList.contains("save-btn")) {
+      // get edit menu
+      let productEditMenu = targetElement.closest(".edit-product-menu");
+
+      // get product id
+      let procId = productEditMenu.getAttribute("data-procid");
+
+      // get edit menu input field values
+      Object.keys(productEditMenu.children).forEach((el) => {
+        let input = productEditMenu.children[el];
+
+        switch (input.id) {
+          case "product-title-input":
+            title = input.value;
+            break;
+          case "product-price-input":
+            price = input.value;
+            break;
+          case "product-description-input":
+            description = input.value;
+            break;
+          default:
+            null;
+        }
+      });
+      // update and replace element
+      product.update(procId, title, description, price).then((data) => {
+        if (!data.data.err) {
+          // get old product element
+          let oldProduct = document.getElementById(`${procId}`);
+          console.log(oldProduct);
+          // get product list for category
+          let productList = document.querySelector(".admin-product-list");
+
+          // create updated product
+          const updatedProduct = document.createElement("li");
+          updatedProduct.setAttribute("class", "admin-product");
+          updatedProduct.setAttribute("id", procId);
+          updatedProduct.innerHTML = `<div>
+          <div class="admin-product-img">
+              <img src="/cake_1.jpg">
+          </div>
+          <div class="admin-product-description">
+              <h2>${data.data.name}</h2>
+              <p class="flow-text">${data.data.description}</p>
+          </div>
+      </div>
+      <div class="product-dropdown-container">
+      <a class="product-dropdown-trigger edit-drop-trigger" href="#" data-target="dropdown2"><i class="material-icons">more_vert</i></a>
+      <ul id="${data.data._id}" class="product-dropdown" style="display: none">
+        <li><a href="#">Addons</a></li>
+        <li><a href="#">Alergies</a></li>
+        <li><a href="#" class="edit-product-btn">Edit</a></li>
+        <li><a href="#!" class="delete-product-btn">Delete</a></li>
+      </ul>
+      <div class="product-price">
+      <h3>$${data.data.price}</h3>
+  </div>
+          `;
+
+          productList.replaceChild(updatedProduct, oldProduct);
+          console.log(updatedProduct);
+        } else {
+          console.log(err);
+        }
+      });
     }
   });
