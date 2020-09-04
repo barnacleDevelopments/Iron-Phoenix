@@ -21,8 +21,8 @@ const ProductSchema = new Schema({
     "catId" : String,
     "name" : String, 
     "description" : String,
-    "price" : Number
-    
+    "price" : Number,
+    "Allergy" : Array
 });
 
 const Product = mongoose.model('product', ProductSchema);
