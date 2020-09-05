@@ -27,21 +27,23 @@ router.post('/allergy', function (req, res, next) {
 });
 
 // Read Allergy
+router.get('/allergy/:id', function (req, res, next) {
+  Allergy.findById({ _id: req.params.id}).then(function (data) {
+    res.send(data);
+  }).catch(next);
+});
+
 router.get('/allergy', function (req, res, next) {
-    Allergy.find()
-    .then(function (data) {
+    Allergy.find().then(function (data) {
       res.send(data);
-    })
-    .catch(next);
+    }).catch(next);
 });
 
 // Delete Allergy
 router.delete('/allergy/:id', function (req, res, next) {
-    Allergy.findByIdAndRemove({ _id: req.params.id })
-    .then(function (data) {
+    Allergy.findByIdAndRemove({ _id: req.params.id }).then(function (data) {
       res.send(data);
-    })
-    .catch(next);
+    }).catch(next);
 });
 
 // Exporting the routers

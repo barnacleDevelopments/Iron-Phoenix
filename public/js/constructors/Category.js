@@ -75,7 +75,7 @@ class Category {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-      },
+      }
     })
       .then((res) => res.json())
       .then((data) => {
@@ -106,7 +106,7 @@ class Category {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-      },
+      }
     })
       .then((res) => res.json())
       .then((data) => {
@@ -175,7 +175,7 @@ class Category {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-      },
+      }
     })
       .then((res) => res.json())
       .then((data) => {
@@ -206,7 +206,7 @@ class Category {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-      },
+      }
     })
       .then((res) => res.json())
       .then((data) => {

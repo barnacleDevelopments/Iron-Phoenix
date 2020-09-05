@@ -39,6 +39,7 @@ class Product {
         name: name,
         description: description,
         price: price,
+        Allergy: []
       },
       receivingData = {};
 
@@ -82,7 +83,7 @@ class Product {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-      },
+      }
     })
       .then((res) => res.json())
       .then((data) => {
@@ -114,8 +115,7 @@ class Product {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-    },
-    body: JSON.stringify(sendingData),
+    }
   })
     .then((res) => res.json())
     .then((data) => {
@@ -147,7 +147,7 @@ class Product {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-      },
+      }
     })
       .then((res) => res.json())
       .then((data) => {
@@ -175,10 +175,9 @@ class Product {
    */
   async update(id, name, description, price) {
     let sendingData = {
-        id: id,
         name: name,
         description: description,
-        price: price,
+        price: price
       },
       receivingData = {};
 
@@ -258,7 +257,7 @@ class Product {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-      },
+      }
     })
       .then((res) => res.json())
       .then((data) => {
@@ -276,9 +275,10 @@ class Product {
   }
 
   /**
-   * Return the amount of Product that's in a specific Category
+   * Return the amount of Products that's in a specific Category
    *
-   * @return {Object} Amount of Product
+   * @param {String} catId Category Id
+   * @return {Object} Amount of Products
    */
   async count(catId) {
     let receivingData = {};
@@ -289,7 +289,7 @@ class Product {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-      },
+      }
     })
       .then((res) => res.json())
       .then((data) => {
