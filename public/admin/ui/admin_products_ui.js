@@ -79,6 +79,9 @@
       const allProductDropdowns = document.querySelectorAll(
         ".product-dropdown"
       );
+
+      // add class to varaible
+      let product = new Product();
       closeOpenDropdowns(allCatDropdowns);
       closeOpenDropdowns(allProductDropdowns);
 
@@ -109,13 +112,37 @@
       // open category delete menu and add data-attribute to editor menu
       if (targetElement.closest(".delete-category-btn")) {
         displayMenuFloaterContainer();
-        let deleteMenu = document.querySelector(".delete-category-menu");
-        deleteMenu.setAttribute("style", "display: block");
+
+        // get category id
         let catId = targetElement
           .closest(".delete-category-btn")
           .getAttribute("data-catid");
-        // add category id as data attribute to menu
-        deleteMenu.setAttribute("data-catid", catId);
+
+        // get product count for category
+        product.count(catId).then((procCount) => {
+          if (document.getElementById("delete-warning-message")) {
+            document.getElementById("delete-warning-message").remove();
+          }
+
+          if (!procCount.err) {
+            // create delete menu prompt text element
+            let promptTextEl = document.createElement("h3");
+            promptTextEl.setAttribute("id", "delete-warning-message");
+            let promptText = document.createTextNode(
+              `Are you sure want to delete this category? You have ${procCount.count} items in this list.`
+            );
+            promptTextEl.appendChild(promptText);
+            // display delete menu
+            let deleteMenu = document.querySelector(".delete-category-menu");
+            deleteMenu.setAttribute("style", "display: block");
+            // add prompt text to delete menu
+            deleteMenu.insertBefore(promptTextEl, deleteMenu.firstElementChild);
+            // add category id as data attribute to menu
+            deleteMenu.setAttribute("data-catid", catId);
+          } else {
+            console.log(procCount.errMessage);
+          }
+        });
       }
 
       // ++++++++++++++++++++++++++++++++++
@@ -162,7 +189,6 @@
         let procId = targetElement
           .closest(".product-dropdown")
           .getAttribute("data-procid");
-        console.log(procId);
         switch (menuSelection) {
           case "Addons":
             break;
@@ -182,6 +208,26 @@
             deleteMenu.setAttribute("data-procid", procId);
             break;
         }
+      }
+      if (targetElement.classList.contains("add-product-allergies-btn")) {
+        displayMenuFloaterContainer();
+        // get product id
+        let procId = targetElement.getAttribute("data-procid");
+        // create product allergies menu
+        let allContainer = document.createElement("div");
+        allContainer.setAttribute(
+          "style",
+          "background-color: #f5f5f5; width: 90%;"
+        );
+        // append product allergies menu to floater container
+        document
+          .querySelector(".admin-product-floater-container")
+          .append(allContainer);
+
+        // get product allergies
+        product.getProductAllergy(procId).then((allergies) => {
+          console.log(allergies);
+        });
       }
     });
 

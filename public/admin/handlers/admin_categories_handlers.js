@@ -7,19 +7,17 @@
 // +++++++++++++++++++++++++++++++++++++++
 
 (function () {
-  if (document.querySelector(".admin-products-container")) {
-    (function () {
-      let category = new Category();
+  let category = new Category();
 
-      // get all the categories
-      let categories = category.getAll();
-      // handle recieved data
-      categories.then((cats) => {
-        cats.data.forEach((cat) => {
-          if (!cat.err) {
-            document.querySelector(".admin-category-list").insertAdjacentHTML(
-              "afterbegin",
-              `            
+  // get all the categories
+  let categories = category.getAll();
+  // handle recieved data
+  categories.then((cats) => {
+    cats.data.forEach((cat) => {
+      if (!cat.err) {
+        document.querySelector(".admin-category-list").insertAdjacentHTML(
+          "afterbegin",
+          `            
       <li id="${cat._id}">
       <div class="category-header-container">
           <div class="collapsible-header">
@@ -61,36 +59,36 @@
       </div>
   </li>
   `
-            );
-          } else {
-            console.log(cat.errMessage);
-          }
-        });
-      });
-    })();
+        );
+      } else {
+        console.log(cat.errMessage);
+      }
+    });
+  });
+})();
 
-    // ==================================
-    // RODUCT CONTAINER EVENT HANDLERS
-    // ==================================
+// ==================================
+// RODUCT CONTAINER EVENT HANDLERS
+// ==================================
 
-    document
-      .querySelector(".admin-products-container")
-      .addEventListener("click", (e) => {
-        // get target element
-        let targetElement = e.target;
+document
+  .querySelector(".admin-products-container")
+  .addEventListener("click", (e) => {
+    // get target element
+    let targetElement = e.target;
 
-        // ++++++++++++++++++++++++++++
-        // CREATE NEW CATEGORY
-        // +++++++++++++++++++++++++++
-        if (targetElement.classList.contains("category-save-btn")) {
-          let name = $("#add-category-input").val();
-          let category = new Category();
-          let newCategory = category.create(name);
-          newCategory.then((cat) => {
-            if (!cat.data.err) {
-              document.querySelector(".admin-category-list").insertAdjacentHTML(
-                "afterbegin",
-                `<li id="${cat.data._id}">
+    // ++++++++++++++++++++++++++++
+    // CREATE NEW CATEGORY
+    // +++++++++++++++++++++++++++
+    if (targetElement.classList.contains("category-save-btn")) {
+      let name = $("#add-category-input").val();
+      let category = new Category();
+      let newCategory = category.create(name);
+      newCategory.then((cat) => {
+        if (!cat.data.err) {
+          document.querySelector(".admin-category-list").insertAdjacentHTML(
+            "afterbegin",
+            `<li id="${cat.data._id}">
         <div class="category-header-container">
             <div class="collapsible-header">
                 <div>
@@ -129,30 +127,30 @@
         </div>
     </li>
     `
-              );
-            } else {
-              console.log(cat.errMessage);
-            }
-          });
+          );
+        } else {
+          console.log(cat.errMessage);
         }
       });
+    }
+  });
 
-    // ================================
-    // PRODUCT LIST EVENT HANDLERS
-    // =============================
+// ================================
+// PRODUCT LIST EVENT HANDLERS
+// =============================
 
-    //edit category
-    $(".category-save-btn").on("click", (e) => {
-      console.log("Cetegory Edited!");
-      let editMenu = document.querySelector(".edit-category-menu");
+//edit category
+$(".category-save-btn").on("click", (e) => {
+  console.log("Cetegory Edited!");
+  let editMenu = document.querySelector(".edit-category-menu");
 
-      let catName = editMenu.children[0].value;
-      let catId = editMenu.getAttribute("data-catid");
-      let category = new Category();
-      category.update(catId, catName).then((modCat) => {
-        if (!modCat.err) {
-          $(`#${catId}`).replaceWith(
-            `            
+  let catName = editMenu.children[0].value;
+  let catId = editMenu.getAttribute("data-catid");
+  let category = new Category();
+  category.update(catId, catName).then((modCat) => {
+    if (!modCat.err) {
+      $(`#${catId}`).replaceWith(
+        `            
       <li id="${modCat.data._id}">
       <div class="category-header-container">
           <div class="collapsible-header">
@@ -193,24 +191,22 @@
       </div>
   </li>
   `
-          );
-        } else {
-          console.log(modCat.errMessage);
-        }
-      });
-    });
+      );
+    } else {
+      console.log(modCat.errMessage);
+    }
+  });
+});
 
-    $(".delete-confirm-btn").on("click", (e) => {
-      let deleteMenu = document.querySelector(".delete-category-menu");
-      let catId = deleteMenu.getAttribute("data-catid");
-      let category = new Category();
-      category.remove(catId).then((data) => {
-        if (!data.err) {
-          $(`#${catId}`).remove();
-        } else {
-          console.log(data.errMessage);
-        }
-      });
-    });
-  }
-})();
+$(".delete-confirm-btn").on("click", (e) => {
+  let deleteMenu = document.querySelector(".delete-category-menu");
+  let catId = deleteMenu.getAttribute("data-catid");
+  let category = new Category();
+  category.remove(catId).then((data) => {
+    if (!data.err) {
+      $(`#${catId}`).remove();
+    } else {
+      console.log(data.errMessage);
+    }
+  });
+});
