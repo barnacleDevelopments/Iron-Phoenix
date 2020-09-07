@@ -1013,7 +1013,6 @@ ADMIN PRODUCT MANEGEMENT STYLES
   background-color: #f5f5f5;
   margin-bottom: 14px;
   padding: 14px;
-  margin-top: 14px;
 }
 
 .product-input input {
@@ -1049,7 +1048,7 @@ ADMIN PRODUCT MANEGEMENT STYLES
 }
 
 .add-product-btn {
-  margin: 14px 0px 14px 0px;
+  margin: 0px 0px 14px 0px;
   background-color: #5cb85c !important;
 }
 
@@ -1102,6 +1101,10 @@ ADMIN PRODUCT MANEGEMENT STYLES
 
 .product-dropdown a {
   color: black !important;
+}
+
+#product-allergy-container > div:nth-of-type(2) {
+  margin-top: 14px;
 }
 
 /* ADMIN ALLERGIES VIEW */

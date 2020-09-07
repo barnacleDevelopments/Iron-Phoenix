@@ -7,32 +7,38 @@
  */
 
 /**
- * A Allergy Class
+ * A Addon Class
  *
  * @author Shaquille Lynch
  */
-class Allergy {
+class Addon {
     /** Constructor **/
   
-    /** A constructor for Allergy class */
-    constructor() {
+    /**
+     * A constructor for Addon class
+     *
+     * @param {String} name Addon name
+     */
+    constructor(name) {
+      this.name = name;
     }
   
     /** Methods **/
-
     /**
-     * Creating the Allergy
+     * Creating the Addon
      *
-     * @param {String} name Allergy Name
-     * @return {Object} Created Allergy
+     * @param {String} name Addon Name
+     * @param {Number} price Addon Price
+     * @return {Object} Created Addon
      */
-    async create(name) {
+    async create(name, price) {
       let sendingData = {
-          name: name
+          name: name,
+          price: price
         },
         receivingData = {};
   
-      await fetch(`http://localhost:${port}/api/allergy/`, {
+      await fetch(`http://localhost:${port}/api/addon/`, {
         method: "post",
         mode: "cors",
         headers: {
@@ -57,46 +63,46 @@ class Allergy {
     }
 
     /**
-     * Getting the Allergy
+     * Getting the Addon
      *
-     * @param {String} id Allergy Id
-     * @return {Object} Allergy
+     * @param {String} id Addon Id
+     * @return {Object} Addon
      */
     async get(id) {
-      let receivingData = {};
-
-      await fetch(`http://localhost:${port}/api/allergy/${id}`, {
-        method: "get",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json", // sent request
-          Accept: "application/json", // expected data sent back
-        }
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          receivingData.data = data;
-          receivingData.err = false;
-          receivingData.errMessage = "";
+        let receivingData = {};
+  
+        await fetch(`http://localhost:${port}/api/addon/${id}`, {
+          method: "get",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json", // sent request
+            Accept: "application/json", // expected data sent back
+          }
         })
-        .catch((error) => {
-          receivingData.err = true;
-          receivingData.errMessage = error;
-          console.log(error);
-        });
-
-      return receivingData;
-    }
+          .then((res) => res.json())
+          .then((data) => {
+            receivingData.data = data;
+            receivingData.err = false;
+            receivingData.errMessage = "";
+          })
+          .catch((error) => {
+            receivingData.err = true;
+            receivingData.errMessage = error;
+            console.log(error);
+          });
+  
+        return receivingData;
+      }
   
     /**
-     * Getting all the Allergies
+     * Getting all the Addons
      *
-     * @return {Object} Allergies
+     * @return {Object} Addons
      */
     async getAll() {
       let receivingData = {};
   
-      await fetch(`http://localhost:${port}/api/allergy/`, {
+      await fetch(`http://localhost:${port}/api/addon/`, {
         method: "get",
         mode: "cors",
         headers: {
@@ -118,17 +124,56 @@ class Allergy {
   
       return receivingData;
     }
-
+  
     /**
-     * Removing the Allergy
+     * Updating the Addon
      *
-     * @param {String} id Allergy Id
-     * @return {Object} Removed Allergy
+     * @param {String} id Addon Id
+     * @param {String} name Addon Name
+     * @param {Number} price Addon Price
+     * @return {Object} Updated Addon
+     */
+    async update(id, name, price) {
+      let sendingData = {
+          name: name,
+          price: price
+        },
+        receivingData = {};
+  
+      await fetch(`http://localhost:${port}/api/addon/${id}`, {
+        method: "put",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json", // sent request
+          Accept: "application/json", // expected data sent back
+        },
+        body: JSON.stringify(sendingData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          receivingData.data = data;
+          receivingData.err = false;
+          receivingData.errMessage = "";
+        })
+        .catch((error) => {
+          receivingData.err = true;
+          receivingData.errMessage = error;
+          console.log(error);
+        });
+  
+      return receivingData;
+    }
+  
+    /**
+     * Removing the Addon
+     *
+     * @param {String} id Addon Id
+     * @return {Object} Removed Addon
      */
     async remove(id) {
       let receivingData = {};
   
-      await fetch(`http://localhost:${port}/api/allergy/${id}`, {
+      await fetch(`http://localhost:${port}/api/addon/${id}`, {
         method: "delete",
         mode: "cors",
         headers: {
@@ -152,14 +197,14 @@ class Allergy {
     }
   
     /**
-     * Return the amount of Allergies
+     * Return the amount of Addons
      *
-     * @return {Object} Amount of Allergies
+     * @return {Object} Amount of Addons
      */
     async count() {
       let receivingData = {};
   
-      await fetch(`http://localhost:${port}/api/allergy/`, {
+      await fetch(`http://localhost:${port}/api/addon/`, {
         method: "get",
         mode: "cors",
         headers: {

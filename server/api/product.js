@@ -21,68 +21,52 @@ const Product = require('../models/product');
 router.post('/product', function (req, res, next) {
   Product.create(req.body).then(function (data) {
       res.send(data);
-    })
-    .catch(next);
+    }).catch(next);
 });
 
 // Read Product
 router.get('/:catId/product/:id', function (req, res, next) {
-  Product.find({ catId: req.params.catId })
-    .then(function () {
-      Product.findOne({ _id: req.params.id }).then(function (data) {
+  Product.find({catId: req.params.catId}).then(function () {
+      Product.findOne({_id: req.params.id}).then(function (data) {
           res.send(data);
-        })
-        .catch(next);
-    })
-    .catch(next);
+        }).catch(next);
+    }).catch(next);
 });
 
 router.get('/product/:id/allergy', function (req, res, next) {
-  Product.findById({ _id: req.params.id })
-    .then(function (data) {
-          res.send(data.Allergy);
-    })
-    .catch(next);
+  Product.findById({_id: req.params.id}).then(function (data) {
+        res.send(data.Allergy);
+    }).catch(next);
 });
 
 router.get('/:catId/product', function (req, res, next) {
-  Product.find({ catId: req.params.catId }).then(function (data) {
+  Product.find({catId: req.params.catId}).then(function (data) {
         res.send(data);
     }).catch(next);
 });
 
 // Update Product
 router.put('/product/:id', function (req, res, next) {
-  Product.findByIdAndUpdate({ _id: req.params.id }, req.body)
-    .then(function () {
-      Product.findOne({ _id: req.params.id })
-        .then(function (data) {
+  Product.findByIdAndUpdate({_id: req.params.id}, req.body).then(function () {
+      Product.findOne({_id: req.params.id}).then(function (data) {
           res.send(data);
-        })
-        .catch(next);
-    })
-    .catch(next);
+        }).catch(next);
+    }).catch(next);
 });
 
 router.put('/product/:id/allergy', function (req, res, next) {
-  Product.findByIdAndUpdate({ _id: req.params.id }, req.body)
-    .then(function () {
-      Product.findOne({ _id: req.params.id })
-        .then(function (data) {
+  Product.findByIdAndUpdate({_id: req.params.id}, req.body).then(function () {
+      Product.findOne({_id: req.params.id}).then(function (data) {
           res.send(data.Allergy);
-        })
-        .catch(next);
-    })
-    .catch(next);
+        }).catch(next);
+    }).catch(next);
 });
 
 // Delete Product
 router.delete('/product/:id', function (req, res, next) {
-  Product.findByIdAndRemove({ _id: req.params.id })
-    .then(function (data) {
+  Product.findByIdAndRemove({_id: req.params.id}).then(function (data) {
       res.send(data);
-    })
-    .catch(next);
+    }).catch(next);
 });
 
 // Exporting the routers

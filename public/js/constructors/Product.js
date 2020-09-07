@@ -39,6 +39,7 @@ class Product {
         name: name,
         description: description,
         price: price,
+        Allergy: [],
       },
       receivingData = {};
 
@@ -114,22 +115,21 @@ class Product {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-    },
-    body: JSON.stringify(sendingData),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      receivingData.data = data;
-      receivingData.err = false;
-      receivingData.errMessage = "";
+      },
     })
-    .catch((error) => {
-      receivingData.err = true;
-      receivingData.errMessage = error;
-      console.log(error);
-    });
+      .then((res) => res.json())
+      .then((data) => {
+        receivingData.data = data;
+        receivingData.err = false;
+        receivingData.errMessage = "";
+      })
+      .catch((error) => {
+        receivingData.err = true;
+        receivingData.errMessage = error;
+        console.log(error);
+      });
 
-  return receivingData;
+    return receivingData;
   }
 
   /**
@@ -175,7 +175,6 @@ class Product {
    */
   async update(id, name, description, price) {
     let sendingData = {
-        id: id,
         name: name,
         description: description,
         price: price,
@@ -207,7 +206,7 @@ class Product {
   }
 
   /**
-   * Updating the Product Allergy 
+   * Updating the Product Allergy
    *
    * @param {String} id Product Id
    * @param {Array} col Collection of Allergy Id's
@@ -215,9 +214,9 @@ class Product {
    */
   async updateProductAllergy(id, col) {
     let sendingData = {
-      Allergy: col
-    },
-    receivingData = {};
+        Allergy: col,
+      },
+      receivingData = {};
 
     await fetch(`http://localhost:${port}/api/product/${id}/allergy`, {
       method: "put",
@@ -225,22 +224,22 @@ class Product {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-    },
-    body: JSON.stringify(sendingData),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      receivingData.data = data;
-      receivingData.err = false;
-      receivingData.errMessage = "";
+      },
+      body: JSON.stringify(sendingData),
     })
-    .catch((error) => {
-      receivingData.err = true;
-      receivingData.errMessage = error;
-      console.log(error);
-    });
+      .then((res) => res.json())
+      .then((data) => {
+        receivingData.data = data;
+        receivingData.err = false;
+        receivingData.errMessage = "";
+      })
+      .catch((error) => {
+        receivingData.err = true;
+        receivingData.errMessage = error;
+        console.log(error);
+      });
 
-  return receivingData;
+    return receivingData;
   }
 
   /**
@@ -276,9 +275,10 @@ class Product {
   }
 
   /**
-   * Return the amount of Product that's in a specific Category
+   * Return the amount of Products that's in a specific Category
    *
-   * @return {Object} Amount of Product
+   * @param {String} catId Category Id
+   * @return {Object} Amount of Products
    */
   async count(catId) {
     let receivingData = {};
