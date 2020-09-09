@@ -68,18 +68,31 @@ app.set("view engine", "handlebars");
 app.engine("handlebars", hbs.engine);
 app.set("views", path.join(__dirname, "../views"));
 
-//STATIC ASSETS
-app.use("/", express.static(path.join(__dirname, "../public/admin/css")));
-app.use("/", express.static(path.join(__dirname, "../public/admin")));
+/*
+==============================
+STATIC ASSETS
+=============================
+*/
 
-app.use("/", express.static(path.join(__dirname, "../public/customer/css")));
+// EVERYTHING
+app.use("/", express.static(path.join(__dirname, "../")));
+
+// ADMIN FOLDER
+app.use("/", express.static(path.join(__dirname, "../public/admin")));
+// CUSTOMER FOLDER
 app.use("/", express.static(path.join(__dirname, "../public/customer")));
 
+// CSS
+app.use("/", express.static(path.join(__dirname, "../public/admin/css")));
+app.use("/", express.static(path.join(__dirname, "../public/customer/css")));
+
+// JAVASCRIPT
 app.use("/", express.static(path.join(__dirname, "../public/js")));
+
+// FONTS & IMAGES
 app.use("/", express.static(path.join(__dirname, "../public/img")));
 app.use("/", express.static(path.join(__dirname, "../public/img/icons")));
 app.use("/", express.static(path.join(__dirname, "../public/fonts")));
-app.use("/", express.static(path.join(__dirname, "../")));
 
 //CONFIGURE ENVIROMENTAL VARIABLES
 dotEnv.config();
@@ -90,13 +103,16 @@ app.get("/", (req, res, next) => {
   res.redirect("/products");
 });
 
+app.get("/login", (req, res, next) => {
+  res.render("login");
+});
+
 app.get("/oops", (req, res, next) => {
   res.render("oops");
 });
 
 app.get("/products", (req, res, next) => {
   res.render("products", {
-    categories,
     pageType: true,
     header: "categories",
   });
@@ -116,17 +132,11 @@ app.get("/terms", (req, res, next) => {
   });
 });
 
-app.get("/product/:category", (req, res, next) => {
+app.get("/product/:category/:id", (req, res, next) => {
   const category = req.params.category;
-  let selectedProducts = [];
-
-  products.forEach((product) => {
-    if (product.category === category) selectedProducts.push(product);
-  });
+  const id = req.params.id;
   res.render("category", {
-    products: selectedProducts,
-    customizationItems: customizationItems,
-    category: category,
+    categoryId: id,
     header: category,
     pageType: false,
   });
@@ -134,18 +144,7 @@ app.get("/product/:category", (req, res, next) => {
 
 app.get("/user/info/:id", (req, res, next) => {
   res.render("user", {
-    userInfo: user,
     pageType: false,
-    allergies: [
-      "peanuts",
-      "milk",
-      "eggs",
-      "tree nuts",
-      "soy",
-      "gluten",
-      "fish",
-      "shellfish",
-    ],
     header: "info",
   });
 });

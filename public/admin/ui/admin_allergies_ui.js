@@ -1,3 +1,21 @@
+/*
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ * Version 1
+ *
+ * 2020-07-01
+ *
+ * Copyright 2020, Iron Phoenix, All rights reserved.
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ */
+
+/*
+==============================
+ADMIN ALLERGIES UI 
+==============================
+
+@ AUTHOR DEVIN S. DAVIS
+*/
+
 (function () {
   const allergyListContainer = document.getElementById(
     "allergy-list-container"
@@ -29,6 +47,8 @@
       if (addAllergyBtn) {
         if (!document.getElementById("allergy-input")) {
           addAllergyContainer.replaceChild(addAllergyMenu, addAllergyBtn);
+          // once open - focus first input
+          addAllergyMenu.firstElementChild.focus();
         }
       }
 

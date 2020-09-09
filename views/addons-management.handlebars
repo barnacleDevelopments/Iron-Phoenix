@@ -4,20 +4,14 @@
     <i class="material-icons">search</i>
 </div>
 
-<div class="container addons-list-container">
+<div id="addon-container" class="container addons-list-container">
     <div class="row">
         <div class="col s12">
-            <div class="addons-add-btn">
-                <a class="waves-effect waves-light btn add-addon-btn">Add Addon</a>
-            </div>
-            <div class="addons-input" style="display: none">
-                <input type="text" placeholder="add allergy here...">
-                <div class="addons-input-btns">
-                    <a class="waves-effect waves-light btn addon-save-btn">save</a>
-                    <a class="waves-effect waves-light btn addon-cancel-btn">cancle</a>
-                </div>
-            </div>
-            <ul>
+
+            <a id="add-addon-btn" class="waves-effect waves-light btn add-addon-btn">Add Addon</a>
+
+
+            <ul id="addon-list">
                 <li>
 
                 </li>
@@ -25,3 +19,11 @@
         </div>
     </div>
 </div>
+
+{{!-- Admin Addons UI --}}
+<script type="text/javascript" src="/ui/admin_addons_ui.js">
+</script>
+
+{{!-- Admin Addons Handlers --}}
+<script type="text/javascript" src="/handlers/admin_addons_handlers.js">
+</script>

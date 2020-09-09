@@ -1,3 +1,21 @@
+/*
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ * Version 1
+ *
+ * 2020-07-01
+ *
+ * Copyright 2020, Iron Phoenix, All rights reserved.
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ */
+
+/*
+==============================
+CUSTOMER GLOBAL UI  
+==============================
+
+@ AUTHOR DEVIN S. DAVIS
+*/
+
 // option menu shadow overlay
 const displayShadowOverlay = () => {
   $(".option-menu-shadow").css({ display: "block" });

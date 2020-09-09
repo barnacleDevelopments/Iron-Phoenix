@@ -1,6 +1,20 @@
-// =================================
-// PRODUCT MANAGEMENT UI HANDLING
-// =================================
+/*
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ * Version 1
+ *
+ * 2020-07-01
+ *
+ * Copyright 2020, Iron Phoenix, All rights reserved.
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ */
+
+/*
+==============================
+ADMIN PRODUCTS UI
+==============================
+
+@ AUTHOR DEVIN S. DAVIS
+*/
 
 // -------------------------------------
 // FUNCTIONS
@@ -51,8 +65,12 @@
 
         // open add category menu if add cetegory button is clicked
         if (targetElement.classList.contains("add-category-btn")) {
+          console.log(categoryInput.firstElementChild);
+
           categoryInput.setAttribute("style", "display: flex");
           categoryBtn.setAttribute("style", "display: none");
+          // once open - focus first input
+          categoryInput.firstElementChild.focus();
         }
 
         // close add category menu if save or cancle are clicked
@@ -115,6 +133,8 @@
           displayMenuFloaterContainer();
           let editMenu = document.querySelector(".edit-category-menu");
           editMenu.setAttribute("style", "display: block");
+          // once open - focus first input
+          editMenu.firstElementChild.focus();
           let catId = targetElement
             .closest(".edit-category-btn")
             .getAttribute("data-catid");
@@ -163,17 +183,10 @@
         }
 
         // ++++++++++++++++++++++++++++++++++
-        // Product Dropdown Event Managers
+        // Product Edit Menu Open & Close
         // ++++++++++++++++++++++++++++++++++
 
-        // open product dropdown
-        if (targetElement.closest(".product-dropdown-trigger")) {
-          targetElement
-            .closest(".product-dropdown-trigger")
-            .nextElementSibling.setAttribute("style", "display: block");
-        }
-
-        // open product input
+        // if add product button is pressed - open product input
         if (targetElement.closest(".add-product-btn")) {
           let productInput = targetElement.previousElementSibling;
           if (productInput.style.display === "none") {
@@ -187,7 +200,7 @@
           }
         }
 
-        // close product input
+        // if save or cancel is pressed - close product input
         if (
           targetElement.classList.contains("product-save-btn") ||
           targetElement.classList.contains("product-cancel-btn")
@@ -197,6 +210,17 @@
             .setAttribute("style", "display: none");
           targetElement
             .closest(".product-input")
+            .nextElementSibling.setAttribute("style", "display: block");
+        }
+
+        // ++++++++++++++++++++++++++++++++++
+        // Product Dropdown Event Managers
+        // ++++++++++++++++++++++++++++++++++
+
+        // open product dropdown
+        if (targetElement.closest(".product-dropdown-trigger")) {
+          targetElement
+            .closest(".product-dropdown-trigger")
             .nextElementSibling.setAttribute("style", "display: block");
         }
 
@@ -214,9 +238,68 @@
               displayMenuFloaterContainer();
               editMenu.setAttribute("style", "display: block");
               editMenu.setAttribute("data-procid", procId);
+              // once open - focus first input
+              editMenu.firstElementChild.focus();
 
               break;
             case "Alergies":
+              //  open product allergy menu
+              displayMenuFloaterContainer();
+              // append preloader while allegies are fetched
+              let preLoader = document.createElement("div");
+              preLoader.innerHTML = `
+                <div class="progress">
+                <div class="indeterminate"></div>
+                </div>
+                `;
+              document
+                .querySelector(".admin-product-floater-container")
+                .append(preLoader);
+              // create allergies class varaible
+              let allergy = new Allergy();
+              let product = new Product();
+              allergy.getAll().then((allergies) => {
+                if (!allergies.err) {
+                  // remove preloader on successful fetch
+                  preLoader.remove();
+                  document
+                    .querySelector(".admin-product-floater-container")
+                    .firstElementChild.remove();
+                  // get product id
+                  let procId = targetElement.getAttribute("data-procid");
+                  // create product allergies menu
+                  let allContainer = document.createElement("div");
+                  allContainer.setAttribute(
+                    "style",
+                    "background-color: #f5f5f5; width: 90%;"
+                  );
+                  allContainer.setAttribute("id", "product-allergy-container");
+                  allContainer.setAttribute("data-procid", procId);
+                  allContainer.innerHTML = `
+                      <div>
+                        <a id="product-allergies-save-btn" class="waves-effect waves-light btn proc-allergy-save-btn save-btn">save</a>
+                        <a id="product-allergies-cancel-btn" class="waves-effect waves-light btn proc-allergy-cancel-btn cancel-btn" style="background-color: grey">cancel</a>
+                      </div>`;
+
+                  // append product allergies menu to floater container
+                  document
+                    .querySelector(".admin-product-floater-container")
+                    .append(allContainer);
+
+                  document
+                    .getElementById("product-allergies-cancel-btn")
+                    .addEventListener("click", () => {
+                      //hide product menu floater container
+                      document
+                        .querySelector(".admin-product-floater-container")
+                        .setAttribute("style", "display: none");
+                      //remove allergy menu from floater container
+                      allContainer.remove();
+                    });
+                } else {
+                  console.log(allergies.data.errMessage);
+                }
+              });
               break;
             case "Delete":
               let deleteMenu = document.querySelector(".delete-product-menu");
@@ -226,65 +309,7 @@
               break;
           }
         }
-        //  open product allergy menu
-        if (targetElement.classList.contains("add-product-allergies-btn")) {
-          displayMenuFloaterContainer();
-          // append preloader while allegies are fetched
-          let preLoader = document.createElement("div");
-          preLoader.innerHTML = `
-          <div class="progress">
-      <div class="indeterminate"></div>
-  </div>
-      `;
-          document
-            .querySelector(".admin-product-floater-container")
-            .append(preLoader);
-          // create allergies class varaible
-          let allergy = new Allergy();
-          let product = new Product();
-          allergy.getAll().then((allergies) => {
-            if (!allergies.err) {
-              // remove preloader on successful fetch
-              preLoader.remove();
-              document
-                .querySelector(".admin-product-floater-container")
-                .firstElementChild.remove();
-              // get product id
-              let procId = targetElement.getAttribute("data-procid");
-              // create product allergies menu
-              let allContainer = document.createElement("div");
-              allContainer.setAttribute(
-                "style",
-                "background-color: #f5f5f5; width: 90%;"
-              );
-              allContainer.setAttribute("id", "product-allergy-container");
-              allContainer.setAttribute("data-procid", procId);
-              allContainer.innerHTML = `
-              <div>
-              <a id="product-allergies-save-btn" class="waves-effect waves-light btn proc-allergy-save-btn save-btn">save</a>
-              <a id="product-allergies-cancel-btn" class="waves-effect waves-light btn proc-allergy-cancel-btn cancel-btn" style="background-color: grey">cancel</a>
-              </div>`;
 
-              // append product allergies menu to floater container
-              document
-                .querySelector(".admin-product-floater-container")
-                .append(allContainer);
-
-              document
-                .getElementById("product-allergies-cancel-btn")
-                .addEventListener("click", () => {
-                  //hide product menu floater container
-                  document
-                    .querySelector(".admin-product-floater-container")
-                    .setAttribute("style", "display: none");
-                  //remove allergy menu from floater container
-                  allContainer.remove();
-                });
-            } else {
-              console.log(allergies.data.errMessage);
-            }
-          });
-        }
         //
       });
 

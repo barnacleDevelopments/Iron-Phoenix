@@ -1,28 +1,16 @@
 {{> navbar_customer }}
-<div class="categories-enclosure">
+<div id="products-enclosure">
   <div class="row">
-    <div class="col s12">
-      <div class="categories-list">
-        {{#each categories}}
-        <div class="card categories-card">
-          <a href="/product/{{productCategory}}">
-            <div class="card-image waves-effect waves-block waves-light product-img">
-              <img src="{{img}}">
-            </div>
-          </a>
-          <a href="">
-            <div class="card-content">
-              <h2 class="card-title grey-text text-darken-4">{{productCategory}}</h2>
-              <p class="category-subtitle">{{productCount}} Items </p>
-            </div>
-          </a>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-          </div>
-        </div>
-        {{/each}}
+    <div id="products-column" class="col s12">
+      <div id="categories-list">
+
       </div>
     </div>
   </div>
 </div>
+
+
+{{!-- Customer Products Handlers --}}
+
+<script type="text/javascript" src="/handlers/customer_categories_handlers.js">
+</script>
