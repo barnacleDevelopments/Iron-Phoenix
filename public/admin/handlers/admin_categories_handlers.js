@@ -60,8 +60,8 @@ function createCategoryElement(id, name) {
             <input class="category-description-input" type="text" placeholder="add description...">
 
               <div class="product-input-btns">
-                  <a class="waves-effect waves-light btn product-save-btn">save</a>
-                  <a class="waves-effect waves-light btn product-cancel-btn">cancle</a>
+                  <a class="waves-effect waves-light btn product-save-btn confirm-btn">save</a>
+                  <a class="waves-effect waves-light btn cancel-btn product-cancel-btn">cancle</a>
               </div>
           </li>
 

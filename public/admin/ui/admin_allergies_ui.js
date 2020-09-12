@@ -39,8 +39,8 @@ ADMIN ALLERGIES UI
       addAllergyMenu.innerHTML = ` 
             <input type="text" placeholder="add allergy here...">
                 <div class="category-input-btns">
-                    <a id="allergy-save-btn" class="waves-effect waves-light btn ">save</a>
-                    <a id="allergy-cancel-btn" class="waves-effect waves-light btn ">cancle</a>
+                    <a id="allergy-save-btn" class="waves-effect waves-light btn confirm-btn">save</a>
+                    <a id="allergy-cancel-btn" class="waves-effect waves-light btn cancel-btn">cancle</a>
                 </div>`;
 
       // if add allergy button is pressed show allergy input menu

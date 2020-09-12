@@ -170,11 +170,14 @@ CATEGORY VIEW
 }
 
 .searchbar {
+  position: fixed;
+  top: 0;
   box-shadow: 0px 0px 2px 1px#ffffff;
   height: 50px;
   width: 100%;
   z-index: 5;
   margin-top: 65px;
+  transition: top 0.3s;
 }
 
 .searchbar i {
@@ -877,13 +880,14 @@ ADMIN PRODUCT MANEGEMENT STYLES
 .admin-products-container {
   z-index: 996;
   height: 100%;
-  margin-top: 30px;
+  margin-top: 130px;
 }
 
 .admin-category-list {
   border: none !important;
   box-shadow: none;
   height: 100%;
+  min-width: 287px;
 }
 
 .admin-category-list {
@@ -1019,6 +1023,7 @@ ADMIN PRODUCT MANEGEMENT STYLES
   justify-content: space-between;
   height: 122px;
   margin-bottom: 14px;
+  min-width: 272px;
 }
 
 .admin-product h2 {
@@ -1047,13 +1052,22 @@ ADMIN PRODUCT MANEGEMENT STYLES
   display: flex;
   flex-direction: column;
   height: 100% !important;
+  margin-right: 20px;
+  overflow: hidden;
+}
+
+.admin-product-description h2 {
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .admin-product-description p {
-  width: 100%;
-  text-overflow: ellipsis;
   overflow: hidden;
   font-size: 14px !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .product-input {
@@ -1151,7 +1165,7 @@ ADMIN PRODUCT MANEGEMENT STYLES
 }
 
 #allergy-list-container {
-  margin-top: 103px;
+  margin-top: 130px;
 }
 
 #allergy-input {
@@ -1203,18 +1217,42 @@ ADMIN PRODUCT MANEGEMENT STYLES
 /* ++++++++++++++++++++++*/
 
 .addons-list-container {
-  margin-top: 103px;
+  margin-top: 130px;
 }
 
-#add-addon-btn {
+.addons-list-container > a {
   width: 100%;
-  background-color: #5cb85c !important;
-  margin-bottom: 24px;
+  background-color: #5cb85c;
 }
 
-.addons-input-btns {
-  display: flex;
-  justify-content: flex-end;
+.addons-list-container > a:hover {
+  background-color: #5cb85c;
+}
+
+#addons-input {
+  background-color: #f5f5f5;
+  margin-bottom: 14px;
+  padding: 14px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#addons-input input {
+  background-color: #ffffff;
+  padding-left: 10px !important;
+  -moz-box-sizing: border-box !important;
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box;
+  border: none !important;
+  border: 1px solid #cccccc !important;
+  font-size: 16px !important;
+  height: 3rem;
+  width: 100%;
+}
+
+#addons-input a {
+  float: none;
+  right: 0px;
 }
 
 /* drop down menus */

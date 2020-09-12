@@ -31,7 +31,7 @@ function createProductElement(id, name, price, desc) {
       </div>
       <div class="admin-product-description">
           <h2>${name}</h2>
-          <p class="flow-text">${desc}</p>
+          <p >${desc}</p>
       </div>
   </div>
   

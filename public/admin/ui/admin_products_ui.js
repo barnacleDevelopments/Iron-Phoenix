@@ -233,8 +233,8 @@ document
 
     // close add category menu if save or cancle are clicked
     if (
-      targetElement.classList.contains("category-save-btn") ||
-      targetElement.classList.contains("category-cancel-btn")
+      targetElement.id === "category-save-btn" ||
+      targetElement.id === "category-cancel-btn"
     ) {
       categoryInput.setAttribute("style", "display: none");
       categoryBtn.setAttribute("style", "display: block");
