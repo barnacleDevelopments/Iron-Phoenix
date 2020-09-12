@@ -167,15 +167,15 @@ app.get("/user/order/:id", (req, res, next) => {
 
 //ADMIN SIDE ROUTES
 app.get("/admin/products-management", (req, res, next) => {
-  res.render("products-management");
+  res.render("products-management", { layout: "admin.handlebars" });
 });
 
 app.get("/admin/allergies-management", (req, res, next) => {
-  res.render("allergies-management");
+  res.render("allergies-management", { layout: "admin.handlebars" });
 });
 
 app.get("/admin/addons-management", (req, res, next) => {
-  res.render("addons-management");
+  res.render("addons-management", { layout: "admin.handlebars" });
 });
 
 app.listen(port, () => {

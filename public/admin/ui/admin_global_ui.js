@@ -10,13 +10,18 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 /*
 ==============================
-GLOBAL CUSTOMER UI
+GLOBAL ADMIN UI
 ==============================
 
 @ AUTHOR DEVIN S. DAVIS
 */
 
-// option menu shadow overlay
+/*
+==============================
+FUNCTIONS 
+==============================
+*/
+
 const displayShadowOverlay = () => {
   $(".option-menu-shadow").css({ display: "block" });
 };
@@ -24,7 +29,6 @@ const displayShadowOverlay = () => {
 const removeShadowOverlay = () => {
   $(".option-menu-shadow").css({ display: "none" });
 };
-
 // Materialize Drop Down menu triggers
 $(document).ready(function () {
   $(".collapsible").collapsible();
@@ -35,8 +39,10 @@ $(document).ready(function () {
   $(".sidenav").sidenav();
 });
 
-// Order view materialize carousel logic
-$(".carousel.carousel-slider").carousel({
-  fullWidth: true,
-  indicators: true,
+// display and hide searchbar on scroll
+$(document).on("scroll", function () {
+  let adminNavBottom = document.querySelector(".admin-navbar").scrollHeight;
+
+  let adminSearchbarTop = document.querySelector(".searchbar");
+  console.log(adminNavBottom, adminSearchbarTop);
 });

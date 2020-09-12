@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="description here">
+    <meta name="keywords" content="keywords,here">
+
+    <title>Iron Phoenix</title>
+
+    {{!-- STYLES --}}
+
+
+    {{!-- material css styles --}}
+    <link type="text/css" rel="stylesheet" href="/materialize.css" media="screen,projection" />
+
+    {{!-- Global Styles --}}
+    <link rel="stylesheet" type="text/css" href="/global.css">
+
+    {{!-- Global Admin Styles --}}
+    <link type="text/css" rel="stylesheet" href="/global_admin.css" media="screen,projection" />
+    {{!-- Navbar Styles --}}
+
+    <link rel="stylesheet" type="text/css" href="/navbar_mobile.css">
+
+    {{!-- mobile styles --}}
+    <link rel="stylesheet" type="text/css" href="/mobile.css">
+
+    {{!-- tablet styles --}}
+    <link rel="stylesheet" type="text/css" media="screen and (min-width:460px)" href="/tablet_portrait.css">
+
+    {{!-- pc styles --}}
+    <link rel="stylesheet" type="text/css" href="/laptop.css">
+
+
+
+    {{!-- FONTS & ICONS =--}}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/Poppins-Regular.ttf">
+    <script src="https://kit.fontawesome.com/2cea744347.js" crossorigin="anonymous"></script>
+
+    {{!-- PWA CONFIG --}}
+    {{!-- Manifest --}}
+    <link rel="manifest" href="/manifest.json">
+    {{!-- IOS Support --}}
+    <meta name="apple-mobile-web-app-status-bar" content="#5cb85c">
+    <link rel="apple-touch-icon" href="/icons/ip1.png">
+    {{!-- Theme Color --}}
+    <meta name="theme-color" content="#5cb85c" />
+
+    {{!-- j-Query --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="author" content="name">
+
+    <link rel="icon" type="image/png" href="/ip.png">
+
+    {{!-- Global Variables  --}}
+    <script type="text/javascript" src="/globalVariables.js"></script>
+
+    {{!-- Constructors  --}}
+    <script type="text/javascript" src="/constructors/Allergy.js"></script>
+    <script type="text/javascript" src="/constructors/Category.js"></script>
+    <script type="text/javascript" src="/constructors/Product.js"></script>
+    <script type="text/javascript" src="/constructors/Addon.js">
+    </script>
+</head>
+
+
+{{{ body }}}
+
+
+{{!-- MATERIALIZE JS --}}
+<script type="text/javascript" src="/materialize.js"></script>
+
+{{!-- UI FILES --}}
+<script src="/ui/admin_global_ui.js"></script>
+<script src="/ui/admin_products_ui.js"></script>
+<script src="/ui/admin_allergies_ui.js"></script>
+
+
+{{!-- SERVICE WORKER CONFIG --}}
+<script src="/sw_register.js"></script>
+
+
+</html>

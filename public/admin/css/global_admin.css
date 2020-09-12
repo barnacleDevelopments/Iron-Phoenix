@@ -1,0 +1,51 @@
+/* 
+==================================
+Global Admin Styles
+==================================
+*/
+
+/* form container */
+
+#form-container {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.219);
+  top: 0px;
+}
+
+/* form body */
+.form-body {
+  background-color: #ffffff;
+  padding: 20px;
+  z-index: 1001;
+  width: 90%;
+}
+
+.form-body > input {
+  background-color: transparent !important;
+  border-bottom: 1px solid #9e9e9e !important;
+  outline: none !important;
+  height: 3rem !important;
+  width: 100% !important;
+  font-size: 16px !important;
+  padding: 0 !important;
+  border: 1px solid #cccccc !important;
+  padding-left: 14px !important;
+  box-sizing: border-box !important;
+}
+
+.form-body > a {
+  margin-top: 10px;
+}
+/* Buttons */
+.confirm-btn {
+  background-color: #5cb85c !important;
+}
+
+.cancel-btn {
+  background-color: grey !important;
+}

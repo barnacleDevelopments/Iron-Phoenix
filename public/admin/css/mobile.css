@@ -172,11 +172,9 @@ CATEGORY VIEW
 .searchbar {
   box-shadow: 0px 0px 2px 1px#ffffff;
   height: 50px;
-  position: absolute;
   width: 100%;
-  left: 0px;
-  top: 65px;
   z-index: 5;
+  margin-top: 65px;
 }
 
 .searchbar i {
@@ -877,9 +875,9 @@ ADMIN PRODUCT MANEGEMENT STYLES
 
 /* category dropdown */
 .admin-products-container {
-  margin-top: 103px;
-  overflow-y: scroll !important;
-  scrollbar-width: none;
+  z-index: 996;
+  height: 100%;
+  margin-top: 30px;
 }
 
 .admin-category-list {
@@ -991,7 +989,7 @@ ADMIN PRODUCT MANEGEMENT STYLES
   background-color: #5cb85c;
 }
 
-.add-category-btn {
+#add-category-btn {
   width: 100%;
   background-color: #5cb85c !important;
   margin-bottom: 24px;
@@ -1105,22 +1103,6 @@ ADMIN PRODUCT MANEGEMENT STYLES
   background-color: #5cb85c !important;
 }
 
-.save-btn {
-  background-color: #5cb85c !important;
-}
-
-.cancel-btn {
-  background-color: #808080 !important;
-}
-
-.product-save-btn {
-  background-color: #5cb85c !important;
-}
-
-.product-cancel-btn {
-  background-color: #808080 !important;
-}
-
 .product-dropdown-container {
   position: relative;
   display: flex;
@@ -1183,14 +1165,6 @@ ADMIN PRODUCT MANEGEMENT STYLES
 
 #add-allergy-btn {
   width: 100%;
-  background-color: #5cb85c;
-}
-
-#allergy-cancel-btn {
-  background-color: gray;
-}
-
-#allergy-save-btn {
   background-color: #5cb85c;
 }
 

@@ -138,18 +138,27 @@
   width: 100%;
   position: fixed;
   background-color: #ffffff;
-  z-index: 998;
+  z-index: 996;
+  top: 0;
 }
 
+.admin-navbar i {
+  color: black;
+  font-size: 40px !important;
+}
 .admin-navbar > div:nth-of-type(1) {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   height: 100%;
   margin-left: 25px;
-  z-index: 998;
 }
 
+.admin-navbar > a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
 .admin-navbar > div:nth-of-type(1) a {
   display: flex;
   align-items: center;
