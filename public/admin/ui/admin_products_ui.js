@@ -16,11 +16,42 @@ ADMIN PRODUCTS UI
 @ AUTHOR DEVIN S. DAVIS
 */
 
+/*
+======================================
+GLOBAL PAGE ELEMENTS
+======================================
+*/
+
 let formContainer = document.querySelector("#form-container");
-// -------------------------------------
-// FUNCTION ELEMENTS
-// ------------------------------------
-function createProductDeleteElement(procId) {
+/*
+======================================
+FUNCTION ELEMENTS
+======================================
+*/
+
+// ---------------------------------------
+//  CREATE FORM TIP
+// ---------------------------------------
+function createFormTip(title, text, tip) {
+  // create element
+  let element = document.createElement("div");
+  // set element id
+  element.setAttribute("id", "tip-menu");
+  // create title & text
+  element.innerHTML = `
+  <h2>${title}</h2>
+  <p style="display: inline">${text}</p>
+  <p style="font-size: 14px !important;">Tip: ${tip}</p>
+  `;
+
+  return element;
+}
+
+// ---------------------------------------
+// DELETE PRODUCT FORM
+// ---------------------------------------
+
+function createProductDeleteForm(procId) {
   // create element
   let element = document.createElement("div");
   element.setAttribute("data-procid", procId);
@@ -45,7 +76,11 @@ function createProductDeleteElement(procId) {
   return element;
 }
 
-function createProductAllergiesElement(procId) {
+// ---------------------------------------
+//  CREATE ALLERGY FORM
+// ---------------------------------------
+
+function createProductAllergiesform(procId) {
   // create product allergies menu
   let element = document.createElement("div");
   element.setAttribute("style", "background-color: #f5f5f5; width: 90%;");
@@ -79,14 +114,19 @@ function createProductAllergiesElement(procId) {
 
   return element;
 }
-function createCategoryEditElement(catId) {
+
+// ---------------------------------------
+//  CATEOGRY EDIT FORM
+// ---------------------------------------
+
+function createCategoryEditForm(catId) {
   // create element
   let element = document.createElement("div");
   element.setAttribute("class", "form-body");
   element.setAttribute("data-catid", catId);
 
   element.innerHTML = `
-    <input id="edit-category-input" type="text" placeholder="add category title here...">
+      <input id="edit-category-input" type="text" placeholder="add category title here...">
       <a id="save-edit-category-btn" class="waves-effect waves-light btn confirm-btn">save</a>
       <a class="waves-effect waves-light btn cancel-btn">cancle</a>
 `;
@@ -101,13 +141,41 @@ function createCategoryEditElement(catId) {
     ) {
       element.remove();
       formContainer.setAttribute("style", "display: none");
+      // remove tip if exists
+      // get tip element
+      let tipMenu = document.getElementById("tip-menu");
+      if (tipMenu) {
+        tipMenu.remove();
+      }
+    }
+  });
+  element.firstElementChild.addEventListener("input", (e) => {
+    // get target element
+    let targetElement = e.target;
+    // get tip element
+    let tipMenu = document.getElementById("tip-menu");
+    // if inputed text includes too many charecters prompt the user
+    if (targetElement.value.length > 10 && !tipMenu) {
+      // create tip menu element
+      let tipElement = createFormTip(
+        "Problem:",
+        "Your title is too long!",
+        "Shorter titles capture the users attention more easily online"
+      );
+      formContainer.insertBefore(tipElement, formContainer.firstElementChild);
+    } else if (targetElement.value.length < 10 && tipMenu) {
+      tipMenu.remove();
     }
   });
 
   return element;
 }
 
-function createProductEditElement(procId, name, price, desc) {
+// ---------------------------------------
+//  PRODUCT EDIT FORM
+// ---------------------------------------
+
+function createProductEditForm(procId, name, price, desc) {
   // create elemet
   let element = document.createElement("div");
   // set element class
@@ -137,7 +205,11 @@ function createProductEditElement(procId, name, price, desc) {
   return element;
 }
 
-function createCategoryDeleteElement(catId, procCount) {
+// ---------------------------------------
+//  CATEOGRY DELETE FORM
+// ---------------------------------------
+
+function createCategoryDeleteForm(catId, procCount) {
   let element = document.createElement("div");
   // set element class
   element.setAttribute("class", "form-body");
@@ -170,6 +242,9 @@ FUNCTIONAL FUNCTIONS
 ===========================
 */
 
+// ---------------------------------------
+//  CONVERTS STRING TO NUMBER
+// ---------------------------------------
 function stringToNum(string) {
   let lArr = [];
   let arr = [...string];
@@ -182,27 +257,18 @@ function stringToNum(string) {
   return Number(lArr.join(""));
 }
 
+// ---------------------------------------
+//  CLOSES OPEN DROPDOWN MENUES (prodide an array of elements)
+// ---------------------------------------
 function closeOpenDropdowns(arr) {
   arr.forEach((el) => {
     el.setAttribute("style", "display: none;");
   });
 }
 
-// close all open dropdown menus
-function closeMenu(e, btns, parent) {
-  let targetElement = e.target;
-  let validBtns = [...btns];
-  validBtns.forEach((btn) => {
-    if (targetElement.classList.contains(btn)) {
-      document
-        .querySelector("#form-container")
-        .setAttribute("style", "display: none");
-      parent.setAttribute("style", "display: none");
-    }
-  });
-}
-
-// displays menu container
+// ---------------------------------------
+//  DISPLAYS FORM CONTAINER
+// ---------------------------------------
 function displayFormContainer() {
   document
     .querySelector("#form-container")
@@ -280,7 +346,7 @@ document
         .closest(".edit-category-btn")
         .getAttribute("data-catid");
       // create edit form
-      let formBody = createCategoryEditElement(catId);
+      let formBody = createCategoryEditForm(catId);
       formContainer.append(formBody);
       // set input value to previous name
       formBody.firstElementChild.value = document.getElementById(
@@ -302,7 +368,7 @@ document
       // get product count for category
       product.count(catId).then((procCount) => {
         if (!procCount.err) {
-          let formBody = createCategoryDeleteElement(catId, procCount.count);
+          let formBody = createCategoryDeleteForm(catId, procCount.count);
           formContainer.append(formBody);
         } else {
           console.log(procCount.errMessage);
@@ -383,12 +449,7 @@ document
               .textContent;
 
           // create edit form
-          let editFormBody = createProductEditElement(
-            procId,
-            name,
-            price,
-            desc
-          );
+          let editFormBody = createProductEditForm(procId, name, price, desc);
           formContainer.append(editFormBody);
           formContainer.setAttribute("style", "display: flex");
 
@@ -406,14 +467,14 @@ document
           //  open product allergy menu
 
           // create product allergies form element
-          let allergyFormBody = createProductAllergiesElement(procId);
+          let allergyFormBody = createProductAllergiesform(procId);
           formContainer.append(allergyFormBody);
           formContainer.setAttribute("style", "display: flex");
 
           break;
         case "Delete":
           //create new element
-          let deleteFormBody = createProductDeleteElement(procId);
+          let deleteFormBody = createProductDeleteForm(procId);
           // append the element to form container
           formContainer.append(deleteFormBody);
           // display form container
@@ -425,3 +486,9 @@ document
       }
     }
   });
+
+/*
+===================================
+FIELD TYPING EVENT LISTENERS
+==================================
+*/

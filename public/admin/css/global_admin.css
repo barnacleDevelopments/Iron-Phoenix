@@ -9,6 +9,7 @@ Global Admin Styles
 #form-container {
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100%;
   width: 100%;
   position: fixed;
@@ -51,4 +52,20 @@ Global Admin Styles
 .cancel-btn {
   background-color: grey !important;
   float: right;
+}
+
+/* tip menu */
+#tip-menu {
+  width: 90%;
+  background-color: #5cb85c;
+  transition-property: height;
+  transition-duration: 2s;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: #ffffff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.tip-menu-expanded {
 }

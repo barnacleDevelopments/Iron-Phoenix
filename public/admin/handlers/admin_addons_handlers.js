@@ -23,7 +23,7 @@ ADMIN ADDONS HANDLERS
 */
 function createAddonChip(name, price, id) {
   let chip = document.createElement("div");
-  chip.innerHTML = `<li id="${id}" style="background-color: #ffffff; display: flex; justify-content: space-between; padding: 10px 20px; border-radius: 3px; margin-bottom: 14px;"><div>$${price}</div> ${name}<i class="close material-icons">close</i></li>`;
+  chip.innerHTML = `<li id="${id}" style="background-color: #ffffff; display: flex; justify-content: space-between; padding: 10px 20px; border-radius: 3px; margin-bottom: 14px;"><div>$${price}</div> <div style="min-width: 0px;"><p style="margin: 0px 5px 0px 5px; font-size: 16px !important; text-overflow: ellipsis; white-space: nowrap; overflow:hidden">${name}</p></div><i class="close material-icons">close</i></li>`;
   return chip;
 }
 
