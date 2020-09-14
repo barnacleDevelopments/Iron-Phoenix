@@ -81,7 +81,7 @@ function createCategoryEditForm(catId) {
         <a id="save-edit-category-btn" class="waves-effect waves-light btn confirm-btn">save</a>
         <a class="waves-effect waves-light btn cancel-btn">cancle</a>
   `;
-  // add closing event listeners
+  // add closing event listener
   element.addEventListener("click", (e) => {
     // get target element
     let targetElement = e.target;
@@ -100,27 +100,88 @@ function createCategoryEditForm(catId) {
       }
     }
   });
-  element.firstElementChild.addEventListener("input", (e) => {
-    // get target element
-    let targetElement = e.target;
-    // get tip element
-    let tipMenu = document.getElementById("tip-menu");
-    // if inputed text includes too many charecters prompt the user
-    if (targetElement.value.length > 10 && !tipMenu) {
-      // create tip menu element
-      let tipElement = createFormTip(
-        "Problem:",
-        "Your title is too long!",
-        "Shorter titles capture the users attention more easily online"
-      );
-      formContainer.insertBefore(tipElement, formContainer.firstElementChild);
-    } else if (targetElement.value.length < 10 && tipMenu) {
-      tipMenu.remove();
-    }
-  });
 
-  return element;
-}
+  class StringValidater {
+    constructor(string) {
+      this.string = string;
+    }
+    get() {
+      return this.string;
+    }
+    isBiggerThen(length) {
+      if (this.string.length > length) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    isSmallerOrEqual(length) {
+      if (this.string.length <= length) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    isThisLong(length) {
+      if (this.string.length === length) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    seperatedExeeds(length) {
+      let stringArr = this.string.split(" ");
+      let doesExeed = false;
+      stringArr.forEach((string) => {
+        if (string.length > length) {
+          doesExeed = true;
+        }
+      });
+
+      if (doesExeed) {
+        return doesExeed;
+      }
+    }
+
+    seperatedNotExeeds(length) {
+      let stringArr = this.string.split(" ");
+      let doesExeed = false;
+      stringArr.forEach((string) => {
+        if (string.length < length) {
+          doesExeed = true;
+        }
+      });
+
+      if (doesExeed) {
+        return doesExeed;
+      }
+    }
+  }
+
+  // add input event listener
+//   element.firstElementChild.addEventListener("input", (e) => {
+//     // get target element
+//     let targetElement = e.target;
+//     // get inputed string
+//     let String = new StringValidater(targetElement.value);
+
+//     // if inputed text includes too many charecters prompt the user
+//     if (String.seperatedExeeds(10)) {
+//       let tipElement = createFormTip(
+//         "Problem:",
+//         "Your word is too long!",
+//         "Shorter titles capture the users attention more easily online"
+//       );
+//       tipElement.setAttribute(
+//         "style",
+//         "position: relative; top: 0px; animation: openTipMenu .3s ease-in forwards"
+//       );
+//       document.getElementById("form-tip-container").append(tipElement);
+//     }
+//   });
+
+//   return element;
+// }
 
 // ---------------------------------------
 //  PRODUCT EDIT FORM

@@ -58,8 +58,6 @@ Global Admin Styles
 #tip-menu {
   width: 90%;
   background-color: #5cb85c;
-  transition-property: height;
-  transition-duration: 2s;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   color: #ffffff;
