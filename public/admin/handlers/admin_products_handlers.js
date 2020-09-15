@@ -16,41 +16,6 @@ ADMIN PRODUCT HANDLERS
 @ AUTHOR DEVIN S. DAVIS
 */
 
-//=================================
-// ELEMENT FUNCTIONS
-//=================================
-function createProductElement(id, name, price, desc) {
-  // create element
-  let element = document.createElement("li");
-  element.setAttribute("id", id);
-  element.setAttribute("class", "admin-product");
-  element.innerHTML = `
-  <div>
-      <div class="admin-product-img">
-          <img src="/cake_1.jpg">
-      </div>
-      <div class="admin-product-description">
-          <h2>${name}</h2>
-          <p >${desc}</p>
-      </div>
-  </div>
-  
-<div class="product-dropdown-container">
-  <a class="product-dropdown-trigger edit-drop-trigger" href="#" data-target="dropdown2"><i class="material-icons">more_vert</i></a>
-  <ul data-procid="${id}" class="product-dropdown" style="display: none">
-    <li>Addons</li>
-    <li class="add-product-allergies-btn" data-procid="${id}">Alergies</li>
-    <li class="edit-product-btn" data-procid="${id}">Edit</li>
-    <li class="delete-product-btn" data-procid="${id}">Delete</li>
-  </ul>
-  <div class="product-price">
-  <h3>$${price}</h3>
-  </div>
-</div>
-`;
-  return element;
-}
-
 // create allergy chip element
 function createChipElement(name, id, chipStatus) {
   let allElement = document.createElement("div");
@@ -276,6 +241,13 @@ document
         }
       });
     }
+
+    // +++++++++++++++++++++++++++++++++++++++++++++
+    // append all addons to product allergy menu
+    // +++++++++++++++++++++++++++++++++++++++++++++
+    if (targetElement.closest("add-product-addon-btn")) {
+      console.log("yass");
+    }
   });
 
 /*
@@ -319,7 +291,7 @@ document.querySelector("#form-container").addEventListener("click", (e) => {
           null;
       }
     });
-    console.log(price);
+
     // update and replace product element
     product.update(procId, title, description, price).then((product) => {
       if (!product.data.err) {

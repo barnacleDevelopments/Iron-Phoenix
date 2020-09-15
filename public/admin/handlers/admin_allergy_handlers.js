@@ -40,10 +40,10 @@ const allergy = new Allergy();
 let allChipsList = document.getElementById("allergy-chips");
 
 /*
-      ++++++++++++++++++++
-       Get All Allergies
-      ++++++++++++++++++++
-    */
+++++++++++++++++++++
+Get All Allergies
+++++++++++++++++++++
+*/
 (function () {
   allergy.getAll().then((allergies) => {
     console.log(allergies);
@@ -60,9 +60,9 @@ let allChipsList = document.getElementById("allergy-chips");
 })();
 
 /*
-  ++++++++++++++++++++
-  Create New Allergy
-  ++++++++++++++++++++
+++++++++++++++++++++
+Create New Allergy
+++++++++++++++++++++
 */
 
 document

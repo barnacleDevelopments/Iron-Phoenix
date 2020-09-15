@@ -237,6 +237,12 @@ document
         .getAttribute("data-procid");
       switch (menuSelection) {
         case "Addons":
+          // create product allergies form element
+          let addonFormBody = createChipform(procId);
+          // append the element to form container
+          formContainer.append(addonFormBody);
+          // display form container
+          displayFormContainer();
           break;
         case "Edit":
           // get curent product element
@@ -262,26 +268,26 @@ document
           // create edit form
           let editFormBody = createProductEditForm(procId, name, price, desc);
           formContainer.append(editFormBody);
-          formContainer.setAttribute("style", "display: flex");
 
           let nameLength = name.length * 2;
-          // once open - focus first input
-          editFormBody.firstElementChild.focus();
+
           // move cursor to the end of input value
           editFormBody.firstElementChild.setSelectionRange(
             nameLength,
             nameLength
           );
-
+          // display form container
+          displayFormContainer();
+          // once open - focus first input
+          editFormBody.firstElementChild.focus();
           break;
         case "Alergies":
-          //  open product allergy menu
-
           // create product allergies form element
-          let allergyFormBody = createProductAllergiesform(procId);
+          let allergyFormBody = createChipform(procId);
+          // append the element to form container
           formContainer.append(allergyFormBody);
-          formContainer.setAttribute("style", "display: flex");
-
+          // display form container
+          displayFormContainer();
           break;
         case "Delete":
           //create new element
@@ -289,7 +295,7 @@ document
           // append the element to form container
           formContainer.append(deleteFormBody);
           // display form container
-          formContainer.setAttribute("style", "display: flex");
+          displayFormContainer();
 
           // once open - focus first input
           deleteFormBody.firstElementChild.focus();

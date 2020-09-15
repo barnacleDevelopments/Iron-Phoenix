@@ -16,61 +16,6 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 @ AUTHOR DEVIN S. DAVIS
 */
 
-/*
-=====================================
-ELEMENT FUNCTIONS
-=====================================
-*/
-
-function createCategoryElement(id, name) {
-  // create element
-  let element = document.createElement("li");
-  // set element id
-  element.setAttribute("id", id);
-  // add element content
-  element.innerHTML = `
-  <div class="category-header-container">
-      <div class="collapsible-header">
-          <div>
-              <div class="admin-category-img">
-                  <img src="/cake_1.jpg">
-              </div>
-              <div>
-                  <h1>${name}</h1>
-              </div>
-          </div>
-      </div>
-      <div class="category-dropdown-container">
-      <a class="category-dropdown-trigger">
-          <i class="material-icons ">more_vert</i>
-      </a>
-      <ul class="category-dropdown" style="display: none;">
-          <li data-catid="${id}" class="edit-category-btn">edit</li>
-          <li data-catid="${id}" class="delete-category-btn">delete</li>
-      </ul>
-  </div>
-  </div>
-  <div class="collapsible-body">
-      <ul data-catid="${id}" class=" admin-product-list">
-      
-
-          <li data-catid="${id}" class="product-input" style="display: none;">
-            <input class="category-title-input" type="text" placeholder="add product title here...">
-            <input class="category-price-input" type="text" placeholder="add price...">
-            <input class="category-description-input" type="text" placeholder="add description...">
-
-              <div class="product-input-btns">
-                  <a class="waves-effect waves-light btn product-save-btn confirm-btn">save</a>
-                  <a class="waves-effect waves-light btn cancel-btn product-cancel-btn">cancle</a>
-              </div>
-          </li>
-
-          <a class="waves-effect waves-light btn add-product-btn">Add Product</a>
-  </div>
-`;
-  return element;
-}
-
 // +++++++++++++++++++++++++++++++++++++++
 // Get All Categories
 // +++++++++++++++++++++++++++++++++++++++
