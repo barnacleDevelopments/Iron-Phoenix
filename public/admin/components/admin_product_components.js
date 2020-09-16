@@ -224,17 +224,57 @@ function createCategoryEditForm(catId) {
     let String = new StringValidater(targetElement.value);
 
     // if inputed text includes too many charecters prompt the user
-    if (String.seperatedExeeds(10)) {
+    if (
+      String.seperatedExeeds(10) &&
+      !document.querySelector("[data-tipnum='1']")
+    ) {
+      // create new tip element
       let tipElement = createFormTip(
-        "Problem:",
-        "Your word is too long!",
+        "warning",
+        "Your words are too long!",
         "Shorter titles capture the users attention more easily online"
       );
+      // give tip a number attribute
+      tipElement.setAttribute("data-tipnum", "1");
+      // get tip color
+      let tipColor = tipElement.getAttribute("data-tipcolor");
       tipElement.setAttribute(
         "style",
-        "position: relative; top: 0px; animation: openTipMenu .3s ease-in forwards"
+        `position: relative; top: 0px; animation: openTipMenu .3s ease-in forwards; background-color: ${tipColor}`
+      );
+      // append tip to form container
+      document.getElementById("form-tip-container").append(tipElement);
+    } else if (
+      !String.seperatedExeeds(10) &&
+      document.querySelector("[data-tipnum='1']")
+    ) {
+      // if tip already exists & does not exeed limit remove from container
+      document.querySelector("[data-tipnum='1']").remove();
+    }
+
+    if (
+      String.isBiggerThen(20) &&
+      !document.querySelector("[data-tipnum='2']")
+    ) {
+      let tipElement = createFormTip(
+        "recomend",
+        "Your title is too long!",
+        "Shorter titles capture the users attention more easily online"
+      );
+      tipElement.setAttribute("data-tipnum", "2");
+      console.log(document.querySelector("[data-tipnum]"));
+      // get tip color
+      let tipColor = tipElement.getAttribute("data-tipcolor");
+      tipElement.setAttribute(
+        "style",
+        `position: relative; top: 0px; animation: openTipMenu .3s ease-in forwards; background-color: ${tipColor}`
       );
       document.getElementById("form-tip-container").append(tipElement);
+    } else if (
+      !String.isBiggerThen(20) &&
+      document.querySelector("[data-tipnum='2']")
+    ) {
+      document.querySelector("[data-tipnum='2']").remove();
     }
   });
 

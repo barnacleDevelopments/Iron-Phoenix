@@ -55,14 +55,39 @@ Global Admin Styles
 }
 
 /* tip menu */
-#tip-menu {
-  width: 90%;
-  background-color: #5cb85c;
+
+#form-tip-container > .tip-menu:nth-of-type(1) {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  color: #ffffff;
-  padding: 20px;
+}
+
+.tip-menu {
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.tip-menu p:nth-of-type(2) {
+  margin: 0px 20px 10px 20px;
+}
+
+.tip-menu > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.tip-menu i {
+  color: #ffffff;
+  font-size: 30px;
+}
+
+#form-tip-container {
+  width: 90%;
 }
 
 .tip-menu-expanded {
