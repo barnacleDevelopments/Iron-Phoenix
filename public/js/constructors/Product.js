@@ -39,7 +39,7 @@ class Product {
         name: name,
         description: description,
         price: price,
-        Allergy: []
+        Allergy: [],
       },
       receivingData = {};
 
@@ -83,7 +83,7 @@ class Product {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-      }
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -115,21 +115,21 @@ class Product {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-    }
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      receivingData.data = data;
-      receivingData.err = false;
-      receivingData.errMessage = "";
+      },
     })
-    .catch((error) => {
-      receivingData.err = true;
-      receivingData.errMessage = error;
-      console.log(error);
-    });
+      .then((res) => res.json())
+      .then((data) => {
+        receivingData.data = data;
+        receivingData.err = false;
+        receivingData.errMessage = "";
+      })
+      .catch((error) => {
+        receivingData.err = true;
+        receivingData.errMessage = error;
+        console.log(error);
+      });
 
-  return receivingData;
+    return receivingData;
   }
 
   /**
@@ -179,7 +179,7 @@ class Product {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-      }
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -209,7 +209,7 @@ class Product {
     let sendingData = {
         name: name,
         description: description,
-        price: price
+        price: price,
       },
       receivingData = {};
 
@@ -238,7 +238,7 @@ class Product {
   }
 
   /**
-   * Updating the Product Allergy 
+   * Updating the Product Allergy
    *
    * @param {String} id Product Id
    * @param {Array} col Collection of Allergy Id's
@@ -246,9 +246,9 @@ class Product {
    */
   async updateProductAllergy(id, col) {
     let sendingData = {
-      Allergy: col
-    },
-    receivingData = {};
+        Allergy: col,
+      },
+      receivingData = {};
 
     await fetch(`http://localhost:${port}/api/product/${id}/allergy`, {
       method: "put",
@@ -256,22 +256,22 @@ class Product {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-    },
-    body: JSON.stringify(sendingData),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      receivingData.data = data;
-      receivingData.err = false;
-      receivingData.errMessage = "";
+      },
+      body: JSON.stringify(sendingData),
     })
-    .catch((error) => {
-      receivingData.err = true;
-      receivingData.errMessage = error;
-      console.log(error);
-    });
+      .then((res) => res.json())
+      .then((data) => {
+        receivingData.data = data;
+        receivingData.err = false;
+        receivingData.errMessage = "";
+      })
+      .catch((error) => {
+        receivingData.err = true;
+        receivingData.errMessage = error;
+        console.log(error);
+      });
 
-  return receivingData;
+    return receivingData;
   }
 
   /**
@@ -326,7 +326,7 @@ class Product {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-      }
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -358,7 +358,7 @@ class Product {
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
-      }
+      },
     })
       .then((res) => res.json())
       .then((data) => {

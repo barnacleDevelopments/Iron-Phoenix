@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  {{!-- Author: Front End: Devin Davis, Backened: Shaquille Lynch
+        Date: Sept 13th, 2020    
+     --}}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="description here">
+  <meta name="description" content="PWA web application for Iron Phoenix culinary company.">
   <meta name="keywords" content="keywords,here">
 
   <title>Iron Phoenix</title>
 
   {{!-- STYLES --}}
 
-
   {{!-- material css styles --}}
   <link type="text/css" rel="stylesheet" href="/materialize.css" media="screen,projection" />
+
 
   {{!-- Global Styles --}}
   <link rel="stylesheet" type="text/css" href="/global.css">
 
-
+  {{!-- Global Admin Styles --}}
+  <link type="text/css" rel="stylesheet" href="/global_admin.css" media="screen,projection" />
   {{!-- Navbar Styles --}}
 
   <link rel="stylesheet" type="text/css" href="/navbar_mobile.css">
@@ -31,8 +35,6 @@
 
   {{!-- pc styles --}}
   <link rel="stylesheet" type="text/css" href="/laptop.css">
-
-
 
   {{!-- FONTS & ICONS =--}}
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -53,6 +55,23 @@
   <meta name="author" content="name">
 
   <link rel="icon" type="image/png" href="/ip.png">
+
+  {{!-- Global Variables  --}}
+  <script type="text/javascript" src="/globalVariables.js"></script>
+
+  {{!-- Constructors  --}}
+  <script type="text/javascript" src="/constructors/Allergy.js"></script>
+  <script type="text/javascript" src="/constructors/Category.js"></script>
+  <script type="text/javascript" src="/constructors/Product.js"></script>
+  <script type="text/javascript" src="/constructors/Addon.js">
+  </script>
+
+  {{!-- Constructors  --}}
+  <script type="text/javascript" src="/classes/classes.js">
+  </script>
+
+
+
 </head>
 
 <body>
@@ -65,28 +84,9 @@
   {{!-- MATERIALIZE JS --}}
   <script type="text/javascript" src="/materialize.js"></script>
 
-  {{!-- Global Variables  --}}
-  <script type="text/javascript" src="/globalVariables.js"></script>
-
   {{!-- UI FILES --}}
   {{!-- customer ui --}}
   <script src="/ui/customer.js"></script>
-  {{!-- admin ui --}}
-  <script src="/ui/admin_products_ui.js"></script>
-  <script src="/ui/admin_allergies_ui.js"></script>
-
-
-  {{!-- Constructors  --}}
-  <script type="text/javascript" src="/constructors/Addon.js"></script> 
-  <script type="text/javascript" src="/constructors/Allergy.js"></script>  
-  <script type="text/javascript" src="/constructors/Category.js"></script>
-  <script type="text/javascript" src="/constructors/Product.js"></script>
-
-  {{!-- Admin Handlers --}}
-  <script type="text/javascript" src="/handlers/admin_products_handlers.js">
-  </script>
-  <script type="text/javascript" src="/handlers/admin_categories_handlers.js">
-  </script>
 
 
   {{!-- SERVICE WORKER CONFIG --}}

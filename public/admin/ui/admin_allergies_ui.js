@@ -1,3 +1,21 @@
+/*
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ * Version 1
+ *
+ * 2020-07-01
+ *
+ * Copyright 2020, Iron Phoenix, All rights reserved.
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ */
+
+/*
+==============================
+ADMIN ALLERGIES UI 
+==============================
+
+@ AUTHOR DEVIN S. DAVIS
+*/
+
 (function () {
   const allergyListContainer = document.getElementById(
     "allergy-list-container"
@@ -21,14 +39,16 @@
       addAllergyMenu.innerHTML = ` 
             <input type="text" placeholder="add allergy here...">
                 <div class="category-input-btns">
-                    <a id="allergy-save-btn" class="waves-effect waves-light btn ">save</a>
-                    <a id="allergy-cancel-btn" class="waves-effect waves-light btn ">cancle</a>
+                    <a id="allergy-save-btn" class="waves-effect waves-light btn confirm-btn">save</a>
+                    <a id="allergy-cancel-btn" class="waves-effect waves-light btn cancel-btn">cancle</a>
                 </div>`;
 
       // if add allergy button is pressed show allergy input menu
       if (addAllergyBtn) {
         if (!document.getElementById("allergy-input")) {
           addAllergyContainer.replaceChild(addAllergyMenu, addAllergyBtn);
+          // once open - focus first input
+          addAllergyMenu.firstElementChild.focus();
         }
       }
 
