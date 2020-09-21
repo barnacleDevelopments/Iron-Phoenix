@@ -22,6 +22,7 @@ app.use("/api", require("./api/addon"));
 app.use("/api", require("./api/allergy"));
 app.use("/api", require("./api/category"));
 app.use("/api", require("./api/product"));
+app.use("/auth", require("./api/auth"));
 
 // {{ Endpoint to serve the configuration file }}
 

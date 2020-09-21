@@ -101,15 +101,47 @@ class Product {
   }
 
   /**
-   * Getting the Product Allergy
+   * Getting the Product Allergy Id's
    *
    * @param {String} id Product Id
-   * @return {Object} Updated Product
+   * @return {Array} Product Allergy Id's
    */
-  async getProductAllergy(id) {
+  async getProductAllergyIds(id) {
     let receivingData = {};
 
     await fetch(`http://localhost:${port}/api/product/${id}/allergy`, {
+      method: "get",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json", // sent request
+        Accept: "application/json", // expected data sent back
+    }
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      receivingData.data = data;
+      receivingData.err = false;
+      receivingData.errMessage = "";
+    })
+    .catch((error) => {
+      receivingData.err = true;
+      receivingData.errMessage = error;
+      console.log(error);
+    });
+
+  return receivingData;
+  }
+
+  /**
+   * Getting the Product Addon
+   *
+   * @param {String} id Product Id
+   * @return {Array} Product Addon Id's
+   */
+  async getProductAddonIds(id) {
+    let receivingData = {};
+
+    await fetch(`http://localhost:${port}/api/product/${id}/addon`, {
       method: "get",
       mode: "cors",
       headers: {
@@ -210,7 +242,7 @@ class Product {
    *
    * @param {String} id Product Id
    * @param {Array} col Collection of Allergy Id's
-   * @return {Object} Updated Product
+   * @return {Object} Updated Product Allergy Id's
    */
   async updateProductAllergy(id, col) {
     let sendingData = {
@@ -219,6 +251,43 @@ class Product {
     receivingData = {};
 
     await fetch(`http://localhost:${port}/api/product/${id}/allergy`, {
+      method: "put",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json", // sent request
+        Accept: "application/json", // expected data sent back
+    },
+    body: JSON.stringify(sendingData),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      receivingData.data = data;
+      receivingData.err = false;
+      receivingData.errMessage = "";
+    })
+    .catch((error) => {
+      receivingData.err = true;
+      receivingData.errMessage = error;
+      console.log(error);
+    });
+
+  return receivingData;
+  }
+
+  /**
+   * Updating the Product Addon
+   *
+   * @param {String} id Product Id
+   * @param {Array} col Collection of Addon Id's
+   * @return {Object} Updated Product Addon Id's
+   */
+  async updateProductAddon(id, col) {
+    let sendingData = {
+      Addon: col
+    },
+    receivingData = {};
+
+    await fetch(`http://localhost:${port}/api/product/${id}/addon`, {
       method: "put",
       mode: "cors",
       headers: {

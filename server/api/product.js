@@ -39,6 +39,12 @@ router.get('/product/:id/allergy', function (req, res, next) {
     }).catch(next);
 });
 
+router.get('/product/:id/addon', function (req, res, next) {
+  Product.findById({_id: req.params.id}).then(function (data) {
+        res.send(data.Addon);
+    }).catch(next);
+});
+
 router.get('/:catId/product', function (req, res, next) {
   Product.find({catId: req.params.catId}).then(function (data) {
         res.send(data);
@@ -58,6 +64,14 @@ router.put('/product/:id/allergy', function (req, res, next) {
   Product.findByIdAndUpdate({_id: req.params.id}, req.body).then(function () {
       Product.findOne({_id: req.params.id}).then(function (data) {
           res.send(data.Allergy);
+        }).catch(next);
+    }).catch(next);
+});
+
+router.put('/product/:id/addon', function (req, res, next) {
+  Product.findByIdAndUpdate({_id: req.params.id}, req.body).then(function () {
+      Product.findOne({_id: req.params.id}).then(function (data) {
+          res.send(data.Addon);
         }).catch(next);
     }).catch(next);
 });
