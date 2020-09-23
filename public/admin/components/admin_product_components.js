@@ -223,6 +223,8 @@ function createCategoryEditForm(catId) {
     // get inputed string
     let String = new StringValidater(targetElement.value);
 
+    // get tip 1
+
     // if inputed text includes too many charecters prompt the user
     if (
       String.seperatedExeeds(10) &&
@@ -244,12 +246,16 @@ function createCategoryEditForm(catId) {
       );
       // append tip to form container
       document.getElementById("form-tip-container").append(tipElement);
+      // disable save btn
+      element.children[1].classList.add("disabled");
     } else if (
       !String.seperatedExeeds(10) &&
       document.querySelector("[data-tipnum='1']")
     ) {
       // if tip already exists & does not exeed limit remove from container
       document.querySelector("[data-tipnum='1']").remove();
+      // enable save button
+      element.children[1].classList.remove("disabled");
     }
 
     if (
@@ -262,7 +268,6 @@ function createCategoryEditForm(catId) {
         "Shorter titles capture the users attention more easily online"
       );
       tipElement.setAttribute("data-tipnum", "2");
-      console.log(document.querySelector("[data-tipnum]"));
       // get tip color
       let tipColor = tipElement.getAttribute("data-tipcolor");
       tipElement.setAttribute(

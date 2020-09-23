@@ -108,6 +108,10 @@ app.get("/login", (req, res, next) => {
   res.render("login");
 });
 
+app.get("/signup", (req, res, next) => {
+  res.render("signup");
+});
+
 app.get("/oops", (req, res, next) => {
   res.render("oops");
 });

@@ -1,6 +1,3 @@
-/* =============================== */
-/* PRODUCTS STYLES */
-/* =============================== */
 /*
 +++++++++++++++++++++++++
 LOGIN VIEW
@@ -46,12 +43,61 @@ LOGIN VIEW
   margin-top: 20px;
 }
 
-#login-form > input {
+/*
++++++++++++++++++++++++++
+Sign Up VIEW
++++++++++++++++++++++++++
+*/
+
+#signup-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#signup-form-header {
+  background-color: #5cb85c;
+  height: 60px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#signup-form-header h2 {
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+#signup-form {
+  background-color: #ffffff;
+  width: 90%;
+  padding: 20px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  text-align: center;
+}
+
+#signup-form > a {
+  margin-top: 20px;
+}
+
+#signup-form > input {
   background-color: #f5f5f5;
   border: 1px solid #9e9e9e;
   padding-left: 10px;
   box-sizing: border-box;
 }
+
+/* =============================== */
+/* PRODUCTS STYLES */
+/* =============================== */
 
 #products-list {
   margin-top: 95px;
@@ -61,7 +107,6 @@ LOGIN VIEW
   overflow: auto;
   height: 100%;
 }
-
 .product-img {
   width: 100% !important;
 }
