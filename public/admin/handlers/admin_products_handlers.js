@@ -17,25 +17,6 @@ ADMIN PRODUCT HANDLERS
 */
 
 // create allergy chip element
-function createChipElement(name, id, chipStatus) {
-  let allElement = document.createElement("div");
-  allElement.setAttribute("class", "chip");
-  allElement.setAttribute("data-allid", id);
-  allElement.innerHTML = `${name}`;
-  allElement.setAttribute("data-chipstatus", chipStatus);
-  if (chipStatus === "active") {
-    allElement.setAttribute(
-      "style",
-      "background-color: #5cb85c; color: white;"
-    );
-  } else {
-    allElement.setAttribute(
-      "style",
-      "background-color: #e4e4e4; color: #0009;"
-    );
-  }
-  return allElement;
-}
 
 /*
 =================================
@@ -65,28 +46,14 @@ document
         let productList = targetElement.closest(".collapsible-header")
           .parentElement.nextElementSibling.lastChild;
         // append preloader while before promise resolves
-        productList.insertAdjacentHTML(
-          "afterbegin",
-          `
-        <div class="preloader-wrapper active">
-          <div class="spinner-layer spinner-green-only">
-            <div class="circle-clipper left">
-              <div class="circle"></div>
-            </div><div class="gap-patch">
-              <div class="circle"></div>
-            </div><div class="circle-clipper right">
-              <div class="circle"></div>
-            </div>
-          </div>
-        </div>
-      `
-        );
+        let smallPreloader = createSmallPreloader();
+        productList.append(smallPreloader);
         let products = product.getAll(catId);
         products.then((data) => {
           // check if fetch request failed
           if (!data.err) {
             // remove preloader on promise resolve
-            productList.firstElementChild.remove();
+            smallPreloader.remove();
             // loop through all products and append them to specfied product list
             data.data.forEach((product) => {
               productList.insertBefore(
@@ -173,7 +140,7 @@ document
       const chipContainer = document.createElement("div");
       chipContainer.setAttribute("id", "chip-container");
 
-      product.getProductAllergy(procId).then((procAllergies) => {
+      product.getProductAllergyIds(procId).then((procAllergies) => {
         if (!procAllergies.data.err) {
           // remove preloader once allergies are fetched
           document.querySelector(".progress").remove();
@@ -196,9 +163,7 @@ document
                         "background-color: #5cb85c; color: white;"
                       );
                       targetElement.setAttribute("data-chipstatus", "active");
-                      allergiesArr.push(
-                        targetElement.getAttribute("data-allid")
-                      );
+
                       break;
                     case "active":
                       targetElement.setAttribute(
