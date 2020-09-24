@@ -5,6 +5,13 @@ import bodyParser from "body-parser";
 import dotEnv from "dotenv";
 import path from "path";
 import expbs from "express-handlebars";
+import passport from "passport";
+import flash from "connect-flash";
+import cookieParser from "cookie-parser";
+import session from "express-session";
+import bcrypt from "bcrypt";
+const saltRounds = 10;
+require("../config/passport-setup");
 
 const app = express();
 const db = "mongodb://localhost:27017/iron_phoenix";
@@ -17,12 +24,45 @@ mongoose.Promise = global.Promise;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(passport.initialize());
+app.use(passport.session());  
+app.use(flash());
+
 // Initialize routes
 app.use("/api", require("./api/addon"));
 app.use("/api", require("./api/allergy"));
 app.use("/api", require("./api/category"));
 app.use("/api", require("./api/product"));
 app.use("/auth", require("./api/auth"));
+
+app.get("/products", function(req,res){
+  if(req.isAuthenticated()){
+      var user = {
+          id: req.session.passport.user,
+          isloggedin: req.isAuthenticated()
+      }
+      res.render("products", user);
+  }
+  else{
+      res.redirect("login");
+  }
+});
+
+app.get("/signup", function(req,res){
+  if(req.isAuthenticated()){
+    res.redirect("/products");
+  }else{
+     res.render("signup"); 
+  }
+});
+
+app.get("/login", function(req,res){
+  if(req.isAuthenticated()){
+    res.redirect("/products");
+  }else{
+     res.render("login"); 
+  }
+});
 
 // {{ Endpoint to serve the configuration file }}
 
@@ -69,6 +109,21 @@ app.set("view engine", "handlebars");
 app.engine("handlebars", hbs.engine);
 app.set("views", path.join(__dirname, "../views"));
 
+bcrypt.hash("iron-phoenix", saltRounds, function(err, hash){
+  console.log("Hey");
+});
+
+// User Session
+app.use(session({
+  key: 'o0YCzRbrn84ajjyxfjJDsebIVF0g1dwLgIRv7U8',
+  secret: '$2b$10$j5InjmG7hvUNp/RJHW8kTOx0ZaSlm',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+      expires: 600000
+  }
+}));
+
 /*
 ==============================
 STATIC ASSETS
@@ -80,6 +135,7 @@ app.use("/", express.static(path.join(__dirname, "../")));
 
 // ADMIN FOLDER
 app.use("/", express.static(path.join(__dirname, "../public/admin")));
+
 // CUSTOMER FOLDER
 app.use("/", express.static(path.join(__dirname, "../public/customer")));
 

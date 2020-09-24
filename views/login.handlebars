@@ -6,7 +6,12 @@
 
         <input type="text" placeholder="username or email">
         <input type="text" placeholder="password">
-        <a class="waves-effect waves-light btn-small save-btn">login</a>
+        <a href ="/auth/google" class="waves-effect waves-light btn-small save-btn">login</a>
         <a class="waves-effect waves-light btn-small cancel-btn">sign up</a>
     </div>
 </div>
+<script>
+    auth.logUserToLogin().then(function(result){
+        console.log(result);
+    });
+</script>
