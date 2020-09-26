@@ -3,12 +3,15 @@
         <h2>Sign Up</h2>
     </div>
     <div id="signup-form">
-        <input type="text" placeholder="First_Name">
-        <input type="text" placeholder="Last Name">
-        <input type="text" placeholder="Email">
-        <input type="text" placeholder="Contact Number">
-        <input type="text" placeholder="Password">
-        <a class="waves-effect waves-light btn-small save-btn confirm-btn">login</a>
-        <a class="waves-effect waves-light btn-small cancel-btn">sign up</a>
+        <input id="firstName" type="text" placeholder="firstName">
+        <input id="lastName" type="text" placeholder="Last Name">
+        <input id="email" type="text" placeholder="Email">
+        <input id="number" type="text" placeholder="Contact Number">
+        <input id="address" type="text" placeholder="Address">
+        <a id="login-btn" class="waves-effect waves-light btn-small save-btn confirm-btn">Sign Up</a>
+        <a href="/login" class="waves-effect waves-light btn-small cancel-btn">Return To Login</a>
     </div>
 </div>
+
+{{!-- Sign Up Handler --}}
+<script type="text/javascript" src="/global_handlers/signup_handler.js"> </script>

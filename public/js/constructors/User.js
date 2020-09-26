@@ -12,13 +12,12 @@
  * @author Shaquille Lynch
  */
 class User {
-    /** Constructor **/
-  
-    /** A constructor for User class */
-    constructor() {
-    }
-  
-    /** Methods **/
+  /** Constructor **/
+
+  /** A constructor for User class */
+  constructor() {}
+
+  /** Methods **/
   /**
    * Add user
    *
@@ -35,7 +34,7 @@ class User {
         lastName: lastName,
         address: address,
         email: email,
-        contactNumber: contactNumber
+        contactNumber: contactNumber,
       },
       receivingData = {};
 
@@ -125,8 +124,4 @@ class User {
 
     return receivingData;
   }
-
-  
-
 }
-  
