@@ -10,11 +10,11 @@ import flash from "connect-flash";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import bcrypt from "bcrypt";
-const saltRounds = 10;
 require("../config/passport-setup");
 
 const app = express();
 const db = "mongodb://localhost:27017/iron_phoenix";
+const saltRounds = 10;
 
 // Connect to mongodb
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -23,6 +23,16 @@ mongoose.Promise = global.Promise;
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(session({
+  key: 'o0YCzRbrn84ajjyxfjJDsebIVF0g1dwLgIRv7U8',
+  secret: '$2b$10$j5InjmG7hvUNp/RJHW8kTOx0ZaSlm',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+      expires: 600000
+  }
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());  
@@ -34,35 +44,6 @@ app.use("/api", require("./api/allergy"));
 app.use("/api", require("./api/category"));
 app.use("/api", require("./api/product"));
 app.use("/auth", require("./api/auth"));
-
-app.get("/products", function(req,res){
-  if(req.isAuthenticated()){
-      var user = {
-          id: req.session.passport.user,
-          isloggedin: req.isAuthenticated()
-      }
-      res.render("products", user);
-  }
-  else{
-      res.redirect("login");
-  }
-});
-
-app.get("/signup", function(req,res){
-  if(req.isAuthenticated()){
-    res.redirect("/products");
-  }else{
-     res.render("signup"); 
-  }
-});
-
-app.get("/login", function(req,res){
-  if(req.isAuthenticated()){
-    res.redirect("/products");
-  }else{
-     res.render("login"); 
-  }
-});
 
 // {{ Endpoint to serve the configuration file }}
 
@@ -110,19 +91,11 @@ app.engine("handlebars", hbs.engine);
 app.set("views", path.join(__dirname, "../views"));
 
 bcrypt.hash("iron-phoenix", saltRounds, function(err, hash){
-  console.log("Hey");
+  
 });
 
 // User Session
-app.use(session({
-  key: 'o0YCzRbrn84ajjyxfjJDsebIVF0g1dwLgIRv7U8',
-  secret: '$2b$10$j5InjmG7hvUNp/RJHW8kTOx0ZaSlm',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-      expires: 600000
-  }
-}));
+
 
 /*
 ==============================
@@ -156,16 +129,83 @@ dotEnv.config();
 const port = process.env.PORT;
 
 // CLIENT SIDE ROUTES
+app.post('/signup', function(req, res, next) {
+  passport.authenticate('local-signup', function(err, user, info) {
+    console.log("info", info);
+    if (err) {
+      console.log("passport err", err);
+      return next(err); // will generate a 500 error
+    }
+
+    if (! user) {
+      return res.send({ success : false, message : 'Email already exist!' });
+    }
+   
+    req.login(user, function(err) {
+      if (err) {
+        console.log("loginerr", err)
+        return next(err);
+      }
+      console.log('redirecting....'+user);
+      res.cookie('first_name', user.firstName);
+      res.cookie('id', user._id);
+      res.redirect('/products');
+    });      
+  })(req, res, next);
+});
+
+app.post('/login', function(req, res, next) {
+  passport.authenticate('local-login', function(err, user, info) {
+    console.log("\n\n\n########userrrr", user)
+    if (err) {
+      console.log("passport err", err);
+      return next(err); // will generate a 500 error
+    }
+    if (!user) {
+      return res.send({ success : false, message : 'authentication failed'});
+    }
+    req.login(user, loginErr => {
+      if (loginErr) {
+        console.log("loginerr", loginErr)
+        return next(loginErr);
+      }
+
+      console.log('redirecting....')
+      res.cookie('first_name', user.firstName);
+      res.cookie('id', user._id);
+      return res.json(true);
+      
+    });      
+  })(req, res, next);
+});
+
 app.get("/", (req, res, next) => {
   res.redirect("/products");
 });
 
-app.get("/login", (req, res, next) => {
-  res.render("login");
+app.get("/signup", (req, res, next) => {
+  if(req.isAuthenticated()){
+    res.redirect("/products");
+  }else{
+    res.render("signup"); 
+  }
 });
 
-app.get("/signup", (req, res, next) => {
-  res.render("signup");
+app.get("/login", (req, res, next) => {
+  if(req.isAuthenticated()){
+    res.redirect("/products");
+  }else{
+    res.render("login"); 
+  }
+});
+
+app.get('/logout', function(req, res) {
+  req.session.destroy(function(err){
+    req.logout();
+    res.clearCookie('first_name');
+    res.clearCookie('id');
+    res.redirect('/login');
+  })
 });
 
 app.get("/oops", (req, res, next) => {
@@ -173,70 +213,118 @@ app.get("/oops", (req, res, next) => {
 });
 
 app.get("/products", (req, res, next) => {
-  res.render("products", {
-    pageType: true,
-    header: "categories",
-  });
+  if(req.isAuthenticated()){
+    var user = {
+        id: req.session.passport.user,
+        isloggedin: req.isAuthenticated()
+    }
+
+    res.render("products", {
+      pageType: true,
+      header: "categories",
+      user
+    });
+  }
+  else{
+      res.redirect("/login");
+  }
 });
 
 app.get("/about", (req, res, next) => {
-  res.render("about", {
-    pageType: false,
-    header: "about",
-  });
+  if(req.isAuthenticated()){
+    res.render("about", {
+      pageType: false,
+      header: "about",
+    });
+  }else{
+    res.redirect("/login"); 
+  }
 });
 
 app.get("/terms", (req, res, next) => {
-  res.render("terms", {
-    pageType: false,
-    header: "terms",
-  });
+  if(req.isAuthenticated()){
+    res.render("terms", {
+      pageType: false,
+      header: "terms",
+    });
+  }else{
+    res.redirect("/login"); 
+  }
 });
 
 app.get("/product/:category/:id", (req, res, next) => {
   const category = req.params.category;
   const id = req.params.id;
-  res.render("category", {
-    categoryId: id,
-    header: category,
-    pageType: false,
-  });
+
+  if(req.isAuthenticated()){
+    res.render("category", {
+      categoryId: id,
+      header: category,
+      pageType: false,
+    });
+  }else{
+    res.redirect("/login"); 
+  }
 });
 
 app.get("/user/info/:id", (req, res, next) => {
-  res.render("user", {
-    pageType: false,
-    header: "info",
-  });
+  if(req.isAuthenticated()){
+    res.render("user", {
+      pageType: false,
+      header: "info",
+    });
+  }else{
+    res.redirect("/login"); 
+  }
 });
 
 app.get("/user/cart/:id", (req, res, next) => {
-  res.render("cart", { pageType: false, header: "cart" });
+  if(req.isAuthenticated()){
+    res.render("cart", { pageType: false, header: "cart" });
+  }else{
+    res.redirect("/login"); 
+  }
 });
 
 app.get("/user/order/:id", (req, res, next) => {
-  res.render("order", {
-    pageType: false,
-    orders: {
-      currentOrders: pendOrders,
-      cancelledOrders: pendOrders,
-      completedOrders: pendOrders,
-    },
-    header: "orders",
-  });
+  if(req.isAuthenticated()){
+    res.render("order", {
+      pageType: false,
+      orders: {
+        currentOrders: pendOrders,
+        cancelledOrders: pendOrders,
+        completedOrders: pendOrders,
+      },
+      header: "orders",
+    });
+  }else{
+    res.redirect("/login"); 
+  }
 });
 
 //ADMIN SIDE ROUTES
 app.get("/admin/products-management", (req, res, next) => {
-  res.render("products-management", { layout: "admin.handlebars" });
+  if(req.isAuthenticated()){
+    res.render("products-management", { layout: "admin.handlebars" });
+  }else{
+    res.redirect("/login"); 
+  }
 });
 
 app.get("/admin/allergies-management", (req, res, next) => {
-  res.render("allergies-management", { layout: "admin.handlebars" });
+  if(req.isAuthenticated()){
+    res.render("allergies-management", { layout: "admin.handlebars" });
+  }else{
+    res.redirect("/login"); 
+  }
 });
 
 app.get("/admin/addons-management", (req, res, next) => {
-  res.render("addons-management", { layout: "admin.handlebars" });
+  if(req.isAuthenticated()){
+    res.render("addons-management", { layout: "admin.handlebars" });
+  }else{
+    res.redirect("/login"); 
+  }
 });
 
 app.listen(port, () => {

@@ -24,18 +24,22 @@ class Auth {
    *
    * @return {Object} Added User
    */
-  async logUserToLogin() {
-    let receivingData = {};
+  async logUserToLogin(email, accountKey) {
+    let sendingData = {
+        email: email,
+        account_key: accountKey
+      }, receivingData = {};
 
-    await fetch(`http://localhost:${port}/auth/login`, {
-      method: "get",
+    await fetch(`http://localhost:${port}/login`, {
+      method: "post",
       mode: "cors",
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
       },
+      body: JSON.stringify(sendingData),
     })
-      .then((res) => res.text())
+      .then((res) => res.json())
       .then((data) => {
         receivingData.data = data;
         receivingData.err = false;
