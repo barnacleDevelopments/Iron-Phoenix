@@ -4,14 +4,17 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require("./keys");
 const User = require("../server/models/user");
 
+// passport serialize User
 passport.serializeUser(function(user, done) {
     done(null, user);
 });
 
+// passport deserialize User
 passport.deserializeUser(function(user, done) {
     done(null, user);
 });
 
+// passport google auth 
 passport.use(new GoogleStrategy( {
     //options for the Google Strategy
     clientID: keys.google.clientId,
@@ -22,6 +25,7 @@ passport.use(new GoogleStrategy( {
     console.log(profile);
 }));
 
+// passport local-login
 passport.use('local-login', new LocalStrategy({
     usernameField: 'email',
     passwordField : 'account_key',
@@ -42,6 +46,7 @@ passport.use('local-login', new LocalStrategy({
     });
 }));
 
+// passport signup
 passport.use('local-signup', new LocalStrategy({
     usernameField: 'email',
     passwordField : 'account_key',

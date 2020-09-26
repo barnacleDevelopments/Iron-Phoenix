@@ -129,6 +129,8 @@ dotEnv.config();
 const port = process.env.PORT;
 
 // CLIENT SIDE ROUTES
+
+// a post route to sign user up
 app.post('/signup', function(req, res, next) {
   passport.authenticate('local-signup', function(err, user, info) {
     console.log("info", info);
@@ -146,17 +148,17 @@ app.post('/signup', function(req, res, next) {
         console.log("loginerr", err)
         return next(err);
       }
-      console.log('redirecting....'+user);
+      console.log('redirecting....');
       res.cookie('first_name', user.firstName);
       res.cookie('id', user._id);
-      res.redirect('/products');
+      return res.send({ success : true, message : '' });
     });      
   })(req, res, next);
 });
 
+// a post route to log user in
 app.post('/login', function(req, res, next) {
   passport.authenticate('local-login', function(err, user, info) {
-    console.log("\n\n\n########userrrr", user)
     if (err) {
       console.log("passport err", err);
       return next(err); // will generate a 500 error
@@ -173,16 +175,17 @@ app.post('/login', function(req, res, next) {
       console.log('redirecting....')
       res.cookie('first_name', user.firstName);
       res.cookie('id', user._id);
-      return res.json(true);
-      
+      return res.send({ success : true, message : '' });
     });      
   })(req, res, next);
 });
 
+// a get route to redirect user to products
 app.get("/", (req, res, next) => {
   res.redirect("/products");
 });
 
+// a get route to redirect user to products || signup
 app.get("/signup", (req, res, next) => {
   if(req.isAuthenticated()){
     res.redirect("/products");
@@ -191,6 +194,7 @@ app.get("/signup", (req, res, next) => {
   }
 });
 
+// a get route to redirect user to products || login
 app.get("/login", (req, res, next) => {
   if(req.isAuthenticated()){
     res.redirect("/products");
@@ -199,6 +203,7 @@ app.get("/login", (req, res, next) => {
   }
 });
 
+// a get route to redirect user out of the app
 app.get('/logout', function(req, res) {
   req.session.destroy(function(err){
     req.logout();
@@ -208,10 +213,12 @@ app.get('/logout', function(req, res) {
   })
 });
 
+// a get route to redirect user to oops
 app.get("/oops", (req, res, next) => {
   res.render("oops");
 });
 
+// a get route to redirect user to products || login
 app.get("/products", (req, res, next) => {
   if(req.isAuthenticated()){
     var user = {
@@ -230,6 +237,7 @@ app.get("/products", (req, res, next) => {
   }
 });
 
+// a get route to redirect user to about || login
 app.get("/about", (req, res, next) => {
   if(req.isAuthenticated()){
     res.render("about", {
@@ -241,6 +249,7 @@ app.get("/about", (req, res, next) => {
   }
 });
 
+// a get route to redirect user to terms || login
 app.get("/terms", (req, res, next) => {
   if(req.isAuthenticated()){
     res.render("terms", {
@@ -252,6 +261,7 @@ app.get("/terms", (req, res, next) => {
   }
 });
 
+// a get route to redirect user to category || login
 app.get("/product/:category/:id", (req, res, next) => {
   const category = req.params.category;
   const id = req.params.id;
