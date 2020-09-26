@@ -77,12 +77,10 @@ function createCategoryCard(id, name, imgPath, productCount) {
           <img src="${imgPath}">
         </div>
       </a>
-      <a href="">
         <div class="card-content">
           <h2 class="card-title grey-text text-darken-4">${name}</h2>
           <p class="category-subtitle">${productCount} Items </p>
         </div>
-      </a>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
         <p>Here is some more information about this product that is only revealed once clicked on.</p>
