@@ -20,7 +20,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 // Get All Categories
 // +++++++++++++++++++++++++++++++++++++++
 
-(function () {
+(() => {
   let category = new Category();
 
   // get all the categories

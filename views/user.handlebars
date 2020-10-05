@@ -8,12 +8,12 @@
           <h3>Name</h3>
         </div>
         <div class="user-info-current-tags">
-          <p>{{userInfo.name}}fffddddddddddddddddddddddfffff</p>
+          <p>{{user.username}}</p>
         </div>
       </div>
       <div class="collapsible-body user-info-content">
         <div class="input-field user-input-field">
-          <input placeholder="{{userInfo.name}}" id="first_name" type="text" class="validate">
+          <input placeholder="{{user.username}}" id="first_name" type="text" class="validate">
         </div>
       </div>
     </li>
@@ -23,12 +23,12 @@
           <h3>Email</h3>
         </div>
         <div class="user-info-current-tags">
-          <p>{{userInfo.email}} </p>
+          <p>{{user.address}}</p>
         </div>
       </div>
       <div class="collapsible-body user-info-content">
         <div class="input-field user-input-field">
-          <input placeholder="{{userInfo.email}}" id="first_name" type="text" class="validate">
+          <input placeholder="{{user.email}}" id="first_name" type="text" class="validate">
         </div>
       </div>
     </li>
@@ -38,12 +38,12 @@
           <h3>Location</h3>
         </div>
         <div class="user-info-current-tags">
-          <p>{{userInfo.address}}</p>
+          <p>{{user.address}}</p>
         </div>
       </div>
       <div class="collapsible-body user-info-content">
         <div class="input-field user-input-field">
-          <input placeholder="{{userInfo.address}}" id="first_name" type="text" class="validate">
+          <input placeholder="{{user.address}}" id="first_name" type="text" class="validate">
         </div>
 
       </div>
@@ -54,12 +54,12 @@
           <h3>Phone Number</h3>
         </div>
         <div class="user-info-current-tags">
-          <p>{{userInfo.number}}</p>
+          <p>{{user.number}}</p>
         </div>
       </div>
       <div class="collapsible-body user-info-content">
         <div class="input-field user-input-field">
-          <input placeholder="{{userInfo.number}}" id="first_name" type="text" class="validate">
+          <input placeholder="{{user.number}}" id="first_name" type="text" class="validate">
         </div>
 
       </div>
@@ -70,7 +70,7 @@
           <h3>Allergies</h3><span class="badge"></span>
         </div>
         <div class="user-info-current-tags">
-          <p>{{userInfo.allergies.length}}</p>
+          <p>{{user.allergies.length}}</p>
         </div>
       </div>
       <div class="collapsible-body user-info-content">

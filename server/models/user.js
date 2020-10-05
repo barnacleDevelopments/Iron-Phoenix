@@ -23,6 +23,7 @@ const UserSchema = new Schema({
     "address" : String,
     "email" : String,
     "contactNumber" : String,
+    "account_key": String,
     "Allergies" : Array,
     "cart" : Object,
     "googleId" : String

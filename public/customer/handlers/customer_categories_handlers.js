@@ -21,10 +21,10 @@ CATEGORY LIST EVENT HANDLERS
 ===================================
 */
 
-let Cat = new Category();
-let Proc = new Product();
 // Get All Categories From Database
 (() => {
+  let Cat = new Category();
+  let Proc = new Product();
   // Get Categories List
   const categoriesList = document.getElementById("categories-list");
   Cat.getAll().then((categories) => {

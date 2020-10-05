@@ -3,15 +3,11 @@
         <h2>login</h2>
     </div>
     <div id="login-form">
-
-        <input type="text" placeholder="Username">
-        <input type="text" placeholder="Password">
-        <a class="waves-effect waves-light btn-small save-btn confirm-btn">login</a>
+        <input id="username" type="text" placeholder="Username">
+        <input id="password" type="password" placeholder="Password">
+        <a id="login-btn" class="waves-effect waves-light btn-small save-btn confirm-btn">login</a>
         <a href="/signup" class="waves-effect waves-light btn-small cancel-btn">sign up</a>
     </div>
 </div>
-<script>
-    auth.logUserToLogin().then(function (result) {
-        console.log(result);
-    });
-</script>
+
+<script src="/global_handlers/login_handler.js"></script>

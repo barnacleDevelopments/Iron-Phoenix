@@ -41,7 +41,8 @@ document.getElementById("signup-form").addEventListener("click", (e) => {
         inputValues.lastName,
         inputValues.address,
         inputValues.email,
-        inputValues.number
+        inputValues.number,
+        inputValues.password1
       )
       .then((user) => {
         // if user creation success

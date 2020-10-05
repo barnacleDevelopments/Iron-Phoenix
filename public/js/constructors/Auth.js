@@ -19,34 +19,38 @@ class Auth {
     }
   
     /** Methods **/
-  /**
-   * Check if user is authenticated to be on the login site
-   *
-   * @return {Object} Added User
-   */
-  async logUserToLogin() {
-    let receivingData = {};
+    /**
+     * log user in
+     *
+     * @return {Object} Added User
+     */
+    async login(email, accountKey) {
+        let sendingData = {
+            email: email,
+            account_key: accountKey
+        }, receivingData = {};
 
-    await fetch(`http://localhost:${port}/auth/login`, {
-      method: "get",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json", // sent request
-        Accept: "application/json", // expected data sent back
-      },
-    })
-      .then((res) => res.text())
-      .then((data) => {
-        receivingData.data = data;
-        receivingData.err = false;
-        receivingData.errMessage = "";
-      })
-      .catch((error) => {
-        receivingData.err = true;
-        receivingData.errMessage = error;
-        console.log(error);
-      });
+        await fetch(`http://localhost:${port}/login`, {
+        method: "post",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json", // sent request
+            Accept: "application/json", // expected data sent back
+        },
+        body: JSON.stringify(sendingData),
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            receivingData.data = data;
+            receivingData.err = false;
+            receivingData.errMessage = "";
+        })
+        .catch((error) => {
+            receivingData.err = true;
+            receivingData.errMessage = error;
+            console.log(error);
+        });
 
-    return receivingData;
-  }
+        return receivingData;
+    }
 }  

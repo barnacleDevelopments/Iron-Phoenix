@@ -28,26 +28,34 @@ class User {
    * @param {String} contactNumber User Contact Number
    * @return {Object} Added User
    */
-  async addUser(firstName, lastName, address, email, contactNumber) {
-    let sendingData = {
+  async addUser(
+    firstName,
+    lastName,
+    address,
+    email,
+    contactNumber,
+    accountKey
+  ) {
+    let user = {
         firstName: firstName,
         lastName: lastName,
         address: address,
         email: email,
         contactNumber: contactNumber,
+        account_key: accountKey,
       },
       receivingData = {};
 
-    await fetch(`http://localhost:${port}/api/user/`, {
+    await fetch(`http://localhost:${port}/signup`, {
       method: "post",
       mode: "cors",
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
       },
-      body: JSON.stringify(sendingData),
+      body: JSON.stringify(user),
     })
-      .then((res) => res.json())
+      .then((res) => res.text())
       .then((data) => {
         receivingData.data = data;
         receivingData.err = false;

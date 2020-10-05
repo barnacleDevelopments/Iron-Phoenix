@@ -4,20 +4,17 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require("./keys");
 const User = require("../server/models/user");
 
+// passport serialize User
 passport.serializeUser(function(user, done) {
-    done(null, user.uuid);
+    done(null, user);
 });
 
-passport.deserializeUser(function(uuid, done) {
-    User.findById(uuid).then(function(user) {
-        if (user) {
-            done(null, user.get());
-        } else {
-            done(user.errors, null);
-        }
-    });
+// passport deserialize User
+passport.deserializeUser(function(user, done) {
+    done(null, user);
 });
 
+// passport google auth 
 passport.use(new GoogleStrategy( {
     //options for the Google Strategy
     clientID: keys.google.clientId,
@@ -28,28 +25,28 @@ passport.use(new GoogleStrategy( {
     console.log(profile);
 }));
 
+// passport local-login
 passport.use('local-login', new LocalStrategy({
     usernameField: 'email',
     passwordField : 'account_key',
     passReqToCallback : true 
-},function(req, email, account_key, done) { 
+},function(req, email, account_key, done) {
     User.findOne({
-        where: {
-            email: req.body.email 
-        }
+            email: email 
     }).then(function(user, err) {
-        (!user.validPassword(req.body.account_key));
+        (user.account_key != account_key);
         if (!user){
             console.log("no user found");
             return done(null, false, req.flash('loginMessage', 'No user found.')); 
         }
-        if (user && !user.validPassword(req.body.account_key)){
+        if (user && user.account_key != account_key){
         return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); 
         }
         return done(null, user);
     });
 }));
 
+// passport signup
 passport.use('local-signup', new LocalStrategy({
     usernameField: 'email',
     passwordField : 'account_key',
@@ -57,27 +54,26 @@ passport.use('local-signup', new LocalStrategy({
 }, function(req, email, account_key, done) {
     process.nextTick(function() {
         User.findOne({
-            where: {
                 email: email
-            }
         }).then(function(user, err){
             if(err) {
                 console.log("err",err)
                 return done(err);
             } 
+            
             if (user) {
                 console.log('signupMessage', 'That email is already taken.');
-                return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+                return done(null, false, {'message': 'That email is already taken.'});
             } else {
                 User.create({
-                            firstName:req.body.first_name,
-                            lastName:req.body.last_name,
+                            firstName:req.body.firstName,
+                            lastName:req.body.lastName,
                             address: req.body.address,
-                            email: req.body.email,
-                            contactNo: req.body.contactNo,
-                            account_key: User.generateHash(account_key)
-                }).then(function(dbUser) {
-                    return done(null, dbUser);
+                            email: email,
+                            contactNumber: req.body.contactNumber,
+                            account_key: account_key
+                }).then(function(data) {
+                    return done(null, data);
                 }).catch(function(err) { 
                     console.log(err);
                 }); 
