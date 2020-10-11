@@ -8,12 +8,12 @@
           <h3>Name</h3>
         </div>
         <div class="user-info-current-tags">
-          <p>{{user.username}}</p>
+          <p class="userName"></p>
         </div>
       </div>
       <div class="collapsible-body user-info-content">
         <div class="input-field user-input-field">
-          <input placeholder="{{user.username}}" id="first_name" type="text" class="validate">
+          <input id="first_name" type="text" class="validate userName">
         </div>
       </div>
     </li>
@@ -23,12 +23,12 @@
           <h3>Email</h3>
         </div>
         <div class="user-info-current-tags">
-          <p>{{user.address}}</p>
+          <p class="userEmail"></p>
         </div>
       </div>
       <div class="collapsible-body user-info-content">
         <div class="input-field user-input-field">
-          <input placeholder="{{user.email}}" id="first_name" type="text" class="validate">
+          <input id="first_name" type="text" class="validate userEmail">
         </div>
       </div>
     </li>
@@ -38,12 +38,12 @@
           <h3>Location</h3>
         </div>
         <div class="user-info-current-tags">
-          <p>{{user.address}}</p>
+          <p class="userLocation"></p>
         </div>
       </div>
       <div class="collapsible-body user-info-content">
         <div class="input-field user-input-field">
-          <input placeholder="{{user.address}}" id="first_name" type="text" class="validate">
+          <input id="first_name" type="text" class="validate userLocation">
         </div>
 
       </div>
@@ -54,12 +54,12 @@
           <h3>Phone Number</h3>
         </div>
         <div class="user-info-current-tags">
-          <p>{{user.number}}</p>
+          <p class="userPhone"></p>
         </div>
       </div>
       <div class="collapsible-body user-info-content">
         <div class="input-field user-input-field">
-          <input placeholder="{{user.number}}" id="first_name" type="text" class="validate">
+          <input id="first_name" type="text" class="validate userPhone">
         </div>
 
       </div>
@@ -69,11 +69,9 @@
         <div><i class="material-icons">local_hospital</i>
           <h3>Allergies</h3><span class="badge"></span>
         </div>
-        <div class="user-info-current-tags">
-          <p>{{user.allergies.length}}</p>
-        </div>
+
       </div>
-      <div class="collapsible-body user-info-content">
+      <div class="collapsible-body user-info-content userAllergies">
 
         <div class="chip allergie-chip confirmed-allergie"><span></span></div>
 

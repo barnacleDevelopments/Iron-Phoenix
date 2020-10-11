@@ -2,4 +2,3 @@
 // current port number in use
 const port = 5000;
 // let auth = new Auth();
-let user = new User();

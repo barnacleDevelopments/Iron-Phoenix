@@ -16,6 +16,39 @@ const app = express();
 const db = "mongodb://localhost:27017/iron_phoenix";
 const saltRounds = 10;
 
+//handlebars config
+const hbs = expbs.create({
+  defaultLayout: "main",
+  layoutsDir: path.join(__dirname, "../views/layouts"),
+  partialsDir: path.join(__dirname, "../views/partials"),
+  extName: ".handlebars",
+  helpers: {
+    biggerThen: (element, value1, value2, options) => {
+      if (value1 > value2) {
+        return `<h3 style="font-weight: 600 !important;
+        text-transform: capitalize;
+        padding-left: 20px;
+        width: 100% !important;
+        overflow-wrap: normal;">${options.fn({ value: element })}</h3>`;
+      } else {
+        return `<h2 style="  font-weight: 600 !important;
+        text-transform: capitalize;
+        padding-left: 20px;
+        width: 100% !important;
+        overflow-wrap: normal;">${options.fn({ value: element })}</h2>`;
+      }
+    },
+    elipsis: (string, length) => {
+      if (string.length >= length) {
+        return `${string.slice(0, length)}...`;
+      }
+    },
+  },
+});
+
+app.set("view engine", "handlebars");
+app.engine("handlebars", hbs.engine);
+app.set("views", path.join(__dirname, "../views"));
 // Connect to mongodb
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
@@ -58,40 +91,6 @@ app.use(function (err, req, res, next) {
   res.status(422).send({ error: err.name + ": " + err.message });
 });
 
-//handlebars config
-const hbs = expbs.create({
-  defaultLayout: "main",
-  layoutsDir: path.join(__dirname, "../views/layouts"),
-  partialsDir: path.join(__dirname, "../views/partials"),
-  extName: ".handlebars",
-  helpers: {
-    biggerThen: (element, value1, value2, options) => {
-      if (value1 > value2) {
-        return `<h3 style="font-weight: 600 !important;
-        text-transform: capitalize;
-        padding-left: 20px;
-        width: 100% !important;
-        overflow-wrap: normal;">${options.fn({ value: element })}</h3>`;
-      } else {
-        return `<h2 style="  font-weight: 600 !important;
-        text-transform: capitalize;
-        padding-left: 20px;
-        width: 100% !important;
-        overflow-wrap: normal;">${options.fn({ value: element })}</h2>`;
-      }
-    },
-    elipsis: (string, length) => {
-      if (string.length >= length) {
-        return `${string.slice(0, length)}...`;
-      }
-    },
-  },
-});
-
-app.set("view engine", "handlebars");
-app.engine("handlebars", hbs.engine);
-app.set("views", path.join(__dirname, "../views"));
-
 bcrypt.hash("iron-phoenix", saltRounds, function (err, hash) {});
 
 // User Session
@@ -105,15 +104,7 @@ STATIC ASSETS
 // EVERYTHING
 app.use("/", express.static(path.join(__dirname, "../")));
 
-// ADMIN FOLDER
-app.use("/", express.static(path.join(__dirname, "../public/admin")));
-
-// CUSTOMER FOLDER
-app.use("/", express.static(path.join(__dirname, "../public/customer")));
-
-// CSS
-app.use("/", express.static(path.join(__dirname, "../public/admin/css")));
-app.use("/", express.static(path.join(__dirname, "../public/customer/css")));
+app.use("/", express.static(path.join(__dirname, "../public")));
 
 // JAVASCRIPT
 app.use("/", express.static(path.join(__dirname, "../public/js")));
@@ -181,13 +172,13 @@ app.post("/login", function (req, res, next) {
 
 // a get route to redirect user to products
 app.get("/", (req, res, next) => {
-  res.redirect("/products");
+  res.redirect("/category");
 });
 
 // a get route to redirect user to products || signup
 app.get("/signup", (req, res, next) => {
   if (req.isAuthenticated()) {
-    res.redirect("/products");
+    res.redirect("/category");
   } else {
     res.render("signup");
   }
@@ -196,7 +187,7 @@ app.get("/signup", (req, res, next) => {
 // a get route to redirect user to products || login
 app.get("/login", (req, res, next) => {
   if (req.isAuthenticated()) {
-    res.redirect("/products");
+    res.redirect("/category");
   } else {
     res.render("login");
   }
@@ -218,17 +209,15 @@ app.get("/oops", (req, res, next) => {
 });
 
 // a get route to redirect user to products || login
-app.get("/products", (req, res, next) => {
+app.get("/category", (req, res, next) => {
   if (req.isAuthenticated()) {
     var user = {
       id: req.session.passport.user,
       isloggedin: req.isAuthenticated(),
     };
-
     res.render("products", {
       pageType: true,
       header: "categories",
-      user,
     });
   } else {
     res.redirect("/login");
@@ -277,9 +266,11 @@ app.get("/product/:category/:id", (req, res, next) => {
 
 app.get("/user/info", (req, res, next) => {
   if (req.isAuthenticated()) {
+    let userId = req.session.passport.user._id;
     res.render("user", {
       pageType: false,
       header: "info",
+      userId: userId,
     });
   } else {
     res.redirect("/login");
@@ -328,11 +319,11 @@ app.get("/admin/allergies-management", (req, res, next) => {
 });
 
 app.get("/admin/addons-management", (req, res, next) => {
-  if (req.isAuthenticated()) {
-    res.render("addons-management", { layout: "admin.handlebars" });
-  } else {
-    res.redirect("/login");
-  }
+  // if (req.isAuthenticated()) {
+  res.render("addons-management", { layout: "admin.handlebars" });
+  // } else {
+  //   res.redirect("/login");
+  // }
 });
 
 app.listen(port, () => {
