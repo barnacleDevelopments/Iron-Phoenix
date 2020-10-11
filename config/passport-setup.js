@@ -11,7 +11,7 @@ passport.serializeUser(function(user, done) {
 
 // passport deserialize User
 passport.deserializeUser(function(user, done) {
-    done(null, user);
+    done(null, JSON.stringify(user));
 });
 
 // passport google auth 

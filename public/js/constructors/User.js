@@ -19,37 +19,25 @@ class User {
     }
   
     /** Methods **/
-  /**
-   * Add user
-   *
-   * @param {String} firstName User First Name
-   * @param {String} lastName User Last Name
-   * @param {String} address User Address
-   * @param {String} email User Email
-   * @param {String} contactNumber User Contact Number
-   * @return {Object} Added User
-   */
-  async addUser(firstName, lastName, address, email, contactNumber, accountKey) {
-    let user = {
-        firstName: firstName,
-        lastName: lastName,
-        address: address,
-        email: email,
-        contactNumber: contactNumber,
-        account_key: accountKey
-      },
-      receivingData = {};
 
-    await fetch(`http://localhost:${port}/signup`, {
-      method: "post",
+  /**
+   * Getting the id 
+   *
+   * @param {String} id User Id
+   * @return {Object} User
+   */
+  async getId() {
+    let receivingData = {};
+
+    await fetch(`http://localhost:${port}/user/id`, {
+      method: "get",
       mode: "cors",
       headers: {
         "Content-Type": "application/json", // sent request
         Accept: "application/json", // expected data sent back
       },
-      body: JSON.stringify(user),
     })
-      .then((res) => res.text())
+      .then((res) => res.json())
       .then((data) => {
         receivingData.data = data;
         receivingData.err = false;
@@ -63,6 +51,7 @@ class User {
 
     return receivingData;
   }
+
 
   /**
    * Getting the User

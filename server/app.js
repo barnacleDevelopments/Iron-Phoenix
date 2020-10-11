@@ -24,18 +24,20 @@ mongoose.Promise = global.Promise;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(cookieParser());
+
 app.use(session({
   key: 'o0YCzRbrn84ajjyxfjJDsebIVF0g1dwLgIRv7U8',
   secret: '$2b$10$j5InjmG7hvUNp/RJHW8kTOx0ZaSlm',
   resave: false,
   saveUninitialized: false,
   cookie: {
-      expires: 600000
+    expires: 600000
   }
 }));
 
 app.use(passport.initialize());
-app.use(passport.session());  
+app.use(passport.session());
 app.use(flash());
 
 // Initialize routes
@@ -90,8 +92,8 @@ app.set("view engine", "handlebars");
 app.engine("handlebars", hbs.engine);
 app.set("views", path.join(__dirname, "../views"));
 
-bcrypt.hash("iron-phoenix", saltRounds, function(err, hash){
-  
+bcrypt.hash("iron-phoenix", saltRounds, function (err, hash) {
+
 });
 
 // User Session
@@ -131,52 +133,52 @@ const port = process.env.PORT;
 // CLIENT SIDE ROUTES
 
 // a post route to sign user up
-app.post('/signup', function(req, res, next) {
-  passport.authenticate('local-signup', function(err, user, info) {
+app.post('/signup', function (req, res, next) {
+  passport.authenticate('local-signup', function (err, user, info) {
     console.log("info", info);
+
     if (err) {
       console.log("passport err", err);
       return next(err); // will generate a 500 error
     }
 
-    if (! user) {
-      return res.send({ success : false, message : 'Email already exist!' });
+    if (!user) {
+      return res.send({ success: false, message: 'Email already exist!' });
     }
-   
-    req.login(user, function(err) {
-      if (err) {
-        console.log("loginerr", err)
-        return next(err);
-      }
-      console.log('redirecting....');
-      res.cookie('first_name', user.firstName);
-      res.cookie('id', user._id);
-      return res.send({ success : true, message : '' });
-    });      
+
+    req.login(user, function (err) {
+        if (err) {
+          console.log("loginerr", err)
+          return next(err);
+        } 
+          res.redirect("/products");
+    });
   })(req, res, next);
 });
 
 // a post route to log user in
-app.post('/login', function(req, res, next) {
-  passport.authenticate('local-login', function(err, user, info) {
+app.post('/login', function (req, res, next) {
+  passport.authenticate('local-login', function (err, user, info) {
+
     if (err) {
       console.log("passport err", err);
       return next(err); // will generate a 500 error
     }
+
     if (!user) {
-      return res.send({ success : false, message : 'authentication failed'});
+      res.redirect("/login");
+      return res.send({ success: false, message: 'authentication failed' });
     }
+
     req.login(user, loginErr => {
+
       if (loginErr) {
         console.log("loginerr", loginErr)
         return next(loginErr);
       }
 
-      console.log('redirecting....')
-      res.cookie('first_name', user.firstName);
-      res.cookie('id', user._id);
-      return res.send({ success : true, message : '' });
-    });      
+      res.redirect("/products");
+    });
   })(req, res, next);
 });
 
@@ -187,25 +189,25 @@ app.get("/", (req, res, next) => {
 
 // a get route to redirect user to products || signup
 app.get("/signup", (req, res, next) => {
-  if(req.isAuthenticated()){
+  if (req.isAuthenticated()) {
     res.redirect("/products");
-  }else{
-    res.render("signup"); 
+  } else {
+    res.render("signup");
   }
 });
 
 // a get route to redirect user to products || login
 app.get("/login", (req, res, next) => {
-  if(req.isAuthenticated()){
+  if (req.isAuthenticated()) {
     res.redirect("/products");
-  }else{
-    res.render("login"); 
+  } else {
+    res.render("login");
   }
 });
 
 // a get route to redirect user out of the app
-app.get('/logout', function(req, res) {
-  req.session.destroy(function(err){
+app.get('/logout', function (req, res) {
+  req.session.destroy(function (err) {
     req.logout();
     res.clearCookie('first_name');
     res.clearCookie('id');
@@ -220,10 +222,11 @@ app.get("/oops", (req, res, next) => {
 
 // a get route to redirect user to products || login
 app.get("/products", (req, res, next) => {
-  if(req.isAuthenticated()){
+
+  if (req.isAuthenticated()) {
     var user = {
-        id: req.session.passport.user,
-        isloggedin: req.isAuthenticated()
+      id: req.session.passport.user._id,
+      isloggedin: req.isAuthenticated()
     }
 
     res.render("products", {
@@ -232,32 +235,32 @@ app.get("/products", (req, res, next) => {
       user
     });
   }
-  else{
-      res.redirect("/login");
+  else {
+    res.redirect("/login");
   }
 });
 
 // a get route to redirect user to about || login
 app.get("/about", (req, res, next) => {
-  if(req.isAuthenticated()){
+  if (req.isAuthenticated()) {
     res.render("about", {
       pageType: false,
       header: "about",
     });
-  }else{
-    res.redirect("/login"); 
+  } else {
+    res.redirect("/login");
   }
 });
 
 // a get route to redirect user to terms || login
 app.get("/terms", (req, res, next) => {
-  if(req.isAuthenticated()){
+  if (req.isAuthenticated()) {
     res.render("terms", {
       pageType: false,
       header: "terms",
     });
-  }else{
-    res.redirect("/login"); 
+  } else {
+    res.redirect("/login");
   }
 });
 
@@ -266,38 +269,45 @@ app.get("/product/:category/:id", (req, res, next) => {
   const category = req.params.category;
   const id = req.params.id;
 
-  if(req.isAuthenticated()){
+  if (req.isAuthenticated()) {
     res.render("category", {
       categoryId: id,
       header: category,
       pageType: false,
     });
-  }else{
-    res.redirect("/login"); 
+  } else {
+    res.redirect("/login");
   }
 });
 
+// a get route to redirect user out of the app
+/*app.get('/user/id', (req, res, next) => {
+    console.log("User"+req.session.passport.user._id);
+    return req.session.passport.user._id
+});*/
+
 app.get("/user/info/:id", (req, res, next) => {
-  if(req.isAuthenticated()){
+
+  if (req.isAuthenticated()) {
     res.render("user", {
       pageType: false,
       header: "info",
     });
-  }else{
-    res.redirect("/login"); 
+  } else {
+    res.redirect("/login");
   }
 });
 
 app.get("/user/cart/:id", (req, res, next) => {
-  if(req.isAuthenticated()){
+  if (req.isAuthenticated()) {
     res.render("cart", { pageType: false, header: "cart" });
-  }else{
-    res.redirect("/login"); 
+  } else {
+    res.redirect("/login");
   }
 });
 
 app.get("/user/order/:id", (req, res, next) => {
-  if(req.isAuthenticated()){
+  if (req.isAuthenticated()) {
     res.render("order", {
       pageType: false,
       orders: {
@@ -307,33 +317,33 @@ app.get("/user/order/:id", (req, res, next) => {
       },
       header: "orders",
     });
-  }else{
-    res.redirect("/login"); 
+  } else {
+    res.redirect("/login");
   }
 });
 
 //ADMIN SIDE ROUTES
 app.get("/admin/products-management", (req, res, next) => {
-  if(req.isAuthenticated()){
+  if (req.isAuthenticated()) {
     res.render("products-management", { layout: "admin.handlebars" });
-  }else{
-    res.redirect("/login"); 
+  } else {
+    res.redirect("/login");
   }
 });
 
 app.get("/admin/allergies-management", (req, res, next) => {
-  if(req.isAuthenticated()){
+  if (req.isAuthenticated()) {
     res.render("allergies-management", { layout: "admin.handlebars" });
-  }else{
-    res.redirect("/login"); 
+  } else {
+    res.redirect("/login");
   }
 });
 
 app.get("/admin/addons-management", (req, res, next) => {
-  if(req.isAuthenticated()){
+  if (req.isAuthenticated()) {
     res.render("addons-management", { layout: "admin.handlebars" });
-  }else{
-    res.redirect("/login"); 
+  } else {
+    res.redirect("/login");
   }
 });
 
