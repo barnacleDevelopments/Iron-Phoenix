@@ -21,19 +21,13 @@ ADMIN ADDONS HANDLERS
   ELEMENT CREATION FUNCTIONS
   +++++++++++++++++++++++++++++++
 */
-function createAddonChip(name, price, id) {
-  let chip = document.createElement("div");
-  chip.innerHTML = `<li id="${id}" style="background-color: #ffffff; display: flex; justify-content: space-between; padding: 10px 20px; border-radius: 3px; margin-bottom: 14px;"><div>$${price}</div> <div style="min-width: 0px;"><p style="margin: 0px 5px 0px 5px; font-size: 16px !important; text-overflow: ellipsis; white-space: nowrap; overflow:hidden">${name}</p></div><i class="close material-icons">close</i></li>`;
-  return chip;
-}
-
 /*
   +++++++++++++++++++++++++++++++
   ADDON CLASSES
   +++++++++++++++++++++++++++++++
 */
 // Get Addons Class
-const Add = new Addon();
+const addon = new Addon();
 /*
   +++++++++++++++++++++++++++++++
   ADDON LIST EVENT LISTENRS
@@ -44,10 +38,10 @@ const addonList = document.getElementById("addon-list");
 
 // On page Load - Append Each Allergy from Database
 (() => {
-  Add.getAll().then((as) => {
+  addon.getAll().then((as) => {
     if (!as.data.err) {
       as.data.forEach((a) => {
-        addonList.append(createAddonChip(a.name, a.price, a._id));
+        addonList.append(createAddon(a.name, a.price, a._id));
       });
     } else {
       console.log(as.data.errMessage);
@@ -69,12 +63,10 @@ addonContainer.addEventListener("click", (e) => {
     let price = addonIntputMenu.firstElementChild.nextElementSibling.value;
 
     // add addon to database & to the DOM
-    Add.create(name, price).then((a) => {
+    addon.create(name, price).then((a) => {
       if (!a.data.err) {
         console.log(a);
-        addonList.append(
-          createAddonChip(a.data.name, a.data.price, a.data._id)
-        );
+        addonList.append(createAddon(a.data.name, a.data.price, a.data._id));
       } else {
         console.log(a.data.errMessage);
       }
@@ -86,14 +78,41 @@ addonContainer.addEventListener("click", (e) => {
 addonList.addEventListener("click", (e) => {
   // get target element
   let targetElement = e.target;
-  // if target element is close - icon delete the chip from the DOM & database
-  if (targetElement.classList.contains("close")) {
-    Add.remove(targetElement.parentElement.id).then((a) => {
-      if (!a.data.err) {
-        document.getElementById(a.data._id).remove();
-      } else {
-        console.log(a.data.errMessage);
+  if (targetElement.classList.contains("edit-btn")) {
+    // get form container
+    let formContainer = document.getElementById("form-container");
+    formContainer.style.display = "flex";
+    // create edit form
+    let editForm = createAddonEditForm();
+    // add event listeners to edit form
+    editForm.addEventListener("click", (e) => {
+      let formTarget = e.target;
+      if (formTarget.id === "save-edit-addon-btn") {
+        // get input valeus
+        let addonName = editForm.firstElementChild.value;
+        let addonPrice = editForm.children[1].value;
+
+        // get addon id
+        let addonId = targetElement.closest("li").id;
+
+        // update addon in database
+        addon.update(addonId, addonName, addonPrice).then((a) => {
+          if (!a.data.err) {
+            let oldAddon = document.getElementById(addonId);
+
+            let editedAddon = createAddon(
+              a.data.name,
+              a.data.price,
+              a.data._id
+            );
+
+            addonList.replaceChild(editedAddon, oldAddon);
+          } else {
+            console.log(a.data.errMessage);
+          }
+        });
       }
     });
+    formContainer.append(editForm);
   }
 });

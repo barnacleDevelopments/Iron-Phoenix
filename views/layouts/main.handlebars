@@ -2,8 +2,10 @@
 <html lang="en">
 
 <head>
-  {{!-- Author: Front End: Devin Davis, Backened: Shaquille Lynch
-        Date: Sept 13th, 2020    
+  {{!-- 
+  Author: Front End: Devin Davis, Backened: Shaquille Lynch
+  Date: Sept 13th, 2020    
+  File: main.handlebars
      --}}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -15,26 +17,26 @@
   {{!-- STYLES --}}
 
   {{!-- material css styles --}}
-  <link type="text/css" rel="stylesheet" href="/materialize.css" media="screen,projection" />
-
+  <link type="text/css" rel="stylesheet" href="/customer/css/materialize.css" media="screen,projection" />
 
   {{!-- Global Styles --}}
-  <link rel="stylesheet" type="text/css" href="/global.css">
+  <link rel="stylesheet" type="text/css" href="/css/global.css">
 
   {{!-- Global Admin Styles --}}
-  <link type="text/css" rel="stylesheet" href="/global_admin.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="/customer/css/global_admin.css" media="screen,projection" />
   {{!-- Navbar Styles --}}
 
-  <link rel="stylesheet" type="text/css" href="/navbar_mobile.css">
+  <link rel="stylesheet" type="text/css" href="/customer/css/navbar_mobile.css">
 
   {{!-- mobile styles --}}
-  <link rel="stylesheet" type="text/css" href="/mobile.css">
+  <link rel="stylesheet" type="text/css" href="/customer/css/mobile.css">
 
   {{!-- tablet styles --}}
-  <link rel="stylesheet" type="text/css" media="screen and (min-width:460px)" href="/tablet_portrait.css">
+  <link rel="stylesheet" type="text/css" media="screen and (min-width:460px)" href="/customer/css/tablet_portrait.css">
 
   {{!-- pc styles --}}
-  <link rel="stylesheet" type="text/css" href="/laptop.css">
+  <link rel="stylesheet" type="text/css" href="/customer/css/laptop.css">
+
 
   {{!-- FONTS & ICONS =--}}
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -68,8 +70,9 @@
   <script type="text/javascript" src="/globalVariables.js"></script>
 
   {{!-- Customer Dynamic Components --}}
-  <script type="text/javascript" src="/components/customer_products.js"></script>
-  <script type="text/javascript" src="/components/customer_global.js"></script>
+  <script type="text/javascript" src="/customer/components/customer_products.js"></script>
+  <script type="text/javascript" src="/customer/components/customer_global.js"></script>
+
 </head>
 
 <body>
@@ -79,12 +82,16 @@
   </div>
   </div>
 
+
+
+
+
   {{!-- MATERIALIZE JS --}}
-  <script type="text/javascript" src="/materialize.js"></script>
+  <script type="text/javascript" src="/js/materialize.js"></script>
 
   {{!-- UI FILES --}}
   {{!-- customer ui --}}
-  <script src="/ui/customer.js"></script>
+  <script src="/customer/ui/customer.js"></script>
 
 
   {{!-- SERVICE WORKER CONFIG --}}

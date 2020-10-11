@@ -91,13 +91,22 @@ const hbs = expbs.create({
 app.set("view engine", "handlebars");
 app.engine("handlebars", hbs.engine);
 app.set("views", path.join(__dirname, "../views"));
+// Connect to mongodb
+mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.Promise = global.Promise;
 
 bcrypt.hash("iron-phoenix", saltRounds, function (err, hash) {
 
 });
 
-// User Session
+// Error Handle
+app.use(function (err, req, res, next) {
+  res.status(422).send({ error: err.name + ": " + err.message });
+});
 
+bcrypt.hash("iron-phoenix", saltRounds, function (err, hash) {});
+
+// User Session
 
 /*
 ==============================
@@ -108,15 +117,7 @@ STATIC ASSETS
 // EVERYTHING
 app.use("/", express.static(path.join(__dirname, "../")));
 
-// ADMIN FOLDER
-app.use("/", express.static(path.join(__dirname, "../public/admin")));
-
-// CUSTOMER FOLDER
-app.use("/", express.static(path.join(__dirname, "../public/customer")));
-
-// CSS
-app.use("/", express.static(path.join(__dirname, "../public/admin/css")));
-app.use("/", express.static(path.join(__dirname, "../public/customer/css")));
+app.use("/", express.static(path.join(__dirname, "../public")));
 
 // JAVASCRIPT
 app.use("/", express.static(path.join(__dirname, "../public/js")));
@@ -173,7 +174,7 @@ app.post('/login', function (req, res, next) {
     req.login(user, loginErr => {
 
       if (loginErr) {
-        console.log("loginerr", loginErr)
+        console.log("loginerr", loginErr);
         return next(loginErr);
       }
 
@@ -184,13 +185,13 @@ app.post('/login', function (req, res, next) {
 
 // a get route to redirect user to products
 app.get("/", (req, res, next) => {
-  res.redirect("/products");
+  res.redirect("/category");
 });
 
 // a get route to redirect user to products || signup
 app.get("/signup", (req, res, next) => {
   if (req.isAuthenticated()) {
-    res.redirect("/products");
+    res.redirect("/category");
   } else {
     res.render("signup");
   }
@@ -199,20 +200,20 @@ app.get("/signup", (req, res, next) => {
 // a get route to redirect user to products || login
 app.get("/login", (req, res, next) => {
   if (req.isAuthenticated()) {
-    res.redirect("/products");
+    res.redirect("/category");
   } else {
     res.render("login");
   }
 });
 
 // a get route to redirect user out of the app
-app.get('/logout', function (req, res) {
+app.get("/logout", function (req, res) {
   req.session.destroy(function (err) {
     req.logout();
-    res.clearCookie('first_name');
-    res.clearCookie('id');
-    res.redirect('/login');
-  })
+    res.clearCookie("first_name");
+    res.clearCookie("id");
+    res.redirect("/login");
+  });
 });
 
 // a get route to redirect user to oops
@@ -221,21 +222,17 @@ app.get("/oops", (req, res, next) => {
 });
 
 // a get route to redirect user to products || login
-app.get("/products", (req, res, next) => {
-
+app.get("/category", (req, res, next) => {
   if (req.isAuthenticated()) {
     var user = {
-      id: req.session.passport.user._id,
-      isloggedin: req.isAuthenticated()
-    }
-
+      id: req.session.passport.user,
+      isloggedin: req.isAuthenticated(),
+    };
     res.render("products", {
       pageType: true,
       header: "categories",
-      user
     });
-  }
-  else {
+  } else {
     res.redirect("/login");
   }
 });
@@ -292,6 +289,7 @@ app.get("/user/info/:id", (req, res, next) => {
     res.render("user", {
       pageType: false,
       header: "info",
+      userId: userId,
     });
   } else {
     res.redirect("/login");
@@ -340,11 +338,11 @@ app.get("/admin/allergies-management", (req, res, next) => {
 });
 
 app.get("/admin/addons-management", (req, res, next) => {
-  if (req.isAuthenticated()) {
-    res.render("addons-management", { layout: "admin.handlebars" });
-  } else {
-    res.redirect("/login");
-  }
+  // if (req.isAuthenticated()) {
+  res.render("addons-management", { layout: "admin.handlebars" });
+  // } else {
+  //   res.redirect("/login");
+  // }
 });
 
 app.listen(port, () => {

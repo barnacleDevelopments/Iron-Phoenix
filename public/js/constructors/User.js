@@ -115,8 +115,4 @@ class User {
 
     return receivingData;
   }
-
-
-
 }
-  

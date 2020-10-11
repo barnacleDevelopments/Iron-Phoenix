@@ -223,29 +223,19 @@ function createCategoryEditForm(catId) {
     // get inputed string
     let String = new StringValidater(targetElement.value);
 
-    // get tip 1
+    // get tip container
+    let tipContainer = document.getElementById("form-tip-container");
 
     // if inputed text includes too many charecters prompt the user
+
     if (
       String.seperatedExeeds(10) &&
       !document.querySelector("[data-tipnum='1']")
     ) {
       // create new tip element
-      let tipElement = createFormTip(
-        "warning",
-        "Your words are too long!",
-        "Shorter titles capture the users attention more easily online"
-      );
-      // give tip a number attribute
-      tipElement.setAttribute("data-tipnum", "1");
-      // get tip color
-      let tipColor = tipElement.getAttribute("data-tipcolor");
-      tipElement.setAttribute(
-        "style",
-        `position: relative; top: 0px; animation: openTipMenu .3s ease-in forwards; background-color: ${tipColor}`
-      );
-      // append tip to form container
-      document.getElementById("form-tip-container").append(tipElement);
+      let newTip = new Tip();
+      let tip = newTip.warningTip("1", "Yo man", "this is a comment");
+      tipContainer.append(tip);
       // disable save btn
       element.children[1].classList.add("disabled");
     } else if (
@@ -274,7 +264,8 @@ function createCategoryEditForm(catId) {
         "style",
         `position: relative; top: 0px; animation: openTipMenu .3s ease-in forwards; background-color: ${tipColor}`
       );
-      document.getElementById("form-tip-container").append(tipElement);
+      // append tip to tip container
+      tipContainer.append(tipElement);
     } else if (
       !String.isBiggerThen(20) &&
       document.querySelector("[data-tipnum='2']")

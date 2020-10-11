@@ -1,4 +1,46 @@
-<div class="chat-menu">
+<div class="navbar">
+  <div class="arrow-nav">
+    {{#if pageType }}
+    <div class="logo">
+      <img src="/ip7.png">
+    </div>
+    {{else}}
+    <div class="header-nav">
+      <a href="/category"><i class="material-icons">arrow_back</i></a>
+      <div class="page-header">
+        {{#biggerThen header header.length 8}}
+        {{value}}
+        {{/biggerThen}}
+      </div>
+    </div>
+    {{/if}}
+  </div>
+
+  <div class="user-interface">
+    <div>
+      <div>
+        <a href="/user/cart/id">
+          <img src="/shopping-cart.png">
+        </a>
+      </div>
+      <div class="user-icon">
+        <a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons">account_circle</i></a>
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="/user/info">User Info</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/user/order">Order</a> </li>
+          <li><a href="/terms">Terms & Conditions</a></li>
+          <li class="divider" tabindex="-1"></li>
+          {{!-- <li><a href="">Sign In</a></li> --}}
+          <li> <a href="/logout">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="option-menu-shadow"></div>
+</div>
+
+{{!-- <div class="chat-menu">
   <div class="chat-container">
     <div class="bubble-field">
       <div class="chat-bubble-client">
@@ -31,47 +73,4 @@
       <i class="material-icons">chat</i>
     </a>
   </div>
-</div>
-<div class="chat-menu-shadow"></div>
-<div class="navbar">
-  <div class="arrow-nav">
-    {{#if pageType }}
-    <div class="logo">
-      <img src="/ip7.png">
-    </div>
-
-    {{else}}
-    <div class="header-nav">
-      <a href="/products"><i class="material-icons">arrow_back</i></a>
-      <div class="page-header">
-        {{#biggerThen header header.length 8}}
-        {{value}}
-        {{/biggerThen}}
-      </div>
-    </div>
-    {{/if}}
-  </div>
-
-  <div class="user-interface">
-    <div>
-      <div>
-        <a href="/user/cart/id">
-          <img src="/shopping-cart.png">
-        </a>
-      </div>
-      <div class="user-icon">
-        <a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons">account_circle</i></a>
-        <ul id='dropdown1' class='dropdown-content'>
-          <li><a href="/user/info/id">User Info</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/user/order/id">Order</a> </li>
-          <li><a href="/terms">Terms & Conditions</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="">Sign In</a></li>
-          <li> <a href="/logout">Sign Out</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="option-menu-shadow"></div>
-</div>
+</div> --}}

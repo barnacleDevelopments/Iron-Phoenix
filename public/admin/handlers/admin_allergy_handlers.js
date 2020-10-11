@@ -27,7 +27,7 @@ function createChipElement(name, id) {
   let chipContainer = document.createElement("li");
   let newAllChip = document.createElement("div");
   newAllChip.setAttribute("class", "chip");
-  newAllChip.innerHTML = `${name}<i id="${id}" class="close material-icons">close</i>`;
+  newAllChip.innerHTML = `${name}<i id="${id}" class="close material-icons">close</i> `;
   chipContainer.append(newAllChip);
   return chipContainer;
 }

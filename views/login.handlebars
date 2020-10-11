@@ -3,11 +3,29 @@
         <h2>login</h2>
     </div>
     <div id="login-form">
+<<<<<<< HEAD
         <form method="post" action="/login">
             <input type="text" placeholder="Email" name="email">
             <input type="password" placeholder="Password" name="account_key">
             <button type = "submit" class="waves-effect waves-light btn-small save-btn confirm-btn">login</button>
             <a href = "/signup" class="waves-effect waves-light btn-small cancel-btn">sign up</a>
         </form>    
+=======
+        <input id="username" type="text" placeholder="Username">
+        <input id="password" type="password" placeholder="Password">
+
+        <div>
+            <a><i class="fab fa-facebook fa-2x"></i></a>
+            <a><i class="fab fa-google fa-2x"></i></a>
+        </div>
+        <div>
+            <a id="login-btn" class="waves-effect waves-light btn-small save-btn confirm-btn">login</a>
+            <a href="/signup" class="waves-effect waves-light btn-small cancel-btn">sign up</a>
+        </div>
+
+
+>>>>>>> bcb0cfc1c503d42975d3e749f3ddd15009f655af
     </div>
 </div>
+
+<script src="/global_handlers/login_handler.js"></script>
