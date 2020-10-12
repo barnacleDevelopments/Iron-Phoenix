@@ -95,8 +95,8 @@ function createProductElement(id, name, price, desc) {
 <div class="product-dropdown-container">
   <a class="product-dropdown-trigger edit-drop-trigger" href="#" data-target="dropdown2"><i class="material-icons">more_vert</i></a>
   <ul data-procid="${id}" class="product-dropdown" style="display: none">
-    <li class="add-product-allergies-btn">Addons</li>
-    <li class="add-product-allergies-btn" data-procid="${id}">Alergies</li>
+    <li class="add-product-addon-btn" data-procid="${id}">Addons</li>
+    <li class="add-product-allergy-btn" data-procid="${id}">Alergies</li>
     <li class="edit-product-btn" data-procid="${id}">Edit</li>
     <li class="delete-product-btn" data-procid="${id}">Delete</li>
   </ul>
@@ -146,7 +146,7 @@ function createProductDeleteForm(procId) {
 //  CREATE ALLERGY FORM
 // ---------------------------------------
 
-function createChipform(procId) {
+function createAllergiesChipform(procId) {
   // create product allergies menu
   let element = document.createElement("div");
   element.setAttribute("style", "background-color: #f5f5f5; width: 90%;");
@@ -155,6 +155,45 @@ function createChipform(procId) {
   element.innerHTML = `
       <a id="product-allergies-save-btn" class="waves-effect waves-light btn proc-allergy-save-btn confirm-btn">save</a>
       <a id="product-allergies-cancel-btn" class="waves-effect waves-light btn proc-allergy-cancel-btn cancel-btn" style="background-color: grey">cancel</a>
+      `;
+  // append preloader while allegies are fetched
+  let preLoader = document.createElement("div");
+  preLoader.innerHTML = `
+      <div class="progress">
+      <div class="indeterminate"></div>
+      </div>
+             `;
+
+  element.insertBefore(preLoader, element.firstElementChild);
+
+  element.addEventListener("click", (e) => {
+    // get target element
+    let targetElement = e.target;
+    if (
+      targetElement.classList.contains("confirm-btn") ||
+      targetElement.classList.contains("cancel-btn")
+    ) {
+      element.remove();
+      formContainer.setAttribute("style", "display: none");
+    }
+  });
+
+  return element;
+}
+
+// ---------------------------------------
+//  CREATE CHIP FORM
+// ---------------------------------------
+
+function createChipform(procId) {
+  // create product allergies menu
+  let element = document.createElement("div");
+  element.setAttribute("style", "background-color: #f5f5f5; width: 90%;");
+  element.id = "form-body";
+  element.setAttribute("data-procid", procId);
+  element.innerHTML = `
+      <a class="waves-effect waves-light btn confirm-btn ">save</a>
+      <a class="waves-effect waves-light btn cancel-btn">cancel</a>
       `;
   // append preloader while allegies are fetched
   let preLoader = document.createElement("div");

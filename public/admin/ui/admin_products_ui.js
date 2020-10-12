@@ -260,7 +260,7 @@ document
           break;
         case "Alergies":
           // create product allergies form element
-          let allergyFormBody = createChipform(procId);
+          let allergyFormBody = createAllergiesChipform(procId);
           // append the element to form container
           formContainer.append(allergyFormBody);
           // display form container

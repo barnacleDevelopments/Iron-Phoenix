@@ -22,8 +22,6 @@ FUNCTION ELEMENTS
 ===================================
 */
 
-function createAllergyChip(name, id) {}
-
 (() => {
   // Get Allergies Collapsible Element
 })();
@@ -38,29 +36,28 @@ const userPhone = document.getElementsByClassName("userPhone");
 
 const userLocation = document.getElementsByClassName("userLocation");
 
-console.log(userAllergies, userName, userEmail, userPhone, userLocation);
-
-const loadUserContent = () => {
+// retrieve user info and append it
+const loadUserContent = (userId) => {
   let loggedInUser = new User();
-
-  loggedInUser.get().then((user) => {
+  loggedInUser.get(userId).then((user) => {
     if (!user.data.err) {
       // append username
       userName[0].append(user.data.firstName);
       userName[1].setAttribute("placeholder", user.data.firstName);
       // append user email
       userEmail[0].append(user.data.email);
-      userEmail[1].setAttribute("placeholder", user.info.email);
+      userEmail[1].setAttribute("placeholder", user.data.email);
       // apend user location
       userLocation[0].append(user.data.address);
       userLocation[1].setAttribute("placeholder", user.data.address);
       // apppend user phone number
-      userPhone[0].append(user.data.number);
-      userPhone[1].setAttribute("placeholder", user.data.number);
+      userPhone[0].append(user.data.contactNumber);
+      userPhone[1].setAttribute("placeholder", user.data.contactNumber);
       // append allergies
       user.data.Allergies.forEach((id) => {
         let allergy = new Allergy();
         allergy.get(id).then((al) => {
+          console.log(al);
           if (!al.data.err) {
             userAllergies.append(al);
           } else {
@@ -74,4 +71,4 @@ const loadUserContent = () => {
   });
 };
 
-loadUserContent();
+loadUserContent(userIdentification);

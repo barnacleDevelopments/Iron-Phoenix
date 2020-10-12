@@ -23,6 +23,7 @@ ADMIN PRODUCT HANDLERS
 LIST EVENT LISTENERS
 =================================
 */
+
 document
   .querySelector(".admin-category-list")
   .addEventListener("click", (e) => {
@@ -129,11 +130,11 @@ document
     // +++++++++++++++++++++++++++++++++++++++++++++
     // append all allergies to product allergy menu
     // +++++++++++++++++++++++++++++++++++++++++++++
-    if (targetElement.closest(".add-product-allergies-btn")) {
+    if (targetElement.closest(".add-product-allergy-btn")) {
       let allergy = new Allergy();
       let product = new Product();
       let procId = targetElement
-        .closest(".add-product-allergies-btn")
+        .closest(".add-product-allergy-btn")
         .getAttribute("data-procid");
 
       // create chip container
@@ -208,10 +209,85 @@ document
     }
 
     // +++++++++++++++++++++++++++++++++++++++++++++
-    // append all addons to product allergy menu
+    // append all addons to product addon menu
     // +++++++++++++++++++++++++++++++++++++++++++++
-    if (targetElement.closest("add-product-addon-btn")) {
-      console.log("yass");
+
+    if (targetElement.closest(".add-product-addon-btn")) {
+      let addon = new Addon();
+      let product = new Product();
+      let procId = targetElement
+        .closest(".add-product-addon-btn")
+        .getAttribute("data-procid");
+      console.log(procId);
+      // create chip container
+      const chipContainer = document.createElement("div");
+      chipContainer.setAttribute("id", "chip-container");
+
+      product.getProductAddonIds(procId).then((procAddons) => {
+        console.log(procAddons);
+        if (!procAddons.data.err) {
+          // remove preloader once allergies are fetched
+          document.querySelector(".progress").remove();
+          // get all the allergies and append them to chip container
+          addon.getAll().then((addons) => {
+            if (!addons.data.err) {
+              addons.data.forEach((an) => {
+                let chip = createChipElement(an.name, an._id, "inactive");
+                chipContainer.append(chip);
+              });
+
+              // set chip allergies as active or inactive on click
+              chipContainer.addEventListener("click", (e) => {
+                let targetElement = e.target;
+                targetElement.getAttribute("data-chipstatus");
+                if (e.target.classList.contains("chip")) {
+                  switch (targetElement.getAttribute("data-chipstatus")) {
+                    case "inactive":
+                      targetElement.setAttribute(
+                        "style",
+                        "background-color: #5cb85c; color: white;"
+                      );
+                      targetElement.setAttribute("data-chipstatus", "active");
+
+                      break;
+                    case "active":
+                      targetElement.setAttribute(
+                        "style",
+                        "background-color: #e4e4e4; color: #0009;"
+                      );
+                      targetElement.setAttribute("data-chipstatus", "inactive");
+                  }
+                }
+              });
+
+              // append allergy container to allergy menu
+              let formBody = document.getElementById("form-body");
+              console.log(formBody);
+              formBody.insertBefore(chipContainer, formBody.firstElementChild);
+
+              // get all the chips inside chip container
+              let addonChips = formBody.firstElementChild.children;
+              console.log(procAddons);
+              // loop over all the chips and change their status
+              Object.keys(addonChips).forEach((key) => {
+                procAddons.data.forEach((procAll) => {
+                  if (addonChips[key].getAttribute("data-allid") === procAll) {
+                    addonChips[key].setAttribute("data-chipstatus", "active");
+                    addonChips[key].setAttribute(
+                      "style",
+                      "background-color: #5cb85c; color: white"
+                    );
+                  }
+                });
+              });
+            } else {
+              console.log(addons.data.errMessage);
+            }
+          });
+        } else {
+          console.log(procAddons.data.errMessage);
+        }
+      });
     }
   });
 
@@ -274,9 +350,6 @@ document.querySelector("#form-container").addEventListener("click", (e) => {
           product.data.price,
           product.data.description
         );
-
-        console.log(updatedProduct);
-        console.log(productList);
         productList.replaceChild(updatedProduct, oldProduct);
       } else {
         console.log(product.data.errMessage);

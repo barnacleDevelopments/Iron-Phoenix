@@ -26,25 +26,29 @@ app.use(bodyParser.json());
 
 app.use(cookieParser());
 
-app.use(session({
-  key: 'o0YCzRbrn84ajjyxfjJDsebIVF0g1dwLgIRv7U8',
-  secret: '$2b$10$j5InjmG7hvUNp/RJHW8kTOx0ZaSlm',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    expires: 600000
-  }
-}));
+app.use(
+  session({
+    key: "o0YCzRbrn84ajjyxfjJDsebIVF0g1dwLgIRv7U8",
+    secret: "$2b$10$j5InjmG7hvUNp/RJHW8kTOx0ZaSlm",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 600000,
+    },
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
 // Initialize routes
+
 app.use("/api", require("./api/addon"));
 app.use("/api", require("./api/allergy"));
 app.use("/api", require("./api/category"));
 app.use("/api", require("./api/product"));
+app.use("/api", require("./api/user"));
 app.use("/auth", require("./api/auth"));
 
 // {{ Endpoint to serve the configuration file }}
@@ -95,9 +99,7 @@ app.set("views", path.join(__dirname, "../views"));
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 
-bcrypt.hash("iron-phoenix", saltRounds, function (err, hash) {
-
-});
+bcrypt.hash("iron-phoenix", saltRounds, function (err, hash) {});
 
 // Error Handle
 app.use(function (err, req, res, next) {
@@ -134,8 +136,8 @@ const port = process.env.PORT;
 // CLIENT SIDE ROUTES
 
 // a post route to sign user up
-app.post('/signup', function (req, res, next) {
-  passport.authenticate('local-signup', function (err, user, info) {
+app.post("/signup", function (req, res, next) {
+  passport.authenticate("local-signup", function (err, user, info) {
     console.log("info", info);
 
     if (err) {
@@ -144,23 +146,22 @@ app.post('/signup', function (req, res, next) {
     }
 
     if (!user) {
-      return res.send({ success: false, message: 'Email already exist!' });
+      return res.send({ success: false, message: "Email already exist!" });
     }
 
     req.login(user, function (err) {
-        if (err) {
-          console.log("loginerr", err)
-          return next(err);
-        } 
-          res.redirect("/products");
+      if (err) {
+        console.log("loginerr", err);
+        return next(err);
+      }
+      res.redirect("/category");
     });
   })(req, res, next);
 });
 
 // a post route to log user in
-app.post('/login', function (req, res, next) {
-  passport.authenticate('local-login', function (err, user, info) {
-
+app.post("/login", function (req, res, next) {
+  passport.authenticate("local-login", function (err, user, info) {
     if (err) {
       console.log("passport err", err);
       return next(err); // will generate a 500 error
@@ -168,17 +169,16 @@ app.post('/login', function (req, res, next) {
 
     if (!user) {
       res.redirect("/login");
-      return res.send({ success: false, message: 'authentication failed' });
+      return res.send({ success: false, message: "authentication failed" });
     }
 
-    req.login(user, loginErr => {
-
+    req.login(user, (loginErr) => {
       if (loginErr) {
         console.log("loginerr", loginErr);
         return next(loginErr);
       }
 
-      res.redirect("/products");
+      res.redirect("/category");
     });
   })(req, res, next);
 });
@@ -283,8 +283,8 @@ app.get("/product/:category/:id", (req, res, next) => {
     return req.session.passport.user._id
 });*/
 
-app.get("/user/info/:id", (req, res, next) => {
-
+app.get("/user/info", (req, res, next) => {
+  let userId = req.session.passport.user._id;
   if (req.isAuthenticated()) {
     res.render("user", {
       pageType: false,
@@ -322,11 +322,11 @@ app.get("/user/order/:id", (req, res, next) => {
 
 //ADMIN SIDE ROUTES
 app.get("/admin/products-management", (req, res, next) => {
-  if (req.isAuthenticated()) {
-    res.render("products-management", { layout: "admin.handlebars" });
-  } else {
-    res.redirect("/login");
-  }
+  // if (req.isAuthenticated()) {
+  res.render("products-management", { layout: "admin.handlebars" });
+  // } else {
+  //   res.redirect("/login");
+  // }
 });
 
 app.get("/admin/allergies-management", (req, res, next) => {
