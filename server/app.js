@@ -15,6 +15,7 @@ require("../config/passport-setup");
 const app = express();
 const db = "mongodb://localhost:27017/iron_phoenix";
 const saltRounds = 10;
+const hour = 3600000;
 
 // Connect to mongodb
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -26,17 +27,15 @@ app.use(bodyParser.json());
 
 app.use(cookieParser());
 
-app.use(
-  session({
-    key: "o0YCzRbrn84ajjyxfjJDsebIVF0g1dwLgIRv7U8",
-    secret: "$2b$10$j5InjmG7hvUNp/RJHW8kTOx0ZaSlm",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      expires: 600000,
-    },
-  })
-);
+app.use(session({
+  key: 'o0YCzRbrn84ajjyxfjJDsebIVF0g1dwLgIRv7U8',
+  secret: '$2b$10$j5InjmG7hvUNp/RJHW8kTOx0ZaSlm',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    expires: new Date(Date.now() + hour)
+  }
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());
