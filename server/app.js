@@ -15,7 +15,6 @@ require("../config/passport-setup");
 const app = express();
 const db = "mongodb://localhost:27017/iron_phoenix";
 const saltRounds = 10;
-const hour = 3600000;
 
 // Connect to mongodb
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -27,6 +26,7 @@ app.use(bodyParser.json());
 
 app.use(cookieParser());
 
+<<<<<<< HEAD
 app.use(
   session({
     key: "o0YCzRbrn84ajjyxfjJDsebIVF0g1dwLgIRv7U8",
@@ -38,6 +38,16 @@ app.use(
     },
   })
 );
+=======
+app.use(session({
+  secret: '$2b$10$j5InjmG7hvUNp/RJHW8kTOx0ZaSlm',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    _expires : 60000000
+  }
+}));
+>>>>>>> fe6728f808b1bd702ce66c83b37f2a1d9baaa15e
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -278,14 +288,8 @@ app.get("/product/:category/:id", (req, res, next) => {
   }
 });
 
-// a get route to redirect user out of the app
-/*app.get('/user/id', (req, res, next) => {
-    console.log("User"+req.session.passport.user._id);
-    return req.session.passport.user._id
-});*/
+app.get("/user/info/:id", (req, res, next) => {
 
-app.get("/user/info", (req, res, next) => {
-  let userId = req.session.passport.user._id;
   if (req.isAuthenticated()) {
     res.render("user", {
       pageType: false,
