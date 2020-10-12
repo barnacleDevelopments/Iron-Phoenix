@@ -15,6 +15,7 @@ require("../config/passport-setup");
 const app = express();
 const db = "mongodb://localhost:27017/iron_phoenix";
 const saltRounds = 10;
+const hour = 3600000;
 
 // Connect to mongodb
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -32,7 +33,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    expires: 600000
+    expires: new Date(Date.now() + hour)
   }
 }));
 
