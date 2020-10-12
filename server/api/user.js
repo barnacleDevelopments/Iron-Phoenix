@@ -19,8 +19,7 @@ const User = require('../models/user');
 
 // Create User
 router.post('/user', function (req, res, next) {
-    User.create(req.body)
-    .then(function (data) {
+    User.create(req.body).then(function (data) {
       res.send(data);
     })
     .catch(next);

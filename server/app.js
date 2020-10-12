@@ -150,11 +150,19 @@ app.post("/signup", function (req, res, next) {
     }
 
     req.login(user, function (err) {
+<<<<<<< HEAD
       if (err) {
         console.log("loginerr", err);
         return next(err);
       }
       res.redirect("/category");
+=======
+        if (err) {
+          console.log("loginerr", err)
+          return next(err);
+        } 
+          res.redirect("/category");
+>>>>>>> 9253eeae0f65dc740a6d0b9bde9610173156c5f5
     });
   })(req, res, next);
 });

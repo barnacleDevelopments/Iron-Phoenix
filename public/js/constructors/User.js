@@ -115,4 +115,35 @@ class User {
 
     return receivingData;
   }
+
+  /**
+   * Delete the User
+   *
+   * @return {Object} User
+   */
+  async delete(id) {
+    let receivingData = {};
+
+    await fetch(`http://localhost:${port}/api/user/${id}`, {
+      method: "delete",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json", // sent request
+        Accept: "application/json", // expected data sent back
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        receivingData.data = data;
+        receivingData.err = false;
+        receivingData.errMessage = "";
+      })
+      .catch((error) => {
+        receivingData.err = true;
+        receivingData.errMessage = error;
+        console.log(error);
+      });
+
+    return receivingData;
+  }
 }

@@ -40,6 +40,7 @@ class Product {
         description: description,
         price: price,
         Allergy: [],
+        Addon: []
       },
       receivingData = {};
 
@@ -133,7 +134,7 @@ class Product {
   }
 
   /**
-   * Getting the Product Addon
+   * Getting the Product Addons
    *
    * @param {String} id Product Id
    * @return {Array} Product Addon Id's
