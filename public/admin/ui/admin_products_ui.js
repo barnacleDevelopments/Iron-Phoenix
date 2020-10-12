@@ -215,7 +215,7 @@ document
       switch (menuSelection) {
         case "Addons":
           // create product allergies form element
-          let addonFormBody = createChipform(procId);
+          let addonFormBody = createChipform(procId, "product-addon-save-btn");
           // append the element to form container
           formContainer.append(addonFormBody);
           // display form container
@@ -260,7 +260,10 @@ document
           break;
         case "Alergies":
           // create product allergies form element
-          let allergyFormBody = createAllergiesChipform(procId);
+          let allergyFormBody = createChipform(
+            procId,
+            "product-allergy-save-btn"
+          );
           // append the element to form container
           formContainer.append(allergyFormBody);
           // display form container

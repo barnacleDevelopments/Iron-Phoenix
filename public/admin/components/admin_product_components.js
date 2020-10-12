@@ -185,15 +185,14 @@ function createAllergiesChipform(procId) {
 //  CREATE CHIP FORM
 // ---------------------------------------
 
-function createChipform(procId) {
+function createChipform(procId, saveBtnId) {
   // create product allergies menu
   let element = document.createElement("div");
-  element.setAttribute("style", "background-color: #f5f5f5; width: 90%;");
   element.id = "form-body";
   element.setAttribute("data-procid", procId);
   element.innerHTML = `
-      <a class="waves-effect waves-light btn confirm-btn ">save</a>
-      <a class="waves-effect waves-light btn cancel-btn">cancel</a>
+      <a id="${saveBtnId}" class="waves-effect waves-light btn confirm-btn ">save</a>
+      <a  class="waves-effect waves-light btn cancel-btn">cancel</a>
       `;
   // append preloader while allegies are fetched
   let preLoader = document.createElement("div");

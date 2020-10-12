@@ -81,9 +81,14 @@ addonList.addEventListener("click", (e) => {
   if (targetElement.classList.contains("edit-btn")) {
     // get form container
     let formContainer = document.getElementById("form-container");
+
     formContainer.style.display = "flex";
+    // get current addon values
+    let price = targetElement.closest("li").firstElementChild.textContent;
+    let name = targetElement.closest("li").children[1].firstElementChild
+      .textContent;
     // create edit form
-    let editForm = createAddonEditForm();
+    let editForm = createAddonEditForm(name, price);
     // add event listeners to edit form
     editForm.addEventListener("click", (e) => {
       let formTarget = e.target;

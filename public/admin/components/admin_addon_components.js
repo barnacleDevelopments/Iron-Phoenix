@@ -18,11 +18,12 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 function createAddonEditForm() {
   // create element
+  console.log(arguments[0]);
   let element = document.createElement("div");
   element.setAttribute("class", "form-body");
   element.innerHTML = `
-          <input id="addon-input-name" type="text" placeholder=""/>
-          <input id="addon-input-price"/>
+          <input id="addon-input-name" type="text" placeholder="${arguments[0]}"/>
+          <input id="addon-input-price" placeholder="${arguments[1]}"/>
           <a id="save-edit-addon-btn" class="waves-effect waves-light btn confirm-btn">save</a>
           <a class="waves-effect waves-light btn cancel-btn">cancle</a>
     `;

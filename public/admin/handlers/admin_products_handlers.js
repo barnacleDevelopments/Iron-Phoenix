@@ -177,7 +177,7 @@ document
               });
 
               // append allergy container to allergy menu
-              let formBody = document.querySelector(".form-body");
+              let formBody = document.getElementById("form-body");
               formBody.insertBefore(chipContainer, formBody.firstElementChild);
 
               let allergyElements = formBody.firstElementChild.children;
@@ -218,13 +218,12 @@ document
       let procId = targetElement
         .closest(".add-product-addon-btn")
         .getAttribute("data-procid");
-      console.log(procId);
+
       // create chip container
       const chipContainer = document.createElement("div");
       chipContainer.setAttribute("id", "chip-container");
 
       product.getProductAddonIds(procId).then((procAddons) => {
-        console.log(procAddons);
         if (!procAddons.data.err) {
           // remove preloader once allergies are fetched
           document.querySelector(".progress").remove();
@@ -262,12 +261,12 @@ document
 
               // append allergy container to allergy menu
               let formBody = document.getElementById("form-body");
-              console.log(formBody);
+
               formBody.insertBefore(chipContainer, formBody.firstElementChild);
 
               // get all the chips inside chip container
               let addonChips = formBody.firstElementChild.children;
-              console.log(procAddons);
+
               // loop over all the chips and change their status
               Object.keys(addonChips).forEach((key) => {
                 procAddons.data.forEach((procAll) => {
@@ -303,7 +302,6 @@ document.querySelector("#form-container").addEventListener("click", (e) => {
   let title, price, description;
 
   let product = new Product();
-
   // ++++++++++++++++++++++++++++++++++++++++
   // Update product inside selected category
   // ++++++++++++++++++++++++++++++++++++++++
@@ -374,7 +372,7 @@ document.querySelector("#form-container").addEventListener("click", (e) => {
   }
 
   // update product allergies property
-  if (targetElement.id === "product-allergies-save-btn") {
+  if (targetElement.id === "product-allergy-save-btn") {
     let targetElement = e.target;
     let newAllArr = [];
     let procId = targetElement.parentElement.getAttribute("data-procid");
@@ -390,6 +388,31 @@ document.querySelector("#form-container").addEventListener("click", (e) => {
       }
     });
     product.updateProductAllergy(procId, newAllArr);
+
+    //hide product menu floater container
+    document
+      .querySelector("#form-container")
+      .setAttribute("style", "display: none");
+  }
+
+  if (targetElement.closest("#product-addon-save-btn")) {
+    let targetElement = e.target;
+    let newAddonArr = [];
+    let procId = targetElement.parentElement.getAttribute("data-procid");
+
+    let chipsContainer = targetElement.parentElement.firstElementChild;
+
+    Object.keys(chipsContainer.children).forEach((key) => {
+      if (
+        chipsContainer.children[key].getAttribute("data-chipstatus") ===
+        "active"
+      ) {
+        newAddonArr.push(
+          chipsContainer.children[key].getAttribute("data-allid")
+        );
+      }
+    });
+    product.updateProductAddon(procId, newAddonArr);
 
     //hide product menu floater container
     document

@@ -27,15 +27,17 @@ app.use(bodyParser.json());
 
 app.use(cookieParser());
 
-app.use(session({
-  key: 'o0YCzRbrn84ajjyxfjJDsebIVF0g1dwLgIRv7U8',
-  secret: '$2b$10$j5InjmG7hvUNp/RJHW8kTOx0ZaSlm',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    expires: new Date(Date.now() + hour)
-  }
-}));
+app.use(
+  session({
+    key: "o0YCzRbrn84ajjyxfjJDsebIVF0g1dwLgIRv7U8",
+    secret: "$2b$10$j5InjmG7hvUNp/RJHW8kTOx0ZaSlm",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: new Date(Date.now() + hour),
+    },
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -149,19 +151,11 @@ app.post("/signup", function (req, res, next) {
     }
 
     req.login(user, function (err) {
-<<<<<<< HEAD
       if (err) {
         console.log("loginerr", err);
         return next(err);
       }
       res.redirect("/category");
-=======
-        if (err) {
-          console.log("loginerr", err)
-          return next(err);
-        } 
-          res.redirect("/category");
->>>>>>> 9253eeae0f65dc740a6d0b9bde9610173156c5f5
     });
   })(req, res, next);
 });
@@ -337,11 +331,11 @@ app.get("/admin/products-management", (req, res, next) => {
 });
 
 app.get("/admin/allergies-management", (req, res, next) => {
-  if (req.isAuthenticated()) {
-    res.render("allergies-management", { layout: "admin.handlebars" });
-  } else {
-    res.redirect("/login");
-  }
+  // if (req.isAuthenticated()) {
+  res.render("allergies-management", { layout: "admin.handlebars" });
+  // } else {
+  //   res.redirect("/login");
+  // }
 });
 
 app.get("/admin/addons-management", (req, res, next) => {
