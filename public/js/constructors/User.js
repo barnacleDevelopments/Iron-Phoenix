@@ -21,39 +21,6 @@ class User {
     /** Methods **/
 
   /**
-   * Getting the id 
-   *
-   * @param {String} id User Id
-   * @return {Object} User
-   */
-  async getId() {
-    let receivingData = {};
-
-    await fetch(`http://localhost:${port}/user/id`, {
-      method: "get",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json", // sent request
-        Accept: "application/json", // expected data sent back
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        receivingData.data = data;
-        receivingData.err = false;
-        receivingData.errMessage = "";
-      })
-      .catch((error) => {
-        receivingData.err = true;
-        receivingData.errMessage = error;
-        console.log(error);
-      });
-
-    return receivingData;
-  }
-
-
-  /**
    * Getting the User
    *
    * @param {String} id User Id
