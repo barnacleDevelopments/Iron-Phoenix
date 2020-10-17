@@ -9,12 +9,10 @@ import passport from "passport";
 import flash from "connect-flash";
 import cookieParser from "cookie-parser";
 import session from "express-session";
-import bcrypt from "bcrypt";
 require("../config/passport-setup");
 
 const app = express();
 const db = "mongodb://localhost:27017/iron_phoenix";
-const saltRounds = 10;
 
 // Connect to mongodb
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -95,16 +93,10 @@ app.set("views", path.join(__dirname, "../views"));
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 
-bcrypt.hash("iron-phoenix", saltRounds, function (err, hash) {
-
-});
-
 // Error Handle
 app.use(function (err, req, res, next) {
   res.status(422).send({ error: err.name + ": " + err.message });
 });
-
-bcrypt.hash("iron-phoenix", saltRounds, function (err, hash) {});
 
 // User Session
 
@@ -135,8 +127,8 @@ const port = process.env.PORT;
 
 // a post route to sign user up
 app.post('/signup', function (req, res, next) {
-  passport.authenticate('local-signup', function (err, user, info) {
-    console.log("info", info);
+  passport.authenticate('signup', function (err, user, info) {
+    console.log(info.message);
 
     if (err) {
       console.log("passport err", err);
@@ -144,7 +136,7 @@ app.post('/signup', function (req, res, next) {
     }
 
     if (!user) {
-      return res.send({ success: false, message: 'Email already exist!' });
+      return res.send({ success: false, message: info.message });
     }
 
     req.login(user, function (err) {
@@ -159,7 +151,7 @@ app.post('/signup', function (req, res, next) {
 
 // a post route to log user in
 app.post('/login', function (req, res, next) {
-  passport.authenticate('local-login', function (err, user, info) {
+  passport.authenticate('login', function (err, user, info) {
 
     if (err) {
       console.log("passport err", err);

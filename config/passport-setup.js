@@ -3,6 +3,8 @@ const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require("./keys");
 const User = require("../server/models/user");
+import bcrypt from "bcrypt";
+const saltRounds = 10;
 
 // passport serialize User
 passport.serializeUser(function(user, done) {
@@ -26,36 +28,40 @@ passport.use(new GoogleStrategy( {
 }));
 
 // passport local-login
-passport.use('local-login', new LocalStrategy({
+passport.use('login', new LocalStrategy({
     usernameField: 'email',
-    passwordField : 'account_key',
+    passwordField : 'password',
     passReqToCallback : true 
-},function(req, email, account_key, done) {
+},function(req, email, password, done) {
     User.findOne({
             email: email 
-    }).then(function(user, err) {
-        (user.account_key != account_key);
+    }).then(async function(user, err) {
+
+        let isMatch = await bcrypt.compare(password, user.password);
+
         if (!user){
             console.log("no user found");
             return done(null, false, req.flash('loginMessage', 'No user found.')); 
         }
-        if (user && user.account_key != account_key){
-        return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); 
-        }
-        return done(null, user);
+
+        if(user && isMatch){
+            return done(null, user);
+        }else{
+            return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+        }    
     });
 }));
 
-// passport signup
-passport.use('local-signup', new LocalStrategy({
+// passport signup for users
+passport.use('signup', new LocalStrategy({
     usernameField: 'email',
-    passwordField : 'account_key',
+    passwordField : 'password',
     passReqToCallback : true
-}, function(req, email, account_key, done) {
+}, function(req, email, password, done) {
     process.nextTick(function() {
         User.findOne({
                 email: email
-        }).then(function(user, err){
+        }).then(async function(user, err){
             if(err) {
                 console.log("err",err)
                 return done(err);
@@ -65,18 +71,23 @@ passport.use('local-signup', new LocalStrategy({
                 console.log('signupMessage', 'That email is already taken.');
                 return done(null, false, {'message': 'That email is already taken.'});
             } else {
+
+                password = await bcrypt.hash(password, saltRounds);
+
                 User.create({
                             firstName:req.body.firstName,
                             lastName:req.body.lastName,
                             address: req.body.address,
                             email: email,
                             contactNumber: req.body.contactNumber,
-                            account_key: account_key
+                            role: "user", 
+                            password: password
                 }).then(function(data) {
-                    return done(null, data);
+                    return done(null, data, {'message': 'Sign up was successful!!'});
                 }).catch(function(err) { 
                     console.log(err);
                 }); 
+                
             }
         });   
     });

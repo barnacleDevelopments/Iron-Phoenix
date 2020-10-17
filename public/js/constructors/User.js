@@ -84,6 +84,75 @@ class User {
   }
 
   /**
+   * Getting the User Allergy Id's
+   *
+   * @param {String} id User Id
+   * @return {Array} User Allergy Id's
+   */
+  async getAllergyIds(id) {
+    let receivingData = {};
+
+    await fetch(`http://localhost:${port}/api/user/${id}/allergy`, {
+      method: "get",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json", // sent request
+        Accept: "application/json", // expected data sent back
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        receivingData.data = data;
+        receivingData.err = false;
+        receivingData.errMessage = "";
+      })
+      .catch((error) => {
+        receivingData.err = true;
+        receivingData.errMessage = error;
+        console.log(error);
+      });
+
+    return receivingData;
+  }
+
+  /**
+   * Update User Allergies
+   *
+   * @param {String} id User Id
+   * @param {Array} col Collection of Allergy Id's
+   * @return {Object} Updated User Allergy Id's
+   */
+  async updateAllergy(id, col) {
+    let sendingData = {
+      Allergy: col,
+    },
+    receivingData = {};
+
+    await fetch(`http://localhost:${port}/api/user/${id}/allergy`, {
+      method: "put",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json", // sent request
+        Accept: "application/json", // expected data sent back
+      },
+      body: JSON.stringify(sendingData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        receivingData.data = data;
+        receivingData.err = false;
+        receivingData.errMessage = "";
+      })
+      .catch((error) => {
+        receivingData.err = true;
+        receivingData.errMessage = error;
+        console.log(error);
+      });
+
+    return receivingData;
+  }  
+
+  /**
    * Delete the User
    *
    * @return {Object} User
