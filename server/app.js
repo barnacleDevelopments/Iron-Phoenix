@@ -26,28 +26,16 @@ app.use(bodyParser.json());
 
 app.use(cookieParser());
 
-<<<<<<< HEAD
 app.use(
   session({
-    key: "o0YCzRbrn84ajjyxfjJDsebIVF0g1dwLgIRv7U8",
     secret: "$2b$10$j5InjmG7hvUNp/RJHW8kTOx0ZaSlm",
     resave: false,
     saveUninitialized: false,
     cookie: {
-      expires: new Date(Date.now() + hour),
+      _expires: 60000000,
     },
   })
 );
-=======
-app.use(session({
-  secret: '$2b$10$j5InjmG7hvUNp/RJHW8kTOx0ZaSlm',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    _expires : 60000000
-  }
-}));
->>>>>>> fe6728f808b1bd702ce66c83b37f2a1d9baaa15e
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -288,9 +276,10 @@ app.get("/product/:category/:id", (req, res, next) => {
   }
 });
 
-app.get("/user/info/:id", (req, res, next) => {
-
+app.get("/user/info", (req, res, next) => {
   if (req.isAuthenticated()) {
+    let userId = req.session.passport.user._id
+ 
     res.render("user", {
       pageType: false,
       header: "info",

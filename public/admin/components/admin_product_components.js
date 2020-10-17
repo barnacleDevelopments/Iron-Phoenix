@@ -87,8 +87,8 @@ function createProductElement(id, name, price, desc) {
           <img src="/cake_1.jpg">
       </div>
       <div class="admin-product-description">
-          <h2>${name}</h2>
-          <p >${desc}</p>
+          <h2 class="prod-name">${name}</h2>
+          <p class="prod-desc">${desc}</p>
       </div>
   </div>
   
@@ -101,7 +101,7 @@ function createProductElement(id, name, price, desc) {
     <li class="delete-product-btn" data-procid="${id}">Delete</li>
   </ul>
   <div class="product-price">
-  <h3>$${price}</h3>
+  <h3 class="prod-price">$${price}</h3>
   </div>
 </div>
 `;
@@ -113,34 +113,6 @@ function createProductElement(id, name, price, desc) {
 FORM COMPONENTS
 ===============================
 */
-
-// ---------------------------------------
-// DELETE PRODUCT FORM
-// ---------------------------------------
-function createProductDeleteForm(procId) {
-  // create element
-  let element = document.createElement("div");
-  element.setAttribute("data-procid", procId);
-  element.setAttribute("class", "form-body");
-
-  element.innerHTML = `
-      <h3>Are you sure want to delete this item?</h3>
-      <a id="delete-product-btn" class="waves-effect waves-light btn confirm-btn">Confirm</a>
-      <a class="waves-effect waves-light btn cancel-btn">Cancel</a>`;
-
-  element.addEventListener("click", (e) => {
-    // get target element
-    let targetElement = e.target;
-    if (
-      targetElement.classList.contains("confirm-btn") ||
-      targetElement.classList.contains("cancel-btn")
-    ) {
-      element.remove();
-      formContainer.setAttribute("style", "display: none");
-    }
-  });
-  return element;
-}
 
 // ---------------------------------------
 //  CREATE ALLERGY FORM
@@ -219,163 +191,6 @@ function createChipform(procId, saveBtnId) {
   return element;
 }
 
-// ---------------------------------------
-//  CATEOGRY EDIT FORM
-// ---------------------------------------
 
-function createCategoryEditForm(catId) {
-  // create element
-  let element = document.createElement("div");
-  element.setAttribute("class", "form-body");
-  element.setAttribute("data-catid", catId);
 
-  element.innerHTML = `
-        <input id="edit-category-input" type="text" placeholder="add category title here...">
-        <a id="save-edit-category-btn" class="waves-effect waves-light btn confirm-btn">save</a>
-        <a class="waves-effect waves-light btn cancel-btn">cancle</a>
-  `;
-  // add closing event listener
-  element.addEventListener("click", (e) => {
-    // get target element
-    let targetElement = e.target;
-    // if target element save button or cancel button - close the menu
-    if (
-      targetElement.classList.contains("confirm-btn") ||
-      targetElement.classList.contains("cancel-btn")
-    ) {
-      element.remove();
-      formContainer.setAttribute("style", "display: none");
-      // remove tip if exists
-      // get tip element
-      let tipMenu = document.getElementById("tip-menu");
-      if (tipMenu) {
-        tipMenu.remove();
-      }
-    }
-  });
 
-  // add input event listener
-  element.firstElementChild.addEventListener("input", (e) => {
-    // get target element
-    let targetElement = e.target;
-    // get inputed string
-    let String = new StringValidater(targetElement.value);
-
-    // get tip container
-    let tipContainer = document.getElementById("form-tip-container");
-
-    // if inputed text includes too many charecters prompt the user
-
-    if (
-      String.seperatedExeeds(10) &&
-      !document.querySelector("[data-tipnum='1']")
-    ) {
-      // create new tip element
-      let newTip = new Tip();
-      let tip = newTip.warningTip("1", "Yo man", "this is a comment");
-      tipContainer.append(tip);
-      // disable save btn
-      element.children[1].classList.add("disabled");
-    } else if (
-      !String.seperatedExeeds(10) &&
-      document.querySelector("[data-tipnum='1']")
-    ) {
-      // if tip already exists & does not exeed limit remove from container
-      document.querySelector("[data-tipnum='1']").remove();
-      // enable save button
-      element.children[1].classList.remove("disabled");
-    }
-
-    if (
-      String.isBiggerThen(20) &&
-      !document.querySelector("[data-tipnum='2']")
-    ) {
-      let tipElement = createFormTip(
-        "recomend",
-        "Your title is too long!",
-        "Shorter titles capture the users attention more easily online"
-      );
-      tipElement.setAttribute("data-tipnum", "2");
-      // get tip color
-      let tipColor = tipElement.getAttribute("data-tipcolor");
-      tipElement.setAttribute(
-        "style",
-        `position: relative; top: 0px; animation: openTipMenu .3s ease-in forwards; background-color: ${tipColor}`
-      );
-      // append tip to tip container
-      tipContainer.append(tipElement);
-    } else if (
-      !String.isBiggerThen(20) &&
-      document.querySelector("[data-tipnum='2']")
-    ) {
-      document.querySelector("[data-tipnum='2']").remove();
-    }
-  });
-
-  return element;
-}
-
-// ---------------------------------------
-//  PRODUCT EDIT FORM
-// ---------------------------------------
-
-function createProductEditForm(procId, name, price, desc) {
-  // create elemet
-  let element = document.createElement("div");
-  // set element class
-  element.setAttribute("class", "form-body");
-  // set element data attribute
-  element.setAttribute("data-procid", procId);
-  element.innerHTML = `
-      <input id="product-title-input" type="text" value="${name}"placeholder="add product title here...">
-      <input id="product-price-input" type="text" value="${price}" placeholder="add price...">
-      <input type="text" id="product-description-input" value="${desc}" placeholder="add description...">
-      <a id="edit-product-save-btn" class="waves-effect waves-light btn confirm-btn">save</a>
-      <a class="waves-effect waves-light btn cancel-btn">cancle</a>
-  `;
-  // add closing event listeners
-  element.addEventListener("click", (e) => {
-    // get target element
-    let targetElement = e.target;
-    // if target element save button or cancel button - close the menu
-    if (
-      targetElement.classList.contains("confirm-btn") ||
-      targetElement.classList.contains("cancel-btn")
-    ) {
-      element.remove();
-      formContainer.setAttribute("style", "display: none");
-    }
-  });
-  return element;
-}
-
-// ---------------------------------------
-//  CATEOGRY DELETE FORM
-// ---------------------------------------
-
-function createCategoryDeleteForm(catId, procCount) {
-  let element = document.createElement("div");
-  // set element class
-  element.setAttribute("class", "form-body");
-  // set element data attribute
-  element.setAttribute("data-catid", catId);
-  element.innerHTML = `
-    <h3>This category has ${procCount} items are you sure you want to delete it?</h3>
-      <a id="delete-confirm-btn" class="waves-effect waves-light btn confirm-btn">Confirm</a>
-      <a class="waves-effect waves-light btn cancel-btn cancel-btn">Cancel</a>
-  `;
-  // add closing event listeners
-  element.addEventListener("click", (e) => {
-    // get target element
-    let targetElement = e.target;
-    // if target element save button or cancel button - close the menu
-    if (
-      targetElement.classList.contains("confirm-btn") ||
-      targetElement.classList.contains("cancel-btn")
-    ) {
-      element.remove();
-      formContainer.setAttribute("style", "display: none");
-    }
-  });
-  return element;
-}

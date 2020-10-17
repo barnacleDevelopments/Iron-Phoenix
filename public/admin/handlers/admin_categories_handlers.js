@@ -75,7 +75,7 @@ document.getElementById("form-container").addEventListener("click", (e) => {
   // get target element
   let targetElement = e.target;
   // if target element categorty save btn - save the edited name
-  if (targetElement.id === "save-edit-category-btn") {
+  if (targetElement.classList.contains("confirm-btn") && targetElement.closest("#cat-edit-form")) {
     // get form body
     let formBody = targetElement.closest(".form-body");
     let catName = formBody.children[0].value;
@@ -93,7 +93,8 @@ document.getElementById("form-container").addEventListener("click", (e) => {
     });
   }
   // if delete confirm button is pressed - delete the category from the DOM & database
-  if (targetElement.id === "delete-confirm-btn") {
+
+  if (targetElement.classList.contains( "confirm-btn") && targetElement.closest("#cat-del-form")) {
     let formBody = targetElement.closest(".form-body");
     let catId = formBody.getAttribute("data-catid");
     let category = new Category();

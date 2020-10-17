@@ -298,57 +298,34 @@ document
 document.querySelector("#form-container").addEventListener("click", (e) => {
   // get target element
   let targetElement = e.target;
-  // get edit menu input values
-  let title, price, description;
-
   let product = new Product();
   // ++++++++++++++++++++++++++++++++++++++++
   // Update product inside selected category
   // ++++++++++++++++++++++++++++++++++++++++
   // if edit menu save button is pressed
-  if (targetElement.id === "edit-product-save-btn") {
+  if (targetElement.classList.contains("confirm-btn") && targetElement.closest("#prod-edit-form")) {
     // get form body
-    let formBody = targetElement.closest(".form-body");
+    let formBody = targetElement.closest("#prod-edit-form");
     // get product id
-    let procId = formBody.getAttribute("data-procid");
-
+    let prodId = formBody.getAttribute("data-id");
     // get edit menu input field values
-    Object.keys(formBody.children).forEach((el) => {
-      let input = formBody.children[el];
-
-      switch (input.id) {
-        case "product-title-input":
-          title = input.value;
-          break;
-        case "product-price-input":
-          price = input.value;
-          break;
-        case "product-description-input":
-          description = input.value;
-          break;
-        default:
-          null;
-      }
-    });
-
+     let name = formBody.children[0] .value
+     let price = formBody.children[1].value
+     let desc = formBody.children[2].value
     // update and replace product element
-    product.update(procId, title, description, price).then((product) => {
+    product.update(prodId, name, desc, price).then((product) => {
       if (!product.data.err) {
         // get old product element
-        let oldProduct = document.getElementById(procId);
-
-        // get product list for category
-        let productList = document.getElementById(product.data.catId)
-          .lastElementChild.firstElementChild;
-
-        // create updated product
+        let oldProduct = document.getElementById(prodId);
+       // create updated product
         const updatedProduct = createProductElement(
           product.data._id,
           product.data.name,
           product.data.price,
           product.data.description
         );
-        productList.replaceChild(updatedProduct, oldProduct);
+      // replace product
+        document.getElementById(prodId).parentElement.replaceChild(updatedProduct, oldProduct);
       } else {
         console.log(product.data.errMessage);
       }
@@ -356,14 +333,14 @@ document.querySelector("#form-container").addEventListener("click", (e) => {
   }
 
   // delete product handler
-  if (targetElement.id === "delete-product-btn") {
+  if (targetElement.classList.contains("confirm-btn") && targetElement.closest("#prod-del-form")) {
     // get target element
     let targetElement = e.target;
-    let formBody = targetElement.closest(".form-body");
-    let procId = formBody.getAttribute("data-procid");
-    product.remove(procId).then((data) => {
+    let formBody = targetElement.closest("#prod-del-form");
+    let prodId = formBody.getAttribute("data-id");
+    product.remove(prodId).then((data) => {
       if (!data.data.err) {
-        let proc = document.getElementById(procId);
+        $(`#${prodId}`).remove()
         proc.remove();
       } else {
         console.log(data.data.errMessage);

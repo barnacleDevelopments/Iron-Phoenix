@@ -108,7 +108,6 @@ document
     // hide all currently open dropdowns
     const allCatDropdowns = document.querySelectorAll(".category-dropdown");
     const allProductDropdowns = document.querySelectorAll(".product-dropdown");
-
     // add class to varaible
     let product = new Product();
     closeOpenDropdowns(allCatDropdowns);
@@ -130,33 +129,30 @@ document
       // display form container
       displayFormContainer();
       // get category id
-      let catId = targetElement
+      let catId = $(targetElement)
         .closest(".edit-category-btn")
-        .getAttribute("data-catid");
+        .attr("data-catid");
       // create edit form
-      let formBody = createCategoryEditForm(catId);
+      let categoryForm = new Form(catId, "cat-edit-form");
+      let formBody = categoryForm.textInputForm(
+        $(`#${catId}`).find("h1").text(),
+      );
       formContainer.append(formBody);
-      // set input value to previous name
-      formBody.firstElementChild.value = document.getElementById(
-        catId
-      ).firstElementChild.firstElementChild.firstElementChild.lastElementChild.firstElementChild.textContent;
       // once open - focus first input
       formBody.firstElementChild.focus();
     }
-
     // open category delete menu and add data-attribute to editor menu
     if (targetElement.closest(".delete-category-btn")) {
       displayFormContainer();
-
       // get category id
-      let catId = targetElement
+      let catId = $(targetElement)
         .closest(".delete-category-btn")
-        .getAttribute("data-catid");
-
+        .attr("data-catid");
+      let deleteForm = new Form(catId, "cat-del-form");
       // get product count for category
       product.count(catId).then((procCount) => {
         if (!procCount.err) {
-          let formBody = createCategoryDeleteForm(catId, procCount.count);
+          let formBody = deleteForm.promptForm(`This category contains ${procCount.count} products. Are you sure you want to delete it?`);
           formContainer.append(formBody);
         } else {
           console.log(procCount.errMessage);
@@ -209,50 +205,31 @@ document
     // open edit menu, addon menu, allergy menu or delete prompt
     if (targetElement.closest(".product-dropdown")) {
       let menuSelection = targetElement.textContent;
-      let procId = targetElement
+      let prodId = $(targetElement)
         .closest(".product-dropdown")
-        .getAttribute("data-procid");
+        .attr("data-procid")
+ 
       switch (menuSelection) {
         case "Addons":
           // create product allergies form element
-          let addonFormBody = createChipform(procId, "product-addon-save-btn");
+          let addonForm = createChipform(procId, "product-addon-save-btn");
           // append the element to form container
           formContainer.append(addonFormBody);
           // display form container
           displayFormContainer();
           break;
-        case "Edit":
-          // get curent product element
-          procEl = document.getElementById(procId);
-          // get current product values
-          let name, price, desc;
+        case "Edit":  
+        let prodEditForm = new Form(prodId, "prod-edit-form");
+        let prod =  $(`#${prodId}`) 
           // get name
-          name =
-            procEl.firstElementChild.lastElementChild.firstElementChild
-              .textContent;
+          let name = prod.find(".prod-name").text()
           // get price
-          price =
-            procEl.lastElementChild.lastElementChild.firstElementChild
-              .textContent;
-
-          price = stringToNum(price);
-
+          let price = prod.find(".prod-price").text()
           // get description
-          desc =
-            procEl.firstElementChild.lastElementChild.lastElementChild
-              .textContent;
-
+          let desc = prod.find(".prod-desc").text()
           // create edit form
-          let editFormBody = createProductEditForm(procId, name, price, desc);
+          let editFormBody = prodEditForm.textInputForm(name, price, desc);
           formContainer.append(editFormBody);
-
-          let nameLength = name.length * 2;
-
-          // move cursor to the end of input value
-          editFormBody.firstElementChild.setSelectionRange(
-            nameLength,
-            nameLength
-          );
           // display form container
           displayFormContainer();
           // once open - focus first input
@@ -271,7 +248,8 @@ document
           break;
         case "Delete":
           //create new element
-          let deleteFormBody = createProductDeleteForm(procId);
+          let prodDelForm = new Form(prodId, "prod-del-form");
+          let deleteFormBody = prodDelForm.promptForm("Are you sure you want to delte this product?");
           // append the element to form container
           formContainer.append(deleteFormBody);
           // display form container
@@ -284,8 +262,3 @@ document
     }
   });
 
-/*
-===================================
-FIELD TYPING EVENT LISTENERS
-==================================
-*/
