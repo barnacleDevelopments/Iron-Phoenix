@@ -7,7 +7,7 @@
  */
 
 /**
- * A Cart Model & Schema 
+ * A CustomizedProduct Model & Schema 
  * 
  * @author Shaquille Lynch
  */
@@ -17,14 +17,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Create Schema and Model
-const CartSchema = new Schema({
-    "userId" : String,
+const CustomizedProductSchema = new Schema({
     "productId" : String,
-    "customizedProductId" : String,
-    "qty" : Number
+    "userId" : String,
+    "Addon" : Array,
+    "price" : Number
 });
 
-const Cart = mongoose.model('cart', CartSchema);
+const CustomizedProduct = mongoose.model('customizedProduct', CustomizedProductSchema);
 
 // Exporting Cart Model
-module.exports = Cart;
+module.exports = CustomizedProduct;
