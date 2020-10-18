@@ -101,5 +101,68 @@ class Cart {
         return receivingData;
       }
 
+    /**
+     * Get the User Products
+     *
+     * @param {String} userId User Id
+     * @return {Array} User Products
+     */
+    async getProducts(userId) {
+        let receivingData = {};
+    
+        await fetch(`http://localhost:${port}/api/user/${userId}/cart/product`, {
+          method: "get",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json", // sent request
+            Accept: "application/json", // expected data sent back
+          }
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            receivingData.data = data;
+            receivingData.err = false;
+            receivingData.errMessage = "";
+          })
+          .catch((error) => {
+            receivingData.err = true;
+            receivingData.errMessage = error;
+            console.log(error);
+          });
+    
+        return receivingData;
+    }  
+
+    /**
+     * Get the User Customized Products
+     *
+     * @param {String} userId User Id
+     * @return {Array} User Customized Products
+     */
+    async getCustomizedProducts(userId) {
+        let receivingData = {};
+    
+        await fetch(`http://localhost:${port}/api/user/${userId}/cart/cuztomizedProduct`, {
+          method: "get",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json", // sent request
+            Accept: "application/json", // expected data sent back
+          }
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            receivingData.data = data;
+            receivingData.err = false;
+            receivingData.errMessage = "";
+          })
+          .catch((error) => {
+            receivingData.err = true;
+            receivingData.errMessage = error;
+            console.log(error);
+          });
+    
+        return receivingData;
+      }
   }
   
