@@ -3,63 +3,7 @@
 Material Elements
 ===============================
 */
-// create material large preloader
-function createBigPreloader() {
-  return `  
-      <div style="width: 100%; margin: 0 auto;">
-      <div class="preloader-wrapper big active" style="margin: 0 auto;">
-        <div class="spinner-layer spinner-green-only">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
-          </div><div class="gap-patch">
-            <div class="circle"></div>
-          </div><div class="circle-clipper right">
-            <div class="circle"></div>
-          </div>
-        </div>
-      </div>
-      </div>`;
-}
 
-// create material small preloader
-function createSmallPreloader() {
-  let element = document.createElement("div");
-  element.innerHTML = `
-  <div class="preloader-wrapper active">
-    <div class="spinner-layer spinner-green-only">
-      <div class="circle-clipper left">
-        <div class="circle"></div>
-      </div><div class="gap-patch">
-        <div class="circle"></div>
-      </div><div class="circle-clipper right">
-        <div class="circle"></div>
-      </div>
-    </div>
-  </div>
-`;
-  return element;
-}
-
-// create chip element
-function createChipElement(name, id, chipStatus) {
-  let allElement = document.createElement("div");
-  allElement.setAttribute("class", "chip");
-  allElement.setAttribute("data-allid", id);
-  allElement.innerHTML = `${name}`;
-  allElement.setAttribute("data-chipstatus", chipStatus);
-  if (chipStatus === "active") {
-    allElement.setAttribute(
-      "style",
-      "background-color: #5cb85c; color: white;"
-    );
-  } else {
-    allElement.setAttribute(
-      "style",
-      "background-color: #e4e4e4; color: #0009;"
-    );
-  }
-  return allElement;
-}
 
 //  create form tip
 function createFormTip(tipType, text, tip) {
