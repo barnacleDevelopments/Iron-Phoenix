@@ -25,15 +25,10 @@ FUNCTION ELEMENTS
 (() => {
   // Get Allergies Collapsible Element
 })();
-
 const userAllergies = document.getElementsByClassName("userAllergies");
-
 const userName = document.getElementsByClassName("userName");
-
 const userEmail = document.getElementsByClassName("userEmail");
-
 const userPhone = document.getElementsByClassName("userPhone");
-
 const userLocation = document.getElementsByClassName("userLocation");
 
 // retrieve user info and append it
@@ -68,68 +63,64 @@ function appendUserAllergies(userId) {
     const chipContainer = document.createElement("div");
     chipContainer.setAttribute("id", "chip-container");
 
-    user.getUserAllergiesIds(userId).then((procAddons) => {
-      if (!procAddons.data.err) {
-        // get all the allergies and append them to chip container
+    user.getAllergyIds(userId).then((userAlls) => {
+      if (!userAlls.data.err) {
+        // get all the allergies 
         all.getAll().then((a) => {
           if (!a.data.err) {
             a.data.forEach((an) => {
-              let chip = createChipElement(an.name, an._id, "inactive");
-              chipContainer.append(chip);
+              let allChip = new Chip(an._id, an.name, "inactive")
+              chipContainer.append(allChip.create(true));
             });
-
-            // set chip allergies as active or inactive on click
-            chipContainer.addEventListener("click", (e) => {
-              let targetElement = e.target;
-              targetElement.getAttribute("data-chipstatus");
-              if (e.target.classList.contains("chip")) {
-                switch (targetElement.getAttribute("data-chipstatus")) {
-                  case "inactive":
-                    targetElement.setAttribute(
-                      "style",
-                      "background-color: #5cb85c; color: white;"
-                    );
-                    targetElement.setAttribute("data-chipstatus", "active");
-
-                    break;
-                  case "active":
-                    targetElement.setAttribute(
-                      "style",
-                      "background-color: #e4e4e4; color: #0009;"
-                    );
-                    targetElement.setAttribute("data-chipstatus", "inactive");
-                }
-              }
-            });
-
-            // append allergy container to allergy menu
-            let allList = document.getElementById("user-all-list");
-
-           chipContainer.forEach(all => {
-            allList.append(all)
-           }) 
 
             // get all the chips inside chip container
-            let allChips = allList.children;
-
-            // loop over all the chips and change their status
+            let allChips = chipContainer.children
+         
+            // loop over all the chips change their status
             Object.keys(allChips).forEach((key) => {
-              procAddons.data.forEach((procAll) => {
-                if (addonChips[key].getAttribute("data-allid") === procAll) {
-                  addonChips[key].setAttribute("data-chipstatus", "active");
-                  addonChips[key].setAttribute(
+              userAlls.data.forEach((procAll) => {
+                if (allChips[key].getAttribute("data-allid") === procAll) {
+                  allChips[key].setAttribute("data-chipstatus", "active");
+                  allChips[key].setAttribute(
                     "style",
                     "background-color: #5cb85c; color: white"
                   );
                 }
               });
             });
+
+            // update allegies on click
+            chipContainer.addEventListener("click", (e) => {
+              let allArr = []
+             Object.keys(allChips).forEach(key => {
+                if(allChips[key].getAttribute("data-chipstatus") === "active") {
+                  allArr.push(allChips[key].getAttribute("data-allid"))
+                }
+              })
+              user.updateAllergy(userId, allArr).then((alls) => {
+                if(!alls.data.err) {
+                  let toast = new Toast("Allergy updated")
+                  $("body").append(toast.create())
+                } else {
+                  console.log(alls.data.errMessage)
+                  let failMessage = document.createElement("p")
+                  failMessage.style.color = "red"
+                  failMessage.textContent = "Oups! Trouble connecting to the network. Reload the page and try again."
+                  $(failMessage).insertAfter(chipContainer.lastElementChild)
+                }
+              })
+              
+            })
+            // append allergy container to allergy menu
+            $("#user-all-list").append(chipContainer);
+
+        
           } else {
-            console.log(addons.data.errMessage);
+            console.log(a.data.errMessage);
           }
         });
       } else {
-        console.log(procAddons.data.errMessage);
+        console.log(userAlls.data.errMessage);
       }
     });
   }

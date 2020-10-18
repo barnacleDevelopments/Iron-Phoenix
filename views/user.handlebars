@@ -1,87 +1,77 @@
 {{> navbar_customer }}
+<ul id="user-info-list" class="collapsible">
+  <li>
+    <div class="collapsible-header user-info-header">
+      <div><i class="material-icons">person_outline</i>
+        <h3>Name</h3>
+      </div>
+      <div class="user-info-current-tags">
+        <p class="userName"></p>
+      </div>
+    </div>
+    <div class="collapsible-body user-info-content">
+      <div class="input-field user-input-field">
+        <input id="first_name" type="text" class="validate userName">
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="collapsible-header user-info-header">
+      <div><i class="material-icons">email</i>
+        <h3>Email</h3>
+      </div>
+      <div class="user-info-current-tags">
+        <p class="userEmail"></p>
+      </div>
+    </div>
+    <div class="collapsible-body user-info-content">
+      <div class="input-field user-input-field">
+        <input id="first_name" type="text" class="validate userEmail">
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="collapsible-header user-info-header">
+      <div><i class="material-icons">location_on</i>
+        <h3>Location</h3>
+      </div>
+      <div class="user-info-current-tags">
+        <p class="userLocation"></p>
+      </div>
+    </div>
+    <div class="collapsible-body user-info-content">
+      <div class="input-field user-input-field">
+        <input id="first_name" type="text" class="validate userLocation">
+      </div>
 
-<div id="user-info-container">
-  <ul id="user-info-list" class="collapsible">
-    <li>
-      <div class="collapsible-header user-info-header">
-        <div><i class="material-icons">person_outline</i>
-          <h3>Name</h3>
-        </div>
-        <div class="user-info-current-tags">
-          <p class="userName"></p>
-        </div>
+    </div>
+  </li>
+  <li>
+    <div class="collapsible-header user-info-header">
+      <div><i class="material-icons">phone</i>
+        <h3>Phone Number</h3>
       </div>
-      <div class="collapsible-body user-info-content">
-        <div class="input-field user-input-field">
-          <input id="first_name" type="text" class="validate userName">
-        </div>
+      <div class="user-info-current-tags">
+        <p class="userPhone"></p>
       </div>
-    </li>
-    <li>
-      <div class="collapsible-header user-info-header">
-        <div><i class="material-icons">email</i>
-          <h3>Email</h3>
-        </div>
-        <div class="user-info-current-tags">
-          <p class="userEmail"></p>
-        </div>
+    </div>
+    <div class="collapsible-body user-info-content">
+      <div class="input-field user-input-field">
+        <input id="first_name" type="text" class="validate userPhone">
       </div>
-      <div class="collapsible-body user-info-content">
-        <div class="input-field user-input-field">
-          <input id="first_name" type="text" class="validate userEmail">
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="collapsible-header user-info-header">
-        <div><i class="material-icons">location_on</i>
-          <h3>Location</h3>
-        </div>
-        <div class="user-info-current-tags">
-          <p class="userLocation"></p>
-        </div>
-      </div>
-      <div class="collapsible-body user-info-content">
-        <div class="input-field user-input-field">
-          <input id="first_name" type="text" class="validate userLocation">
-        </div>
 
+    </div>
+  </li>
+  <li>
+    <div class="collapsible-header user-info-header">
+      <div><i class="material-icons">local_hospital</i>
+        <h3>Allergies</h3><span class="badge"></span>
       </div>
-    </li>
-    <li>
-      <div class="collapsible-header user-info-header">
-        <div><i class="material-icons">phone</i>
-          <h3>Phone Number</h3>
-        </div>
-        <div class="user-info-current-tags">
-          <p class="userPhone"></p>
-        </div>
-      </div>
-      <div class="collapsible-body user-info-content">
-        <div class="input-field user-input-field">
-          <input id="first_name" type="text" class="validate userPhone">
-        </div>
 
-      </div>
-    </li>
-    <li>
-      <div class="collapsible-header user-info-header">
-        <div><i class="material-icons">local_hospital</i>
-          <h3>Allergies</h3><span class="badge"></span>
-        </div>
-
-      </div>
-      <div id="user-all-list" class="collapsible-body user-info-content userAllergies">
-
-        <div class="chip allergie-chip confirmed-allergie"><span></span></div>
-
-        <div class="chip allergie-chip"><span></span></div>
-
-      </div>
-    </li>
-  </ul>
-
-</div>
+    </div>
+    <div id="user-all-list" class="collapsible-body user-info-content userAllergies"></div>
+  </li>
+</ul>
 {{!-- Customer User Handlers --}}
 <script>const userIdentification = "{{{ userId }}}"</script>
 <script type="text/javascript" src="/customer/handlers/customer_user_handlers.js">
