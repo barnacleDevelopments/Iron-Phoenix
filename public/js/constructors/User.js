@@ -116,6 +116,49 @@ class User {
   }
 
   /**
+   * Update User Info
+   *
+   * @param {String} id User Id
+   * @param {String} firstName User First Name
+   * @param {String} lastName User Last Name
+   * @param {String} address User Address
+   * @param {String} contactNumber User Contact Number
+   * @return {Object} Updated User Info
+   */
+  async update(id, firstName, lastName, address, contactNumber) {
+    let sendingData = {
+      firstName: firstName,
+      lastName: lastName,
+      address: address,
+      contactNumber: contactNumber
+    },
+    receivingData = {};
+
+    await fetch(`http://localhost:${port}/api/user/${id}`, {
+      method: "put",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json", // sent request
+        Accept: "application/json", // expected data sent back
+      },
+      body: JSON.stringify(sendingData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        receivingData.data = data;
+        receivingData.err = false;
+        receivingData.errMessage = "";
+      })
+      .catch((error) => {
+        receivingData.err = true;
+        receivingData.errMessage = error;
+        console.log(error);
+      });
+
+    return receivingData;
+  }
+
+  /**
    * Update User Allergies
    *
    * @param {String} id User Id

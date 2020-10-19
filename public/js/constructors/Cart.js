@@ -164,5 +164,68 @@ class Cart {
     
         return receivingData;
       }
+
+    /**
+     * Get the number of items that's in the cart
+     *
+     * @param {String} userId User Id
+     * @return {Number} Number of Items
+     */
+    async countItems(userId) {
+        let receivingData = {};
+    
+        await fetch(`http://localhost:${port}/api/user/${userId}/cart`, {
+          method: "get",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json", // sent request
+            Accept: "application/json", // expected data sent back
+          }
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            receivingData.data = data;
+            receivingData.err = false;
+            receivingData.errMessage = "";
+          })
+          .catch((error) => {
+            receivingData.err = true;
+            receivingData.errMessage = error;
+            console.log(error);
+          });
+    
+        return receivingData;
+    }
+    
+    /**
+     * Delete user item from cart 
+     *
+     * @param {String} itemId Item Id
+     * @return {Object} Deleted Item
+     */
+    async deleteItem(itemId) {
+        let receivingData = {};
+    
+        await fetch(`http://localhost:${port}/api/cart/${itemId}`, {
+          method: "delete",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json", // sent request
+            Accept: "application/json", // expected data sent back
+          }
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            receivingData.data = data;
+            receivingData.err = false;
+            receivingData.errMessage = "";
+          })
+          .catch((error) => {
+            receivingData.err = true;
+            receivingData.errMessage = error;
+            console.log(error);
+          });
+    
+        return receivingData;
+    } 
   }
-  

@@ -125,5 +125,19 @@ router.get('/user/:id/cart/cuztomizedProduct', function (req, res, next) {
     });
 });
 
+// Get the number of items that's in the cart
+router.get('/user/:id/cart', function (req, res, next) {
+    Cart.find({userId: req.params.id}).then(function (data) {
+        res.send({"amount" : data.length});
+    });    
+});    
+
+// Get cuztomizedProducts from Cart
+router.delete('/cart/:itemId', function (req, res, next) {
+    Cart.findByIdAndDelete({_id: req.params.itemId}).then(function (data) {
+        res.send(data);
+    });    
+});  
+
 // Exporting the routers
 module.exports = router;
