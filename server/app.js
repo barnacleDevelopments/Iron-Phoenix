@@ -46,6 +46,8 @@ app.use("/api", require("./api/allergy"));
 app.use("/api", require("./api/category"));
 app.use("/api", require("./api/product"));
 app.use("/api", require("./api/user"));
+app.use("/api", require("./api/cart"));
+app.use("/api", require("./api/customizedProduct"));
 app.use("/auth", require("./api/auth"));
 
 // {{ Endpoint to serve the configuration file }}

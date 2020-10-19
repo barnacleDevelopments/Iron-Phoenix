@@ -26,7 +26,16 @@ const ProductSchema = new Schema({
     "Addon" : Array
 });
 
+/*const ProductImgSchema = new Schema({ 
+    "productId" : 
+    "img" : {
+        data: Buffer, 
+        contentType: String 
+    }
+});*/
+
 const Product = mongoose.model('product', ProductSchema);
+//const ProductImg = mongoose.model('Clothes', ProductImgSchema);
 
 // Exporting Product Model
 module.exports = Product;
