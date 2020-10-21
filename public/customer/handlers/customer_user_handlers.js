@@ -8,6 +8,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
  */
 
+
 /*
 ==============================
 CUSTOMER USER HANDLERS 
@@ -16,17 +17,22 @@ CUSTOMER USER HANDLERS
 @ AUTHOR DEVIN S. DAVIS
 */
 
-const userAllergies = document.getElementsByClassName("userAllergies");
-const userName = document.getElementsByClassName("userName");
-const userEmail = document.getElementsByClassName("userEmail");
-const userPhone = document.getElementsByClassName("userPhone");
-const userLocation = document.getElementsByClassName("userLocation");
 
 /*
 ==============================
 FUNCTIONS
 ==============================
 */
+
+function addInputChecker(input, func1, func2) {
+  input.addEventListener("input", () => {
+    if(input.value === "") {
+      func1()
+    } else {
+      func2()
+    }
+  })
+}
 
 // loop over all the chips change their status
 const setChipStatuses = (elements, data) => {
@@ -48,19 +54,76 @@ const loadUserContent = (userId) => {
   let loggedInUser = new User();
   loggedInUser.get(userId).then((user) => {
     if (!user.data.err) {
+      const userFirstName = document.getElementsByClassName("userFirst");
+      const userLastName = document.getElementsByClassName("userLast");
+      const userPhone = document.getElementsByClassName("userPhone");
+      const userLocation = document.getElementsByClassName("userLocation");
+
+      let allInputs = [userFirstName, userLastName, userLocation, userPhone]
+
       // append username
-      userName[0].append(user.data.firstName);
-      userName[1].setAttribute("placeholder", user.data.firstName);
+      userFirstName[0].append(user.data.firstName);
+      userFirstName[1].setAttribute("placeholder", user.data.firstName);
+      
       // append user email
-      userEmail[0].append(user.data.email);
-      userEmail[1].setAttribute("placeholder", user.data.email);
+      userLastName[0].append(user.data.lastName);
+      userLastName[1].setAttribute("placeholder", user.data.lastName);
+ 
       // apend user location
       userLocation[0].append(user.data.address);
-      userLocation[1].setAttribute("placeholder", user.data.address);
+      userLocation[1].setAttribute("placeholder", user.data.address)
+
       // apppend user phone number
       userPhone[0].append(user.data.contactNumber);
       userPhone[1].setAttribute("placeholder", user.data.contactNumber);
+
       appendUserAllergies(userId)
+      // add event listener to each input
+      allInputs.forEach((els) => {
+        let saveBtn = $(els[0]).closest(".user-info-header").find(".save-btn")
+       
+        saveBtn.click(() => {
+          saveBtn.css({"display": "none"})
+
+          let vals = allInputs.map((els) => {
+            if(els[1])
+            if(els[1].value !== "") {
+              return els[1].value
+            } else {
+              return els[1].placeholder
+            }
+          })
+
+          let firstName = vals[0]
+          let lastName = vals[1]
+          let location = vals[2]
+          let number = vals[3]
+        
+          loggedInUser.update(userIdentification, firstName, lastName, location, number).then((user) => {
+            if(!user.data.err) {
+              userFirstName[0].textContent = user.data.firstName
+              userFirstName[1].setAttribute("placeholder", user.data.firstName); 
+
+              userLastName[0].textContent = user.data.firstName
+              userLastName[1].setAttribute("placeholder", user.data.firstName); 
+        
+              userLocation[0].textContent = user.data.address;
+              userLocation[1].setAttribute("placeholder", user.data.address)
+
+              userPhone[0].textContent = user.data.contactNumber;
+              userPhone[1].setAttribute("placeholder", user.data.contactNumber);
+           
+            } else {
+              console.log(user.data.errMessage)
+            }
+          })
+        })
+        addInputChecker(els[1], () => {
+            saveBtn.css({"display": "none"});
+            }, () => {
+            saveBtn.css({"display": "block"})
+            })
+      })
     } else {
       console.log(user.data.errMessage);
     }

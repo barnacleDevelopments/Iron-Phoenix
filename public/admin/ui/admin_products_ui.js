@@ -211,10 +211,11 @@ document
  
       switch (menuSelection) {
         case "Addons":
+          let prodAddForm = new Form(prodId, "prod-edit-form")
           // create product allergies form element
-          let addonForm = createChipform(procId, "product-addon-save-btn");
+         let addFormBody = prodAddForm.basicForm()
           // append the element to form container
-          formContainer.append(addonFormBody);
+          formContainer.append(addFormBody);
           // display form container
           displayFormContainer();
           break;
@@ -238,7 +239,7 @@ document
         case "Alergies":
           // create product allergies form element
           let allergyFormBody = createChipform(
-            procId,
+            prodId,
             "product-allergy-save-btn"
           );
           // append the element to form container

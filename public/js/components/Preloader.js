@@ -1,10 +1,27 @@
+/*
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ * Version 1
+ *
+ * 2020-10-19
+ *
+ * Copyright 2020, Iron Phoenix, All rights reserved.
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ */
+
+/*
+//=================================
+// PRELOADER ELEMENT CLASS
+//=================================
+
+@ AUTHOR DEVIN S. DAVIS
+*/
 
 class Preloader {
     constructor() {
 
     }
     // create material large preloader
-BigPreloader() {
+big() {
     return `  
         <div style="width: 100%; margin: 0 auto;">
         <div class="preloader-wrapper big active" style="margin: 0 auto;">
@@ -22,7 +39,7 @@ BigPreloader() {
   }
   
   // create material small preloader
-  SmallPreloader() {
+  small() {
     let element = document.createElement("div");
     element.innerHTML = `
     <div class="preloader-wrapper active">

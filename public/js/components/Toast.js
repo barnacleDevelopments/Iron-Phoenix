@@ -1,3 +1,21 @@
+/*
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ * Version 1
+ *
+ * 2020-10-19
+ *
+ * Copyright 2020, Iron Phoenix, All rights reserved.
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ */
+
+/*
+//=================================
+// TOAST ELEMENT CLASS
+//=================================
+
+@ AUTHOR DEVIN S. DAVIS
+*/
+
 class Toast {
     constructor(text, color) {
         this.color = color

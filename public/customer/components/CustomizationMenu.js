@@ -1,6 +1,9 @@
 class CustomizationMenu {
-    constructor (id) {
+    constructor (id, prodName, prodPrice, totalPrice) {
         this.id = id
+        this.prodName = prodName
+        this.prodPrice = prodPrice
+        this.totalPice = totalPrice
 
     }
     create() {
@@ -9,61 +12,47 @@ class CustomizationMenu {
         element.setAttribute("data-prodid", this.id)
         element.innerHTML = `
         <div class="customize-header">
-          <h1>Chocolate Chip</h1>
-          <h2>$8.33</h2>
+          <h1>${this.prodName}</h1>
+          <h2>${this.prodPrice}</h2>
         </div>
         <div class="customize-body">
-          <form action="#">
-            <ul class="collection">
-              <li class="collection-item">
-                <div>
-                  <p>
-                    <label>
-                      <input type="checkbox" class="filled-in" checked="checked" />
-                      <span><%-item.toppings[i].title %></span>
-                    </label>
-                  </p>
-                </div>
-                <div>
-                  <a href=""><i class="material-icons">remove_circle_outline</i></a>
-                  <p><%-item.toppings[i].amount %></p>
-                  <a href=""><i class="material-icons">add_circle_outline</i></a>
-                </div>
-                <div>
-                  <h2></h2>
-                </div>
-              </li>
-              <li class="collection-item">
-                <div>
-                  <p>
-                    <label>
-                      <input type="checkbox" />
-                      <span><%-customizationItems[i] %></span>
-                    </label>
-                  </p>
-                </div>
-                <div>
-                  <a href=""><i class="material-icons">remove_circle_outline</i></a>
-                  <p></p>
-                  <a href=""><i class="material-icons">add_circle_outline</i></a>
-                </div>
-                <div>
-                  <h2></h2>
-                </div>
-              </li>
-            </ul>
+          <form>
+            <ul id="${this.id}" class="collection"></ul>
           </form>
         </div>
         <div class="customize-footer">
           <div>
-            <h2>Total</h2>
-            <h2>$21.00</h2>
+            <h2>total</h2>
+            <h2>${this.totalPice}</h2>
           </div>
           <div class="customize-footer-btns">
-            <a class="waves-effect waves-light btn cancle-btn">Cancle</a>
-            <a class="waves-effect waves-light btn">Add to Cart</a>
+            <a class="waves-effect waves-light btn cancel-btn">Cancle</a>
+            <a class="waves-effect waves-light btn confirm-btn">Add to Cart</a>
           </div>
         </div>`
         return element
     }
+
+    createCustItem(name, quantity) {
+      let element = document.createElement("li")
+      element.classList.add("collection-item")
+      element.innerHTML = `
+      <div>
+        <p>
+          <label>
+            <input type="checkbox" class="filled-in" checked="checked" />
+            <span>${name}</span>
+          </label>
+        </p>
+      </div>
+      <div>
+        <a href=""><i class="material-icons">remove_circle_outline</i></a>
+        <p>${quantity}</p>
+        <a href=""><i class="material-icons">add_circle_outline</i></a>
+      </div>`
+      return element  
+    }
 }
+
+
+

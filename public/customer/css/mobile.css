@@ -260,8 +260,8 @@ CATEGORY VIEW
   object-fit: cover;
 }
 
-.floating-customization-menu {
-  height: 100%;
+#customization-menu {
+  height: 100vh !important;
   width: 100%;
   background-color: #ffffff;
   position: absolute;
@@ -390,6 +390,7 @@ USER INFO VIEW
 .user-input-field {
   margin: 0 !important;
   position: inline-block;
+  display: flex;
 }
 
 .user-info-content {

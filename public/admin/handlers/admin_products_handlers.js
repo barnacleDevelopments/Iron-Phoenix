@@ -47,7 +47,9 @@ document
         let productList = targetElement.closest(".collapsible-header")
           .parentElement.nextElementSibling.lastChild;
         // append preloader while before promise resolves
-        let smallPreloader = createSmallPreloader();
+        let preloader = new Preloader()
+        let smallPreloader = preloader.small()
+
         productList.append(smallPreloader);
         let products = product.getAll(catId);
         products.then((data) => {
@@ -148,32 +150,9 @@ document
           allergy.getAll().then((allergies) => {
             if (!allergies.data.err) {
               allergies.data.forEach((all) => {
-                let chip = createChipElement(all.name, all._id, "inactive");
+                let newChip = new Chip(all._id, all.name, "inactive")
+                let chip = newChip.create(true)
                 chipContainer.append(chip);
-              });
-
-              // set chip allergies as active or inactive on click
-              chipContainer.addEventListener("click", (e) => {
-                let targetElement = e.target;
-                targetElement.getAttribute("data-chipstatus");
-                if (e.target.classList.contains("chip")) {
-                  switch (targetElement.getAttribute("data-chipstatus")) {
-                    case "inactive":
-                      targetElement.setAttribute(
-                        "style",
-                        "background-color: #5cb85c; color: white;"
-                      );
-                      targetElement.setAttribute("data-chipstatus", "active");
-
-                      break;
-                    case "active":
-                      targetElement.setAttribute(
-                        "style",
-                        "background-color: #e4e4e4; color: #0009;"
-                      );
-                      targetElement.setAttribute("data-chipstatus", "inactive");
-                  }
-                }
               });
 
               // append allergy container to allergy menu
@@ -226,41 +205,18 @@ document
       product.getProductAddonIds(procId).then((procAddons) => {
         if (!procAddons.data.err) {
           // remove preloader once allergies are fetched
-          document.querySelector(".progress").remove();
+          // document.querySelector(".progress").remove();
           // get all the allergies and append them to chip container
           addon.getAll().then((addons) => {
             if (!addons.data.err) {
               addons.data.forEach((an) => {
-                let chip = createChipElement(an.name, an._id, "inactive");
+                let newChip = new Chip(an._id, an.name, "inactive")
+                let chip = newChip.create()
                 chipContainer.append(chip);
               });
 
-              // set chip allergies as active or inactive on click
-              chipContainer.addEventListener("click", (e) => {
-                let targetElement = e.target;
-                targetElement.getAttribute("data-chipstatus");
-                if (e.target.classList.contains("chip")) {
-                  switch (targetElement.getAttribute("data-chipstatus")) {
-                    case "inactive":
-                      targetElement.setAttribute(
-                        "style",
-                        "background-color: #5cb85c; color: white;"
-                      );
-                      targetElement.setAttribute("data-chipstatus", "active");
-
-                      break;
-                    case "active":
-                      targetElement.setAttribute(
-                        "style",
-                        "background-color: #e4e4e4; color: #0009;"
-                      );
-                      targetElement.setAttribute("data-chipstatus", "inactive");
-                  }
-                }
-              });
-
               // append allergy container to allergy menu
-              let formBody = document.getElementById("form-body");
+              let formBody = document.getElementById("prod-edit-form-body");
 
               formBody.insertBefore(chipContainer, formBody.firstElementChild);
 

@@ -28,6 +28,9 @@ const categoryInclosure = document.getElementById("category-enclosure");
 // Get Category Product List Element
 const productsList = document.getElementById("products-list");
 
+const customizeMenu = new CustomizationMenu()
+categoryInclosure.append(customizeMenu.create())
+
 // Get All Categories From Database
 (() => {
   Proc.getAll(productsList.getAttribute("data-categoryid")).then((products) => {

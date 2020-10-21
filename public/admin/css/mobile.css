@@ -543,6 +543,10 @@ USER INFO VIEW
   background-color: #ffffff;
 }
 
+.input-field {
+  display: flex;
+}
+
 .confirmed-allergie {
   background-color: #5cb85c;
   color: white;

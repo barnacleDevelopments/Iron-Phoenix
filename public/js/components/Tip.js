@@ -1,3 +1,21 @@
+/*
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ * Version 1
+ *
+ * 2020-10-19
+ *
+ * Copyright 2020, Iron Phoenix, All rights reserved.
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ */
+
+/*
+//=================================
+// TIP ELEMENT CLASS
+//=================================
+
+@ AUTHOR DEVIN S. DAVIS
+*/
+
 class Tip {
   constructor() {
     this.tipMessage = "this is a tip message";
