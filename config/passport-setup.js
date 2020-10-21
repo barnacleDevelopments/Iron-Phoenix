@@ -36,7 +36,7 @@ passport.use('login', new LocalStrategy({
     User.findOne({
             email: email 
     }).then(async function(user, err) {
-console.log(password, user.password)
+        
         let isMatch = await bcrypt.compare(password, user.password);
 
         if (!user){

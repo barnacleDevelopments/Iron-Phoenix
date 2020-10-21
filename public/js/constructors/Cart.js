@@ -65,7 +65,7 @@ class Cart {
     /**
      * Add Customized Product to Cart
      *
-     * @param {String} userId User Id
+     * @param {String} userId User Id 
      * @param {Number} customizedProductId Customized Product Id
      * @return {Object} Added Product
      */
@@ -100,7 +100,7 @@ class Cart {
     
         return receivingData;
       }
-
+      
     /**
      * Get the User Products
      *
