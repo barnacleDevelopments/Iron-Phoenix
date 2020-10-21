@@ -82,9 +82,10 @@ router.get('/user/:id/cart/product', function (req, res, next) {
             if (Object.is(array.length - 1, index)) {
                 productId.forEach(function (id, index, array) {
                     Product.findById({ _id: id }).then(function (data) {
+                        data.set("quantity", quantity[index], { strict: false });
                         products = products.concat(data);
                         if (Object.is(array.length - 1, index)) {
-                            res.send({"products" : products, "quantity" : quantity});
+                            res.send(products);
                         }
                     });
                 });    
@@ -112,10 +113,11 @@ router.get('/user/:id/cart/cuztomizedProduct', function (req, res, next) {
                     CustomizedProduct.findById({ _id: id}).then(function (data) {
                         let price = data.price;
                         Product.findById({ _id: data.productId}).then(function (data) {
+                            data.set("quantity", quantity[index], { strict: false });
                             data.price = price;
                             products = products.concat(data);
                             if (Object.is(array.length - 1, index)) {
-                                res.send({"products" : products, "quantity" : quantity});
+                                res.send(products);
                             }
                         });   
                     });
@@ -132,7 +134,7 @@ router.get('/user/:id/cart', function (req, res, next) {
     });    
 });    
 
-// Get cuztomizedProducts from Cart
+// Delete items from Cart
 router.delete('/cart/:itemId', function (req, res, next) {
     Cart.findByIdAndDelete({_id: req.params.itemId}).then(function (data) {
         res.send(data);
