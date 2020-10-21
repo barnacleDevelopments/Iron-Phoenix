@@ -17,27 +17,27 @@
   </div>
 
   <div class="user-interface">
-    <div>
-      <div>
-        <a href="/user/cart/id">
-          <img src="/shopping-cart.png">
-        </a>
-      </div>
-      <div class="user-icon">
-        <a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons">account_circle</i></a>
-        <ul id='dropdown1' class='dropdown-content'>
-          <li><a href="/user/info">User Info</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/user/order">Order</a> </li>
-          <li><a href="/terms">Terms & Conditions</a></li>
-          <li class="divider" tabindex="-1"></li>
-          {{!-- <li><a href="">Sign In</a></li> --}}
-          <li> <a href="/logout">Sign Out</a></li>
-        </ul>
-      </div>
+    <div id="cart-icon">
+      <a href="/user/cart/id">
+        <img src="/shopping-cart.png">
+      </a>
+      <div id="cart-count"></div>
+    </div>
+    <div id="user-icon">
+      <a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons">account_circle</i></a>
+      <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="/user/info">User Info</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/user/order">Order</a> </li>
+        <li><a href="/terms">Terms & Conditions</a></li>
+        <li class="divider" tabindex="-1"></li>
+        {{!-- <li><a href="">Sign In</a></li> --}}
+        <li> <a href="/logout">Sign Out</a></li>
+      </ul>
     </div>
   </div>
-  <div class="option-menu-shadow"></div>
+</div>
+<div class="option-menu-shadow"></div>
 </div>
 
 {{!-- <div class="chat-menu">

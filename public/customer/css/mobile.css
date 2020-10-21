@@ -58,6 +58,7 @@ CATEGORY VIEW
   padding-top: 20px;
   display: flex;
   flex-direction: column;
+  min-width: 251.1px;
 }
 
 .categories-card {

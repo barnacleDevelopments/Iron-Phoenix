@@ -28,13 +28,12 @@ const categoryInclosure = document.getElementById("category-enclosure");
 // Get Category Product List Element
 const productsList = document.getElementById("products-list");
 
-const customizeMenu = new CustomizationMenu()
-categoryInclosure.append(customizeMenu.create())
+// const customizeMenu = new CustomizationMenu()
+// categoryInclosure.append(customizeMenu.create())
 
 // Get All Categories From Database
 (() => {
   Proc.getAll(productsList.getAttribute("data-categoryid")).then((products) => {
-    console.log(products);
     // While Products Are Retrieved - Append Preloader
     productsList.insertAdjacentHTML("afterbegin", createBigPreloader());
     // If No Errors - Apend to Products List
@@ -70,7 +69,6 @@ categoryInclosure.append(customizeMenu.create())
 productsList.addEventListener("click", (e) => {
   // Get Target Element
   let targetElement = e.target;
-  console.log(targetElement);
   // If Target Element is Expand Button - Append Img Inspect Element
   if (targetElement.classList.contains("image-expand-button")) {
     categoryInclosure.append(createImgInspect("/cake_1.jpg"));

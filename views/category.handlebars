@@ -8,53 +8,6 @@
     <div class="row">
       <div class="col s12">
         <div id="products-list" data-categoryid={{categoryId}}>
-
-          <div class="floating-product-img" style="display: none" id="{{id}}">
-            <img src="{{img}}">
-          </div>
-
-          <div class="card category-card">
-            <div class="card-image waves-effect waves-block waves-light product-img">
-              <img src="{{img}}">
-              <i id="expand-button" class="image-expand-button fas fa-expand-alt"></i>
-            </div>
-            <div class="card-content category-card-content">
-              <div class="category-card-title">
-                <h2 class="product-card-title card-title activator grey-text text-darken-4">{{name}}</h2>
-                <p class="product-price">${{price}}</p>
-              </div>
-              <div class="card-btns">
-                <div>
-                  <i class="fas fa-angle-up activator"></i>
-                </div>
-                <div>
-                  <a class="waves-effect waves-light btn-small">Add To Cart</a>
-                </div>
-
-              </div>
-            </div>
-            <div class="card-reveal">
-              <div class="product-reveal">
-                <div>
-                  <div>
-                    <span class="card-title grey-text 
-                      text-darken-4">
-                      <div>
-                        <i class="material-icons right">close</i>
-                      </div>
-                      <h2>{{name}}</h2>
-                    </span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                  </div>
-                </div>
-                <div class="card-reveal-btns">
-                  <a class="waves-effect waves-light btn-small">Add to Cart</a>
-                  <a class="waves-effect waves-light btn-small customize-btn" id="{{id}}">Customize</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
@@ -62,4 +15,6 @@
 
   <script type="text/javascript" src="/customer/ui/customer_category_ui.js"></script>
   <script type="text/javascript" src="/customer/handlers/customer_products_handlers.js">
+  </script>
+  <script type="text/javascript" src="/customer/handlers/customer_cart_handlers.js">
   </script>

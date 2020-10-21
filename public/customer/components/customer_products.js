@@ -24,24 +24,23 @@ Product Elements
 // Product Card
 function createProductCard(id, name, price, imgPath, description) {
   return `  
-      <div class="card category-card">
+      <div id="${id}" class="card category-card">
           <div class="card-image waves-effect waves-block waves-light product-img">
           <img src="${imgPath}">
           <i class="image-expand-button fas fa-expand-alt" data-productid="${id}"></i>
           </div>
           <div class="card-content category-card-content">
           <div class="category-card-title">
-              <h2 class="product-card-title card-title activator grey-text text-darken-4">${name}</h2>
-              <p class="product-price">$${price}</p>
+              <h2 id="prod-name" class="product-card-title card-title activator grey-text text-darken-4">${name}</h2>
+              <p id="prod-price" class="product-price">$${price}</p>
           </div>
           <div class="card-btns">
               <div>
               <i class="fas fa-angle-up activator"></i>
               </div>
               <div>
-              <a class="waves-effect waves-light btn-small">Add To Cart</a>
+              <a class="cart-btn waves-effect waves-light btn-small confirm-btn">Add To Cart</a>
               </div>
-  
           </div>
           </div>
           <div class="card-reveal">
@@ -55,11 +54,11 @@ function createProductCard(id, name, price, imgPath, description) {
                   </div>
                   <h2>${name}</h2>
                   </span>
-                  <p>${description}</p>
+                  <p id="prod-desc">${description}</p>
               </div>
               </div>
               <div class="card-reveal-btns">
-              <a class="waves-effect waves-light btn-small">Add to Cart</a>
+              <a class="waves-effect waves-light btn-small confirm-btn">Add to Cart</a>
               <a class="waves-effect waves-light btn-small customize-btn" data-productid="${id}"">Customize</a>
               </div>
           </div>
@@ -107,3 +106,4 @@ function createImgInspect(img) {
     align-items: center;"><img src="${img}" style=" height: 80%;"></div>`;
   return inspectElement;
 }
+
