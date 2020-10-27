@@ -84,7 +84,6 @@ const loadUserContent = (userId) => {
        
         saveBtn.click(() => {
           saveBtn.css({"display": "none"})
-
           let vals = allInputs.map((els) => {
             if(els[1])
             if(els[1].value !== "") {
@@ -99,13 +98,13 @@ const loadUserContent = (userId) => {
           let location = vals[2]
           let number = vals[3]
         
-          loggedInUser.update(userIdentification, firstName, lastName, location, number).then((user) => {
+          loggedInUser.update(loggedInUserId, firstName, lastName, location, number).then((user) => {
             if(!user.data.err) {
               userFirstName[0].textContent = user.data.firstName
               userFirstName[1].setAttribute("placeholder", user.data.firstName); 
 
-              userLastName[0].textContent = user.data.firstName
-              userLastName[1].setAttribute("placeholder", user.data.firstName); 
+              userLastName[0].textContent = user.data.lastName
+              userLastName[1].setAttribute("placeholder", user.data.lastName); 
         
               userLocation[0].textContent = user.data.address;
               userLocation[1].setAttribute("placeholder", user.data.address)
@@ -178,4 +177,6 @@ const appendUserAllergies = (userId) => {
   });
 }
 
-loadUserContent(userIdentification);
+loadUserContent(loggedInUserId);
+
+updateCartCount(loggedInUserId)

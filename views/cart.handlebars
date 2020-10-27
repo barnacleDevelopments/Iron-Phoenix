@@ -1,41 +1,22 @@
 {{> navbar_customer }}
-<div class="cart-container container">
+<div id="cart-container" class="container">
     <div class="row">
         <div class="col s12">
-            <div class="cart">
-                <div class="cart-info">
-                    <div>
-                        <h2>2 Items</h2>
-                    </div>
+            <section id="cart">
+                <header id="cart-info">
+                    <h2>2 Items</h2>
                     <div class="cart-total">
                         <h2>Cart Total:</h2>
                         <h3>$400.00</h3>
                     </div>
-                </div>
-                <div class="cart-btn">
-                    <a href=""><button>Got to Checkout</button></a>
-                </div>
-                <ul class="collection cart-list">
-                    <li class="collection-item cart-item">
-                        <div>
-                            <div class="cart-img">
-                                <img src="/cake_10.jpg">
-                            </div>
-                            <div>
-                                <h3>Cake</h3>
-                                <h4>$8.00</h4>
-                            </div>
-                        </div>
-                        <div class="cart-btns">
-                            <div>2</div>
-                            <div>
-                                <i class="material-icons">settings</i>
-                                <i class="material-icons">delete</i>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+                    <a id="cart-checkout-btn" class="waves-effect waves-light btn confirm-btn">button</a>
+                </header>
+                <ul id="cart-list" class="collection"></ul>
+            </section>
         </div>
     </div>
 </div>
+
+{{!-- HANDLERS --}}
+<script type="text/javascript" src="/customer/handlers/customer_cart_handlers.js">
+</script>

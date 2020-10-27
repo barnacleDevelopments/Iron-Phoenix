@@ -220,13 +220,12 @@ app.get("/oops", (req, res, next) => {
 // a get route to redirect user to products || login
 app.get("/category", (req, res, next) => {
   if (req.isAuthenticated()) {
-    var user = {
-      id: req.session.passport.user,
-      isloggedin: req.isAuthenticated(),
-    };
+    var userId = req.session.passport.user._id
     res.render("products", {
       pageType: true,
       header: "categories",
+      userId: userId,
+      isCart: true
     });
   } else {
     res.redirect("/login");
@@ -236,9 +235,12 @@ app.get("/category", (req, res, next) => {
 // a get route to redirect user to about || login
 app.get("/about", (req, res, next) => {
   if (req.isAuthenticated()) {
+    var userId = req.session.passport.user._id
     res.render("about", {
       pageType: false,
       header: "about",
+      isCart: true,
+      userId: userId
     });
   } else {
     res.redirect("/login");
@@ -248,9 +250,12 @@ app.get("/about", (req, res, next) => {
 // a get route to redirect user to terms || login
 app.get("/terms", (req, res, next) => {
   if (req.isAuthenticated()) {
+    var userId = req.session.passport.user._id
     res.render("terms", {
       pageType: false,
       header: "terms",
+      userId: userId,
+      isCart: true
     });
   } else {
     res.redirect("/login");
@@ -261,12 +266,14 @@ app.get("/terms", (req, res, next) => {
 app.get("/product/:category/:id", (req, res, next) => {
   const category = req.params.category;
   const id = req.params.id;
-
   if (req.isAuthenticated()) {
+    var userId = req.session.passport.user._id
     res.render("category", {
       categoryId: id,
       header: category,
       pageType: false,
+      userId: userId,
+      isCart: true
     });
   } else {
     res.redirect("/login");
@@ -276,11 +283,11 @@ app.get("/product/:category/:id", (req, res, next) => {
 app.get("/user/info", (req, res, next) => {
   if (req.isAuthenticated()) {
     let userId = req.session.passport.user._id
- 
     res.render("user", {
       pageType: false,
       header: "info",
       userId: userId,
+      isCart: true
     });
   } else {
     res.redirect("/login");
@@ -289,7 +296,13 @@ app.get("/user/info", (req, res, next) => {
 
 app.get("/user/cart/:id", (req, res, next) => {
   if (req.isAuthenticated()) {
-    res.render("cart", { pageType: false, header: "cart" });
+    let userId = req.session.passport.user._id
+    res.render("cart", {
+       pageType: false, 
+       header: "cart" ,
+       isCart: false,
+       userId: userId
+      });
   } else {
     res.redirect("/login");
   }
@@ -297,12 +310,15 @@ app.get("/user/cart/:id", (req, res, next) => {
 
 app.get("/user/order/:id", (req, res, next) => {
   if (req.isAuthenticated()) {
+    let userId = req.session.passport.user._id
     res.render("order", {
       pageType: false,
       orders: {
         currentOrders: pendOrders,
         cancelledOrders: pendOrders,
         completedOrders: pendOrders,
+        userId: userId,
+        isCart: true
       },
       header: "orders",
     });

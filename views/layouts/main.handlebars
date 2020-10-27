@@ -14,7 +14,7 @@
 
   <title>Iron Phoenix</title>
 
-  {{!-- STYLES --}}
+  {{!-- STANDARD STYLES --}}
 
   {{!-- material css styles --}}
   <link type="text/css" rel="stylesheet" href="/customer/css/materialize.css" media="screen,projection" />
@@ -32,8 +32,10 @@
   <link rel="stylesheet" type="text/css" media="screen and (min-width:460px)" href="/customer/css/tablet_portrait.css">
 
   {{!-- pc styles --}}
-  <link rel="stylesheet" type="text/css" href="/customer/css/laptop.css">
+  <link rel="stylesheet" type="text/css" href="/customer/css/laptops/layout_laptop.css">
 
+  {{!-- QUERY STYLES --}}
+  <link rel="stylesheet" type="text/css" href="/customer/css/phone/layout_phone.css">
 
   {{!-- FONTS & ICONS =--}}
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -63,6 +65,7 @@
   <script type="text/javascript" src="/constructors/Addon.js"></script>
   <script type="text/javascript" src="/constructors/InputValidator.js"></script>
   <script type="text/javascript" src="/constructors/Cart.js"></script>
+  <script type="text/javascript" src="/constructors/CustomizedProduct.js"></script>
 
   {{!-- Global Variables  --}}
   <script type="text/javascript" src="/globalVariables.js"></script>
@@ -78,7 +81,16 @@
   <script type="text/javascript" src="/customer/components/customer_products.js"></script>
   <script type="text/javascript" src="/customer/components/customer_global.js"></script>
   <script type="text/javascript" src="/customer/components/CustomizationMenu.js"></script>
+  <script type="text/javascript" src="/customer/components/CartMenu.js"></script>
+  <script type="text/javascript" src="/customer/components/ListContainer.js"></script>
 
+
+  {{!-- GLOBAL HANDLERS --}}
+  <script type="text/javascript" src="/customer/handlers/customer_global_handlers.js"></script>
+
+  <script>
+    const loggedInUserId = "{{{ userId }}}" 
+  </script>
 </head>
 
 <body>
@@ -87,9 +99,6 @@
 
   </div>
   </div>
-
-
-
 
 
   {{!-- MATERIALIZE JS --}}

@@ -74,3 +74,6 @@ productsList.addEventListener("click", (e) => {
     categoryInclosure.append(createImgInspect("/cake_1.jpg"));
   }
 });
+
+// update cart count
+updateCartCount(loggedInUserId)

@@ -1,28 +1,30 @@
-<div class="navbar">
-  <div class="arrow-nav">
+<div id="navbar">
+  <nav id="nav">
     {{#if pageType }}
-    <div class="logo">
+    <div id="logo">
       <img src="/ip7.png">
     </div>
     {{else}}
-    <div class="header-nav">
+    <div id="nav-header">
       <a href="/category"><i class="material-icons">arrow_back</i></a>
-      <div class="page-header">
+      <div>
         {{#biggerThen header header.length 8}}
         {{value}}
         {{/biggerThen}}
       </div>
     </div>
     {{/if}}
-  </div>
+  </nav>
 
-  <div class="user-interface">
+  <div id="user-interface">
+    {{#if isCart}}
     <div id="cart-icon">
       <a href="/user/cart/id">
         <img src="/shopping-cart.png">
       </a>
-      <div id="cart-count"></div>
+      <div id="cart-count"><span></span></div>
     </div>
+    {{/if}}
     <div id="user-icon">
       <a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons">account_circle</i></a>
       <ul id='dropdown1' class='dropdown-content'>

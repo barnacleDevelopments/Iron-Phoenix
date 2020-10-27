@@ -31,8 +31,8 @@ function createProductCard(id, name, price, imgPath, description) {
           </div>
           <div class="card-content category-card-content">
           <div class="category-card-title">
-              <h2 id="prod-name" class="product-card-title card-title activator grey-text text-darken-4">${name}</h2>
-              <p id="prod-price" class="product-price">$${price}</p>
+              <h2 class="prod-name product-card-title card-title activator grey-text text-darken-4">${name}</h2>
+              <p class="prod-price product-price">$${price}</p>
           </div>
           <div class="card-btns">
               <div>
@@ -58,7 +58,7 @@ function createProductCard(id, name, price, imgPath, description) {
               </div>
               </div>
               <div class="card-reveal-btns">
-              <a class="waves-effect waves-light btn-small confirm-btn">Add to Cart</a>
+              <a class="cart-btn waves-effect waves-light btn-small confirm-btn">Add to Cart</a>
               <a class="waves-effect waves-light btn-small customize-btn" data-productid="${id}"">Customize</a>
               </div>
           </div>

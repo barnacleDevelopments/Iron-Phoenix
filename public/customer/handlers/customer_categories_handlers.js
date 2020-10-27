@@ -56,3 +56,6 @@ CATEGORY LIST EVENT HANDLERS
     }
   });
 })();
+
+// update cart count
+updateCartCount(loggedInUserId)

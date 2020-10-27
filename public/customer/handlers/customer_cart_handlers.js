@@ -15,40 +15,45 @@ CUSTOMER CART HANDLERS
 
 @ AUTHOR DEVIN S. DAVIS
 */
-
-// update the cart count 
-const updateCartCount = () => {
+const appendProducts = (cartList) => {
   let cart = new Cart()
- let cartCountBubble = document.getElementById("cart-count")
-  cart.countItems().then((count) => {
-if(!count.data.err) {
-  console.log(count)
-  cartCountBubble.textContent = count.data.amount
-} else {
-  console.log(count.data.errMessage)
+  // get all cart items and append to cart menu
+  cart.getProducts(loggedInUserId).then(products => {
+    if(!products.data.err) {
+      products.data.forEach(prod => {
+        let cartMenu = new CartMenu()
+        cartList.append(cartMenu.createCartItem(prod._id, prod.name, prod.price, prod.quantity))
+      });
+      
+    } else {
+      console.log(prod.data.errMessage)
+    }
+  })
 }
-  });
+const appendCustomizedProducts = (cartList) => {
+  let cart = new Cart()
+  cart.getCustomizedProducts(loggedInUserId).then(products => {
+    if(!products.data.err) {
+      products.data.forEach(prod => {
+        let cartMenu = new CartMenu()
+        cartList.append(cartMenu.createCartItem(prod._id, prod.name, prod.price, prod.quantity))
+      });
+    } else {
+      console.log(errMessage)
+    }
+  })
 }
 
-// Add Regular Product to Cart
-productsList.addEventListener("click", (e) => {
-  // get target element 
-  let targetElement = e.target
-  console.log(targetElement)
-  // check if cart button is pressed
-  if(targetElement.classList.contains("cart-btn")) {
-  let card = e.target.closest(".category-card")
-  let prodId = card.id
-  let cart = new Cart()
-    cart.addProduct(prodId).then((cartProd) => {
-      if(cartProd.data.err) {
-       console.log(cartProd.data.errMessage)
-      } else {
-        updateCartCount()
-      }
-   })
-  }
-})
+// append all cart items to cart menu
+(() => {
+  // get cart list element
+  const cartList = document.getElementById("cart-list")
+  appendProducts(cartList)
+  appendCustomizedProducts(cartList)
+})()
+
+// update cart count
+updateCartCount(loggedInUserId)
 
 
 
