@@ -8,6 +8,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
  */
 
+
 /*
 ==============================
 ADMIN PRODUCTS UI
@@ -122,7 +123,7 @@ document
         .closest(".edit-category-btn")
         .attr("data-catid");
       // create edit form
-      let categoryForm = new Form(catId, "cat-edit-form");
+      let categoryForm = new Form(catId, "cat-edit-form", "confirm", true);
       let formBody = categoryForm.textInputForm(
         $(`#${catId}`).find("h1").text(),
       );
@@ -136,7 +137,7 @@ document
       catId = $(targetElement)
         .closest(".delete-category-btn")
         .attr("data-catid");
-      let deleteForm = new Form(catId, "cat-del-form");
+      let deleteForm = new Form(catId, "cat-del-form", "delete", true);
       // get product count for category
       product.count(catId).then((procCount) => {
         if (!procCount.err) {
@@ -154,30 +155,28 @@ document
 
     // if add product button is pressed - open product input
     if (targetElement.classList.contains("add-product-btn")) {
+      // capture cateory id 
       catId = targetElement.closest(".category-header-container").getAttribute("data-id")
-      let form = new Form(catId, "product-form", "Create", addProduct, false)
+      // capture cateory product list 
       let productList = targetElement.closest(".admin-product-list")
+      let productBtn = targetElement
+      .closest(".add-product-btn")
+      // remove add product btn
+      productBtn.style.display = "none"
+      // create form element 
+      let form = new Form(catId, "product-form", "Create", false)
+      let prodForm = form.textInputForm("name", "description", "price")
       productList.insertBefore(
-        form.textInputForm("name", "description", "price"), 
+        prodForm, 
         form.firstElementChild
-        )
-      targetElement
-          .closest(".add-product-btn")
-          .setAttribute("style", "display:none");
-
-    }
-
-    // if save or cancel is pressed - close product input
-    if (
-      targetElement.classList.contains("product-save-btn") ||
-      targetElement.classList.contains("product-cancel-btn")
-    ) {
-      targetElement
-        .closest(".product-input")
-        .setAttribute("style", "display: none");
-      targetElement
-        .closest(".product-input")
-        .nextElementSibling.setAttribute("style", "display: block");
+      )
+      Object.keys(form.btns).forEach(key => {
+        form.btns[key].addEventListener("click", () => {
+          productBtn.style.display = "block"
+          prodForm.remove()
+        })
+      })
+    
     }
 
     // ++++++++++++++++++++++++++++++++++
@@ -200,7 +199,7 @@ document
  
       switch (menuSelection) {
         case "Addons":
-          let prodAddForm = new Form(prodId, "prod-edit-form")
+          let prodAddForm = new Form(prodId, "prod-edit-form", "add", true)
           // create product allergies form element
          let addFormBody = prodAddForm.chipForm("addon-form-list", updateAddons)
          appendAddons(prodId, addFormBody.firstElementChild.firstElementChild)
@@ -209,7 +208,7 @@ document
       
           break;
         case "Edit":  
-        let prodEditForm = new Form(prodId, "prod-edit-form");
+        let prodEditForm = new Form(prodId, "prod-edit-form", "edit", true);
         let prod =  $(`#${prodId}`) 
           // get name
           let name = prod.find(".prod-name").text()
@@ -225,7 +224,7 @@ document
           editFormBody.firstElementChild.focus();
           break;
         case "Alergies":
-          let prodAllForm = new Form(prodId, "prod-allergy-form")
+          let prodAllForm = new Form(prodId, "prod-allergy-form", "add", true)
           // create product allergies form element
           let allergyFormBody = prodAllForm.chipForm("allergy-form-list", updateAllergies)
           appendAllergies(prodId, allergyFormBody.firstElementChild.firstElementChild)
@@ -235,7 +234,7 @@ document
           break;
         case "Delete":
           //create new element
-          let prodDelForm = new Form(prodId, "prod-del-form");
+          let prodDelForm = new Form(prodId, "prod-del-form", "delete", true);
           let deleteFormBody = prodDelForm.promptForm("Are you sure you want to delte this product?");
           // append the element to form container
           document.body.append(deleteFormBody);

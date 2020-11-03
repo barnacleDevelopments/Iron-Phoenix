@@ -94,8 +94,7 @@ document
   .addEventListener("click", (e) => {
     let targetElement = e.target
     let catId, categoryElement, productList, productInput
-    
-  if (targetElement.classList.contains("product-save-btn")) {
+  if (targetElement.closest("#product-form").lastElementChild.lastElementChild) {
     // create variables to contain product info
     let prodPrice, prodTitle, prodDesc;
     // capture category list element 
@@ -103,7 +102,7 @@ document
     // capture category id
     catId = categoryElement.getAttribute("data-id")
     // capture product input 
-    productInput = targetElement.closest(".product-input")
+    productInput = targetElement.closest("#product-form")
     productList = targetElement.closest("#admin-product-list");
     // loop through all inputs set their input values to variables
     Object.keys(productInput.children).forEach((key) => {
@@ -121,6 +120,7 @@ document
         break;
       }
     });
+
     addProduct(catId, productList, prodPrice, prodTitle, prodDesc)
   }
 });

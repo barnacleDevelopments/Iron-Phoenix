@@ -28,15 +28,17 @@ class CategoryElement {
   constructor(catId, catName) {
     this.catId = catId
     this.catName = catName
+    this.catProdList 
   }
 
-  createCategory(dropDownFunc, inputFunc) {
+  createCategory(dropDownFunc) {
     // create category element
     let element = document.createElement("li");
     element.setAttribute("data-id", this.catId)
     element.classList.add("category-header-container");
     let productList = document.createElement("ul");
     productList.classList.add("admin-product-list")
+    this.catProdList = productList
     element.innerHTML = `
     <div class="collapsible-header" onclick="${dropDownFunc(this.catId, productList)}">
         <div class="admin-category-img">
@@ -59,7 +61,6 @@ class CategoryElement {
     let collapsibleBody = document.createElement("div");
     collapsibleBody.classList.add("collapsible-body");
     productList.innerHTML = `<a class="waves-effect waves-light btn add-product-btn">Add Product</a>`
-    productList.append(this.input(inputFunc));
     collapsibleBody.append(productList);
     element.append(collapsibleBody)
 
@@ -96,50 +97,6 @@ class CategoryElement {
       `;
         return element;
   }
-
-  input(func) {
-    // create form element
-    let element = document.createElement("li");
-    element.classList.add("product-input");
-    element.style.display = "none";
-    element.create
-    element.innerHTML = `
-    <input class="category-title-input" type="text" placeholder="add product title here...">
-    <input class="category-price-input" type="text" placeholder="add price...">
-    <input class="category-description-input" type="text" placeholder="add description...">`
-    
-    
-    // create input buttons
-    let confirmBtn = document.createElement("a");
-    confirmBtn.classList.add("waves-effect", "waves-light", "btn", "confirm-btn")
-    let btnContainer = document.createElement("div");
-    btnContainer.innerHTML = `<a class="waves-effect waves-light btn cancel-btn product-cancel-btn">cancle</a>`;
-    btnContainer.append(confirmBtn);
-    if(func) {
-      confirmBtn.addEventListener("click", () => {
-        func();
-      });
-    }
-    
-    element.append(btnContainer);
-
-    return element;
-  }
-}
-
-
-function createCategoryElement(id, name, func) {
-  // create element
-  let element = document.createElement("li");
-  // set element id
-  element.classList.add("category-list-element");
-  element.setAttribute("data-id", id);
-
-  // add element content
-  element.innerHTML = `
- 
-`;
-  return element;
 }
 
 // ---------------------------------------

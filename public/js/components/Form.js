@@ -23,25 +23,17 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
  */
 
 class Form {
-  constructor(id, formId, btnText, func, isFloat) {
+  constructor(id, formId, btnText, isFloat) {
     this.id = id;
     this.formId = formId
-    this.func = func
     this.btnText = btnText
+    this.isFloat = isFloat
+    this.btns = {}
   }
 
   textInputForm() {
     let element = this.basicForm()
     let confirmBtn = this.confirmBtn()
-    confirmBtn.addEventListener("click", () => {
-      let inputValues = []
-      for(const child in element.children) {
-        if(element.children[child].nodeName === "INPUT") {
-          inputValues.push(element.children[child].value)
-        }
-      }
-      this.func(this.id, ...inputValues)
-    })
     element.firstElementChild.append(confirmBtn)
     let args = Object.keys(arguments).reverse()
     args.forEach(a => {
@@ -110,13 +102,14 @@ class Form {
     element.id = this.formId
     element.setAttribute("class", "form-body");
     element.setAttribute("data-id", this.id);
-    
-    element.innerHTML = `
-    <div class="form-btns">
-        <a class="waves-effect waves-light btn cancel-btn">Cancle</a>
-    </div>
-      `;
-
+    let btnContainer = document.createElement("div")
+    btnContainer.classList.add("form-btns")
+    let cancelBtn = document.createElement("a")
+    cancelBtn.textContent = "cancel"
+    cancelBtn.classList.add("waves-effect", "waves-light", "btn", "cancel-btn")
+    btnContainer.append(cancelBtn)
+    this.btns.cancelBtn = cancelBtn
+    element.append(btnContainer)
     return element;
   }
 
@@ -135,6 +128,7 @@ class Form {
     let element = document.createElement("a")
     element.textContent = this.btnText
     element.classList.add("waves-effect" ,"waves-light", "btn", "confirm-btn")
+    this.btns.confirmBtn = element
     return element
   }
 }

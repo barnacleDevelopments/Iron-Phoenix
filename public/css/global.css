@@ -286,17 +286,17 @@ body a {
 /* Buttons */
 .form-btns {
   margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .confirm-btn {
   background-color: #5cb85c !important;
-  float: right;
   margin-left: 8px;
 }
 
 .cancel-btn {
   background-color: grey !important;
-  float: right;
 }
 
 #option-container {
