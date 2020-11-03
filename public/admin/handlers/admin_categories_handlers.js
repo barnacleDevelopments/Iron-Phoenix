@@ -22,16 +22,16 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 (() => {
   let category = new Category();
-
   // get all the categories
   let categories = category.getAll();
   // handle recieved data
   categories.then((cats) => {
     cats.data.forEach((cat) => {
       if (!cat.err) {
+        let element = new CategoryElement(cat._id, cat.name)
         document
-          .querySelector(".admin-category-list")
-          .append(createCategoryElement(cat._id, cat.name));
+          .querySelector(".content-list")
+          .append(element.createCategory(getProducts, addProduct));
       } else {
         console.log(cat.errMessage);
       }
@@ -43,9 +43,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 // PRODUCT CONTAINER EVENT HANDLERS
 // ==================================
 
-document
-  .querySelector(".admin-products-container")
-  .addEventListener("click", (e) => {
+document.body.addEventListener("click", (e) => {
     // get target element
     let targetElement = e.target;
 
@@ -59,7 +57,7 @@ document
       newCategory.then((cat) => {
         if (!cat.data.err) {
           document
-            .querySelector(".admin-category-list")
+            .querySelector("#admin-category-list")
             .append(createCategoryElement(cat.data._id, cat.data.name));
         } else {
           console.log(cat.errMessage);
@@ -71,7 +69,7 @@ document
 // ================================
 // FORM CONTAINER EVENT HANDLERS
 // ===============================
-document.getElementById("form-container").addEventListener("click", (e) => {
+document.body.addEventListener("click", (e) => {
   // get target element
   let targetElement = e.target;
   // if target element categorty save btn - save the edited name

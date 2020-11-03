@@ -16,22 +16,44 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 @ AUTHOR DEVIN S. DAVIS
 */
 
+/**
+ * @param {string} id id  
+ * @param {string} formId identifying id
+ * @param {function} func a callback function to execute when confirm btn is clicked
+ */
+
 class Form {
-  constructor(id, formId) {
+  constructor(id, formId, btnText, func, isFloat) {
     this.id = id;
     this.formId = formId
+    this.func = func
+    this.btnText = btnText
   }
 
   textInputForm() {
     let element = this.basicForm()
-    element.firstElementChild.append(this.confirmBtn())
+    let confirmBtn = this.confirmBtn()
+    confirmBtn.addEventListener("click", () => {
+      let inputValues = []
+      for(const child in element.children) {
+        if(element.children[child].nodeName === "INPUT") {
+          inputValues.push(element.children[child].value)
+        }
+      }
+      this.func(this.id, ...inputValues)
+    })
+    element.firstElementChild.append(confirmBtn)
     let args = Object.keys(arguments).reverse()
     args.forEach(a => {
       let input = document.createElement("input");
       input.placeholder = arguments[a]
       element.insertBefore(input, element.firstElementChild);
-    })    
-    return element;
+    }) 
+    
+    if(this.isFloat) {
+      return this.formContainer(element)
+    }
+    return element
   }
 
   promptForm(text) {
@@ -40,7 +62,7 @@ class Form {
     let p = document.createElement("p")
     p.textContent = text
     element.insertBefore(p,element.firstElementChild)
-    return element
+    return this.formContainer(element)
   }
 
   optionForm() {
@@ -61,6 +83,28 @@ class Form {
     return this.formContainer(element)
   }
 
+  chipForm(listId, func) {
+    let element = this.basicForm()
+    element.firstElementChild.append(this.confirmBtn())
+    let chipList = document.createElement("ul")
+    chipList.id = listId
+    element.insertBefore(chipList, element.firstElementChild)
+    if(func) {
+      element.addEventListener("click", () => {
+        func(this.id, chipList.children)
+      })
+    } 
+    return this.formContainer(element)
+  }
+
+  chip() {
+    let newAllChip = document.createElement("div");
+    newAllChip.setAttribute("class", "chip");
+    newAllChip.innerHTML = `${name}<i id="${id}" class="close material-icons">close</i> `;
+    chipContainer.append(newAllChip);
+    return 
+  }
+
   basicForm() { 
     let element = document.createElement("form")
     element.id = this.formId
@@ -72,9 +116,6 @@ class Form {
         <a class="waves-effect waves-light btn cancel-btn">Cancle</a>
     </div>
       `;
-    element.addEventListener("click", (e) => {
-     element.parentElement.remove()
-    });
 
     return element;
   }
@@ -84,6 +125,7 @@ class Form {
     element.id = "form-container"
     element.append(form)
     element.addEventListener("click", (e) => {
+      if(e.target.classList.contains("confirm-btn") || e.target.classList.contains("cancel-btn"))
       element.remove()
      });
     return element
@@ -91,8 +133,8 @@ class Form {
 
   confirmBtn() {
     let element = document.createElement("a")
-    element.classList.add("waves-effect" ,"waves-light", "btn", "confirm-btn", "disabled")
+    element.textContent = this.btnText
+    element.classList.add("waves-effect" ,"waves-light", "btn", "confirm-btn")
     return element
   }
-
 }

@@ -18,14 +18,8 @@ ADMIN ADDONS UI MANAGEMENT EVENT
 
 /*
   +++++++++++++++++++++++++++++++
-  FUNCTIONS
-  +++++++++++++++++++++++++++++++
-*/
-
-/*
-    +++++++++++++++++++++++++++++++
   ADMIN ADDONS UI MANAGEMENT EVENT LISTENERS 
-    +++++++++++++++++++++++++++++++
+  +++++++++++++++++++++++++++++++
   */
 
 // Add Event Listener to Addon Container

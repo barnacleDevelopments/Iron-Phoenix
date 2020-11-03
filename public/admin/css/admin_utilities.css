@@ -1,0 +1,46 @@
+/* drop down menus */
+.edit-drop-trigger {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 6px;
+}
+  
+.category-dropdown-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: flex-start;
+  margin-top: 10px;
+  margin-right: 10px;
+  color: black;
+}
+  
+.category-dropdown-container i {
+  color: black;
+}
+  
+.category-dropdown {
+  display: flex;
+  width: 120px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 2px 0 #00000024, 0 3px 1px -2px #0000001f, 0 1px 5px 0 #0003;
+  border-radius: 5px;
+  position: absolute;
+  right: 8px;
+  top: 0px;
+  z-index: 6;
+}
+
+.category-dropdown > li {
+  padding: 14px 16px !important;
+}
+  
+.category-dropdown > li:hover {
+  background-color: rgba(0, 0, 0, 0.11);
+}
+  
+.category-dropdown i,
+.product-dropdown i {
+  color: black;
+}

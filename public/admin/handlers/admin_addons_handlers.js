@@ -16,17 +16,6 @@ ADMIN ADDONS HANDLERS
 @ AUTHOR DEVIN S. DAVIS
 */
 
-/*
-  +++++++++++++++++++++++++++++++
-  ELEMENT CREATION FUNCTIONS
-  +++++++++++++++++++++++++++++++
-*/
-/*
-  +++++++++++++++++++++++++++++++
-  ADDON CLASSES
-  +++++++++++++++++++++++++++++++
-*/
-// Get Addons Class
 const addon = new Addon();
 /*
   +++++++++++++++++++++++++++++++

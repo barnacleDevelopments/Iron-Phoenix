@@ -1,35 +1,30 @@
-<div class="option-menu-shadow" style="display: none;"></div>
-
 {{!-- MENU CONTAINER --}}
-<div id="form-container" style="display: none">
-    <div id="form-tip-container"></div>
-</div>
 <div class="searchbar">
     <input type="text" placeholder="Search For Product... ">
     <i class="material-icons">search</i>
 </div>
 
-<div class="container admin-products-container">
-
-
-    <div class="row">
-        <a id="add-category-btn" class="waves-effect waves-light btn">Add Category</a>
-        <div>
-            <div class="category-input" style="display: none">
-                <input id="add-category-input" type="text" placeholder="add category here....">
-                <div class="category-input-btns">
-                    <a id="category-create-btn" class="waves-effect waves-light btn confirm-btn">save</a>
-                    <a id="category-cancel-btn" class="waves-effect waves-light btn cancel-btn">cancle</a>
-                </div>
-            </div>
-            <ul class="collapsible admin-category-list"></ul>
+<div class="content-container">
+    <div class="form-body add-category-form" style="display: none">
+        <input id="add-category-input" type="text" placeholder="add category here....">
+        <div class="category-input-btns">
+            <a id="category-create-btn" class="waves-effect waves-light btn confirm-btn">save</a>
+            <a id="category-cancel-btn" class="waves-effect waves-light btn cancel-btn">cancle</a>
         </div>
     </div>
+    <a id="add-category-btn" class="waves-effect waves-light btn">Add Category</a>
+    <ul id="admin-category-list" class="collapsible content-list"></ul>
 </div>
+
+{{!-- Admin Product UI --}}
+<script src="/admin/ui/admin_products_ui.js"></script>
 
 {{!-- Admin Products Handlers --}}
 <script type="text/javascript" src="/admin/handlers/admin_products_handlers.js">
 </script>
-
 <script type="text/javascript" src="/admin/handlers/admin_categories_handlers.js">
+</script>
+<script type="text/javascript" src="/admin/handlers/admin_prod_allergy_handlers.js">
+</script>
+<script type="text/javascript" src="/admin/handlers/admin_prod_addon_handlers.js">
 </script>

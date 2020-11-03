@@ -1,0 +1,229 @@
+/* Admin Category Components */
+.admin-category-img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.admin-category-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+  
+.category-header-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+  box-shadow: none !important
+}
+  
+.category-header-container .collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #f5f5f5 !important;
+}
+  
+.category-header-container h1 {
+  font-size: 30px !important;
+}
+
+.category-header-container.collapsible-header
+    div:nth-of-type(1)
+    > div:nth-of-type(2) {
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+}
+  
+.category-header-container .collapsible-header:first-child {
+  display: flex;
+  align-items: center;
+}
+
+.category-header-container .collapsible-body {
+  padding: 0px;
+  margin-top: 14px;
+  box-shadow: none !important
+} 
+
+#add-category-btn {
+  width: 100%;
+  background-color: #5cb85c !important;
+  margin-bottom: 24px;
+}
+
+.add-category-form {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+#admin-category-list {
+  border: none !important;
+  box-shadow: none;
+}
+
+/* Admin Product Components */
+.admin-product {
+  width: 95%;
+  min-width: 272px;
+  display: flex;
+  background-color: #f5f5f5;
+  padding: 10px;
+  justify-content: space-between;
+  height: 122px;
+  margin-bottom: 14px;
+}
+
+.admin-product > div:nth-of-type(1) {
+  min-width: 260px;
+}
+  
+.admin-product h2 {
+  font-size: 24px !important;
+}
+  
+.admin-product > div:nth-of-type(1) {
+  display: flex;
+}
+  
+.admin-product-img {
+  width: 100px;
+  height: 100px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+  
+.admin-product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+  
+.admin-product-description {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100% !important;
+  margin-right: 20px;
+  overflow: hidden;
+}
+  
+.admin-product-description h2 {
+  overflow: hidden;
+}
+  
+.admin-product-description p {
+  overflow: hidden;
+  font-size: 14px !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+  
+.product-input {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: #f5f5f5;
+  margin-bottom: 14px;
+  padding: 14px;
+}
+  
+.product-input input {
+  background-color: #ffffff !important;
+  padding-left: 10px !important;
+  -moz-box-sizing: border-box !important;
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+  gap: 10px !important;
+  border: none !important;
+  border: 1px solid #cccccc !important;
+}
+  
+.title_price-inputs {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+  
+.title_price-inputs input:nth-of-type(1) {
+  width: 59% !important;
+  -moz-box-sizing: border-box !important;
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+  gap: 10px !important;
+}
+  
+.title_price-inputs input:nth-of-type(2) {
+  width: 40% !important;
+  -moz-box-sizing: border-box !important;
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+}
+  
+.add-product-btn {
+  margin: 0px 0px 14px 0px;
+  background-color: #5cb85c !important;
+}
+  
+.product-dropdown-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+  
+.product-dropdown-trigger i {
+  color: black;
+}
+  
+.product-dropdown {
+  display: flex;
+  width: 120px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 2px 0 #00000024, 0 3px 1px -2px #0000001f, 0 1px 5px 0 #0003;
+  border-radius: 5px;
+  position: absolute;
+  right: 8px;
+  top: 0px;
+  z-index: 6;
+}
+  
+.product-dropdown > li {
+  padding: 14px 16px;
+}
+  
+.product-dropdown h3 {
+  margin-right: 8px;
+}
+  
+.product-dropdown a {
+  color: black !important;
+}
+
+/* Admin Allergy Components */  
+#allergy-chips {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+}
+  
+#allergy-chips li {
+  min-width: 0px;
+}
+  
+#allergy-chips div {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  border-radius: 20px;
+}
+
+  

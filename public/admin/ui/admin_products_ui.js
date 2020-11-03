@@ -22,13 +22,13 @@ GLOBAL PAGE ELEMENTS
 ======================================
 */
 
-let formContainer = document.querySelector("#form-container");
-
 /*
 ===========================
 FUNCTIONAL FUNCTIONS
 ===========================
 */
+
+
 
 // ---------------------------------------
 //  CONVERTS STRING TO NUMBER
@@ -54,27 +54,18 @@ function closeOpenDropdowns(arr) {
   });
 }
 
-// ---------------------------------------
-//  DISPLAYS FORM CONTAINER
-// ---------------------------------------
-function displayFormContainer() {
-  document
-    .querySelector("#form-container")
-    .setAttribute("style", "display: flex");
-}
-
 // =========================================
 // PRODUCT MANAGEMENT CONTAINER EVENT LISTENERS
 // =========================================
 
 document
-  .querySelector(".admin-products-container")
+  .querySelector(".content-container")
   .addEventListener("click", (e) => {
     // get target element
     let targetElement = e.target;
 
     // get add category input
-    let categoryInput = document.querySelector(".category-input");
+    let categoryInput = document.querySelector(".add-category-form");
     // get add category button
     let categoryBtn = document.getElementById("add-category-btn");
     // open add category menu if add cetegory button is clicked
@@ -100,11 +91,11 @@ document
 // =========================================
 
 document
-  .querySelector(".admin-category-list")
+  .querySelector(".content-list")
   .addEventListener("click", (e) => {
+   let catid
     //get target element
     let targetElement = e.target;
-
     // hide all currently open dropdowns
     const allCatDropdowns = document.querySelectorAll(".category-dropdown");
     const allProductDropdowns = document.querySelectorAll(".product-dropdown");
@@ -126,10 +117,8 @@ document
 
     // open category edit menu, add data-attribute to editor menu & input current title in input value
     if (targetElement.closest(".edit-category-btn")) {
-      // display form container
-      displayFormContainer();
       // get category id
-      let catId = $(targetElement)
+      catId = $(targetElement)
         .closest(".edit-category-btn")
         .attr("data-catid");
       // create edit form
@@ -137,15 +126,14 @@ document
       let formBody = categoryForm.textInputForm(
         $(`#${catId}`).find("h1").text(),
       );
-      formContainer.append(formBody);
+      document.body.append(formBody);
       // once open - focus first input
       formBody.firstElementChild.focus();
     }
     // open category delete menu and add data-attribute to editor menu
     if (targetElement.closest(".delete-category-btn")) {
-      displayFormContainer();
       // get category id
-      let catId = $(targetElement)
+      catId = $(targetElement)
         .closest(".delete-category-btn")
         .attr("data-catid");
       let deleteForm = new Form(catId, "cat-del-form");
@@ -153,7 +141,7 @@ document
       product.count(catId).then((procCount) => {
         if (!procCount.err) {
           let formBody = deleteForm.promptForm(`This category contains ${procCount.count} products. Are you sure you want to delete it?`);
-          formContainer.append(formBody);
+          document.body.append(formBody);
         } else {
           console.log(procCount.errMessage);
         }
@@ -165,17 +153,18 @@ document
     // ++++++++++++++++++++++++++++++++++
 
     // if add product button is pressed - open product input
-    if (targetElement.closest(".add-product-btn")) {
-      let productInput = targetElement.previousElementSibling;
-      if (productInput.style.display === "none") {
-        targetElement.previousElementSibling.setAttribute(
-          "style",
-          "display: block"
-        );
-        targetElement
+    if (targetElement.classList.contains("add-product-btn")) {
+      catId = targetElement.closest(".category-header-container").getAttribute("data-id")
+      let form = new Form(catId, "product-form", "Create", addProduct, false)
+      let productList = targetElement.closest(".admin-product-list")
+      productList.insertBefore(
+        form.textInputForm("name", "description", "price"), 
+        form.firstElementChild
+        )
+      targetElement
           .closest(".add-product-btn")
           .setAttribute("style", "display:none");
-      }
+
     }
 
     // if save or cancel is pressed - close product input
@@ -213,11 +202,11 @@ document
         case "Addons":
           let prodAddForm = new Form(prodId, "prod-edit-form")
           // create product allergies form element
-         let addFormBody = prodAddForm.basicForm()
+         let addFormBody = prodAddForm.chipForm("addon-form-list", updateAddons)
+         appendAddons(prodId, addFormBody.firstElementChild.firstElementChild)
           // append the element to form container
-          formContainer.append(addFormBody);
-          // display form container
-          displayFormContainer();
+          document.body.append(addFormBody);
+      
           break;
         case "Edit":  
         let prodEditForm = new Form(prodId, "prod-edit-form");
@@ -230,36 +219,29 @@ document
           let desc = prod.find(".prod-desc").text()
           // create edit form
           let editFormBody = prodEditForm.textInputForm(name, price, desc);
-          formContainer.append(editFormBody);
-          // display form container
-          displayFormContainer();
+          document.body.append(editFormBody);
+        
           // once open - focus first input
           editFormBody.firstElementChild.focus();
           break;
         case "Alergies":
+          let prodAllForm = new Form(prodId, "prod-allergy-form")
           // create product allergies form element
-          let allergyFormBody = createChipform(
-            prodId,
-            "product-allergy-save-btn"
-          );
+          let allergyFormBody = prodAllForm.chipForm("allergy-form-list", updateAllergies)
+          appendAllergies(prodId, allergyFormBody.firstElementChild.firstElementChild)
           // append the element to form container
-          formContainer.append(allergyFormBody);
-          // display form container
-          displayFormContainer();
+          document.body.append(allergyFormBody);
+       
           break;
         case "Delete":
           //create new element
           let prodDelForm = new Form(prodId, "prod-del-form");
           let deleteFormBody = prodDelForm.promptForm("Are you sure you want to delte this product?");
           // append the element to form container
-          formContainer.append(deleteFormBody);
-          // display form container
-          displayFormContainer();
-
+          document.body.append(deleteFormBody);
           // once open - focus first input
           deleteFormBody.firstElementChild.focus();
           break;
       }
     }
   });
-

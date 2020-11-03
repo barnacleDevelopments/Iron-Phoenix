@@ -16,22 +16,6 @@ ADMIN ALLERGY HANDLERS
 @ AUTHOR DEVIN S. DAVIS
 */
 
-/*
-  +++++++++++++++++++++++++++++++
-  FUNCTIONS
-  +++++++++++++++++++++++++++++++
-*/
-
-// creates new chip elemennt
-function createChipElement(name, id) {
-  let chipContainer = document.createElement("li");
-  let newAllChip = document.createElement("div");
-  newAllChip.setAttribute("class", "chip");
-  newAllChip.innerHTML = `${name}<i id="${id}" class="close material-icons">close</i> `;
-  chipContainer.append(newAllChip);
-  return chipContainer;
-}
-
 // ======================================
 // ALLERGY MANAGEMENT HANDLER MANAGEMENT
 // ======================================
@@ -49,9 +33,10 @@ Get All Allergies
     console.log(allergies);
     if (!allergies.data.err) {
       allergies.data.forEach((all) => {
-        let chip = createChipElement(all.name, all._id);
+        let chip = new Chip(all._id, all.name)
+        let allChip = chip.createBasic(false);
 
-        allChipsList.append(chip);
+        allChipsList.append(allChip);
       });
     } else {
       console.log(allergies.data.errMessage);
@@ -77,7 +62,8 @@ document
       allergy.create(allName).then((allergy) => {
         if (!allergy.data.err) {
           // append to chip element to allergy list elemenet
-          let newChip = createChipElement(allergy.data.name, allergy.data._id);
+          let chip = new Chip(allergy.data._id, allergy.data.name)
+          let newChip = chip.create(false);
           allChipsList.append(newChip);
         } else {
           console.log(data.data.errMessage);

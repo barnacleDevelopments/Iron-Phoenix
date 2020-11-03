@@ -23,8 +23,14 @@ class Chip {
         this.name = name
         this.status = status
     }
-// create chip element
-create(hasStatusMod) {
+
+createRemovable() {
+  let element = this.createBasic()
+  element
+}
+
+// create basic chip element
+createBasic(hasStatusMod) {
     let element = document.createElement("div");
     element.setAttribute("class", "chip");
     element.setAttribute("data-allid", this.id);
@@ -56,8 +62,6 @@ addStatusMod(element) {
         if (e.target.classList.contains("chip")) {
           switch (targetElement.getAttribute("data-chipstatus")) {
             case "inactive":
-              console.log("Activate")
-              console.log(targetElement)
               targetElement.setAttribute(
                 "style",
                 "background-color: #5cb85c; color: white;"
