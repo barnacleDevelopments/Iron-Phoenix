@@ -166,9 +166,8 @@ document
       // create form element 
       let form = new Form(catId, "product-form", "Create", false)
       let prodForm = form.textInputForm("name", "description", "price")
-      productList.insertBefore(
-        prodForm, 
-        form.firstElementChild
+      productList.appendChild(
+        prodForm
       )
       Object.keys(form.btns).forEach(key => {
         form.btns[key].addEventListener("click", () => {
@@ -176,7 +175,6 @@ document
           prodForm.remove()
         })
       })
-    
     }
 
     // ++++++++++++++++++++++++++++++++++

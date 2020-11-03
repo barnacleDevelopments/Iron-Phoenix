@@ -15,7 +15,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 14px;
-  box-shadow: none !important
+  box-shadow: none !important;
 }
   
 .category-header-container .collapsible-header {
@@ -23,6 +23,7 @@
   justify-content: space-between;
   width: 100%;
   background-color: #f5f5f5 !important;
+  padding: 9px;
 }
   
 .category-header-container h1 {
@@ -45,7 +46,6 @@
 .category-header-container .collapsible-body {
   padding: 0px;
   margin-top: 14px;
-  box-shadow: none !important
 } 
 
 #add-category-btn {
@@ -73,7 +73,7 @@
   min-width: 272px;
   display: flex;
   background-color: #f5f5f5;
-  padding: 10px;
+  padding: 9px;
   justify-content: space-between;
   height: 122px;
   margin-bottom: 14px;
