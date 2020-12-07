@@ -8,6 +8,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
  */
 
+
 /*
 =================================
 ADMIN EVENT PRODUCT HANDLERS 
@@ -16,56 +17,36 @@ ADMIN EVENT PRODUCT HANDLERS
 @ AUTHOR DEVIN S. DAVIS
 */
 
-// event listener
 document
   .querySelector("#admin-category-list")
   .addEventListener("click", (e) => {
     let targetElement = e.target
-    let catId, productList, productForm
+    let catId, productList, formBody
   if (targetElement.classList.contains("confirm-btn")) {
     // create variables to contain product info
     let prodPrice, prodTitle, prodDesc;
     // capture category list element 
-    productForm = targetElement.closest("#product-form")
+    formBody = targetElement.closest("#product-form")
     // capture category id
-    catId = productForm.getAttribute("data-id")
-    // capture product input 
-    productList = targetElement.closest("ul")
-    console.log(productForm)
-    // loop through all inputs set their input values to variables
-    Object.keys(productForm.children).forEach((key) => {
-    let inputs = productForm.children;
-    let inputNames = inputs[key].className;
-      switch (inputNames) {
-        case "category-title-input":
-          productTitle = inputs[key].value;
-        break;
-        case "category-price-input":
-          productPrice = inputs[key].value;
-        break;
-        case "category-description-input":
-          productDescription = inputs[key].value;
-        break;
-      }
-    });
+    catId = formBody.getAttribute("data-id")
+    // capture product list
+    productList = document.getElementsByClassName(catId)[1]
+    // capture input values
+    let inputs = formBody.children
+    prodTitle = inputs[0].value;
+    prodDesc = inputs[1].value;
+    prodPrice = inputs[2].value;
 
+    // add new product
     addProduct(catId, productList, prodPrice, prodTitle, prodDesc)
   }
 });
 
-/*
-  =======================================
-  FLOATING MENU CONTAINER EVENT HANDLERS
-  =======================================
-  */
-document.querySelector("body").addEventListener("click", (e) => {
+document.body.addEventListener("click", (e) => {
   // get target element
   let targetElement = e.target;
   let product = new Product();
-  // ++++++++++++++++++++++++++++++++++++++++
-  // Update product inside selected category
-  // ++++++++++++++++++++++++++++++++++++++++
-  // if edit menu save button is pressed
+  // update product event handler
   if (targetElement.classList.contains("confirm-btn") && targetElement.closest("#prod-edit-form")) {
     // get form body
     let formBody = targetElement.closest("#prod-edit-form");
@@ -75,9 +56,10 @@ document.querySelector("body").addEventListener("click", (e) => {
      let name = formBody.children[0] .value
      let price = formBody.children[1].value
      let desc = formBody.children[2].value
+     updateProduct(prodId, name, desc, price)
   }
 
-  // delete product handler
+  // delete product event handler
   if (targetElement.classList.contains("confirm-btn") && targetElement.closest("#prod-del-form")) {
     // get target element
     let targetElement = e.target;
@@ -85,8 +67,7 @@ document.querySelector("body").addEventListener("click", (e) => {
     let prodId = formBody.getAttribute("data-id");
     product.remove(prodId).then((data) => {
       if (!data.data.err) {
-        $(`#${prodId}`).remove()
-        proc.remove();
+        document.getElementById(prodId).remove();
       } else {
         console.log(data.data.errMessage);
       }

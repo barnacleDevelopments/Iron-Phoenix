@@ -16,92 +16,95 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 @ AUTHOR DEVIN S. DAVIS
 */
 
-// +++++++++++++++++++++++++++++++++++++++
-// Get All Categories
-// +++++++++++++++++++++++++++++++++++++++
-
-(() => {
+// get all the categories and append to DOM
+const getAllCategories = () => {
   let category = new Category();
-  // get all the categories
   let categories = category.getAll();
-  // handle recieved data
   categories.then((cats) => {
     cats.data.forEach((cat) => {
       if (!cat.err) {
         let element = new CategoryElement(cat._id, cat.name)
+        let categoryElement = element.createCategory(() => {
+          
+          getProducts(cat._id, element.catProdList)
+        })
         document
           .querySelector(".content-list")
-          .append(element.createCategory(getProducts, addProduct));
+          .append(categoryElement);
       } else {
         console.log(cat.errMessage);
       }
     });
   });
-})();
+}
 
-// ==================================
-// PRODUCT CONTAINER EVENT HANDLERS
-// ==================================
+// add category and append to the DOM
+const addCategory = (name, container) => {
+  let category = new Category();
+  category.create(name).then((cat) => {
+     if (!cat.data.err) {
+       let element = new CategoryElement(cat.data._id, name)
+       let categoryElement = element.createCategory(() => {
+         getProducts(cat.data._id, element.catProdList)
+       })
+       container.append(categoryElement)
+     } else {
+       console.log(cat.errMessage);
+     }
+   });
+}
 
-document.body.addEventListener("click", (e) => {
-    // get target element
-    let targetElement = e.target;
-
-    // ++++++++++++++++++++++++++++
-    // CREATE NEW CATEGORY
-    // +++++++++++++++++++++++++++
-    if (targetElement.id === "category-create-btn") {
-      let name = $("#add-category-input").val();
-      let category = new Category();
-      let newCategory = category.create(name);
-      newCategory.then((cat) => {
-        if (!cat.data.err) {
-          document
-            .querySelector("#admin-category-list")
-            .append(createCategoryElement(cat.data._id, cat.data.name));
-        } else {
-          console.log(cat.errMessage);
-        }
-      });
-    }
-  });
 
 // ================================
-// FORM CONTAINER EVENT HANDLERS
+// FORM EVENT HANDLERS
 // ===============================
 document.body.addEventListener("click", (e) => {
   // get target element
+  let catId
   let targetElement = e.target;
+  let categoryList = document.querySelector("#admin-category-list")
+
+  if (targetElement.id === "category-create-btn") {
+    let name = $("#add-category-input").val();
+    addCategory(name, categoryList)
+  }
+
   // if target element categorty save btn - save the edited name
   if (targetElement.classList.contains("confirm-btn") && targetElement.closest("#cat-edit-form")) {
     // get form body
     let formBody = targetElement.closest(".form-body");
+        catId = formBody.getAttribute("data-id");
     let catName = formBody.children[0].value;
-    let catId = formBody.getAttribute("data-catid");
-
     let category = new Category();
     category.update(catId, catName).then((modCat) => {
       if (!modCat.data.err) {
-        $(`#${catId}`).replaceWith(
-          createCategoryElement(modCat.data._id, modCat.data.name)
-        );
+        let element = new CategoryElement(modCat.data._id, catName)
+        let oldCategoryElement = document.getElementsByClassName(catId)[0]
+        let newCategoryElement = element.createCategory(() => {
+          getProducts(modCat.data._id, element.catProdList)
+        })
+        categoryList.replaceChild(newCategoryElement, oldCategoryElement)
       } else {
         console.log(modCat.data.errMessage);
       }
     });
   }
-  // if delete confirm button is pressed - delete the category from the DOM & database
 
+  // if delete confirm button is pressed - delete the category from the DOM & database
   if (targetElement.classList.contains( "confirm-btn") && targetElement.closest("#cat-del-form")) {
     let formBody = targetElement.closest(".form-body");
-    let catId = formBody.getAttribute("data-catid");
+    let catId = formBody.getAttribute("data-id");
     let category = new Category();
     category.remove(catId).then((data) => {
       if (!data.err) {
-        $(`#${catId}`).remove();
+        let categoryElement = document.getElementsByClassName(catId)[0]
+        categoryElement.remove()
       } else {
         console.log(data.errMessage);
       }
     });
   }
 });
+
+
+getAllCategories()

@@ -42,24 +42,22 @@ const getProducts = (catId, container) => {
 }
 
 // takes input from user and adds a new product to the categoy list 
-const addProduct = (catId, container, prodPrice, prodTitle, prodDesc) => {
+const addProduct = (catId, container, prodPrice, prodName, prodDesc) => {
   let product = new Product();
+  let element = new CategoryElement()
   // send a create request to the routes
-  product.create(catId, prodTitle, prodDesc, prodPrice)
+  product.create(catId, prodName, prodDesc, prodPrice)
   .then((product) => {
-    // check if fetch request failed
       if (!product.data.err) {
         // append new element to the product list of specified category
-        container
-        .insertBefore(
-          createProductElement(
-                product.data._id,
-                product.data.name,
-                product.data.price,
-                product.data.description
-              ),
-              container.firstElementChild
-        );
+        const newProduct =  element.createCatProduct(
+          product.data._id,
+          prodName,
+          prodPrice,
+          prodDesc
+        )
+        // inset new product into DOM
+        container.insertBefore(newProduct, container.firstElementChild);
       } else {
         console.log(product.data.errMessage);
       }
@@ -67,20 +65,21 @@ const addProduct = (catId, container, prodPrice, prodTitle, prodDesc) => {
 }
     
 // update and replace product element
-const updateProduct = (prodId, propsArr) => {
-  // name description, price
-   product.update(prodId, ...propsArr).then((product) => {
+const updateProduct = (prodId, name, desc, price) => {
+  let product = new Product();
+  let element = new CategoryElement()
+   product.update(prodId, name, desc, price ).then((product) => {
     if (!product.data.err) {
       // get old product element
       let oldProduct = document.getElementById(prodId);
      // create updated product
-      const updatedProduct = createProductElement(
+      const updatedProduct = element.createCatProduct(
         product.data._id,
         product.data.name,
         product.data.price,
         product.data.description
       );
-    // replace product
+    // replace old product from DOM
       document.getElementById(prodId).parentElement.replaceChild(updatedProduct, oldProduct);
     } else {
       console.log(product.data.errMessage);

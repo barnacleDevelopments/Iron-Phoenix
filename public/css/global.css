@@ -261,7 +261,6 @@ body a {
 .form-body {
   background-color: #ffffff;
   padding: 20px;
-  z-index: 1001;
   width: 90%;
   pointer-events: all;
 }
